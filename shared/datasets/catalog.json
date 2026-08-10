@@ -1,0 +1,38 @@
+[
+  {
+    "id": 10,
+    "title": "Movie X",
+    "genre": "action",
+    "year": 2023
+  },
+  {
+    "id": 11,
+    "title": "Movie Z",
+    "genre": "drama",
+    "year": 2021
+  },
+  {
+    "id": 18,
+    "title": "Movie Y",
+    "genre": "sci-fi",
+    "year": 2024
+  },
+  {
+    "id": 24,
+    "title": "Movie W",
+    "genre": "comedy",
+    "year": 2022
+  },
+  {
+    "id": 31,
+    "title": "Movie Q",
+    "genre": "action",
+    "year": 2025
+  },
+  {
+    "id": 42,
+    "title": "Movie K",
+    "genre": "sci-fi",
+    "year": 2020
+  }
+]

@@ -1,0 +1,17 @@
+[
+  {
+    "id": 1,
+    "name": "User 1",
+    "preferredGenres": ["action", "sci-fi"]
+  },
+  {
+    "id": 2,
+    "name": "User 2",
+    "preferredGenres": ["drama"]
+  },
+  {
+    "id": 3,
+    "name": "User 3",
+    "preferredGenres": ["comedy", "action"]
+  }
+]
