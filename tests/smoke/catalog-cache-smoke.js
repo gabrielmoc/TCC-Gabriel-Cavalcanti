@@ -87,6 +87,7 @@ async function fetchJson(url) {
     status: response.status,
     body,
     cacheHeader: response.headers.get("x-cache"),
+    dataSourceHeader: response.headers.get("x-data-source"),
   };
 }
 
@@ -101,6 +102,7 @@ async function run() {
   const secondCatalog = await fetchJson("http://127.0.0.1:3001/catalog");
   const firstItem = await fetchJson("http://127.0.0.1:3001/catalog/10");
   const secondItem = await fetchJson("http://127.0.0.1:3001/catalog/10");
+  const gatewayCatalog = await fetchJson("http://127.0.0.1:3000/api/catalog");
   const recommendations = await fetchJson(
     "http://127.0.0.1:3000/api/recommendations/1"
   );
@@ -117,6 +119,10 @@ async function run() {
     throw new Error("Recommendations endpoint failed under cache scenario");
   }
 
+  if (gatewayCatalog.status !== 200) {
+    throw new Error("Gateway catalog endpoint failed under cache scenario");
+  }
+
   if (firstCatalog.cacheHeader !== "MISS") {
     throw new Error("Expected first catalog request to return X-Cache MISS");
   }
@@ -131,6 +137,16 @@ async function run() {
 
   if (secondItem.cacheHeader !== "HIT") {
     throw new Error("Expected second catalog item request to return X-Cache HIT");
+  }
+
+  if (!gatewayCatalog.cacheHeader) {
+    throw new Error("Expected gateway catalog response to expose X-Cache header");
+  }
+
+  if (!gatewayCatalog.dataSourceHeader) {
+    throw new Error(
+      "Expected gateway catalog response to expose X-Data-Source header"
+    );
   }
 
   if (!Array.isArray(firstCatalog.body) || firstCatalog.body.length === 0) {

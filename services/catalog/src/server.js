@@ -15,6 +15,31 @@ const catalog = require(path.resolve(
 let redisClient;
 let cacheConnected = false;
 
+app.use((req, res, next) => {
+  res.locals.startedAt = Date.now();
+
+  res.on("finish", () => {
+    const durationMs = Date.now() - res.locals.startedAt;
+    const cacheStatus = res.locals.cacheStatus || "BYPASS";
+    const dataSource = res.locals.dataSource || "n/a";
+    const cacheKey = res.locals.cacheKey || "n/a";
+
+    console.log(
+      [
+        "catalog request",
+        `${req.method} ${req.originalUrl}`,
+        `status=${res.statusCode}`,
+        `durationMs=${durationMs}`,
+        `cache=${cacheStatus}`,
+        `source=${dataSource}`,
+        `key=${cacheKey}`,
+      ].join(" | ")
+    );
+  });
+
+  next();
+});
+
 async function connectRedis() {
   if (!cacheEnabled) {
     console.log("catalog cache disabled");
@@ -71,28 +96,51 @@ async function writeCache(key, value) {
 app.get("/catalog", async (_req, res) => {
   const cacheKey = "catalog:all";
   const cachedCatalog = await readCache(cacheKey);
+  res.locals.cacheKey = cacheKey;
 
   if (cachedCatalog) {
-    return res.set("X-Cache", "HIT").json(cachedCatalog);
+    res.locals.cacheStatus = "HIT";
+    res.locals.dataSource = "redis";
+
+    return res
+      .set("X-Cache", "HIT")
+      .set("X-Data-Source", "redis")
+      .json(cachedCatalog);
   }
 
   await writeCache(cacheKey, catalog);
 
-  return res.set("X-Cache", "MISS").json(catalog);
+  res.locals.cacheStatus = "MISS";
+  res.locals.dataSource = "dataset";
+
+  return res
+    .set("X-Cache", "MISS")
+    .set("X-Data-Source", "dataset")
+    .json(catalog);
 });
 
 app.get("/catalog/:id", async (req, res) => {
   const itemId = Number(req.params.id);
   const cacheKey = `catalog:${itemId}`;
   const cachedItem = await readCache(cacheKey);
+  res.locals.cacheKey = cacheKey;
 
   if (cachedItem) {
-    return res.set("X-Cache", "HIT").json(cachedItem);
+    res.locals.cacheStatus = "HIT";
+    res.locals.dataSource = "redis";
+
+    return res
+      .set("X-Cache", "HIT")
+      .set("X-Data-Source", "redis")
+      .json(cachedItem);
   }
 
   const item = catalog.find((entry) => entry.id === itemId);
 
   if (!item) {
+    res.locals.cacheStatus = "MISS";
+    res.locals.dataSource = "dataset";
+
     return res.status(404).json({
       message: "Catalog item not found",
     });
@@ -100,7 +148,13 @@ app.get("/catalog/:id", async (req, res) => {
 
   await writeCache(cacheKey, item);
 
-  return res.set("X-Cache", "MISS").json(item);
+  res.locals.cacheStatus = "MISS";
+  res.locals.dataSource = "dataset";
+
+  return res
+    .set("X-Cache", "MISS")
+    .set("X-Data-Source", "dataset")
+    .json(item);
 });
 
 app.get("/health", (_req, res) => {

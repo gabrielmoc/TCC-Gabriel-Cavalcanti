@@ -26,6 +26,17 @@ async function proxyJson(res, targetUrl) {
     const upstreamResponse = await fetch(targetUrl);
     const payload = await upstreamResponse.json();
 
+    const cacheHeader = upstreamResponse.headers.get("x-cache");
+    const dataSourceHeader = upstreamResponse.headers.get("x-data-source");
+
+    if (cacheHeader) {
+      res.set("X-Cache", cacheHeader);
+    }
+
+    if (dataSourceHeader) {
+      res.set("X-Data-Source", dataSourceHeader);
+    }
+
     return res.status(upstreamResponse.status).json(payload);
   } catch (error) {
     return res.status(502).json({

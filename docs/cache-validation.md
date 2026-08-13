@@ -82,6 +82,10 @@ curl -i http://127.0.0.1:3000/api/catalog/10
 
 O esperado e observar `MISS` na primeira chamada e `HIT` nas repeticoes.
 
+Tambem e esperado observar:
+- `X-Data-Source: dataset` na primeira resposta;
+- `X-Data-Source: redis` nas repeticoes cacheadas.
+
 ## Validacao automatizada
 
 Ha tambem um smoke test dedicado ao cenario com cache em:
