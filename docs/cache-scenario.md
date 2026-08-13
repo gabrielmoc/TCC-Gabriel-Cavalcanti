@@ -77,3 +77,16 @@ Se o Redis estiver indisponivel:
 Isso e importante para manter a comparacao metodologica clara entre:
 - baseline sem cache;
 - cenario com cache habilitado quando o Redis estiver disponivel.
+
+## Ativacao e validacao
+
+O procedimento operacional para ativar e validar esse cenario esta descrito em:
+
+```text
+docs/cache-validation.md
+```
+
+Esse material orienta:
+- como subir o Redis localmente;
+- como ativar `CATALOG_CACHE_ENABLED=true`;
+- como validar `MISS`, `HIT` e fallback sem alterar o contrato funcional do experimento.
