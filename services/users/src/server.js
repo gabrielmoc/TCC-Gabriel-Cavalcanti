@@ -1,4 +1,5 @@
 const express = require("express");
+const { randomUUID } = require("node:crypto");
 const path = require("path");
 
 const app = express();
@@ -7,6 +8,30 @@ const users = require(path.resolve(
   __dirname,
   "../../../shared/datasets/users.json"
 ));
+
+app.use((req, res, next) => {
+  const requestId = req.headers["x-request-id"] || randomUUID();
+  const startedAt = Date.now();
+
+  res.locals.requestId = requestId;
+  res.set("X-Request-Id", requestId);
+
+  res.on("finish", () => {
+    const durationMs = Date.now() - startedAt;
+
+    console.log(
+      [
+        "users request",
+        `id=${requestId}`,
+        `${req.method} ${req.originalUrl}`,
+        `status=${res.statusCode}`,
+        `durationMs=${durationMs}`,
+      ].join(" | ")
+    );
+  });
+
+  next();
+});
 
 app.get("/users/:id", (req, res) => {
   const userId = Number(req.params.id);

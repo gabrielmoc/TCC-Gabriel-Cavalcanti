@@ -1,4 +1,5 @@
 const express = require("express");
+const { randomUUID } = require("node:crypto");
 const path = require("path");
 const { createClient } = require("redis");
 
@@ -16,7 +17,11 @@ let redisClient;
 let cacheConnected = false;
 
 app.use((req, res, next) => {
+  const requestId = req.headers["x-request-id"] || randomUUID();
+
   res.locals.startedAt = Date.now();
+  res.locals.requestId = requestId;
+  res.set("X-Request-Id", requestId);
 
   res.on("finish", () => {
     const durationMs = Date.now() - res.locals.startedAt;
@@ -27,6 +32,7 @@ app.use((req, res, next) => {
     console.log(
       [
         "catalog request",
+        `id=${requestId}`,
         `${req.method} ${req.originalUrl}`,
         `status=${res.statusCode}`,
         `durationMs=${durationMs}`,
