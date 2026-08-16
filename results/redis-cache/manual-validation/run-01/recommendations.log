@@ -1,0 +1,2 @@
+recommendations listening on port 3003
+recommendations request | id=c6fbf6f4-549c-4ae5-9496-c790b9028d63 | GET /recommendations/1 | status=200 | durationMs=24 | usersMs=18 | catalogMs=6

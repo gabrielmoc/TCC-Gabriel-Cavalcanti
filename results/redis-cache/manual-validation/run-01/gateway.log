@@ -1,0 +1,6 @@
+gateway listening on port 3000
+gateway request | id=5b10e46e-7279-4d64-95aa-bb9560ac3eaf | GET /api/catalog | status=200 | durationMs=40 | upstream=catalog | cache=MISS | source=dataset
+gateway request | id=68938d8c-b507-4f43-8cea-48c1d3243ce0 | GET /api/catalog | status=200 | durationMs=1 | upstream=catalog | cache=HIT | source=redis
+gateway request | id=89b3caf8-5ad7-44c2-a391-7895eab53ad0 | GET /api/catalog/10 | status=200 | durationMs=1 | upstream=catalog | cache=MISS | source=dataset
+gateway request | id=81edd3df-04db-4c83-bde9-d32791af5418 | GET /api/catalog/10 | status=200 | durationMs=2 | upstream=catalog | cache=HIT | source=redis
+gateway request | id=c6fbf6f4-549c-4ae5-9496-c790b9028d63 | GET /api/recommendations/1 | status=200 | durationMs=30 | upstream=recommendations | cache=n/a | source=n/a

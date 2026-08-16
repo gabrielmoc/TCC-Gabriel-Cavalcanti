@@ -1,0 +1,12 @@
+HTTP/1.1 200 OK
+X-Powered-By: Express
+X-Request-Id: 81edd3df-04db-4c83-bde9-d32791af5418
+X-Cache: HIT
+X-Data-Source: redis
+Content-Type: application/json; charset=utf-8
+Content-Length: 56
+ETag: W/"38-NcQrzDn6yA2KBYRBoEJXcEbLj/Y"
+Date: Sun, 16 Aug 2026 22:18:41 GMT
+Connection: keep-alive
+Keep-Alive: timeout=5
+
