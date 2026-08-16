@@ -75,8 +75,20 @@ rampa
 A carga sera aplicada no mesmo endpoint e com a mesma logica funcional em todos os cenarios.
 
 Valores exatos da primeira rodada:
-- a definir antes da execucao formal;
-- alinhados com a observacao do orientador sobre crescimento progressivo da carga.
+- script principal: `tests/load/recommendations-ramp.js`;
+- `startVUs=1`;
+- `targetVUs=15`;
+- `ramp up = 15s`;
+- `sustain = 20s`;
+- `ramp down = 10s`;
+- `sleep = 0.5s`;
+- `3 repeticoes por cenario`.
+
+Justificativa desta escolha:
+- e uma carga moderada para a primeira entrega;
+- suficiente para gerar comparacao inicial;
+- preserva o mesmo endpoint principal entre os cenarios;
+- funciona como primeiro ponto de uma progressao maior que podera evoluir para volumes mais altos.
 
 ## Mandatory Metrics
 
@@ -89,6 +101,10 @@ Para a primeira entrega, as metricas prioritarias sao:
 Metricas complementares, se disponiveis com baixo atrito:
 - CPU;
 - memoria.
+
+Decisao para esta primeira entrega:
+- CPU e memoria nao entram como obrigatorias;
+- o foco sera em latencia media, p95, throughput e taxa de erro.
 
 ## Expected Outputs
 
@@ -131,7 +147,6 @@ results/redis-cache/ramp/run-01
 
 ## What Still Needs To Be Defined
 
-- parametros exatos da primeira rampa;
 - formato final dos arquivos exportados pelo `k6`;
 - estrategia minima para salvar evidencias complementares;
-- se CPU e memoria entram ja na primeira bateria ou em seguida.
+- como evoluir da primeira rampa moderada para casos mais fortes nas proximas rodadas.
