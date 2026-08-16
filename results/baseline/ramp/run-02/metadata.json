@@ -1,0 +1,13 @@
+{
+  "scenario": "baseline",
+  "load_profile": "ramp",
+  "run": "02",
+  "script": "tests/load/recommendations-ramp.js",
+  "startVUs": 1,
+  "targetVUs": 15,
+  "rampUp": "15s",
+  "sustain": "20s",
+  "rampDown": "10s",
+  "sleepSeconds": 0.5,
+  "date": "2026-08-16"
+}
