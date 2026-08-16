@@ -20,8 +20,10 @@ GET /api/recommendations/:userId
 tests/load/catalog-ramp.js
 tests/load/recommendations-constant.js
 tests/load/recommendations-ramp.js
+tests/load/recommendations-ramp-strong.js
 tests/load/recommendations-spike.js
 tests/load/aggregate-results.mjs
+tests/load/run-strong-battery.sh
 ```
 
 ## Pre-requisito
@@ -87,6 +89,17 @@ node tests/load/aggregate-results.mjs results/baseline/ramp-strong/recommendatio
 node tests/load/aggregate-results.mjs results/redis-cache/ramp-strong/recommendations
 node tests/load/aggregate-results.mjs results/baseline/ramp-strong/catalog
 node tests/load/aggregate-results.mjs results/redis-cache/ramp-strong/catalog
+```
+
+## Execucao automatizada da bateria forte
+
+Exemplos:
+
+```bash
+tests/load/run-strong-battery.sh baseline recommendations 01
+tests/load/run-strong-battery.sh redis-cache recommendations 01
+tests/load/run-strong-battery.sh baseline catalog 01
+tests/load/run-strong-battery.sh redis-cache catalog 01
 ```
 
 ## Carga funcional equivalente
