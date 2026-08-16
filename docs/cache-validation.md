@@ -69,6 +69,10 @@ Se o Redis for desligado:
 - o comportamento funcional deve permanecer valido;
 - o servico deve operar sem cache.
 
+Na pratica, isso significa que o `gateway` deve continuar entregando as respostas publicas esperadas, com:
+- `X-Cache: MISS`;
+- `X-Data-Source: dataset`.
+
 ## Validacao manual sugerida
 
 Exemplos:
@@ -86,12 +90,24 @@ Tambem e esperado observar:
 - `X-Data-Source: dataset` na primeira resposta;
 - `X-Data-Source: redis` nas repeticoes cacheadas.
 
+Para validar o fallback, a sugestao e subir os servicos com:
+
+```bash
+CATALOG_CACHE_ENABLED=true
+CATALOG_REDIS_URL=redis://127.0.0.1:6399
+```
+
+Sem iniciar nenhum Redis nessa porta. O esperado e que o sistema continue respondendo com `MISS` e `X-Data-Source: dataset`.
+
 ## Validacao automatizada
 
 Ha tambem um smoke test dedicado ao cenario com cache em:
 
 ```text
 node tests/smoke/catalog-cache-smoke.js
+node tests/smoke/catalog-cache-fallback-smoke.js
 ```
 
-Esse teste sobe uma instancia local do Redis, inicializa os servicos e valida o comportamento basico do cache no `catalog`.
+O primeiro teste sobe uma instancia local do Redis, inicializa os servicos e valida o comportamento basico do cache no `catalog`.
+
+O segundo teste valida explicitamente o comportamento de fallback quando o Redis esta indisponivel.

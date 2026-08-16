@@ -48,6 +48,10 @@ async function connectRedis() {
 
   redisClient = createClient({
     url: redisUrl,
+    socket: {
+      connectTimeout: 1000,
+      reconnectStrategy: false,
+    },
   });
 
   redisClient.on("error", (error) => {
@@ -61,6 +65,7 @@ async function connectRedis() {
     console.log(`catalog redis connected at ${redisUrl}`);
   } catch (error) {
     cacheConnected = false;
+    redisClient = undefined;
     console.error(`catalog redis unavailable: ${error.message}`);
   }
 }

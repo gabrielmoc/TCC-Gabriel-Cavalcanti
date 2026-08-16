@@ -7,6 +7,7 @@ Script disponivel:
 ```text
 node tests/smoke/baseline-smoke.js
 node tests/smoke/catalog-cache-smoke.js
+node tests/smoke/catalog-cache-fallback-smoke.js
 ```
 
 O script:
@@ -29,6 +30,12 @@ No teste de cache:
 - o `Catalog Service` e iniciado com cache habilitado;
 - `GET /api/catalog` e `GET /api/catalog/10` sao chamados duas vezes;
 - o teste valida `X-Cache: MISS` na primeira chamada e `X-Cache: HIT` na seguinte.
+
+No teste de fallback:
+- o `Catalog Service` e iniciado com cache habilitado e Redis indisponivel;
+- o `gateway` continua respondendo pelas rotas publicas;
+- o teste valida que o servico responde com `MISS` e `X-Data-Source: dataset`;
+- o fluxo funcional do endpoint de recomendacoes permanece valido.
 
 Observacao:
 - ele foi preparado para execucao local, usando `127.0.0.1`;
