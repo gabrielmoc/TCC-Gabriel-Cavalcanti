@@ -1,0 +1,147 @@
+{
+    "root_group": {
+        "id": "d41d8cd98f00b204e9800998ecf8427e",
+        "groups": {},
+        "checks": {
+                "status 200": {
+                    "path": "::status 200",
+                    "id": "fad9fa412b86fcb03bee97c80dcd61f1",
+                    "passes": 981,
+                    "fails": 0,
+                    "name": "status 200"
+                },
+                "response has userId": {
+                    "id": "0300f8c626aecb7626c69101cbc113db",
+                    "passes": 981,
+                    "fails": 0,
+                    "name": "response has userId",
+                    "path": "::response has userId"
+                },
+                "response has recommendations": {
+                    "id": "3806315105acc6818a83ac30e7cf7d67",
+                    "passes": 981,
+                    "fails": 0,
+                    "name": "response has recommendations",
+                    "path": "::response has recommendations"
+                }
+            },
+        "name": "",
+        "path": ""
+    },
+    "metrics": {
+        "iterations": {
+            "count": 981,
+            "rate": 21.762759565830947
+        },
+        "http_req_failed": {
+            "passes": 0,
+            "fails": 981,
+            "thresholds": {
+                "rate<0.05": false
+            },
+            "value": 0
+        },
+        "http_req_duration{expected_response:true}": {
+            "max": 52.327,
+            "p(90)": 6.319,
+            "p(95)": 7.053,
+            "avg": 4.546432212028541,
+            "min": 1.132,
+            "med": 4.298
+        },
+        "http_req_tls_handshaking": {
+            "min": 0,
+            "med": 0,
+            "max": 0,
+            "p(90)": 0,
+            "p(95)": 0,
+            "avg": 0
+        },
+        "data_received": {
+            "count": 538569,
+            "rate": 11947.755001641191
+        },
+        "data_sent": {
+            "count": 89271,
+            "rate": 1980.4111204906164
+        },
+        "vus": {
+            "value": 1,
+            "min": 1,
+            "max": 15
+        },
+        "http_reqs": {
+            "count": 981,
+            "rate": 21.762759565830947
+        },
+        "http_req_connecting": {
+            "med": 0,
+            "max": 0.547,
+            "p(90)": 0,
+            "p(95)": 0,
+            "avg": 0.005045871559633028,
+            "min": 0
+        },
+        "http_req_waiting": {
+            "avg": 4.45318960244648,
+            "min": 1.116,
+            "med": 4.208,
+            "max": 52.198,
+            "p(90)": 6.202,
+            "p(95)": 6.942
+        },
+        "http_req_blocked": {
+            "avg": 0.015711518858307787,
+            "min": 0.002,
+            "med": 0.008,
+            "max": 0.735,
+            "p(90)": 0.016,
+            "p(95)": 0.018
+        },
+        "http_req_receiving": {
+            "avg": 0.06531702344546382,
+            "min": 0.01,
+            "med": 0.061,
+            "max": 0.457,
+            "p(90)": 0.103,
+            "p(95)": 0.121
+        },
+        "checks": {
+            "passes": 2943,
+            "fails": 0,
+            "value": 1
+        },
+        "http_req_sending": {
+            "min": 0.004,
+            "med": 0.025,
+            "max": 0.233,
+            "p(90)": 0.044,
+            "p(95)": 0.05,
+            "avg": 0.027925586136595272
+        },
+        "vus_max": {
+            "value": 15,
+            "min": 15,
+            "max": 15
+        },
+        "iteration_duration": {
+            "avg": 505.68290375229367,
+            "min": 501.388417,
+            "med": 505.460791,
+            "max": 553.510167,
+            "p(90)": 507.517875,
+            "p(95)": 508.178791
+        },
+        "http_req_duration": {
+            "p(95)": 7.053,
+            "avg": 4.546432212028541,
+            "min": 1.132,
+            "med": 4.298,
+            "max": 52.327,
+            "p(90)": 6.319,
+            "thresholds": {
+                "p(95)<1500": false
+            }
+        }
+    }
+}

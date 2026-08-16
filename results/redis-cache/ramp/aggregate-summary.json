@@ -1,0 +1,17 @@
+{
+  "scenario": "redis-cache",
+  "loadProfile": "ramp",
+  "script": "tests/load/recommendations-ramp.js",
+  "startVUs": 1,
+  "targetVUs": 15,
+  "rampUp": "15s",
+  "sustain": "20s",
+  "rampDown": "10s",
+  "sleepSeconds": 0.5,
+  "repetitions": 3,
+  "latencyAvgMs": 4.66074126438055,
+  "latencyP95Ms": 7.776116666666664,
+  "throughputRps": 21.74667554097516,
+  "errorRate": 0,
+  "requestCountAvg": 981
+}

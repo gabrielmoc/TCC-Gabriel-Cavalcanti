@@ -1,0 +1,11 @@
+9395:C 16 Aug 2026 19:24:05.588 * oO0OoO0OoO0Oo Redis is starting oO0OoO0OoO0Oo
+9395:C 16 Aug 2026 19:24:05.588 * Redis version=8.0.3, bits=64, commit=00000000, modified=1, pid=9395, just started
+9395:C 16 Aug 2026 19:24:05.588 * Configuration loaded
+9395:M 16 Aug 2026 19:24:05.589 * monotonic clock: POSIX clock_gettime
+9395:M 16 Aug 2026 19:24:05.589 * Running mode=standalone, port=6382.
+9395:M 16 Aug 2026 19:24:05.589 # WARNING: The TCP backlog setting of 511 cannot be enforced because kern.ipc.somaxconn is set to the lower value of 128.
+9395:M 16 Aug 2026 19:24:05.590 * Server initialized
+9395:M 16 Aug 2026 19:24:05.590 * Ready to accept connections tcp
+9395:signal-handler (1786919094) Received SIGTERM scheduling shutdown...
+9395:M 16 Aug 2026 19:24:54.384 * User requested shutdown...
+9395:M 16 Aug 2026 19:24:54.384 # Redis is now ready to exit, bye bye...
