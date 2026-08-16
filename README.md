@@ -79,13 +79,13 @@ A parte prática consiste na implementação de um protótipo simplificado de si
 
 O desenho experimental atualmente contempla:
 
-- **Previsto:** `API Gateway` como ponto de entrada da aplicação;
-- **Previsto:** três microsserviços: `catalog`, `users` e `recommendations`;
+- **Definido e implementado:** `API Gateway` como ponto de entrada da aplicação;
+- **Definido e implementado:** três microsserviços: `catalog`, `users` e `recommendations`;
 - **Definido:** comparação entre diferentes cenários experimentais;
 - **Definido:** cenário baseline, sem mecanismos específicos de otimização;
 - **Definido:** cenário utilizando cache por meio do `Redis`;
 - **Pendente:** definição final das técnicas que comporão o cenário otimizado;
-- **Previsto:** testes de carga utilizando `k6`;
+- **Definido e preparado:** testes de carga utilizando `k6`;
 - **Definido:** coleta de métricas relacionadas ao desempenho e ao uso de recursos;
 - **Definido:** três execuções para cada combinação entre cenário experimental e padrão de carga.
 
@@ -93,7 +93,7 @@ O desenho experimental atualmente contempla:
 
 ## Arquitetura Experimental
 
-A arquitetura inicialmente prevista para o ambiente experimental é composta por um API Gateway responsável por encaminhar as requisições para três microsserviços independentes.
+A arquitetura experimental atual é composta por um API Gateway responsável por encaminhar as requisições para três microsserviços independentes.
 
 ```mermaid
 flowchart LR
@@ -113,7 +113,7 @@ flowchart LR
     E -.-> G
 ```
 
-> **Observação:** o diagrama representa a arquitetura proposta para a etapa experimental e não uma implementação já concluída. A configuração poderá ser refinada durante a consolidação metodológica e a implementação do ambiente.
+> **Observação:** o diagrama representa a arquitetura atualmente implementada para baseline e cache. Ele ainda poderá ser refinado quando o terceiro cenário experimental for definido.
 
 ---
 
@@ -121,11 +121,11 @@ flowchart LR
 
 | Categoria | Tecnologia | Situação | Papel no experimento |
 | --- | --- | --- | --- |
-| Backend | ![Node.js](https://img.shields.io/badge/Node.js-339933?logo=nodedotjs&logoColor=white) | **Previsto** | Ambiente de execução dos serviços. |
-| Framework | ![Express](https://img.shields.io/badge/Express-000000?logo=express&logoColor=white) | **Previsto** | Construção das APIs e microsserviços. |
-| Cache | ![Redis](https://img.shields.io/badge/Redis-DC382D?logo=redis&logoColor=white) | **Previsto** | Implementação do mecanismo de cache. |
-| Testes | ![k6](https://img.shields.io/badge/k6-7D64FF?logo=k6&logoColor=white) | **Previsto** | Geração de carga e execução dos experimentos. |
-| Observabilidade | Logs e métricas | **Previsto** | Monitoramento do comportamento da aplicação durante os testes. |
+| Backend | ![Node.js](https://img.shields.io/badge/Node.js-339933?logo=nodedotjs&logoColor=white) | **Implementado** | Ambiente de execução dos serviços. |
+| Framework | ![Express](https://img.shields.io/badge/Express-000000?logo=express&logoColor=white) | **Implementado** | Construção das APIs e microsserviços. |
+| Cache | ![Redis](https://img.shields.io/badge/Redis-DC382D?logo=redis&logoColor=white) | **Implementado** | Implementação do mecanismo de cache no `Catalog Service`. |
+| Testes | ![k6](https://img.shields.io/badge/k6-7D64FF?logo=k6&logoColor=white) | **Implementado** | Geração de carga e execução dos experimentos. |
+| Observabilidade | Logs e métricas | **Implementado** | Monitoramento mínimo do comportamento da aplicação durante os testes. |
 | Ferramentas auxiliares | A definir | **Pendente** | Dependem da consolidação do ambiente experimental. |
 
 A presença dessas tecnologias representa o planejamento atual do TCC e não implica que todas tenham sido utilizadas pelos trabalhos de referência na mesma configuração experimental.
@@ -201,20 +201,15 @@ O experimento será estruturado em torno da implementação de uma arquitetura b
 
 ### Elementos previstos
 
-- geração de carga utilizando `k6`;
-- utilização de `Redis` no cenário com cache;
-- coleta de métricas da aplicação e de utilização de recursos;
-- execução de diferentes padrões de carga;
-- registro dos resultados de cada execução.
+- coleta de métricas complementares de infraestrutura, como CPU e memória;
+- expansão progressiva dos padrões de carga;
+- registro visual mais completo dos resultados em gráficos e tabelas.
 
 ### Elementos pendentes
 
-- quantidade exata de usuários virtuais;
-- duração definitiva de cada teste;
-- configuração de warm-up e ramp-up;
 - definição final das técnicas do cenário otimizado;
 - políticas específicas de cache, como TTL e invalidação;
-- definição de métricas estatísticas adicionais, caso necessárias.
+- aprofundamento estatístico das métricas, caso necessário nas próximas baterias.
 
 ---
 
@@ -280,7 +275,7 @@ O Projeto de Pesquisa prevê a avaliação do sistema diante de diferentes compo
 - crescimento gradual;
 - picos repentinos de requisições.
 
-Os valores exatos de usuários virtuais, duração e progressão da carga serão definidos durante a consolidação do protocolo experimental.
+Na primeira bateria controlada já executada, foi utilizado o padrão de carga em rampa no endpoint de recomendações, com três repetições por cenário.
 
 ---
 
@@ -298,6 +293,12 @@ As principais métricas previstas são:
 | **Memória** | Avaliar o consumo de memória durante os experimentos. |
 
 A literatura analisada também apresenta métricas adicionais potencialmente relevantes, como percentis de latência (`p95` e `p99`) e cache hit rate. A inclusão definitiva dessas métricas será realizada somente após consolidação do protocolo experimental.
+
+Na primeira comparação experimental, foram priorizadas:
+- latência média;
+- latência `p95`;
+- throughput;
+- taxa de erro.
 
 ---
 
@@ -327,7 +328,7 @@ Comparação entre cenários
 
 Cada combinação entre **cenário experimental e padrão de carga será executada três vezes**, reduzindo a influência de variações ocasionais sobre os resultados.
 
-Os parâmetros definitivos de duração, usuários virtuais, warm-up e ramp-up serão documentados antes da execução dos experimentos.
+Os parâmetros da primeira rodada controlada foram documentados em [test-plan.md](/Users/gabrielmoc/Downloads/TCC%20-%20Gabriel/docs/experiments/test-plan.md).
 
 ---
 
@@ -366,7 +367,6 @@ Atualmente estão previstos:
 
 Ainda permanecem pendentes de definição:
 
-- versões exatas das tecnologias;
 - sistema operacional de referência;
 - estratégia de conteinerização;
 - ferramenta definitiva de observabilidade;
@@ -395,15 +395,11 @@ Ao final da implementação, deverão estar documentados:
 
 ---
 
-## Estrutura Prevista do Repositório
+## Estrutura Atual do Repositório
 
 ```text
 .
 ├── gateway/
-│
-├── experiments/
-│   ├── configs/
-│   └── scripts/
 │
 ├── services/
 │   ├── catalog/
@@ -411,26 +407,46 @@ Ao final da implementação, deverão estar documentados:
 │   └── recommendations/
 │
 ├── shared/
+│   └── datasets/
 │
 ├── tests/
-│   └── load/
+│   ├── load/
+│   └── smoke/
 │
 ├── results/
+│   ├── baseline/
+│   ├── redis-cache/
+│   └── optimized/
 │
 ├── docs/
+│   ├── baseline-contract.md
+│   ├── cache-scenario.md
+│   ├── cache-validation.md
+│   ├── experimental-protocol.md
+│   └── experiments/
+│       ├── test-plan.md
+│       ├── first-comparison.md
+│       └── figures/
 │
 └── README.md
 ```
 
-A estrutura poderá ser refinada durante a implementação caso mudanças sejam necessárias para melhorar organização, reprodutibilidade ou separação dos componentes experimentais.
+A estrutura poderá continuar sendo refinada, especialmente quando o terceiro cenário experimental e a parte visual dos resultados evoluírem.
 
 ---
 
 ## Resultados
 
-> **Status:** aguardando execução experimental.
+> **Status:** primeira bateria experimental inicial concluída para `baseline` e `redis-cache`.
 
-Esta seção será atualizada após a realização dos experimentos e deverá apresentar:
+No momento, o repositório já contém:
+
+- validação manual do cenário com Redis pelas rotas públicas do `gateway`;
+- primeira bateria controlada com `k6` no `baseline`;
+- primeira bateria controlada com `k6` no cenário com `Redis`;
+- comparação inicial documentada em [first-comparison.md](/Users/gabrielmoc/Downloads/TCC%20-%20Gabriel/docs/experiments/first-comparison.md).
+
+Esta seção continuará sendo atualizada para apresentar:
 
 - resultados consolidados das execuções;
 - tabelas comparativas;
@@ -446,12 +462,12 @@ Esta seção será atualizada após a realização dos experimentos e deverá ap
 
 No estágio atual, ainda não estão consolidados:
 
-- parâmetros definitivos dos testes de carga;
 - técnicas que comporão o terceiro cenário;
-- política definitiva de cache;
+- política definitiva de cache para etapas posteriores;
 - ferramenta de observabilidade;
-- versões finais da stack;
-- resultados experimentais.
+- versões finais do ambiente de referência;
+- coleta sistemática de CPU e memória;
+- resultados de baterias mais fortes e de cenários adicionais.
 
 Esses elementos serão definidos progressivamente durante a preparação e implementação da parte prática, sempre buscando manter coerência com a metodologia e com os trabalhos utilizados como referência.
 

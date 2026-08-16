@@ -38,12 +38,18 @@ Esses endpoints ajudam a observar o efeito direto do Redis sobre o `Catalog Serv
 
 ## Metricas obrigatorias
 
-As metricas obrigatorias desta etapa serao:
+As metricas obrigatorias da fase experimental mais ampla serao:
 - latencia;
 - throughput;
 - taxa de erro;
 - uso de CPU;
 - uso de memoria.
+
+Na primeira bateria inicial ja executada, o foco ficou em:
+- latencia media;
+- latencia `p95`;
+- throughput;
+- taxa de erro.
 
 ## Criterios de comparacao
 
@@ -101,6 +107,14 @@ Exemplos:
 baseline/constant/run-01
 redis-cache/ramp/run-02
 ```
+
+## Estado atual da primeira entrega
+
+Ja foi concluido:
+- validacao manual do cenario com Redis pelas rotas publicas do `gateway`;
+- primeira bateria controlada no `baseline`;
+- primeira bateria controlada no `redis-cache`;
+- consolidacao da comparacao inicial em `docs/experiments/first-comparison.md`.
 
 ## Proximo limite metodologico
 

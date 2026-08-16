@@ -26,7 +26,9 @@ tests/load/recommendations-spike.js
 
 O `k6` precisa estar instalado localmente para executar esses arquivos.
 
-Neste ambiente atual, a base foi preparada, mas a execucao nao foi realizada aqui porque o binario ainda nao esta disponivel.
+Os scripts deste diretorio ja foram usados na primeira bateria controlada comparando:
+- `baseline`;
+- `redis-cache`.
 
 ## Como executar
 
@@ -44,6 +46,28 @@ Exemplos para o cenario com Redis:
 SCENARIO_LABEL=redis-cache BASE_URL=http://127.0.0.1:3000 k6 run tests/load/recommendations-constant.js
 SCENARIO_LABEL=redis-cache BASE_URL=http://127.0.0.1:3000 k6 run tests/load/recommendations-ramp.js
 SCENARIO_LABEL=redis-cache BASE_URL=http://127.0.0.1:3000 k6 run tests/load/recommendations-spike.js
+```
+
+## Primeira bateria executada
+
+Na primeira rodada controlada do projeto foram usados:
+
+```text
+script: tests/load/recommendations-ramp.js
+startVUs=1
+targetVUs=15
+rampUp=15s
+sustain=20s
+rampDown=10s
+sleep=0.5s
+repeticoes=3 por cenario
+```
+
+Os resultados brutos dessa bateria estao em:
+
+```text
+results/baseline/ramp/
+results/redis-cache/ramp/
 ```
 
 ## Carga funcional equivalente
