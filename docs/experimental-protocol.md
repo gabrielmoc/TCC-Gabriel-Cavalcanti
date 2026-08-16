@@ -114,6 +114,7 @@ Ja foi concluido:
 - validacao manual do cenario com Redis pelas rotas publicas do `gateway`;
 - primeira bateria controlada no `baseline`;
 - primeira bateria controlada no `redis-cache`;
+- bateria forte em `recommendations` e `catalog` com tres repeticoes por cenario;
 - consolidacao da comparacao inicial em `docs/experiments/first-comparison.md`.
 
 ## Proximo limite metodologico
@@ -121,7 +122,7 @@ Ja foi concluido:
 O terceiro cenario otimizado ainda nao deve ser implementado nesta etapa.
 
 Antes disso, precisamos:
-- estabilizar baseline e cache;
-- fechar observabilidade minima;
-- preparar carga comparavel;
-- executar a comparacao inicial com rigor.
+- ampliar o dataset mantendo determinismo;
+- introduzir monitoramento de CPU e memoria;
+- decidir o terceiro cenario com base metodologica e potencial de impacto real;
+- continuar expandindo os testes de carga de forma controlada.

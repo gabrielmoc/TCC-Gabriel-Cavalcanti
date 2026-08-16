@@ -1,0 +1,46 @@
+<svg width="1100" height="420" viewBox="0 0 1100 420" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title id="title">Comparacao forte em catalog</title>
+  <desc id="desc">Comparacao entre baseline e Redis Cache em latencia media, p95 e throughput para o endpoint de catalog.</desc>
+  <rect width="1100" height="420" fill="#f6f7f2"/>
+  <text x="50" y="52" font-family="Helvetica, Arial, sans-serif" font-size="28" font-weight="700" fill="#182028">Catalog - Ramp Strong</text>
+  <text x="50" y="82" font-family="Helvetica, Arial, sans-serif" font-size="15" fill="#4d5a63">5 -> 60 VUs | 30s up | 60s sustain | 20s down | 3 repeticoes por cenario</text>
+
+  <rect x="50" y="115" width="310" height="235" rx="16" fill="#ffffff" stroke="#d6d0c4"/>
+  <text x="75" y="150" font-family="Helvetica, Arial, sans-serif" font-size="18" font-weight="700" fill="#182028">Latencia media (ms)</text>
+  <text x="75" y="182" font-family="Helvetica, Arial, sans-serif" font-size="14" fill="#4d5a63">Quanto menor, melhor</text>
+  <rect x="75" y="215" width="215" height="34" rx="8" fill="#d8dee3"/>
+  <rect x="75" y="215" width="215" height="34" rx="8" fill="#d96b3b"/>
+  <text x="300" y="237" text-anchor="end" font-family="Helvetica, Arial, sans-serif" font-size="16" font-weight="700" fill="#182028">2.65</text>
+  <text x="75" y="205" font-family="Helvetica, Arial, sans-serif" font-size="13" fill="#182028">Baseline</text>
+  <rect x="75" y="280" width="215" height="34" rx="8" fill="#d8dee3"/>
+  <rect x="75" y="280" width="219" height="34" rx="8" fill="#2c8c69"/>
+  <text x="304" y="302" text-anchor="end" font-family="Helvetica, Arial, sans-serif" font-size="16" font-weight="700" fill="#182028">2.69</text>
+  <text x="75" y="270" font-family="Helvetica, Arial, sans-serif" font-size="13" fill="#182028">Redis Cache</text>
+  <text x="75" y="335" font-family="Helvetica, Arial, sans-serif" font-size="14" font-weight="700" fill="#9a4f2e">Leve piora de 1.78%</text>
+
+  <rect x="395" y="115" width="310" height="235" rx="16" fill="#ffffff" stroke="#d6d0c4"/>
+  <text x="420" y="150" font-family="Helvetica, Arial, sans-serif" font-size="18" font-weight="700" fill="#182028">Latencia p95 (ms)</text>
+  <text x="420" y="182" font-family="Helvetica, Arial, sans-serif" font-size="14" fill="#4d5a63">Quanto menor, melhor</text>
+  <rect x="420" y="215" width="236" height="34" rx="8" fill="#d8dee3"/>
+  <rect x="420" y="215" width="236" height="34" rx="8" fill="#d96b3b"/>
+  <text x="666" y="237" text-anchor="end" font-family="Helvetica, Arial, sans-serif" font-size="16" font-weight="700" fill="#182028">7.05</text>
+  <text x="420" y="205" font-family="Helvetica, Arial, sans-serif" font-size="13" fill="#182028">Baseline</text>
+  <rect x="420" y="280" width="236" height="34" rx="8" fill="#d8dee3"/>
+  <rect x="420" y="280" width="239" height="34" rx="8" fill="#2c8c69"/>
+  <text x="669" y="302" text-anchor="end" font-family="Helvetica, Arial, sans-serif" font-size="16" font-weight="700" fill="#182028">7.13</text>
+  <text x="420" y="270" font-family="Helvetica, Arial, sans-serif" font-size="13" fill="#182028">Redis Cache</text>
+  <text x="420" y="335" font-family="Helvetica, Arial, sans-serif" font-size="14" font-weight="700" fill="#9a4f2e">Leve piora de 1.16%</text>
+
+  <rect x="740" y="115" width="310" height="235" rx="16" fill="#ffffff" stroke="#d6d0c4"/>
+  <text x="765" y="150" font-family="Helvetica, Arial, sans-serif" font-size="18" font-weight="700" fill="#182028">Throughput (req/s)</text>
+  <text x="765" y="182" font-family="Helvetica, Arial, sans-serif" font-size="14" fill="#4d5a63">Quanto maior, melhor</text>
+  <rect x="765" y="215" width="246" height="34" rx="8" fill="#d8dee3"/>
+  <rect x="765" y="215" width="246" height="34" rx="8" fill="#d96b3b"/>
+  <text x="1021" y="237" text-anchor="end" font-family="Helvetica, Arial, sans-serif" font-size="16" font-weight="700" fill="#182028">456.52</text>
+  <text x="765" y="205" font-family="Helvetica, Arial, sans-serif" font-size="13" fill="#182028">Baseline</text>
+  <rect x="765" y="280" width="246" height="34" rx="8" fill="#d8dee3"/>
+  <rect x="765" y="280" width="245" height="34" rx="8" fill="#2c8c69"/>
+  <text x="1020" y="302" text-anchor="end" font-family="Helvetica, Arial, sans-serif" font-size="16" font-weight="700" fill="#182028">456.15</text>
+  <text x="765" y="270" font-family="Helvetica, Arial, sans-serif" font-size="13" fill="#182028">Redis Cache</text>
+  <text x="765" y="335" font-family="Helvetica, Arial, sans-serif" font-size="14" font-weight="700" fill="#9a4f2e">Praticamente igual (-0.08%)</text>
+</svg>

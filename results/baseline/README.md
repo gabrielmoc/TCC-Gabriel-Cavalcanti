@@ -1,9 +1,13 @@
 # Baseline Results
 
-Este diretorio deve armazenar os resultados brutos do cenario baseline.
+Este diretorio armazena os resultados brutos do cenario baseline.
 
-Estrutura sugerida:
+Estrutura atual:
 
 ```text
-results/baseline/{padrao}/run-{numero}
+results/baseline/
+  ramp/
+  ramp-strong/
+    recommendations/
+    catalog/
 ```

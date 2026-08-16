@@ -1,9 +1,14 @@
 # Redis Cache Results
 
-Este diretorio deve armazenar os resultados brutos do cenario com Redis no `Catalog Service`.
+Este diretorio armazena os resultados brutos do cenario com Redis no `Catalog Service`.
 
-Estrutura sugerida:
+Estrutura atual:
 
 ```text
-results/redis-cache/{padrao}/run-{numero}
+results/redis-cache/
+  manual-validation/
+  ramp/
+  ramp-strong/
+    recommendations/
+    catalog/
 ```

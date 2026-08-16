@@ -1,0 +1,39 @@
+<svg width="1100" height="560" viewBox="0 0 1100 560" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title id="title">Resumo visual da primeira entrega experimental</title>
+  <desc id="desc">Resumo visual com status do baseline, validacao do Redis, bateria forte e principais achados da comparacao.</desc>
+  <rect width="1100" height="560" fill="#fcfaf5"/>
+  <text x="55" y="55" font-family="Helvetica, Arial, sans-serif" font-size="30" font-weight="700" fill="#182028">Primeira Entrega Experimental - Resumo Visual</text>
+  <text x="55" y="88" font-family="Helvetica, Arial, sans-serif" font-size="16" fill="#55616a">Consolidado em 2026-08-16 | baseline vs redis-cache | 2 endpoints | 3 repeticoes por cenario</text>
+
+  <rect x="55" y="125" width="300" height="150" rx="18" fill="#ffffff" stroke="#d6d0c4"/>
+  <text x="80" y="160" font-family="Helvetica, Arial, sans-serif" font-size="20" font-weight="700" fill="#182028">O que ja esta pronto</text>
+  <text x="80" y="193" font-family="Helvetica, Arial, sans-serif" font-size="15" fill="#182028">• baseline funcional e reproduzivel</text>
+  <text x="80" y="220" font-family="Helvetica, Arial, sans-serif" font-size="15" fill="#182028">• cache com Redis validado</text>
+  <text x="80" y="247" font-family="Helvetica, Arial, sans-serif" font-size="15" fill="#182028">• testes de carga executados</text>
+
+  <rect x="400" y="125" width="300" height="150" rx="18" fill="#ffffff" stroke="#d6d0c4"/>
+  <text x="425" y="160" font-family="Helvetica, Arial, sans-serif" font-size="20" font-weight="700" fill="#182028">Volume medido</text>
+  <text x="425" y="193" font-family="Helvetica, Arial, sans-serif" font-size="15" fill="#182028">• recommendations: ~49.8 mil req/run</text>
+  <text x="425" y="220" font-family="Helvetica, Arial, sans-serif" font-size="15" fill="#182028">• catalog: ~50.2 mil req/run</text>
+  <text x="425" y="247" font-family="Helvetica, Arial, sans-serif" font-size="15" fill="#182028">• taxa de erro zero em todos os cenarios</text>
+
+  <rect x="745" y="125" width="300" height="150" rx="18" fill="#ffffff" stroke="#d6d0c4"/>
+  <text x="770" y="160" font-family="Helvetica, Arial, sans-serif" font-size="20" font-weight="700" fill="#182028">Leitura principal</text>
+  <text x="770" y="193" font-family="Helvetica, Arial, sans-serif" font-size="15" fill="#182028">• cache funciona tecnicamente</text>
+  <text x="770" y="220" font-family="Helvetica, Arial, sans-serif" font-size="15" fill="#182028">• sistema ficou estavel</text>
+  <text x="770" y="247" font-family="Helvetica, Arial, sans-serif" font-size="15" fill="#182028">• ganho ainda nao foi expressivo</text>
+
+  <rect x="55" y="315" width="470" height="180" rx="18" fill="#ffffff" stroke="#d6d0c4"/>
+  <text x="80" y="350" font-family="Helvetica, Arial, sans-serif" font-size="22" font-weight="700" fill="#182028">Recommendations</text>
+  <text x="80" y="384" font-family="Helvetica, Arial, sans-serif" font-size="16" fill="#182028">Latencia media: 3.44 ms -> 3.41 ms</text>
+  <text x="80" y="412" font-family="Helvetica, Arial, sans-serif" font-size="16" fill="#182028">p95: 8.97 ms -> 8.70 ms</text>
+  <text x="80" y="440" font-family="Helvetica, Arial, sans-serif" font-size="16" fill="#182028">Throughput: 452.73 -> 452.78 req/s</text>
+  <text x="80" y="475" font-family="Helvetica, Arial, sans-serif" font-size="16" font-weight="700" fill="#2c8c69">Interpretacao: melhora discreta, mas sem impacto relevante.</text>
+
+  <rect x="575" y="315" width="470" height="180" rx="18" fill="#ffffff" stroke="#d6d0c4"/>
+  <text x="600" y="350" font-family="Helvetica, Arial, sans-serif" font-size="22" font-weight="700" fill="#182028">Catalog</text>
+  <text x="600" y="384" font-family="Helvetica, Arial, sans-serif" font-size="16" fill="#182028">Latencia media: 2.65 ms -> 2.69 ms</text>
+  <text x="600" y="412" font-family="Helvetica, Arial, sans-serif" font-size="16" fill="#182028">p95: 7.05 ms -> 7.13 ms</text>
+  <text x="600" y="440" font-family="Helvetica, Arial, sans-serif" font-size="16" fill="#182028">Throughput: 456.52 -> 456.15 req/s</text>
+  <text x="600" y="475" font-family="Helvetica, Arial, sans-serif" font-size="16" font-weight="700" fill="#9a4f2e">Interpretacao: efeito neutro a levemente desfavoravel.</text>
+</svg>

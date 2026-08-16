@@ -10,6 +10,14 @@ O foco desta primeira entrega e:
 - definir metricas e saidas esperadas;
 - preparar a execucao comparativa entre `baseline` e `redis-cache`.
 
+## Current Status
+
+Em 2026-08-16, esta primeira entrega ja passou de planejamento para execucao concluida:
+- validacao manual do cenario com Redis concluida;
+- rodada exploratoria inicial concluida;
+- bateria forte em `recommendations` e `catalog` concluida;
+- comparacao consolidada em `first-comparison.md`.
+
 ## Reference Article
 
 Artigo-base escolhido:
@@ -147,6 +155,7 @@ results/redis-cache/ramp/run-01
 
 ## What Still Needs To Be Defined
 
-- formato final dos arquivos exportados pelo `k6`;
-- estrategia minima para salvar evidencias complementares;
-- como evoluir da primeira rampa moderada para casos mais fortes nas proximas rodadas.
+- coleta sistematica de CPU e memoria;
+- expansao do dataset para reduzir o efeito do custo quase nulo do JSON local;
+- novas cargas em rampa mais agressivas;
+- definicao do terceiro cenario otimizado.

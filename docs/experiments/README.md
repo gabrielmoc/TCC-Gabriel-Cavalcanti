@@ -9,7 +9,7 @@ Aqui devem ficar:
 - referencias aos resultados brutos salvos em `results/`;
 - figuras exportadas para uso no TCC.
 
-Estrutura inicial:
+Estrutura atual:
 
 ```text
 docs/experiments/
@@ -22,3 +22,11 @@ docs/experiments/
 Regra pratica:
 - `results/` guarda evidencia bruta;
 - `docs/experiments/` guarda leitura, comparacao e apresentacao.
+
+Documento principal da primeira entrega:
+- `first-comparison.md`
+
+Artefatos visuais atuais:
+- `figures/recommendations-ramp-strong.svg`
+- `figures/catalog-ramp-strong.svg`
+- `figures/first-delivery-summary.svg`

@@ -275,7 +275,10 @@ O Projeto de Pesquisa prevê a avaliação do sistema diante de diferentes compo
 - crescimento gradual;
 - picos repentinos de requisições.
 
-Na primeira bateria controlada já executada, foi utilizado o padrão de carga em rampa no endpoint de recomendações, com três repetições por cenário.
+Na etapa prática já executada, foram utilizados:
+
+- uma rodada exploratória inicial em rampa no endpoint de recomendações;
+- uma bateria mais forte em rampa para `recommendations` e `catalog`, com três repetições por cenário.
 
 ---
 
@@ -437,14 +440,21 @@ A estrutura poderá continuar sendo refinada, especialmente quando o terceiro ce
 
 ## Resultados
 
-> **Status:** primeira bateria experimental inicial concluída para `baseline` e `redis-cache`.
+> **Status:** primeira entrega experimental concluída para `baseline` e `redis-cache`, com validação manual, rodada exploratória e bateria forte consolidada.
 
 No momento, o repositório já contém:
 
 - validação manual do cenário com Redis pelas rotas públicas do `gateway`;
 - primeira bateria controlada com `k6` no `baseline`;
 - primeira bateria controlada com `k6` no cenário com `Redis`;
+- bateria forte com `k6` nos endpoints `recommendations` e `catalog`;
 - comparação inicial documentada em [first-comparison.md](/Users/gabrielmoc/Downloads/TCC%20-%20Gabriel/docs/experiments/first-comparison.md).
+
+Leitura atual dos resultados:
+- o ambiente está estável e reprodutível;
+- o cache funciona corretamente do ponto de vista funcional;
+- o ganho de desempenho ainda não apareceu de forma relevante no dataset e no ambiente atual;
+- isso orienta os próximos passos metodológicos, especialmente expansão de dataset, coleta de CPU e memória e definição do terceiro cenário.
 
 Esta seção continuará sendo atualizada para apresentar:
 
@@ -467,7 +477,8 @@ No estágio atual, ainda não estão consolidados:
 - ferramenta de observabilidade;
 - versões finais do ambiente de referência;
 - coleta sistemática de CPU e memória;
-- resultados de baterias mais fortes e de cenários adicionais.
+- resultados de cenários adicionais;
+- definição e implementação do terceiro cenário otimizado.
 
 Esses elementos serão definidos progressivamente durante a preparação e implementação da parte prática, sempre buscando manter coerência com a metodologia e com os trabalhos utilizados como referência.
 
