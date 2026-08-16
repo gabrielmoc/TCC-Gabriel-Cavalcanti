@@ -33,3 +33,16 @@ results/
 ```
 
 Nesta fase, o diretorio ainda nao contem resultados experimentais consolidados.
+
+Estrutura preparada no repositorio:
+
+```text
+results/
+  README.md
+  baseline/
+    README.md
+  redis-cache/
+    README.md
+  optimized/
+    README.md
+```
