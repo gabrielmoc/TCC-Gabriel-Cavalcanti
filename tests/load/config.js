@@ -10,3 +10,8 @@ export const commonThresholds = {
 export function recommendationsUrl() {
   return `${baseUrl}/api/recommendations/${userId}`;
 }
+
+export function catalogUrl() {
+  const itemId = __ENV.CATALOG_ITEM_ID;
+  return itemId ? `${baseUrl}/api/catalog/${itemId}` : `${baseUrl}/api/catalog`;
+}

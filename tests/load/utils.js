@@ -1,6 +1,6 @@
 import http from "k6/http";
 import { check } from "k6";
-import { recommendationsUrl } from "./config.js";
+import { catalogUrl, recommendationsUrl } from "./config.js";
 
 export function executeRecommendationsRequest(tags = {}) {
   const response = http.get(recommendationsUrl(), {
@@ -23,6 +23,29 @@ export function executeRecommendationsRequest(tags = {}) {
       try {
         const payload = JSON.parse(res.body);
         return Array.isArray(payload.recommendations);
+      } catch {
+        return false;
+      }
+    },
+  });
+
+  return response;
+}
+
+export function executeCatalogRequest(tags = {}) {
+  const response = http.get(catalogUrl(), {
+    tags: {
+      endpoint: "catalog",
+      ...tags,
+    },
+  });
+
+  check(response, {
+    "status 200": (res) => res.status === 200,
+    "response is array or object": (res) => {
+      try {
+        const payload = JSON.parse(res.body);
+        return Array.isArray(payload) || typeof payload === "object";
       } catch {
         return false;
       }

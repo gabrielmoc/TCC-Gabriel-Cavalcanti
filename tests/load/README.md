@@ -17,9 +17,11 @@ GET /api/recommendations/:userId
 ## Scripts disponiveis
 
 ```text
+tests/load/catalog-ramp.js
 tests/load/recommendations-constant.js
 tests/load/recommendations-ramp.js
 tests/load/recommendations-spike.js
+tests/load/aggregate-results.mjs
 ```
 
 ## Pre-requisito
@@ -30,6 +32,10 @@ Os scripts deste diretorio ja foram usados na primeira bateria controlada compar
 - `baseline`;
 - `redis-cache`.
 
+Tambem foi preparada uma bateria mais forte com:
+- `GET /api/recommendations/:userId` como endpoint principal;
+- `GET /api/catalog` como endpoint de apoio para isolar o efeito direto do cache.
+
 ## Como executar
 
 Exemplos para o baseline:
@@ -38,6 +44,7 @@ Exemplos para o baseline:
 SCENARIO_LABEL=baseline BASE_URL=http://127.0.0.1:3000 k6 run tests/load/recommendations-constant.js
 SCENARIO_LABEL=baseline BASE_URL=http://127.0.0.1:3000 k6 run tests/load/recommendations-ramp.js
 SCENARIO_LABEL=baseline BASE_URL=http://127.0.0.1:3000 k6 run tests/load/recommendations-spike.js
+SCENARIO_LABEL=baseline BASE_URL=http://127.0.0.1:3000 k6 run tests/load/catalog-ramp.js
 ```
 
 Exemplos para o cenario com Redis:
@@ -46,6 +53,7 @@ Exemplos para o cenario com Redis:
 SCENARIO_LABEL=redis-cache BASE_URL=http://127.0.0.1:3000 k6 run tests/load/recommendations-constant.js
 SCENARIO_LABEL=redis-cache BASE_URL=http://127.0.0.1:3000 k6 run tests/load/recommendations-ramp.js
 SCENARIO_LABEL=redis-cache BASE_URL=http://127.0.0.1:3000 k6 run tests/load/recommendations-spike.js
+SCENARIO_LABEL=redis-cache BASE_URL=http://127.0.0.1:3000 k6 run tests/load/catalog-ramp.js
 ```
 
 ## Primeira bateria executada
@@ -68,6 +76,17 @@ Os resultados brutos dessa bateria estao em:
 ```text
 results/baseline/ramp/
 results/redis-cache/ramp/
+```
+
+## Agregacao dos resultados
+
+Para consolidar os `k6-summary.json` de uma bateria com repeticoes:
+
+```bash
+node tests/load/aggregate-results.mjs results/baseline/ramp-strong/recommendations
+node tests/load/aggregate-results.mjs results/redis-cache/ramp-strong/recommendations
+node tests/load/aggregate-results.mjs results/baseline/ramp-strong/catalog
+node tests/load/aggregate-results.mjs results/redis-cache/ramp-strong/catalog
 ```
 
 ## Carga funcional equivalente
