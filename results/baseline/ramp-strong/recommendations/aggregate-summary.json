@@ -1,0 +1,86 @@
+{
+  "scenario": "baseline",
+  "endpoint": "recommendations",
+  "loadProfile": "ramp-strong",
+  "script": "tests/load/recommendations-ramp-strong.js",
+  "startVUs": 5,
+  "targetVUs": 60,
+  "rampUp": "30s",
+  "sustain": "60s",
+  "rampDown": "20s",
+  "sleepSeconds": 0.1,
+  "repetitions": 3,
+  "latencyAvgMs": 3.4403449455911175,
+  "latencyP95Ms": 8.969749999999998,
+  "throughputRps": 452.72667483639066,
+  "errorRate": 0,
+  "requestCountAvg": 49827.666666666664,
+  "runs": [
+    {
+      "run": "01",
+      "metadata": {
+        "scenario": "baseline",
+        "endpoint": "recommendations",
+        "load_profile": "ramp-strong",
+        "run": "01",
+        "script": "tests/load/recommendations-ramp-strong.js",
+        "startVUs": 5,
+        "targetVUs": 60,
+        "rampUp": "30s",
+        "sustain": "60s",
+        "rampDown": "20s",
+        "sleepSeconds": 0.1,
+        "date": "2026-08-16"
+      },
+      "latencyAvgMs": 3.447619934568364,
+      "latencyP95Ms": 9.364,
+      "throughputRps": 452.9255757726498,
+      "errorRate": 0,
+      "requestCount": 49823
+    },
+    {
+      "run": "02",
+      "metadata": {
+        "scenario": "baseline",
+        "endpoint": "recommendations",
+        "load_profile": "ramp-strong",
+        "run": "02",
+        "script": "tests/load/recommendations-ramp-strong.js",
+        "startVUs": 5,
+        "targetVUs": 60,
+        "rampUp": "30s",
+        "sustain": "60s",
+        "rampDown": "20s",
+        "sleepSeconds": 0.1,
+        "date": "2026-08-16"
+      },
+      "latencyAvgMs": 3.84381427880348,
+      "latencyP95Ms": 9.549249999999988,
+      "throughputRps": 450.60023371594724,
+      "errorRate": 0,
+      "requestCount": 49612
+    },
+    {
+      "run": "03",
+      "metadata": {
+        "scenario": "baseline",
+        "endpoint": "recommendations",
+        "load_profile": "ramp-strong",
+        "run": "03",
+        "script": "tests/load/recommendations-ramp-strong.js",
+        "startVUs": 5,
+        "targetVUs": 60,
+        "rampUp": "30s",
+        "sustain": "60s",
+        "rampDown": "20s",
+        "sleepSeconds": 0.1,
+        "date": "2026-08-16"
+      },
+      "latencyAvgMs": 3.029600623401508,
+      "latencyP95Ms": 7.996,
+      "throughputRps": 454.654215020575,
+      "errorRate": 0,
+      "requestCount": 50048
+    }
+  ]
+}

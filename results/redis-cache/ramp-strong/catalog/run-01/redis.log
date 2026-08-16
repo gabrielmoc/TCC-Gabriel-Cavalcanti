@@ -1,0 +1,11 @@
+17190:C 16 Aug 2026 19:57:42.169 * oO0OoO0OoO0Oo Redis is starting oO0OoO0OoO0Oo
+17190:C 16 Aug 2026 19:57:42.169 * Redis version=8.0.3, bits=64, commit=00000000, modified=1, pid=17190, just started
+17190:C 16 Aug 2026 19:57:42.169 * Configuration loaded
+17190:M 16 Aug 2026 19:57:42.170 * monotonic clock: POSIX clock_gettime
+17190:M 16 Aug 2026 19:57:42.170 * Running mode=standalone, port=6379.
+17190:M 16 Aug 2026 19:57:42.170 # WARNING: The TCP backlog setting of 511 cannot be enforced because kern.ipc.somaxconn is set to the lower value of 128.
+17190:M 16 Aug 2026 19:57:42.171 * Server initialized
+17190:M 16 Aug 2026 19:57:42.171 * Ready to accept connections tcp
+17190:signal-handler (1786921172) Received SIGTERM scheduling shutdown...
+17190:M 16 Aug 2026 19:59:32.876 * User requested shutdown...
+17190:M 16 Aug 2026 19:59:32.877 # Redis is now ready to exit, bye bye...

@@ -13,5 +13,70 @@
   "latencyP95Ms": 7.350650000000001,
   "throughputRps": 21.753361013384747,
   "errorRate": 0,
-  "requestCountAvg": 980.6666666666666
+  "requestCountAvg": 980.6666666666666,
+  "runs": [
+    {
+      "run": "01",
+      "metadata": {
+        "scenario": "baseline",
+        "load_profile": "ramp",
+        "run": "01",
+        "script": "tests/load/recommendations-ramp.js",
+        "startVUs": 1,
+        "targetVUs": 15,
+        "rampUp": "15s",
+        "sustain": "20s",
+        "rampDown": "10s",
+        "sleepSeconds": 0.5,
+        "date": "2026-08-16"
+      },
+      "latencyAvgMs": 4.7154632653061235,
+      "latencyP95Ms": 7.6549499999999995,
+      "throughputRps": 21.728759627503432,
+      "errorRate": 0,
+      "requestCount": 980
+    },
+    {
+      "run": "02",
+      "metadata": {
+        "scenario": "baseline",
+        "load_profile": "ramp",
+        "run": "02",
+        "script": "tests/load/recommendations-ramp.js",
+        "startVUs": 1,
+        "targetVUs": 15,
+        "rampUp": "15s",
+        "sustain": "20s",
+        "rampDown": "10s",
+        "sleepSeconds": 0.5,
+        "date": "2026-08-16"
+      },
+      "latencyAvgMs": 4.632682976554543,
+      "latencyP95Ms": 7.428,
+      "throughputRps": 21.757160634203714,
+      "errorRate": 0,
+      "requestCount": 981
+    },
+    {
+      "run": "03",
+      "metadata": {
+        "scenario": "baseline",
+        "load_profile": "ramp",
+        "run": "03",
+        "script": "tests/load/recommendations-ramp.js",
+        "startVUs": 1,
+        "targetVUs": 15,
+        "rampUp": "15s",
+        "sustain": "20s",
+        "rampDown": "10s",
+        "sleepSeconds": 0.5,
+        "date": "2026-08-16"
+      },
+      "latencyAvgMs": 4.360115188583079,
+      "latencyP95Ms": 6.969,
+      "throughputRps": 21.774162778447096,
+      "errorRate": 0,
+      "requestCount": 981
+    }
+  ]
 }

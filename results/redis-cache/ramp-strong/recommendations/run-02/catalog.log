@@ -1,0 +1,8 @@
+
+> catalog@1.0.0 start
+> node src/server.js
+
+catalog redis connected at redis://127.0.0.1:6379
+catalog listening on port 3001
+catalog redis error: Socket closed unexpectedly
+catalog redis error: Socket closed unexpectedly

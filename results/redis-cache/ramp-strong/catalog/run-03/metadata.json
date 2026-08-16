@@ -1,0 +1,14 @@
+{
+  "scenario": "redis-cache",
+  "endpoint": "catalog",
+  "load_profile": "ramp-strong",
+  "run": "03",
+  "script": "tests/load/catalog-ramp.js",
+  "startVUs": 5,
+  "targetVUs": 60,
+  "rampUp": "30s",
+  "sustain": "60s",
+  "rampDown": "20s",
+  "sleepSeconds": 0.1,
+  "date": "2026-08-16"
+}

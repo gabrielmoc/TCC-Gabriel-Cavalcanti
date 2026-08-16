@@ -1,0 +1,86 @@
+{
+  "scenario": "redis-cache",
+  "endpoint": "catalog",
+  "loadProfile": "ramp-strong",
+  "script": "tests/load/catalog-ramp.js",
+  "startVUs": 5,
+  "targetVUs": 60,
+  "rampUp": "30s",
+  "sustain": "60s",
+  "rampDown": "20s",
+  "sleepSeconds": 0.1,
+  "repetitions": 3,
+  "latencyAvgMs": 2.694578158032718,
+  "latencyP95Ms": 7.134383333333328,
+  "throughputRps": 456.15372249104513,
+  "errorRate": 0,
+  "requestCountAvg": 50193.666666666664,
+  "runs": [
+    {
+      "run": "01",
+      "metadata": {
+        "scenario": "redis-cache",
+        "endpoint": "catalog",
+        "load_profile": "ramp-strong",
+        "run": "01",
+        "script": "tests/load/catalog-ramp.js",
+        "startVUs": 5,
+        "targetVUs": 60,
+        "rampUp": "30s",
+        "sustain": "60s",
+        "rampDown": "20s",
+        "sleepSeconds": 0.1,
+        "date": "2026-08-16"
+      },
+      "latencyAvgMs": 2.5753820940698504,
+      "latencyP95Ms": 6.829149999999998,
+      "throughputRps": 456.25722651827544,
+      "errorRate": 0,
+      "requestCount": 50218
+    },
+    {
+      "run": "02",
+      "metadata": {
+        "scenario": "redis-cache",
+        "endpoint": "catalog",
+        "load_profile": "ramp-strong",
+        "run": "02",
+        "script": "tests/load/catalog-ramp.js",
+        "startVUs": 5,
+        "targetVUs": 60,
+        "rampUp": "30s",
+        "sustain": "60s",
+        "rampDown": "20s",
+        "sleepSeconds": 0.1,
+        "date": "2026-08-16"
+      },
+      "latencyAvgMs": 2.8405865789211395,
+      "latencyP95Ms": 7.495399999999994,
+      "throughputRps": 455.7410875851847,
+      "errorRate": 0,
+      "requestCount": 50145
+    },
+    {
+      "run": "03",
+      "metadata": {
+        "scenario": "redis-cache",
+        "endpoint": "catalog",
+        "load_profile": "ramp-strong",
+        "run": "03",
+        "script": "tests/load/catalog-ramp.js",
+        "startVUs": 5,
+        "targetVUs": 60,
+        "rampUp": "30s",
+        "sustain": "60s",
+        "rampDown": "20s",
+        "sleepSeconds": 0.1,
+        "date": "2026-08-16"
+      },
+      "latencyAvgMs": 2.6677658011071648,
+      "latencyP95Ms": 7.078599999999991,
+      "throughputRps": 456.4628533696754,
+      "errorRate": 0,
+      "requestCount": 50218
+    }
+  ]
+}
