@@ -1,4 +1,4 @@
-# Results Directory
+# Diretório de Resultados
 
 Este diretorio armazena:
 - saidas brutas dos testes de carga;

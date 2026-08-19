@@ -1,4 +1,4 @@
-# Load Test Base
+# Base dos Testes de Carga
 
 Este diretorio contem a base inicial dos testes de carga com `k6`.
 

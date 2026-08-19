@@ -1,4 +1,4 @@
-# First Comparison - Baseline vs Redis Cache
+# Primeira Comparação - Baseline vs Redis Cache
 
 ## Status
 
@@ -6,7 +6,7 @@
 Comparacao consolidada em 2026-08-16 com validacao manual, rodada exploratoria inicial e bateria forte em dois endpoints.
 ```
 
-## Executive Summary
+## Resumo Executivo
 
 Esta primeira entrega experimental ja permite afirmar com seguranca que:
 - o `baseline` esta funcional e reproduzivel;
@@ -17,19 +17,19 @@ Esta primeira entrega experimental ja permite afirmar com seguranca que:
 
 Em outras palavras: o cache funciona tecnicamente, mas ainda nao gerou melhoria expressiva nas metricas de latencia e throughput dentro do escopo atual de dados deterministicos locais e dataset reduzido.
 
-## Objective
+## Objetivo
 
 Registrar de forma visual e metodologicamente clara a primeira comparacao experimental entre:
 - `baseline` sem cache;
 - `redis-cache` no `Catalog Service`.
 
-## Reference Article
+## Artigo de Referência
 
 ```text
 [Artigo 1] Profiling and Performance Optimization
 ```
 
-## Experimental Scope
+## Escopo Experimental
 
 Endpoint principal:
 
@@ -47,7 +47,7 @@ Justificativa:
 - `recommendations` representa melhor o fluxo distribuido completo;
 - `catalog` ajuda a observar o efeito direto do cache sem o ruido da composicao do endpoint principal.
 
-## Validation Already Completed
+## Validação Já Concluída
 
 Antes da bateria forte, ja estavam concluidos:
 - validacao manual do Redis pelas rotas publicas do `gateway`;
@@ -64,7 +64,7 @@ results/baseline/ramp/
 results/redis-cache/ramp/
 ```
 
-## Exploratory Round
+## Rodada Exploratória
 
 A primeira rodada exploratoria foi importante para:
 - confirmar a estabilidade funcional do ambiente;
@@ -95,7 +95,7 @@ Resumo exploratorio:
 
 Essa rodada permaneceu util como referencia inicial, mas foi insuficiente para uma leitura mais convincente.
 
-## Consolidated Strong Battery
+## Bateria Forte Consolidada
 
 Data:
 
@@ -127,9 +127,9 @@ Justificativa da escolha:
 - gera volume suficiente para leitura comparativa sem introduzir outro tipo de carga ainda nao consolidado no protocolo;
 - aproxima melhor a entrega do perfil de comparacao esperado pelo orientador.
 
-## Recommendations - Strong Battery
+## Recommendations - Bateria Forte
 
-### Metrics Table
+### Tabela de Métricas
 
 | Metrica | Baseline | Redis Cache | Diferenca |
 |---|---:|---:|---:|
@@ -143,7 +143,7 @@ Justificativa da escolha:
 
 ![Comparacao forte em recommendations](./figures/recommendations-ramp-strong.svg)
 
-### Reading
+### Leitura
 
 - O cache apresentou uma melhora muito pequena em `recommendations`.
 - A latencia media caiu aproximadamente `1.02%`.
@@ -151,9 +151,9 @@ Justificativa da escolha:
 - O throughput ficou praticamente identico.
 - Como a diferenca e pequena, a leitura mais honesta e que o sistema ficou estavel, mas sem ganho relevante ainda.
 
-## Catalog - Strong Battery
+## Catalog - Bateria Forte
 
-### Metrics Table
+### Tabela de Métricas
 
 | Metrica | Baseline | Redis Cache | Diferenca |
 |---|---:|---:|---:|
@@ -167,7 +167,7 @@ Justificativa da escolha:
 
 ![Comparacao forte em catalog](./figures/catalog-ramp-strong.svg)
 
-### Reading
+### Leitura
 
 - No `catalog`, o cache tambem nao entregou ganho mensuravel nesta bateria.
 - A latencia media aumentou aproximadamente `1.78%`.
@@ -175,11 +175,11 @@ Justificativa da escolha:
 - O throughput permaneceu praticamente no mesmo patamar.
 - Isso sugere que, neste ambiente, o custo adicional de serializacao e acesso ao Redis pode ter neutralizado qualquer beneficio esperado.
 
-## Visual Overview
+## Visão Geral Visual
 
 ![Resumo visual da primeira entrega experimental](./figures/first-delivery-summary.svg)
 
-## Interpretation
+## Interpretação
 
 Os resultados desta comparacao dizem o seguinte:
 
@@ -195,7 +195,7 @@ Os resultados desta comparacao dizem o seguinte:
 4. Isso nao invalida a entrega.
    Pelo contrario, mostra que o experimento esta sendo conduzido com honestidade metodologica: a estrategia foi aplicada, medida e interpretada sem forcar um resultado positivo artificial.
 
-## Why The Gain Did Not Appear Yet
+## Por Que o Ganho Ainda Não Apareceu
 
 As explicacoes mais plausiveis no estado atual do projeto sao:
 - o dataset ainda e pequeno;
@@ -204,7 +204,7 @@ As explicacoes mais plausiveis no estado atual do projeto sao:
 - o Redis foi introduzido apenas no `Catalog Service`, nao em todo o fluxo;
 - em ambiente local simples, o overhead adicional do cache pode competir com o custo muito baixo da fonte original.
 
-## Relation to the Literature
+## Relação com a Literatura
 
 Esta primeira entrega se relaciona bem com o artigo-base porque:
 - compara o comportamento antes e depois de uma intervencao controlada;
@@ -214,7 +214,7 @@ Esta primeira entrega se relaciona bem com o artigo-base porque:
 
 Esse ultimo ponto e importante para o TCC, porque aproxima a discussao de uma leitura mais madura: otimizar arquitetura distribuida nao significa apenas adicionar mecanismos conhecidos, mas entender quando eles efetivamente alteram o comportamento observado.
 
-## Limitations Of This First Delivery
+## Limitações Desta Primeira Entrega
 
 A entrega ainda nao contempla:
 - coleta sistematica de CPU e memoria;
@@ -229,7 +229,7 @@ Mesmo assim, ela ja e suficiente para:
 - apresentar comparacao entre cenarios;
 - justificar os proximos passos com base em evidencias reais.
 
-## Recommended Next Move
+## Próximo Movimento Recomendado
 
 Com base no que foi medido, o proximo movimento metodologicamente mais forte e:
 - expandir o dataset mantendo determinismo;
@@ -237,7 +237,7 @@ Com base no que foi medido, o proximo movimento metodologicamente mais forte e:
 - observar CPU e memoria;
 - definir um terceiro cenario cuja mudanca tenha mais chance de aparecer no endpoint principal.
 
-## Raw Results
+## Resultados Brutos
 
 Rodada exploratoria:
 

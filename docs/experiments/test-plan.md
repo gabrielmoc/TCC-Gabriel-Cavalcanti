@@ -1,6 +1,6 @@
-# Test Plan - First Experimental Delivery
+# Plano de Testes - Primeira Entrega Experimental
 
-## Objective
+## Objetivo
 
 Documentar o planejamento do primeiro caso experimental que sera apresentado ao orientador.
 
@@ -10,7 +10,7 @@ O foco desta primeira entrega e:
 - definir metricas e saidas esperadas;
 - preparar a execucao comparativa entre `baseline` e `redis-cache`.
 
-## Current Status
+## Status Atual
 
 Em 2026-08-16, esta primeira entrega ja passou de planejamento para execucao concluida:
 - validacao manual do cenario com Redis concluida;
@@ -18,7 +18,7 @@ Em 2026-08-16, esta primeira entrega ja passou de planejamento para execucao con
 - bateria forte em `recommendations` e `catalog` concluida;
 - comparacao consolidada em `first-comparison.md`.
 
-## Reference Article
+## Artigo de Referência
 
 Artigo-base escolhido:
 
@@ -26,7 +26,7 @@ Artigo-base escolhido:
 [Artigo 1] Profiling and Performance Optimization
 ```
 
-## Why This Article
+## Por Que Este Artigo
 
 Este artigo foi escolhido como base do primeiro entregavel porque conversa diretamente com:
 - analise de desempenho em APIs;
@@ -35,7 +35,7 @@ Este artigo foi escolhido como base do primeiro entregavel porque conversa diret
 - uso de cache como estrategia de otimizacao;
 - comparacao entre comportamento base e comportamento otimizado.
 
-## Initial Comparison
+## Comparação Inicial
 
 Comparacao principal desta etapa:
 
@@ -45,7 +45,7 @@ vs
 cenario com Redis no Catalog Service
 ```
 
-## Experimental Case
+## Caso Experimental
 
 Endpoint principal:
 
@@ -60,7 +60,7 @@ GET /api/catalog
 GET /api/catalog/:id
 ```
 
-## Why This Case
+## Por Que Este Caso
 
 O endpoint de recomendacoes foi escolhido como principal porque:
 - representa melhor o fluxo distribuido da arquitetura;
@@ -72,7 +72,7 @@ Os endpoints de catalogo entram como apoio para:
 - ajudar na leitura dos resultados;
 - diferenciar ganho local de ganho sistêmico.
 
-## Load Strategy
+## Estratégia de Carga
 
 Padrao inicial:
 
@@ -98,7 +98,7 @@ Justificativa desta escolha:
 - preserva o mesmo endpoint principal entre os cenarios;
 - funciona como primeiro ponto de uma progressao maior que podera evoluir para volumes mais altos.
 
-## Mandatory Metrics
+## Métricas Obrigatórias
 
 Para a primeira entrega, as metricas prioritarias sao:
 - latencia media;
@@ -114,7 +114,7 @@ Decisao para esta primeira entrega:
 - CPU e memoria nao entram como obrigatorias;
 - o foco sera em latencia media, p95, throughput e taxa de erro.
 
-## Expected Outputs
+## Saídas Esperadas
 
 Saidas brutas:
 - resultado do `k6`;
@@ -126,7 +126,7 @@ Saidas analiticas:
 - pelo menos um grafico;
 - interpretacao curta conectando o experimento ao artigo-base.
 
-## Local Storage Plan
+## Plano de Armazenamento Local
 
 Resultados brutos:
 
@@ -140,7 +140,7 @@ Interpretacao e comparacao:
 docs/experiments/
 ```
 
-## Initial Folder Convention
+## Convenção Inicial de Pastas
 
 ```text
 results/{cenario}/{padrao}/run-{numero}
@@ -153,7 +153,7 @@ results/baseline/ramp/run-01
 results/redis-cache/ramp/run-01
 ```
 
-## What Still Needs To Be Defined
+## O Que Ainda Precisa Ser Definido
 
 - coleta sistematica de CPU e memoria;
 - expansao do dataset para reduzir o efeito do custo quase nulo do JSON local;

@@ -1,4 +1,4 @@
-# Baseline Results
+# Resultados do Baseline
 
 Este diretorio armazena os resultados brutos do cenario baseline.
 

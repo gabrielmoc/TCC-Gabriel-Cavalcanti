@@ -1,4 +1,4 @@
-# Redis Cache Results
+# Resultados do Redis Cache
 
 Este diretorio armazena os resultados brutos do cenario com Redis no `Catalog Service`.
 

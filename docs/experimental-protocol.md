@@ -1,4 +1,4 @@
-# Experimental Protocol
+# Protocolo Experimental
 
 Este documento consolida as decisoes metodologicas da proxima etapa experimental do TCC.
 
