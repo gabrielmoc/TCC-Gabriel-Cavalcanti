@@ -1,6 +1,6 @@
 # Resultados do Baseline
 
-Este diretorio armazena os resultados brutos do cenario baseline.
+Este diretório armazena os resultados brutos do cenário baseline.
 
 Estrutura atual:
 

@@ -1,15 +1,15 @@
-# Manual Validation - Redis Cache
+# Validação Manual - Redis Cache
 
 Data:
 
 ```text
-2026-08-16
+16/08/2026
 ```
 
 Objetivo:
-- validar pelas rotas publicas do `gateway` o comportamento de `MISS` e `HIT`;
-- confirmar a exposicao dos headers `X-Cache` e `X-Data-Source`;
-- confirmar que o endpoint de recomendacoes continua respondendo corretamente.
+- validar pelas rotas públicas do `gateway` o comportamento de `MISS` e `HIT`;
+- confirmar a exposição dos headers `X-Cache` e `X-Data-Source`;
+- confirmar que o endpoint de recomendações continua respondendo corretamente.
 
 Arquivos gerados:
 - `catalog-01.headers.txt`

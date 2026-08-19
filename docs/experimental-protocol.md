@@ -1,31 +1,31 @@
 # Protocolo Experimental
 
-Este documento consolida as decisoes metodologicas da proxima etapa experimental do TCC.
+Este documento consolida as decisões metodológicas da proxima etapa experimental do TCC.
 
 ## Objetivo desta fase
 
-Fechar a comparacao inicial entre:
+Fechar a comparação inicial entre:
 - baseline sem cache;
-- cenario com Redis no `Catalog Service`.
+- cenário com Redis no `Catalog Service`.
 
-Antes de introduzir o terceiro cenario otimizado, o foco e garantir que baseline e cache estejam:
+Antes de introduzir o terceiro cenário otimizado, o foco é garantir que baseline e cache estejam:
 - funcionalmente equivalentes;
 - observaveis;
-- comparaveis sob a mesma carga;
+- comparáveis sob a mesma carga;
 - reproduziveis.
 
 ## Endpoint principal do experimento
 
-O endpoint principal da proxima etapa sera:
+O endpoint principal da proxima etapa será:
 
 ```text
 GET /api/recommendations/:userId
 ```
 
 Justificativa:
-- representa melhor o fluxo distribuido da arquitetura;
-- depende de multiplos servicos;
-- tende a refletir mais claramente latencia, encadeamento e efeito indireto do cache.
+- representa melhor o fluxo distribuído da arquitetura;
+- depende de múltiplos serviços;
+- tende a refletir mais claramente latência, encadeamento e efeito indireto do cache.
 
 Endpoints secundarios de apoio:
 
@@ -36,49 +36,49 @@ GET /api/catalog/:id
 
 Esses endpoints ajudam a observar o efeito direto do Redis sobre o `Catalog Service`.
 
-## Metricas obrigatorias
+## Métricas obrigatórias
 
-As metricas obrigatorias da fase experimental mais ampla serao:
-- latencia;
+As métricas obrigatórias da fase experimental mais ampla serão:
+- latência;
 - throughput;
 - taxa de erro;
 - uso de CPU;
-- uso de memoria.
+- uso de memória.
 
-Na primeira bateria inicial ja executada, o foco ficou em:
-- latencia media;
-- latencia `p95`;
+Na primeira bateria inicial já executada, o foco ficou em:
+- latência média;
+- latência `p95`;
 - throughput;
 - taxa de erro.
 
-## Criterios de comparacao
+## Critérios de comparação
 
-Para a comparacao entre baseline e cenario com cache ser valida:
-- as rotas publicas devem permanecer identicas;
-- o dataset deve permanecer identico;
-- a logica de negocio deve permanecer identica;
-- a carga funcional deve ser a mesma entre cenarios;
-- a variavel principal introduzida deve ser apenas o cache no `catalog`.
+Para a comparação entre baseline e cenário com cache ser valida:
+- as rotas públicas devem permanecer idênticas;
+- o dataset deve permanecer idêntico;
+- a lógica de negócio deve permanecer identica;
+- a carga funcional deve ser a mesma entre cenários;
+- a variável principal introduzida deve ser apenas o cache no `catalog`.
 
-## Repeticoes por cenario
+## Repetições por cenário
 
-Na primeira bateria formal, cada cenario deve ser executado pelo menos:
+Na primeira bateria formal, cada cenário deve ser executado pelo menos:
 
 ```text
-3 repeticoes por padrao de carga
+3 repetições por padrão de carga
 ```
 
-Se houver alta variacao entre resultados, o numero de repeticoes deve ser ampliado.
+Se houver alta variacao entre resultados, o número de repetições deve ser ampliado.
 
-## Tratamento de execucoes inconsistentes
+## Tratamento de execuções inconsistentes
 
-Uma execucao pode ser marcada como inconsistente se houver:
+Uma execução pode ser marcada como inconsistente se houver:
 - falha evidente de infraestrutura local;
-- indisponibilidade nao planejada de servicos;
+- indisponibilidade não planejada de serviços;
 - desvio funcional do comportamento esperado;
-- erro de configuracao do cenario.
+- erro de configuração do cenário.
 
-Execucoes descartadas devem ser registradas como descartadas, e nao apagadas sem anotacao.
+Execuções descartadas devem ser registradas como descartadas, e não apagadas sem anotacao.
 
 ## Estrutura inicial para salvar resultados
 
@@ -91,14 +91,14 @@ results/
   optimized/
 ```
 
-Dentro de cada cenario, a ideia e separar por padrao de carga e repeticao.
+Dentro de cada cenário, a ideia e separar por padrão de carga e repeticao.
 
-## Convencao inicial para nomear execucoes
+## Convenção inicial para nomear execuções
 
 Sugestao inicial:
 
 ```text
-{cenario}/{padrao-carga}/run-{numero}
+{cenário}/{padrão-carga}/run-{número}
 ```
 
 Exemplos:
@@ -110,19 +110,19 @@ redis-cache/ramp/run-02
 
 ## Estado atual da primeira entrega
 
-Ja foi concluido:
-- validacao manual do cenario com Redis pelas rotas publicas do `gateway`;
+Já foi concluído:
+- validação manual do cenário com Redis pelas rotas públicas do `gateway`;
 - primeira bateria controlada no `baseline`;
 - primeira bateria controlada no `redis-cache`;
-- bateria forte em `recommendations` e `catalog` com tres repeticoes por cenario;
-- consolidacao da comparacao inicial em `docs/experiments/first-comparison.md`.
+- bateria forte em `recommendations` e `catalog` com tres repetições por cenário;
+- consolidação da comparação inicial em `docs/experiments/first-comparison.md`.
 
-## Proximo limite metodologico
+## Próximo limite metodologico
 
-O terceiro cenario otimizado ainda nao deve ser implementado nesta etapa.
+O terceiro cenário otimizado ainda não deve ser implementado nesta etapa.
 
 Antes disso, precisamos:
 - ampliar o dataset mantendo determinismo;
-- introduzir monitoramento de CPU e memoria;
-- decidir o terceiro cenario com base metodologica e potencial de impacto real;
+- introduzir monitoramento de CPU e memória;
+- decidir o terceiro cenário com base metodológica e potencial de impacto real;
 - continuar expandindo os testes de carga de forma controlada.

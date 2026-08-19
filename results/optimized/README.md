@@ -1,9 +1,9 @@
-# Optimized Scenario Results
+# Resultados do Cenário Otimizado
 
-Este diretorio deve armazenar os resultados brutos do terceiro cenario otimizado.
+Este diretório deve armazenar os resultados brutos do terceiro cenário otimizado.
 
 Estrutura sugerida:
 
 ```text
-results/optimized/{padrao}/run-{numero}
+results/optimized/{padrão}/run-{número}
 ```

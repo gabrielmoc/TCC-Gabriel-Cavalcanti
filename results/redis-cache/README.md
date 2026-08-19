@@ -1,6 +1,6 @@
 # Resultados do Redis Cache
 
-Este diretorio armazena os resultados brutos do cenario com Redis no `Catalog Service`.
+Este diretório armazena os resultados brutos do cenário com Redis no `Catalog Service`.
 
 Estrutura atual:
 

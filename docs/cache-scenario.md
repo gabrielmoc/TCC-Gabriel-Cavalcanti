@@ -1,17 +1,17 @@
-# Cache Scenario
+# Cenário de Cache
 
-Este documento formaliza a primeira versao do cenario com cache no ambiente experimental do TCC.
+Este documento formaliza a primeira versão do cenário com cache no ambiente experimental do TCC.
 
 ## Objetivo
 
-Introduzir uma unica variavel de otimizacao em relacao ao baseline:
+Introduzir uma única variável de otimização em relação ao baseline:
 - uso de `Redis` no `Catalog Service`.
 
-Neste cenario:
-- as rotas publicas permanecem iguais ao baseline;
-- a regra de negocio permanece igual ao baseline;
+Neste cenário:
+- as rotas públicas permanecem iguais ao baseline;
+- a regra de negócio permanece igual ao baseline;
 - apenas a origem de parte dos dados do `catalog` pode mudar;
-- `users`, `recommendations` e `gateway` mantem o mesmo comportamento funcional.
+- `users`, `recommendations` e `gateway` mantém o mesmo comportamento funcional.
 
 ## Escopo inicial do cache
 
@@ -24,7 +24,7 @@ GET /catalog
 GET /catalog/:id
 ```
 
-Rotas publicas preservadas pelo gateway:
+Rotas públicas preservadas pelo gateway:
 
 ```text
 GET /api/catalog
@@ -35,22 +35,22 @@ GET /api/recommendations/:userId
 
 ## Chaves iniciais
 
-As chaves da primeira versao sao:
+As chaves da primeira versão são:
 
 ```text
 catalog:all
 catalog:{id}
 ```
 
-## Estrategia inicial
+## Estratégia inicial
 
 Leitura:
 - se houver `cache hit`, o `catalog` responde com o valor armazenado no Redis;
 - se houver `cache miss`, o `catalog` consulta o dataset local, responde normalmente e grava o valor no Redis.
 
 Escrita:
-- como esta primeira versao usa dataset local deterministico e sem operacoes de escrita, nao ha rotina de atualizacao de dados na API;
-- por isso, nesta etapa, a consistencia e mantida com TTL simples.
+- como esta primeira versão usa dataset local determinístico e sem operações de escrita, não há rotina de atualização de dados na API;
+- por isso, nesta etapa, a consistência é mantida com TTL simples.
 
 TTL inicial:
 
@@ -58,29 +58,29 @@ TTL inicial:
 60 segundos
 ```
 
-## Estrategia inicial de invalidacao
+## Estratégia inicial de invalidação
 
-Nesta primeira iteracao, a invalidacao e baseada em expiracao por TTL.
+Nesta primeira iteração, a invalidação é baseada em expiração por TTL.
 
-Nao ha:
-- invalidacao ativa por evento;
-- aquecimento antecipado obrigatorio;
-- cache de recomendacoes.
+Não há:
+- invalidação ativa por evento;
+- aquecimento antecipado obrigatório;
+- cache de recomendações.
 
 ## Comportamento em falha do Redis
 
-Se o Redis estiver indisponivel:
+Se o Redis estiver indisponível:
 - o `Catalog Service` continua respondendo com os dados locais;
-- o experimento nao quebra funcionalmente;
-- o servico opera como fallback sem cache.
+- o experimento não quebra funcionalmente;
+- o serviço opera como fallback sem cache.
 
-Isso e importante para manter a comparacao metodologica clara entre:
+Isso é importante para manter a comparação metodológica clara entre:
 - baseline sem cache;
-- cenario com cache habilitado quando o Redis estiver disponivel.
+- cenário com cache habilitado quando o Redis estiver disponível.
 
-## Ativacao e validacao
+## Ativação e validação
 
-O procedimento operacional para ativar e validar esse cenario esta descrito em:
+O procedimento operacional para ativar e validar esse cenário está descrito em:
 
 ```text
 docs/cache-validation.md

@@ -1,10 +1,10 @@
 # Documentação dos Experimentos
 
-Este diretorio concentra a parte analitica e apresentavel dos experimentos do TCC.
+Este diretório concentra a parte analítica e apresentavel dos experimentos do TCC.
 
 Aqui devem ficar:
 - planejamento dos testes;
-- comparacoes entre cenarios;
+- comparações entre cenários;
 - tabelas e interpretacoes;
 - referencias aos resultados brutos salvos em `results/`;
 - figuras exportadas para uso no TCC.
@@ -19,9 +19,9 @@ docs/experiments/
   figures/
 ```
 
-Regra pratica:
+Regra prática:
 - `results/` guarda evidencia bruta;
-- `docs/experiments/` guarda leitura, comparacao e apresentacao.
+- `docs/experiments/` guarda leitura, comparação e apresentacao.
 
 Documento principal da primeira entrega:
 - `first-comparison.md`

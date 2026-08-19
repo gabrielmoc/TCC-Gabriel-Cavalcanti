@@ -1,9 +1,9 @@
 # Diretório de Resultados
 
-Este diretorio armazena:
-- saidas brutas dos testes de carga;
-- evidencias auxiliares de execucao;
-- registros por cenario e por repeticao.
+Este diretório armazena:
+- saídas brutas dos testes de carga;
+- evidências auxiliares de execução;
+- registros por cenário e por repeticao.
 
 Estrutura atual:
 
@@ -14,9 +14,9 @@ results/
   optimized/
 ```
 
-Convencao utilizada:
-- separar por cenario;
-- separar por padrao de carga;
+Convenção utilizada:
+- separar por cenário;
+- separar por padrão de carga;
 - separar por repeticao;
 - manter arquivos brutos e resumos organizados em pastas previsiveis.
 
@@ -45,9 +45,9 @@ results/
 ```
 
 Situacao atual:
-- validacao manual do Redis ja registrada;
-- rodada exploratoria inicial ja registrada;
-- bateria forte ja registrada e agregada.
+- validação manual do Redis já registrada;
+- rodada exploratória inicial já registrada;
+- bateria forte já registrada e agregada.
 
 Documento de leitura consolidada:
 
@@ -55,7 +55,7 @@ Documento de leitura consolidada:
 docs/experiments/first-comparison.md
 ```
 
-Estrutura presente no repositorio:
+Estrutura presente no repositório:
 
 ```text
 results/

@@ -1,12 +1,12 @@
 # Base dos Testes de Carga
 
-Este diretorio contem a base inicial dos testes de carga com `k6`.
+Este diretório contem a base inicial dos testes de carga com `k6`.
 
 ## Objetivo desta etapa
 
-Preparar scripts comparaveis entre:
+Preparar scripts comparáveis entre:
 - baseline;
-- cenario com Redis no `Catalog Service`.
+- cenário com Redis no `Catalog Service`.
 
 O endpoint principal escolhido nesta fase e:
 
@@ -14,7 +14,7 @@ O endpoint principal escolhido nesta fase e:
 GET /api/recommendations/:userId
 ```
 
-## Scripts disponiveis
+## Scripts disponíveis
 
 ```text
 tests/load/catalog-ramp.js
@@ -30,11 +30,11 @@ tests/load/run-strong-battery.sh
 
 O `k6` precisa estar instalado localmente para executar esses arquivos.
 
-Os scripts deste diretorio ja foram usados na primeira bateria controlada comparando:
+Os scripts deste diretório já foram usados na primeira bateria controlada comparando:
 - `baseline`;
 - `redis-cache`.
 
-Tambem foi preparada uma bateria mais forte com:
+Também foi preparada uma bateria mais forte com:
 - `GET /api/recommendations/:userId` como endpoint principal;
 - `GET /api/catalog` como endpoint de apoio para isolar o efeito direto do cache.
 
@@ -49,7 +49,7 @@ SCENARIO_LABEL=baseline BASE_URL=http://127.0.0.1:3000 k6 run tests/load/recomme
 SCENARIO_LABEL=baseline BASE_URL=http://127.0.0.1:3000 k6 run tests/load/catalog-ramp.js
 ```
 
-Exemplos para o cenario com Redis:
+Exemplos para o cenário com Redis:
 
 ```bash
 SCENARIO_LABEL=redis-cache BASE_URL=http://127.0.0.1:3000 k6 run tests/load/recommendations-constant.js
@@ -70,10 +70,10 @@ rampUp=15s
 sustain=20s
 rampDown=10s
 sleep=0.5s
-repeticoes=3 por cenario
+repetições=3 por cenário
 ```
 
-Os resultados brutos dessa bateria estao em:
+Os resultados brutos dessa bateria estão em:
 
 ```text
 results/baseline/ramp/
@@ -82,7 +82,7 @@ results/redis-cache/ramp/
 
 ## Agregacao dos resultados
 
-Para consolidar os `k6-summary.json` de uma bateria com repeticoes:
+Para consolidar os `k6-summary.json` de uma bateria com repetições:
 
 ```bash
 node tests/load/aggregate-results.mjs results/baseline/ramp-strong/recommendations
@@ -91,7 +91,7 @@ node tests/load/aggregate-results.mjs results/baseline/ramp-strong/catalog
 node tests/load/aggregate-results.mjs results/redis-cache/ramp-strong/catalog
 ```
 
-## Execucao automatizada da bateria forte
+## Execução automatizada da bateria forte
 
 Exemplos:
 
@@ -104,9 +104,9 @@ tests/load/run-strong-battery.sh redis-cache catalog 01
 
 ## Carga funcional equivalente
 
-Os scripts foram preparados para usar a mesma rota e a mesma logica funcional nos diferentes cenarios.
+Os scripts foram preparados para usar a mesma rota e a mesma lógica funcional nos diferentes cenários.
 
-Assim, a diferenca observada deve vir do comportamento interno da arquitetura, e nao da mudanca da carga aplicada.
+Assim, a diferença observada deve vir do comportamento interno da arquitetura, e não da mudanca da carga aplicada.
 
 ## Variaveis uteis
 
