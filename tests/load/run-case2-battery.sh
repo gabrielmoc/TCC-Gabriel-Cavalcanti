@@ -44,11 +44,20 @@ if [[ "${ENDPOINT}" == "catalog" ]]; then
   SCRIPT_PATH="tests/load/catalog-ramp.js"
 fi
 
+REDIS_SERVER_BIN="${REDIS_SERVER_BIN:-}"
+if [[ -z "${REDIS_SERVER_BIN}" ]] && command -v redis-server >/dev/null 2>&1; then
+  REDIS_SERVER_BIN="$(command -v redis-server)"
+fi
+
 CATALOG_CACHE_ENABLED="false"
 REDIS_PID=""
 if [[ "${SCENARIO}" == "redis-cache" ]]; then
   CATALOG_CACHE_ENABLED="true"
-  /opt/homebrew/bin/redis-server \
+  if [[ -z "${REDIS_SERVER_BIN}" ]]; then
+    echo "redis-server não encontrado. Defina REDIS_SERVER_BIN ou instale o Redis localmente."
+    exit 1
+  fi
+  "${REDIS_SERVER_BIN}" \
     --port 6379 \
     --save "" \
     --appendonly no \
