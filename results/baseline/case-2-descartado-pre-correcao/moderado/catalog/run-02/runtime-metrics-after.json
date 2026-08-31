@@ -1,0 +1,172 @@
+{
+  "collectedAt": "2026-08-31T13:20:09.522Z",
+  "services": [
+    {
+      "service": "gateway",
+      "url": "http://127.0.0.1:3000/metrics",
+      "ok": true,
+      "metrics": {
+        "service": "gateway",
+        "uptimeSeconds": 81.616,
+        "requests": {
+          "total": 17962,
+          "averageDurationMs": 8.946,
+          "maxDurationMs": 794,
+          "statusCounts": {
+            "200": 17962
+          }
+        },
+        "resources": {
+          "cpuMicros": {
+            "user": 39434664,
+            "system": 4538848,
+            "total": 43973512
+          },
+          "memoryBytes": {
+            "rss": 73547776,
+            "heapTotal": 148996096,
+            "heapUsed": 13807768,
+            "external": 5719747,
+            "arrayBuffers": 2205706
+          }
+        },
+        "counters": {
+          "upstreamService": {
+            "n/a": 2,
+            "catalog": 17960
+          },
+          "cacheStatus": {
+            "n/a": 2,
+            "MISS": 17960
+          },
+          "dataSource": {
+            "n/a": 2,
+            "dataset": 17960
+          }
+        },
+        "extras": {}
+      }
+    },
+    {
+      "service": "catalog",
+      "url": "http://127.0.0.1:3001/metrics",
+      "ok": true,
+      "metrics": {
+        "service": "catalog",
+        "uptimeSeconds": 81.448,
+        "requests": {
+          "total": 17962,
+          "averageDurationMs": 0.77,
+          "maxDurationMs": 49,
+          "statusCounts": {
+            "200": 17962
+          }
+        },
+        "resources": {
+          "cpuMicros": {
+            "user": 12515126,
+            "system": 1854019,
+            "total": 14369145
+          },
+          "memoryBytes": {
+            "rss": 39731200,
+            "heapTotal": 33193984,
+            "heapUsed": 15141384,
+            "external": 7946041,
+            "arrayBuffers": 35039
+          }
+        },
+        "counters": {
+          "cacheStatus": {
+            "BYPASS": 2,
+            "MISS": 17960
+          },
+          "dataSource": {
+            "n/a": 2,
+            "dataset": 17960
+          }
+        },
+        "extras": {
+          "dataset": {
+            "catalogItems": 1500
+          },
+          "cache": {
+            "enabled": false,
+            "connected": false,
+            "ttlSeconds": 60
+          }
+        }
+      }
+    },
+    {
+      "service": "users",
+      "url": "http://127.0.0.1:3002/metrics",
+      "ok": true,
+      "metrics": {
+        "service": "users",
+        "uptimeSeconds": 81.616,
+        "requests": {
+          "total": 2,
+          "averageDurationMs": 4,
+          "maxDurationMs": 8,
+          "statusCounts": {
+            "200": 2
+          }
+        },
+        "resources": {
+          "cpuMicros": {
+            "user": 17158,
+            "system": 8957,
+            "total": 26115
+          },
+          "memoryBytes": {
+            "rss": 22740992,
+            "heapTotal": 16564224,
+            "heapUsed": 8404168,
+            "external": 1985406,
+            "arrayBuffers": 18691
+          }
+        },
+        "counters": {},
+        "extras": {
+          "dataset": {
+            "users": 240
+          }
+        }
+      }
+    },
+    {
+      "service": "recommendations",
+      "url": "http://127.0.0.1:3003/metrics",
+      "ok": true,
+      "metrics": {
+        "service": "recommendations",
+        "uptimeSeconds": 81.617,
+        "requests": {
+          "total": 2,
+          "averageDurationMs": 2,
+          "maxDurationMs": 4,
+          "statusCounts": {
+            "200": 2
+          }
+        },
+        "resources": {
+          "cpuMicros": {
+            "user": 16881,
+            "system": 8683,
+            "total": 25564
+          },
+          "memoryBytes": {
+            "rss": 22495232,
+            "heapTotal": 16826368,
+            "heapUsed": 8325760,
+            "external": 1985406,
+            "arrayBuffers": 18691
+          }
+        },
+        "counters": {},
+        "extras": {}
+      }
+    }
+  ]
+}

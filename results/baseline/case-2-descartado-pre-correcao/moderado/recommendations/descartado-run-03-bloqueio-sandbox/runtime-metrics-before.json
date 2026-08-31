@@ -1,0 +1,29 @@
+{
+  "collectedAt": "2026-08-31T13:49:57.436Z",
+  "services": [
+    {
+      "service": "gateway",
+      "url": "http://127.0.0.1:3000/metrics",
+      "ok": false,
+      "error": "fetch failed"
+    },
+    {
+      "service": "catalog",
+      "url": "http://127.0.0.1:3001/metrics",
+      "ok": false,
+      "error": "fetch failed"
+    },
+    {
+      "service": "users",
+      "url": "http://127.0.0.1:3002/metrics",
+      "ok": false,
+      "error": "fetch failed"
+    },
+    {
+      "service": "recommendations",
+      "url": "http://127.0.0.1:3003/metrics",
+      "ok": false,
+      "error": "fetch failed"
+    }
+  ]
+}

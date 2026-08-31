@@ -1,0 +1,5 @@
+
+> recommendations@1.0.0 start
+> node src/server.js
+
+recommendations listening on port 3003

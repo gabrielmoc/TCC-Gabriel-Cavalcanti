@@ -1,0 +1,15 @@
+{
+  "scenario": "baseline",
+  "case": "case-2",
+  "profile": "forte",
+  "endpoint": "catalog",
+  "script": "tests/load/catalog-ramp.js",
+  "run": "03",
+  "startVUs": 10,
+  "targetVUs": 90,
+  "rampUp": "40s",
+  "sustain": "120s",
+  "rampDown": "30s",
+  "sleepSeconds": 0.1,
+  "date": "31/08/2026"
+}

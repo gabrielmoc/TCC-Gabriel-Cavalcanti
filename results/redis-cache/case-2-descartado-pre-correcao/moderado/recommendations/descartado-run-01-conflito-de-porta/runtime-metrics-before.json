@@ -1,0 +1,167 @@
+{
+  "collectedAt": "2026-08-31T12:38:38.562Z",
+  "services": [
+    {
+      "service": "gateway",
+      "url": "http://127.0.0.1:3000/metrics",
+      "ok": true,
+      "metrics": {
+        "service": "gateway",
+        "uptimeSeconds": 0.497,
+        "requests": {
+          "total": 2,
+          "averageDurationMs": 3,
+          "maxDurationMs": 5,
+          "statusCounts": {
+            "200": 2
+          }
+        },
+        "resources": {
+          "cpuMicros": {
+            "user": 15384,
+            "system": 2289,
+            "total": 17673
+          },
+          "memoryBytes": {
+            "rss": 60964864,
+            "heapTotal": 17088512,
+            "heapUsed": 8292456,
+            "external": 1985366,
+            "arrayBuffers": 18691
+          }
+        },
+        "counters": {
+          "upstreamService": {
+            "n/a": 2
+          },
+          "cacheStatus": {
+            "n/a": 2
+          },
+          "dataSource": {
+            "n/a": 2
+          }
+        },
+        "extras": {}
+      }
+    },
+    {
+      "service": "catalog",
+      "url": "http://127.0.0.1:3001/metrics",
+      "ok": true,
+      "metrics": {
+        "service": "catalog",
+        "uptimeSeconds": 0.279,
+        "requests": {
+          "total": 2,
+          "averageDurationMs": 1.5,
+          "maxDurationMs": 3,
+          "statusCounts": {
+            "200": 2
+          }
+        },
+        "resources": {
+          "cpuMicros": {
+            "user": 28632,
+            "system": 3138,
+            "total": 31770
+          },
+          "memoryBytes": {
+            "rss": 76922880,
+            "heapTotal": 31883264,
+            "heapUsed": 13321664,
+            "external": 2184735,
+            "arrayBuffers": 18655
+          }
+        },
+        "counters": {
+          "cacheStatus": {
+            "BYPASS": 2
+          },
+          "dataSource": {
+            "n/a": 2
+          }
+        },
+        "extras": {
+          "dataset": {
+            "catalogItems": 1500
+          },
+          "cache": {
+            "enabled": false,
+            "connected": false,
+            "ttlSeconds": 60
+          }
+        }
+      }
+    },
+    {
+      "service": "users",
+      "url": "http://127.0.0.1:3002/metrics",
+      "ok": true,
+      "metrics": {
+        "service": "users",
+        "uptimeSeconds": 0.435,
+        "requests": {
+          "total": 3,
+          "averageDurationMs": 1.667,
+          "maxDurationMs": 4,
+          "statusCounts": {
+            "200": 3
+          }
+        },
+        "resources": {
+          "cpuMicros": {
+            "user": 12914,
+            "system": 1538,
+            "total": 14452
+          },
+          "memoryBytes": {
+            "rss": 61079552,
+            "heapTotal": 16826368,
+            "heapUsed": 8409016,
+            "external": 1985406,
+            "arrayBuffers": 18691
+          }
+        },
+        "counters": {},
+        "extras": {
+          "dataset": {
+            "users": 240
+          }
+        }
+      }
+    },
+    {
+      "service": "recommendations",
+      "url": "http://127.0.0.1:3003/metrics",
+      "ok": true,
+      "metrics": {
+        "service": "recommendations",
+        "uptimeSeconds": 0.427,
+        "requests": {
+          "total": 2,
+          "averageDurationMs": 1.5,
+          "maxDurationMs": 3,
+          "statusCounts": {
+            "200": 2
+          }
+        },
+        "resources": {
+          "cpuMicros": {
+            "user": 13379,
+            "system": 1609,
+            "total": 14988
+          },
+          "memoryBytes": {
+            "rss": 61947904,
+            "heapTotal": 16826368,
+            "heapUsed": 8496736,
+            "external": 1985366,
+            "arrayBuffers": 18691
+          }
+        },
+        "counters": {},
+        "extras": {}
+      }
+    }
+  ]
+}

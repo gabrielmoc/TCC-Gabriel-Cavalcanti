@@ -1,0 +1,6 @@
+
+> catalog@1.0.0 start
+> node src/server.js
+
+catalog cache disabled
+catalog listening on port 3001

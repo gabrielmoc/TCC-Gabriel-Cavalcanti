@@ -1,0 +1,4 @@
+recommendations listening on port 3003
+recommendations request | id=9a36267c-ce73-47e8-9e26-cc2f976e6369 | GET /health | status=200 | durationMs=4 | usersMs=n/a | catalogMs=n/a
+recommendations request | id=65731562-76d7-4251-a8c3-51e25e42d3e9 | GET /metrics | status=200 | durationMs=0 | usersMs=n/a | catalogMs=n/a
+recommendations request | id=fd3bc6dc-d9b7-409e-bc28-7378f2e27125 | GET /metrics | status=200 | durationMs=1 | usersMs=n/a | catalogMs=n/a

@@ -1,0 +1,11 @@
+22643:C 31 Aug 2026 11:12:45.285 * oO0OoO0OoO0Oo Redis is starting oO0OoO0OoO0Oo
+22643:C 31 Aug 2026 11:12:45.285 * Redis version=8.0.3, bits=64, commit=00000000, modified=1, pid=22643, just started
+22643:C 31 Aug 2026 11:12:45.285 * Configuration loaded
+22643:M 31 Aug 2026 11:12:45.286 * monotonic clock: POSIX clock_gettime
+22643:M 31 Aug 2026 11:12:45.288 * Running mode=standalone, port=6379.
+22643:M 31 Aug 2026 11:12:45.288 # WARNING: The TCP backlog setting of 511 cannot be enforced because kern.ipc.somaxconn is set to the lower value of 128.
+22643:M 31 Aug 2026 11:12:45.289 * Server initialized
+22643:M 31 Aug 2026 11:12:45.290 * Ready to accept connections tcp
+22643:signal-handler (1788185757) Received SIGTERM scheduling shutdown...
+22643:M 31 Aug 2026 11:15:57.591 * User requested shutdown...
+22643:M 31 Aug 2026 11:15:57.592 # Redis is now ready to exit, bye bye...

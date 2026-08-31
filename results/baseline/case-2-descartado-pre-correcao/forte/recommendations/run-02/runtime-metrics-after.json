@@ -1,0 +1,173 @@
+{
+  "collectedAt": "2026-08-31T14:19:09.633Z",
+  "services": [
+    {
+      "service": "gateway",
+      "url": "http://127.0.0.1:3000/metrics",
+      "ok": true,
+      "metrics": {
+        "service": "gateway",
+        "uptimeSeconds": 1622.732,
+        "requests": {
+          "total": 274173,
+          "averageDurationMs": 162.511,
+          "maxDurationMs": 2581,
+          "statusCounts": {
+            "200": 274173
+          }
+        },
+        "resources": {
+          "cpuMicros": {
+            "user": 624894805,
+            "system": 79530968,
+            "total": 704425773
+          },
+          "memoryBytes": {
+            "rss": 77021184,
+            "heapTotal": 151617536,
+            "heapUsed": 15087776,
+            "external": 5384366,
+            "arrayBuffers": 1870325
+          }
+        },
+        "counters": {
+          "upstreamService": {
+            "n/a": 38,
+            "recommendations": 168633,
+            "catalog": 105502
+          },
+          "cacheStatus": {
+            "n/a": 168671,
+            "MISS": 105502
+          },
+          "dataSource": {
+            "n/a": 168671,
+            "dataset": 105502
+          }
+        },
+        "extras": {}
+      }
+    },
+    {
+      "service": "catalog",
+      "url": "http://127.0.0.1:3001/metrics",
+      "ok": true,
+      "metrics": {
+        "service": "catalog",
+        "uptimeSeconds": 1622.26,
+        "requests": {
+          "total": 274173,
+          "averageDurationMs": 1.593,
+          "maxDurationMs": 297,
+          "statusCounts": {
+            "200": 274173
+          }
+        },
+        "resources": {
+          "cpuMicros": {
+            "user": 326097691,
+            "system": 51754195,
+            "total": 377851886
+          },
+          "memoryBytes": {
+            "rss": 51183616,
+            "heapTotal": 83345408,
+            "heapUsed": 31031624,
+            "external": 17511644,
+            "arrayBuffers": 15349263
+          }
+        },
+        "counters": {
+          "cacheStatus": {
+            "BYPASS": 38,
+            "MISS": 274135
+          },
+          "dataSource": {
+            "n/a": 38,
+            "dataset": 274135
+          }
+        },
+        "extras": {
+          "dataset": {
+            "catalogItems": 1500
+          },
+          "cache": {
+            "enabled": false,
+            "connected": false,
+            "ttlSeconds": 60
+          }
+        }
+      }
+    },
+    {
+      "service": "users",
+      "url": "http://127.0.0.1:3002/metrics",
+      "ok": true,
+      "metrics": {
+        "service": "users",
+        "uptimeSeconds": 1622.733,
+        "requests": {
+          "total": 168671,
+          "averageDurationMs": 0.201,
+          "maxDurationMs": 140,
+          "statusCounts": {
+            "200": 168671
+          }
+        },
+        "resources": {
+          "cpuMicros": {
+            "user": 39448236,
+            "system": 12987849,
+            "total": 52436085
+          },
+          "memoryBytes": {
+            "rss": 28672000,
+            "heapTotal": 13205504,
+            "heapUsed": 11781504,
+            "external": 2042714,
+            "arrayBuffers": 35039
+          }
+        },
+        "counters": {},
+        "extras": {
+          "dataset": {
+            "users": 240
+          }
+        }
+      }
+    },
+    {
+      "service": "recommendations",
+      "url": "http://127.0.0.1:3003/metrics",
+      "ok": true,
+      "metrics": {
+        "service": "recommendations",
+        "uptimeSeconds": 1622.732,
+        "requests": {
+          "total": 168671,
+          "averageDurationMs": 97.409,
+          "maxDurationMs": 1603,
+          "statusCounts": {
+            "200": 168671
+          }
+        },
+        "resources": {
+          "cpuMicros": {
+            "user": 520289718,
+            "system": 58499616,
+            "total": 578789334
+          },
+          "memoryBytes": {
+            "rss": 84230144,
+            "heapTotal": 149520384,
+            "heapUsed": 14826800,
+            "external": 5667666,
+            "arrayBuffers": 2153625
+          }
+        },
+        "counters": {},
+        "extras": {}
+      }
+    }
+  ]
+}

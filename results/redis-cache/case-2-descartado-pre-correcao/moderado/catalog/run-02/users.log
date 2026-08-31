@@ -1,0 +1,8 @@
+
+> users@1.0.0 start
+> node src/server.js
+
+users listening on port 3002
+users request | id=d0798990-27d7-4c29-a2bf-d2e83219f94f | GET /health | status=200 | durationMs=5
+users request | id=9f530574-8f84-4ddb-86f7-cf0361da5815 | GET /metrics | status=200 | durationMs=2
+users request | id=22637e1e-b4ca-4566-b69a-178c78fbf35a | GET /metrics | status=200 | durationMs=3

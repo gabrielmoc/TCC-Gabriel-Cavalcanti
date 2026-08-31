@@ -1,0 +1,5 @@
+
+> users@1.0.0 start
+> node src/server.js
+
+users listening on port 3002

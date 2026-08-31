@@ -1,0 +1,8 @@
+
+> recommendations@1.0.0 start
+> node src/server.js
+
+recommendations listening on port 3003
+recommendations request | id=4456f635-aaf8-43cf-b674-38a53935dd4c | GET /health | status=200 | durationMs=7 | usersMs=n/a | catalogMs=n/a
+recommendations request | id=2fe8051b-24bb-497e-880e-1368f8429b07 | GET /metrics | status=200 | durationMs=2 | usersMs=n/a | catalogMs=n/a
+recommendations request | id=d62fd0fa-0bfb-4f09-89a6-71342a7e4af6 | GET /metrics | status=200 | durationMs=2 | usersMs=n/a | catalogMs=n/a

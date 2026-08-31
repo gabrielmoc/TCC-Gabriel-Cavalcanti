@@ -1,0 +1,4 @@
+users listening on port 3002
+users request | id=d16ae496-ffaa-45bb-a2db-18e686d124f7 | GET /health | status=200 | durationMs=8
+users request | id=fe1f2cfd-ed1f-4589-8296-488f4aa14709 | GET /metrics | status=200 | durationMs=1
+users request | id=538efb1e-1237-47c0-a104-4116957c9789 | GET /metrics | status=200 | durationMs=1

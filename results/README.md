@@ -44,15 +44,18 @@ results/
         run-01/
 ```
 
-Situacao atual:
+Situação atual:
 - validação manual do Redis já registrada;
 - rodada exploratória inicial já registrada;
 - bateria forte já registrada e agregada.
+- `Case 2` já executado com dataset ampliado, carga moderada, carga forte e coleta de recursos;
+- rodadas descartadas metodologicamente preservadas em diretórios próprios, sem uso na análise oficial.
 
 Documento de leitura consolidada:
 
 ```text
 docs/experiments/first-comparison.md
+docs/experiments/case-2-comparison.md
 ```
 
 Estrutura presente no repositório:

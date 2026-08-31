@@ -1,0 +1,15 @@
+{
+  "scenario": "redis-cache",
+  "case": "case-2",
+  "profile": "moderado",
+  "endpoint": "catalog",
+  "script": "tests/load/catalog-ramp.js",
+  "run": "04",
+  "startVUs": 5,
+  "targetVUs": 50,
+  "rampUp": "20s",
+  "sustain": "45s",
+  "rampDown": "15s",
+  "sleepSeconds": 0.15,
+  "date": "31/08/2026"
+}
