@@ -198,12 +198,14 @@ O experimento será estruturado em torno da implementação de uma arquitetura b
 - três execuções por combinação entre cenário e padrão de carga;
 - análise quantitativa dos resultados;
 - interpretação dos resultados à luz dos trabalhos de referência.
+- plano mestre de testes cobrindo todo o ciclo experimental do TCC.
 
 ### Elementos previstos
 
 - coleta de métricas complementares de infraestrutura, como CPU e memória;
 - expansão progressiva dos padrões de carga;
 - registro visual mais completo dos resultados em gráficos e tabelas.
+- ampliação do dataset determinístico para a segunda leva experimental.
 
 ### Elementos pendentes
 
@@ -295,13 +297,19 @@ As principais métricas previstas são:
 | **CPU** | Avaliar o impacto das configurações sobre processamento. |
 | **Memória** | Avaliar o consumo de memória durante os experimentos. |
 
-A literatura analisada também apresenta métricas adicionais potencialmente relevantes, como percentis de latência (`p95` e `p99`) e cache hit rate. A inclusão definitiva dessas métricas será realizada somente após consolidação do protocolo experimental.
+A literatura analisada também apresenta métricas adicionais potencialmente relevantes, como percentis de latência (`p95` e `p99`) e cache hit rate.
 
 Na primeira comparação experimental, foram priorizadas:
 - latência média;
 - latência `p95`;
 - throughput;
 - taxa de erro.
+
+Na segunda leva experimental já formalizada, passam a entrar como foco explícito:
+- uso de `CPU`;
+- uso de memória;
+- sinais de `cache hit` e `cache miss`;
+- comparação sob dataset ampliado e carga mais exigente.
 
 ---
 
@@ -332,6 +340,11 @@ Comparação entre cenários
 Cada combinação entre **cenário experimental e padrão de carga será executada três vezes**, reduzindo a influência de variações ocasionais sobre os resultados.
 
 Os parâmetros da primeira rodada controlada foram documentados em [test-plan.md](/Users/gabrielmoc/Downloads/TCC%20-%20Gabriel/docs/experiments/test-plan.md).
+
+O plano mestre de testes agora também organiza os cenários por casos evolutivos:
+- `Case 1`: baseline e primeira comparação com `Redis`;
+- `Case 2`: escala, eficiência e uso de recursos;
+- `Case 3`: cenário otimizado final e comparação consolidada.
 
 ---
 
@@ -456,6 +469,11 @@ Leitura atual dos resultados:
 - o ganho de desempenho ainda não apareceu de forma relevante no dataset e no ambiente atual;
 - isso orienta os próximos passos metodológicos, especialmente expansão de dataset, coleta de CPU e memória e definição do terceiro cenário.
 
+Status atual da próxima etapa:
+- o `Case 2` já foi formalizado na documentação experimental;
+- os cenários de teste do TCC já foram mapeados até a etapa final;
+- a próxima frente prática será ampliar dataset, aumentar a exigência da carga e comparar eficiência entre `baseline` e `redis-cache`.
+
 Esta seção continuará sendo atualizada para apresentar:
 
 - resultados consolidados das execuções;
@@ -494,6 +512,11 @@ A construção deste repositório é orientada principalmente por:
 - resultados e artefatos gerados durante os experimentos.
 
 A documentação acadêmica funciona como referência para as decisões metodológicas, enquanto este repositório concentra a implementação, os procedimentos de reprodução e os resultados da etapa experimental.
+
+Documentos centrais neste momento:
+- [docs/experiments/test-plan.md](/Users/gabrielmoc/Downloads/TCC%20-%20Gabriel/docs/experiments/test-plan.md)
+- [docs/experiments/first-comparison.md](/Users/gabrielmoc/Downloads/TCC%20-%20Gabriel/docs/experiments/first-comparison.md)
+- [docs/experiments/scenarios/README.md](/Users/gabrielmoc/Downloads/TCC%20-%20Gabriel/docs/experiments/scenarios/README.md)
 
 ---
 

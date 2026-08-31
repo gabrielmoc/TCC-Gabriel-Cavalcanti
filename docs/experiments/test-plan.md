@@ -20,6 +20,25 @@ Este plano cobre:
 - definição e teste do terceiro cenário otimizado;
 - comparação consolidada entre todos os cenários até a versão final do TCC.
 
+## Organização por Casos
+
+Para manter a leitura acadêmica e operacional do TCC mais clara, os cenários deste plano estão agrupados em casos evolutivos:
+
+- **Case 1 - Base funcional e primeira comparação experimental**
+  - consolida o `baseline`;
+  - introduz o `Redis` no `Catalog Service`;
+  - executa as primeiras comparações sob carga;
+  - já está concluído.
+- **Case 2 - Escala, eficiência e uso de recursos**
+  - reaproveita a mesma arquitetura e os mesmos cenários base;
+  - amplia dataset e exigência de carga;
+  - incorpora coleta de `CPU`, memória e sinais de eficiência;
+  - constitui a próxima etapa prática do TCC.
+- **Case 3 - Cenário otimizado final**
+  - introduz a terceira estratégia de otimização;
+  - fecha a comparação tripla do trabalho;
+  - consolida a bateria final para a monografia.
+
 ## Princípios Metodológicos
 
 Todos os cenários deste plano devem respeitar os seguintes princípios:
@@ -64,6 +83,14 @@ Cada cenário detalhado segue o mesmo padrão:
 | CT-08 | Comparação entre `baseline`, `redis-cache` e cenário otimizado | Carga comparativa | Planejado | `scenarios/08-comparacao-tripla.md` |
 | CT-09 | Bateria final consolidada do TCC | Consolidação final | Planejado | `scenarios/09-bateria-final.md` |
 
+## Enquadramento dos Cenários por Caso
+
+| Caso | Escopo | Cenários |
+| --- | --- | --- |
+| **Case 1** | Base funcional e primeira comparação entre `baseline` e `redis-cache` | `CT-01`, `CT-02`, `CT-03`, `CT-04` |
+| **Case 2** | Escala, eficiência e observabilidade expandida | `CT-05`, `CT-06` |
+| **Case 3** | Cenário otimizado final e consolidação comparativa | `CT-07`, `CT-08`, `CT-09` |
+
 ## Cenários Já Executados
 
 Até 31/08/2026, os seguintes cenários já foram efetivamente realizados:
@@ -88,6 +115,24 @@ Os cenários ainda previstos para fechar o trabalho são:
 - CT-07: validar funcionalmente o terceiro cenário otimizado;
 - CT-08: executar comparação tripla com a mesma carga funcional;
 - CT-09: consolidar a bateria final com tabelas, gráficos e leitura comparativa completa.
+
+## Definição Operacional do Case 2
+
+O `Case 2` será tratado como a segunda grande leva experimental do projeto.
+
+Seu objetivo é validar se o cenário com `Redis` passa a produzir diferença mais visível quando o experimento deixa de ser apenas funcional e passa a ser mais exigente em escala e eficiência.
+
+Na prática, o `Case 2` envolve:
+- ampliação do dataset determinístico;
+- aumento do volume de requisições e da severidade da carga;
+- manutenção do endpoint `GET /api/recommendations/:userId` como fluxo principal;
+- uso de `GET /api/catalog` e `GET /api/catalog/:id` como apoio;
+- coleta obrigatória de `CPU`, memória e `cache hit/miss`;
+- comparação entre `baseline` e `redis-cache` sob o mesmo protocolo.
+
+O `Case 2` **não** introduz uma nova arquitetura.
+
+Ele é uma evolução experimental do `Case 1`, inspirada na lógica metodológica do Artigo 2, mas adaptada ao escopo real do TCC.
 
 ## Endpoints Prioritários
 

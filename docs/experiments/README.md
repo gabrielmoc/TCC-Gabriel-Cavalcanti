@@ -33,6 +33,12 @@ docs/experiments/
 - `first-comparison.md`: comparação consolidada da primeira entrega experimental.
 - `scenarios/`: documentação detalhada de cada cenário de teste.
 
+## Casos Evolutivos
+
+- `Case 1`: baseline, Redis e primeira comparação experimental já concluída.
+- `Case 2`: escala, eficiência e uso de recursos, já formalizado para a próxima etapa.
+- `Case 3`: cenário otimizado final e consolidação comparativa do TCC.
+
 ## Artefatos Visuais Atuais
 
 - `figures/recommendations-ramp-strong.svg`
