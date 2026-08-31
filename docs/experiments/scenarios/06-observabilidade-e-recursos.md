@@ -54,15 +54,32 @@ GET /api/catalog
 
 ## Armazenamento
 
-Sugestão de destino:
+Resultados oficiais:
 
 ```text
-results/baseline/observability/
-results/redis-cache/observability/
+results/baseline/case-2/
+results/redis-cache/case-2/
+docs/experiments/case-2-comparison.md
 ```
 
 ## Status
 
 ```text
-Planejado
+Concluído em 31/08/2026
 ```
+
+## Resultado Consolidado
+
+Esta etapa passou a contar com:
+
+- snapshots antes e depois de cada rodada;
+- coleta de `CPU` por serviço;
+- coleta de memória `RSS` por serviço;
+- contadores de `HIT`, `MISS` e origem dos dados no `Catalog Service`.
+
+Leitura geral:
+
+- a observabilidade mínima funcionou de forma reproduzível;
+- o cenário com `Redis` consumiu mais memória no `Catalog Service`;
+- em vários casos, também exigiu mais `CPU`;
+- isso fortaleceu a discussão de custo x benefício da otimização.

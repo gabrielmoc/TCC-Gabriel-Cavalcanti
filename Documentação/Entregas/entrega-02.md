@@ -1,4 +1,4 @@
-# Entrega 02 - Planejamento da Segunda Leva Experimental
+# Entrega 02 - Planejamento e Consolidação da Segunda Leva Experimental
 
 **Data:** 31 de agosto de 2026  
 **Aluno:** Gabriel Moura de Oliveira Cavalcanti  
@@ -11,15 +11,15 @@
 
 ## 1. Objetivo desta entrega
 
-Esta segunda entrega tem como objetivo registrar o fechamento metodológico da próxima etapa prática do TCC.
+Esta segunda entrega passou a registrar tanto o fechamento metodológico quanto a consolidação prática da segunda leva experimental do TCC.
 
-O foco agora não é apresentar uma nova arquitetura pronta, mas mostrar que:
+O foco desta etapa foi mostrar que:
 
 - os cenários de teste já foram mapeados até o fim do projeto;
 - o `Case 2` já foi definido de forma clara;
 - o Artigo 2 foi revisto com cautela;
 - já existe um recorte objetivo do que será reaproveitado;
-- a próxima fase prática já está organizada para execução.
+- a execução prática do `Case 2` foi concluída e documentada.
 
 ---
 
@@ -52,7 +52,9 @@ Nesta entrega foi consolidado o seguinte:
 - organização dos cenários em casos evolutivos;
 - definição explícita do `Case 2`;
 - revisão crítica do Artigo 2, separando o que cabe e o que não cabe no escopo do TCC;
-- definição do que deverá ser implementado, medido, executado e documentado na próxima fase.
+- definição do que deveria ser implementado, medido, executado e documentado na próxima fase;
+- execução efetiva das rodadas do `Case 2`;
+- consolidação dos resultados da segunda comparação experimental.
 
 ---
 
@@ -243,20 +245,36 @@ Até este momento, já está concluído:
 - reorganização do plano de testes em formato mestre;
 - separação dos cenários em documentos próprios;
 - revisão crítica do Artigo 2;
-- definição conceitual e metodológica do `Case 2`.
+- definição conceitual e metodológica do `Case 2`;
+- ampliação do dataset determinístico;
+- coleta de `CPU` e memória por serviço;
+- execução das rodadas moderadas e fortes;
+- consolidação da comparação entre `baseline` e `redis-cache`.
 
 ---
 
 ## 11. O que ainda falta executar
 
-As próximas ações práticas da segunda leva são:
+Com o `Case 2` encerrado, as próximas ações passam a ser:
 
-- ampliar o dataset determinístico;
-- preparar coleta de `CPU` e memória;
-- definir e ajustar as novas rodadas de carga;
-- executar `baseline` e `redis-cache` no novo contexto;
-- consolidar a comparação da segunda entrega;
-- só depois avançar para a definição do terceiro cenário.
+- definir formalmente o terceiro cenário otimizado;
+- implementar esse terceiro cenário;
+- validar funcionalmente a nova configuração;
+- preparar a comparação tripla final do TCC;
+- consolidar a bateria final com tabelas, gráficos e interpretação comparativa.
+
+---
+
+## 12. Onde está a consolidação prática
+
+Os principais artefatos finais desta entrega estão em:
+
+- `docs/experiments/case-2-comparison.md`;
+- `docs/experiments/test-plan.md`;
+- `docs/experiments/scenarios/05-comparacao-dataset-ampliado.md`;
+- `docs/experiments/scenarios/06-observabilidade-e-recursos.md`;
+- `results/baseline/case-2/`;
+- `results/redis-cache/case-2/`.
 
 ---
 

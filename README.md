@@ -85,9 +85,10 @@ O desenho experimental atualmente contempla:
 - **Definido:** cenário baseline, sem mecanismos específicos de otimização;
 - **Definido:** cenário utilizando cache por meio do `Redis`;
 - **Pendente:** definição final das técnicas que comporão o cenário otimizado;
-- **Definido e preparado:** testes de carga utilizando `k6`;
+- **Definido e implementado:** testes de carga utilizando `k6`;
 - **Definido:** coleta de métricas relacionadas ao desempenho e ao uso de recursos;
-- **Definido:** três execuções para cada combinação entre cenário experimental e padrão de carga.
+- **Definido:** três execuções para cada combinação entre cenário experimental e padrão de carga;
+- **Concluído:** segunda leva experimental com dataset ampliado, carga moderada, carga forte e coleta de `CPU` e memória.
 
 ---
 
@@ -442,6 +443,7 @@ Ao final da implementação, deverão estar documentados:
 │   └── experiments/
 │       ├── test-plan.md
 │       ├── first-comparison.md
+│       ├── case-2-comparison.md
 │       └── figures/
 │
 └── README.md
@@ -453,7 +455,7 @@ A estrutura poderá continuar sendo refinada, especialmente quando o terceiro ce
 
 ## Resultados
 
-> **Status:** primeira entrega experimental concluída para `baseline` e `redis-cache`, com validação manual, rodada exploratória e bateria forte consolidada.
+> **Status:** `Case 1` e `Case 2` concluídos para `baseline` e `redis-cache`, com validação manual, rodada exploratória, bateria forte, dataset ampliado e coleta de recursos consolidados.
 
 No momento, o repositório já contém:
 
@@ -461,18 +463,21 @@ No momento, o repositório já contém:
 - primeira bateria controlada com `k6` no `baseline`;
 - primeira bateria controlada com `k6` no cenário com `Redis`;
 - bateria forte com `k6` nos endpoints `recommendations` e `catalog`;
-- comparação inicial documentada em [first-comparison.md](/Users/gabrielmoc/Downloads/TCC%20-%20Gabriel/docs/experiments/first-comparison.md).
+- `Case 2` com dataset ampliado, carga moderada e forte e coleta de `CPU` e memória;
+- comparação inicial documentada em [first-comparison.md](/Users/gabrielmoc/Downloads/TCC - Gabriel/docs/experiments/first-comparison.md);
+- comparação do `Case 2` documentada em [case-2-comparison.md](/Users/gabrielmoc/Downloads/TCC - Gabriel/docs/experiments/case-2-comparison.md).
 
 Leitura atual dos resultados:
 - o ambiente está estável e reprodutível;
 - o cache funciona corretamente do ponto de vista funcional;
-- o ganho de desempenho ainda não apareceu de forma relevante no dataset e no ambiente atual;
-- isso orienta os próximos passos metodológicos, especialmente expansão de dataset, coleta de CPU e memória e definição do terceiro cenário.
+- no `Case 2`, o cache apresentou melhora apenas em parte da carga moderada do endpoint principal;
+- nas cargas fortes e no endpoint `catalog`, o cenário com `Redis` ficou mais custoso e, em geral, mais lento;
+- isso orienta o próximo passo metodológico: definição do terceiro cenário otimizado.
 
 Status atual da próxima etapa:
-- o `Case 2` já foi formalizado na documentação experimental;
+- o `Case 2` já foi executado e consolidado na documentação experimental;
 - os cenários de teste do TCC já foram mapeados até a etapa final;
-- a próxima frente prática será ampliar dataset, aumentar a exigência da carga e comparar eficiência entre `baseline` e `redis-cache`.
+- a próxima frente prática será definir, implementar e validar o terceiro cenário otimizado.
 
 Esta seção continuará sendo atualizada para apresentar:
 
@@ -494,7 +499,6 @@ No estágio atual, ainda não estão consolidados:
 - política definitiva de cache para etapas posteriores;
 - ferramenta de observabilidade;
 - versões finais do ambiente de referência;
-- coleta sistemática de CPU e memória;
 - resultados de cenários adicionais;
 - definição e implementação do terceiro cenário otimizado.
 
@@ -514,9 +518,10 @@ A construção deste repositório é orientada principalmente por:
 A documentação acadêmica funciona como referência para as decisões metodológicas, enquanto este repositório concentra a implementação, os procedimentos de reprodução e os resultados da etapa experimental.
 
 Documentos centrais neste momento:
-- [docs/experiments/test-plan.md](/Users/gabrielmoc/Downloads/TCC%20-%20Gabriel/docs/experiments/test-plan.md)
-- [docs/experiments/first-comparison.md](/Users/gabrielmoc/Downloads/TCC%20-%20Gabriel/docs/experiments/first-comparison.md)
-- [docs/experiments/scenarios/README.md](/Users/gabrielmoc/Downloads/TCC%20-%20Gabriel/docs/experiments/scenarios/README.md)
+- [docs/experiments/test-plan.md](/Users/gabrielmoc/Downloads/TCC - Gabriel/docs/experiments/test-plan.md)
+- [docs/experiments/first-comparison.md](/Users/gabrielmoc/Downloads/TCC - Gabriel/docs/experiments/first-comparison.md)
+- [docs/experiments/case-2-comparison.md](/Users/gabrielmoc/Downloads/TCC - Gabriel/docs/experiments/case-2-comparison.md)
+- [docs/experiments/scenarios/README.md](/Users/gabrielmoc/Downloads/TCC - Gabriel/docs/experiments/scenarios/README.md)
 
 ---
 

@@ -77,8 +77,8 @@ Cada cenário detalhado segue o mesmo padrão:
 | CT-02 | Validação funcional do `redis-cache` | Funcional | Concluído | `scenarios/02-validacao-redis.md` |
 | CT-03 | Comparação exploratória `baseline` vs `redis-cache` | Carga inicial | Concluído | `scenarios/03-comparacao-exploratoria.md` |
 | CT-04 | Comparação forte em `recommendations` e `catalog` | Carga forte | Concluído | `scenarios/04-comparacao-carga-forte.md` |
-| CT-05 | Comparação com dataset ampliado | Carga + dataset | Planejado | `scenarios/05-comparacao-dataset-ampliado.md` |
-| CT-06 | Comparação com observabilidade expandida | Observabilidade | Planejado | `scenarios/06-observabilidade-e-recursos.md` |
+| CT-05 | Comparação com dataset ampliado | Carga + dataset | Concluído | `scenarios/05-comparacao-dataset-ampliado.md` |
+| CT-06 | Comparação com observabilidade expandida | Observabilidade | Concluído | `scenarios/06-observabilidade-e-recursos.md` |
 | CT-07 | Validação funcional do terceiro cenário otimizado | Funcional | Planejado | `scenarios/07-validacao-cenario-otimizado.md` |
 | CT-08 | Comparação entre `baseline`, `redis-cache` e cenário otimizado | Carga comparativa | Planejado | `scenarios/08-comparacao-tripla.md` |
 | CT-09 | Bateria final consolidada do TCC | Consolidação final | Planejado | `scenarios/09-bateria-final.md` |
@@ -98,20 +98,24 @@ Até 31/08/2026, os seguintes cenários já foram efetivamente realizados:
 - CT-02;
 - CT-03;
 - CT-04.
+- CT-05;
+- CT-06.
 
 Esses cenários já produziram:
 - validação funcional do fluxo ponta a ponta;
 - validação de `MISS`, `HIT` e `fallback` no `Catalog Service`;
 - rodada exploratória inicial;
 - bateria forte em `recommendations` e `catalog`;
+- ampliação do dataset determinístico para `1500` itens de catálogo e `240` usuários;
+- comparação em carga `moderada` e `forte` no `Case 2`;
+- coleta de `CPU`, memória e origem dos dados por serviço;
 - resultados brutos em `results/`;
-- comparação inicial consolidada em `docs/experiments/first-comparison.md`.
+- comparação inicial consolidada em `docs/experiments/first-comparison.md`;
+- comparação do `Case 2` consolidada em `docs/experiments/case-2-comparison.md`.
 
 ## Cenários Ainda Necessários Até o Fim do TCC
 
 Os cenários ainda previstos para fechar o trabalho são:
-- CT-05: ampliar o dataset e repetir a comparação entre `baseline` e `redis-cache`;
-- CT-06: incorporar coleta sistemática de CPU e memória na análise experimental;
 - CT-07: validar funcionalmente o terceiro cenário otimizado;
 - CT-08: executar comparação tripla com a mesma carga funcional;
 - CT-09: consolidar a bateria final com tabelas, gráficos e leitura comparativa completa.
@@ -233,13 +237,11 @@ Um cenário só deve ser marcado como concluído quando houver:
 
 ## Ordem Recomendada de Execução Até o Final
 
-1. Consolidar o que já foi executado em uma trilha metodológica única.
-2. Ampliar dataset e repetir a comparação `baseline` vs `redis-cache`.
-3. Incorporar coleta sistemática de CPU e memória.
-4. Definir formalmente o terceiro cenário otimizado.
-5. Validar funcionalmente o terceiro cenário.
-6. Executar comparação tripla sob a mesma carga funcional.
-7. Consolidar a bateria final com leitura comparativa e visual.
+1. Consolidar o `Case 2` como base metodológica já encerrada.
+2. Definir formalmente o terceiro cenário otimizado.
+3. Validar funcionalmente o terceiro cenário.
+4. Executar comparação tripla sob a mesma carga funcional.
+5. Consolidar a bateria final com leitura comparativa e visual.
 
 ## Relação com a Literatura
 
@@ -258,6 +260,7 @@ Na prática, isso significa que:
 - [03-comparacao-exploratoria.md](./scenarios/03-comparacao-exploratoria.md)
 - [04-comparacao-carga-forte.md](./scenarios/04-comparacao-carga-forte.md)
 - [05-comparacao-dataset-ampliado.md](./scenarios/05-comparacao-dataset-ampliado.md)
+- [case-2-comparison.md](./case-2-comparison.md)
 - [06-observabilidade-e-recursos.md](./scenarios/06-observabilidade-e-recursos.md)
 - [07-validacao-cenario-otimizado.md](./scenarios/07-validacao-cenario-otimizado.md)
 - [08-comparacao-tripla.md](./scenarios/08-comparacao-tripla.md)

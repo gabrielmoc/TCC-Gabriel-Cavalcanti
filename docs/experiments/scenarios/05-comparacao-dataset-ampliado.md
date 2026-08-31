@@ -67,5 +67,24 @@ docs/experiments/
 ## Status
 
 ```text
-Planejado
+Concluído em 31/08/2026
+```
+
+## Resultado Consolidado
+
+O cenário foi executado com dataset ampliado, carga `moderada` e `forte`, mantendo comparação direta entre `baseline` e `redis-cache`.
+
+Leitura geral:
+
+- o `Redis` funcionou corretamente e apresentou predominância de `HIT`;
+- o endpoint principal `recommendations` mostrou melhora apenas na carga moderada;
+- nas cargas mais exigentes, o cache não entregou ganho consistente;
+- o custo de `CPU` e memória cresceu no `Catalog Service` com o uso do `Redis`.
+
+Resultados oficiais:
+
+```text
+results/baseline/case-2/
+results/redis-cache/case-2/
+docs/experiments/case-2-comparison.md
 ```

@@ -17,6 +17,7 @@ docs/experiments/
   README.md
   test-plan.md
   first-comparison.md
+  case-2-comparison.md
   scenarios/
   figures/
 ```
@@ -31,12 +32,13 @@ docs/experiments/
 
 - `test-plan.md`: plano mestre com todos os cenários até o fim do TCC.
 - `first-comparison.md`: comparação consolidada da primeira entrega experimental.
+- `case-2-comparison.md`: comparação consolidada da segunda leva experimental.
 - `scenarios/`: documentação detalhada de cada cenário de teste.
 
 ## Casos Evolutivos
 
 - `Case 1`: baseline, Redis e primeira comparação experimental já concluída.
-- `Case 2`: escala, eficiência e uso de recursos, já formalizado para a próxima etapa.
+- `Case 2`: escala, eficiência e uso de recursos, executado e consolidado.
 - `Case 3`: cenário otimizado final e consolidação comparativa do TCC.
 
 ## Artefatos Visuais Atuais

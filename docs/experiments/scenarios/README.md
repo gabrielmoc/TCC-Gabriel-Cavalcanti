@@ -28,3 +28,7 @@ Cada arquivo desta pasta representa um cenário ou bloco de cenários com:
 - [07-validacao-cenario-otimizado.md](./07-validacao-cenario-otimizado.md): validação do terceiro cenário.
 - [08-comparacao-tripla.md](./08-comparacao-tripla.md): comparação entre os três cenários experimentais.
 - [09-bateria-final.md](./09-bateria-final.md): consolidação final do plano experimental.
+
+## Documento Analítico Complementar
+
+- [../case-2-comparison.md](../case-2-comparison.md): leitura consolidada da segunda leva experimental.
