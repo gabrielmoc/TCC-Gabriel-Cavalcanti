@@ -1,11 +1,13 @@
 const express = require("express");
 const { randomUUID } = require("node:crypto");
+const { createRuntimeMetrics } = require("../../../shared/runtime/metrics");
 
 const app = express();
 const port = Number(process.env.RECOMMENDATIONS_SERVICE_PORT || 3003);
 const usersServiceUrl = process.env.USERS_SERVICE_URL || "http://localhost:3002";
 const catalogServiceUrl =
   process.env.CATALOG_SERVICE_URL || "http://localhost:3001";
+const metrics = createRuntimeMetrics("recommendations");
 
 app.use((req, res, next) => {
   const requestId = req.headers["x-request-id"] || randomUUID();
@@ -18,6 +20,8 @@ app.use((req, res, next) => {
     const durationMs = Date.now() - startedAt;
     const userDuration = res.locals.usersDurationMs ?? "n/a";
     const catalogDuration = res.locals.catalogDurationMs ?? "n/a";
+
+    metrics.recordRequest(res.statusCode, durationMs);
 
     console.log(
       [
@@ -106,6 +110,10 @@ app.get("/health", (_req, res) => {
     service: "recommendations",
     status: "ok",
   });
+});
+
+app.get("/metrics", (_req, res) => {
+  res.json(metrics.snapshot());
 });
 
 app.listen(port, () => {

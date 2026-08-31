@@ -1,5 +1,6 @@
 const express = require("express");
 const { randomUUID } = require("node:crypto");
+const { createRuntimeMetrics } = require("../../shared/runtime/metrics");
 
 const app = express();
 const port = Number(process.env.GATEWAY_PORT || 3000);
@@ -8,6 +9,7 @@ const catalogServiceUrl =
 const usersServiceUrl = process.env.USERS_SERVICE_URL || "http://localhost:3002";
 const recommendationsServiceUrl =
   process.env.RECOMMENDATIONS_SERVICE_URL || "http://localhost:3003";
+const metrics = createRuntimeMetrics("gateway");
 
 app.use((req, res, next) => {
   const start = Date.now();
@@ -21,6 +23,11 @@ app.use((req, res, next) => {
     const upstreamService = res.locals.upstreamService || "n/a";
     const cacheStatus = res.locals.cacheStatus || "n/a";
     const dataSource = res.locals.dataSource || "n/a";
+
+    metrics.recordRequest(res.statusCode, durationMs);
+    metrics.incrementCounter("upstreamService", upstreamService);
+    metrics.incrementCounter("cacheStatus", cacheStatus);
+    metrics.incrementCounter("dataSource", dataSource);
 
     console.log(
       [
@@ -98,6 +105,10 @@ app.get("/health", (_req, res) => {
     service: "gateway",
     status: "ok",
   });
+});
+
+app.get("/metrics", (_req, res) => {
+  res.json(metrics.snapshot());
 });
 
 app.listen(port, () => {

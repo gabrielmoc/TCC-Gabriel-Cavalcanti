@@ -2,6 +2,7 @@ const express = require("express");
 const { randomUUID } = require("node:crypto");
 const path = require("path");
 const { createClient } = require("redis");
+const { createRuntimeMetrics } = require("../../../shared/runtime/metrics");
 
 const app = express();
 const port = Number(process.env.CATALOG_SERVICE_PORT || 3001);
@@ -12,6 +13,16 @@ const catalog = require(path.resolve(
   __dirname,
   "../../../shared/datasets/catalog.json"
 ));
+const metrics = createRuntimeMetrics("catalog", () => ({
+  dataset: {
+    catalogItems: catalog.length,
+  },
+  cache: {
+    enabled: cacheEnabled,
+    connected: cacheConnected,
+    ttlSeconds: cacheTtlSeconds,
+  },
+}));
 
 let redisClient;
 let cacheConnected = false;
@@ -28,6 +39,10 @@ app.use((req, res, next) => {
     const cacheStatus = res.locals.cacheStatus || "BYPASS";
     const dataSource = res.locals.dataSource || "n/a";
     const cacheKey = res.locals.cacheKey || "n/a";
+
+    metrics.recordRequest(res.statusCode, durationMs);
+    metrics.incrementCounter("cacheStatus", cacheStatus);
+    metrics.incrementCounter("dataSource", dataSource);
 
     console.log(
       [
@@ -178,6 +193,10 @@ app.get("/health", (_req, res) => {
       ttlSeconds: cacheTtlSeconds,
     },
   });
+});
+
+app.get("/metrics", (_req, res) => {
+  res.json(metrics.snapshot());
 });
 
 async function startServer() {
