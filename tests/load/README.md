@@ -18,11 +18,13 @@ GET /api/recommendations/:userId
 
 ```text
 tests/load/catalog-ramp.js
+tests/load/collect-runtime-metrics.mjs
 tests/load/recommendations-constant.js
 tests/load/recommendations-ramp.js
 tests/load/recommendations-ramp-strong.js
 tests/load/recommendations-spike.js
 tests/load/aggregate-results.mjs
+tests/load/run-case2-battery.sh
 tests/load/run-strong-battery.sh
 ```
 
@@ -100,6 +102,28 @@ tests/load/run-strong-battery.sh baseline recommendations 01
 tests/load/run-strong-battery.sh redis-cache recommendations 01
 tests/load/run-strong-battery.sh baseline catalog 01
 tests/load/run-strong-battery.sh redis-cache catalog 01
+```
+
+## Preparação do Case 2
+
+Para a segunda leva experimental, o diretório também passa a contar com:
+
+- `collect-runtime-metrics.mjs`: coleta snapshots de `CPU`, memória e contadores dos serviços;
+- `run-case2-battery.sh`: executa rodadas padronizadas do `Case 2` e salva métricas antes e depois da carga.
+
+Exemplos:
+
+```bash
+tests/load/run-case2-battery.sh baseline moderado recommendations 01
+tests/load/run-case2-battery.sh redis-cache moderado recommendations 01
+tests/load/run-case2-battery.sh baseline forte catalog 01
+tests/load/run-case2-battery.sh redis-cache forte catalog 01
+```
+
+Resultados esperados do `Case 2`:
+
+```text
+results/{cenario}/case-2/{perfil}/{endpoint}/run-{numero}
 ```
 
 ## Carga funcional equivalente
