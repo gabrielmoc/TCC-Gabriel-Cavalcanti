@@ -15,6 +15,7 @@ fi
 ROOT_DIR="$(cd "$(dirname "$0")/../.." && pwd)"
 RESULTS_DIR="${ROOT_DIR}/results/${SCENARIO}/case-2/${PROFILE}/${ENDPOINT}/run-${RUN_NUMBER}"
 mkdir -p "${RESULTS_DIR}"
+PORTS=(3000 3001 3002 3003)
 
 case "${PROFILE}" in
   moderado)
@@ -72,9 +73,29 @@ cleanup() {
       wait "${pid}" 2>/dev/null || true
     fi
   done
+
+  if command -v lsof >/dev/null 2>&1; then
+    for port in "${PORTS[@]}"; do
+      local pids=""
+      pids="$(lsof -ti tcp:"${port}" 2>/dev/null || true)"
+      if [[ -n "${pids}" ]]; then
+        kill ${pids} 2>/dev/null || true
+      fi
+    done
+  fi
 }
 
 trap cleanup EXIT
+
+if command -v lsof >/dev/null 2>&1; then
+  for port in "${PORTS[@]}"; do
+    existing_pids="$(lsof -ti tcp:"${port}" 2>/dev/null || true)"
+    if [[ -n "${existing_pids}" ]]; then
+      kill ${existing_pids} 2>/dev/null || true
+      sleep 1
+    fi
+  done
+fi
 
 export GATEWAY_PORT=3000
 export CATALOG_SERVICE_PORT=3001
@@ -87,13 +108,13 @@ export CATALOG_SERVICE_URL="http://127.0.0.1:3001"
 export USERS_SERVICE_URL="http://127.0.0.1:3002"
 export RECOMMENDATIONS_SERVICE_URL="http://127.0.0.1:3003"
 
-(cd "${ROOT_DIR}/services/catalog" && npm start > "${RESULTS_DIR}/catalog.log" 2>&1) &
+(cd "${ROOT_DIR}/services/catalog" && exec node src/server.js > "${RESULTS_DIR}/catalog.log" 2>&1) &
 CATALOG_PID=$!
-(cd "${ROOT_DIR}/services/users" && npm start > "${RESULTS_DIR}/users.log" 2>&1) &
+(cd "${ROOT_DIR}/services/users" && exec node src/server.js > "${RESULTS_DIR}/users.log" 2>&1) &
 USERS_PID=$!
-(cd "${ROOT_DIR}/services/recommendations" && npm start > "${RESULTS_DIR}/recommendations.log" 2>&1) &
+(cd "${ROOT_DIR}/services/recommendations" && exec node src/server.js > "${RESULTS_DIR}/recommendations.log" 2>&1) &
 RECOMMENDATIONS_PID=$!
-(cd "${ROOT_DIR}/gateway" && npm start > "${RESULTS_DIR}/gateway.log" 2>&1) &
+(cd "${ROOT_DIR}/gateway" && exec node src/server.js > "${RESULTS_DIR}/gateway.log" 2>&1) &
 GATEWAY_PID=$!
 
 for port in 3000 3001 3002 3003; do
