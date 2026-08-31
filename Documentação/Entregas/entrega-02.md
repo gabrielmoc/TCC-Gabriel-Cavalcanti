@@ -44,7 +44,32 @@ Essa constatação motivou a preparação da segunda leva experimental.
 
 ---
 
-## 3. O que foi alinhado nesta entrega
+## 3. Resumo técnico da semana
+
+Nesta semana, a frente prática do TCC avançou em dois eixos ao mesmo tempo:
+
+- consolidação metodológica do plano experimental;
+- execução prática da segunda leva de testes.
+
+Na parte de organização, o plano mestre de testes foi ampliado para cobrir todo o ciclo do TCC, e os cenários passaram a ficar documentados de forma estruturada em:
+
+- `docs/experiments/test-plan.md`;
+- `docs/experiments/scenarios/`.
+
+Com isso, o projeto deixou de ter apenas um plano focado na primeira comparação e passou a ter um mapeamento completo dos casos até a etapa final do trabalho.
+
+Na parte prática, o `Case 2` foi executado e consolidado. Esse caso reaproveita a mesma arquitetura do `Case 1`, mas eleva a exigência experimental por meio de:
+
+- ampliação do dataset determinístico;
+- aumento de carga;
+- coleta de `CPU`, memória e sinais de cache;
+- comparação controlada entre `baseline` e `redis-cache`.
+
+Também foi identificado e corrigido um problema metodológico nas primeiras execuções do `Case 2`, relacionado ao isolamento das rodadas. As rodadas anteriores foram preservadas apenas como histórico de descarte metodológico, e a bateria oficial foi refeita do zero. Isso fortalece a confiabilidade da análise final.
+
+---
+
+## 4. O que foi alinhado nesta entrega
 
 Nesta entrega foi consolidado o seguinte:
 
@@ -58,7 +83,7 @@ Nesta entrega foi consolidado o seguinte:
 
 ---
 
-## 4. Leitura crítica do Artigo 2
+## 5. Leitura crítica do Artigo 2
 
 O Artigo 2 apresenta uma solução de altíssima complexidade, baseada em:
 
@@ -75,7 +100,13 @@ A leitura metodologicamente mais segura é:
 - **não** reproduzir a solução técnica do artigo;
 - **aproveitar** sua lógica de avaliação, comparação e análise.
 
-### 4.1 O que faz sentido aproveitar
+### 5.1 Resumo do artigo
+
+O artigo trata de otimização de tráfego de APIs em um ambiente de larga escala, com foco não apenas em rapidez, mas também em eficiência operacional. A proposta do artigo é muito mais ampla do que uma simples otimização local: ele considera decisões complexas sobre como distribuir melhor o tráfego e reduzir desperdícios em um sistema de produção altamente dinâmico.
+
+Em outras palavras, o artigo mostra que melhorar desempenho em sistemas distribuídos não é só reduzir latência isoladamente. Também é preciso observar custo, comportamento sob carga, aproveitamento de recursos e efeito global da intervenção na arquitetura.
+
+### 5.2 O que faz sentido aproveitar
 
 - comparação justa entre cenários sob a mesma carga funcional;
 - avaliação em mais de uma condição de carga;
@@ -83,7 +114,7 @@ A leitura metodologicamente mais segura é:
 - leitura do efeito da otimização no fluxo do sistema, e não só em um componente isolado;
 - preocupação com eficiência operacional, além de rapidez.
 
-### 4.2 O que não faz sentido aproveitar agora
+### 5.3 O que não faz sentido aproveitar agora
 
 - `reinforcement learning`;
 - múltiplos datacenters;
@@ -94,7 +125,7 @@ A leitura metodologicamente mais segura é:
 
 ---
 
-## 5. Definição do Case 2
+## 6. Definição do Case 2
 
 O `Case 2` será a evolução experimental do `Case 1`, sem trocar a arquitetura base do projeto.
 
@@ -107,7 +138,7 @@ Em vez de criar um sistema novo, ele vai reaproveitar:
 
 O que muda no `Case 2` é o nível de exigência experimental.
 
-### 5.1 Objetivo do Case 2
+### 6.1 Objetivo do Case 2
 
 Verificar se o impacto do cache se torna mais visível quando o experimento passa a operar com:
 
@@ -116,7 +147,7 @@ Verificar se o impacto do cache se torna mais visível quando o experimento pass
 - maior pressão de carga;
 - medição explícita de `CPU`, memória e sinais de eficiência.
 
-### 5.2 Interpretação metodológica
+### 6.2 Interpretação metodológica
 
 O `Case 2` não é uma tecnologia nova.
 
@@ -129,27 +160,30 @@ Ele é uma nova fase de avaliação do que já foi implementado, com foco em:
 
 ---
 
-## 6. O que precisará ser implementado na próxima fase
+## 7. O que foi implementado e executado
 
-Para viabilizar o `Case 2`, a próxima etapa prática deverá incluir:
+Para viabilizar o `Case 2`, foram implementados e executados os seguintes pontos:
 
 - ampliação do dataset determinístico;
 - preparação de massa maior de catálogo e usuários;
 - coleta sistemática de `CPU` e memória;
-- preparação de novas rodadas com carga mais agressiva;
+- coleta de `HIT`, `MISS` e origem dos dados no `Catalog Service`;
+- preparação de rodadas moderadas e fortes com `k6`;
+- execução de `baseline` e `redis-cache` nos dois perfis de carga;
 - organização específica dos resultados da segunda entrega;
 - criação do documento comparativo próprio do `Case 2`.
 
-Não será necessário implementar, nesta fase:
+Implementações objetivas desta semana:
 
-- nova arquitetura distribuída;
-- múltiplos datacenters;
-- aprendizado por reforço;
-- escalonamento inteligente baseado em IA.
+- `catalog.json` ampliado para `1500` itens;
+- `users.json` ampliado para `240` usuários;
+- instrumentação de métricas por serviço;
+- snapshots antes e depois das rodadas;
+- consolidação dos resultados válidos em `aggregate-summary.json`.
 
 ---
 
-## 7. O que deverá ser medido
+## 8. O que foi medido
 
 As métricas centrais do `Case 2` serão:
 
@@ -168,7 +202,7 @@ Além disso, a análise deverá observar:
 - se o serviço passou a responder com menor esforço computacional;
 - se houve indício de menor ociosidade e melhor aproveitamento dos recursos.
 
-### 7.1 Sobre energia
+### 8.1 Sobre energia
 
 Nesta etapa, energia não será tratada como medição elétrica direta.
 
@@ -181,9 +215,9 @@ Ela será abordada como **aproximação de eficiência operacional**, usando pri
 
 ---
 
-## 8. Rodadas previstas para o Case 2
+## 9. Rodadas executadas no Case 2
 
-As rodadas previstas são:
+As rodadas executadas foram:
 
 1. `Baseline + dataset ampliado + carga moderada`
 2. `Redis + dataset ampliado + carga moderada`
@@ -201,35 +235,84 @@ Essas rodadas deverão:
 
 ---
 
-## 9. Como a documentação foi organizada
+## 10. Principais resultados do Case 2
+
+### 10.1 Endpoint principal - Recommendations
+
+Na carga moderada, o cenário com `Redis` apresentou melhora no endpoint principal:
+
+- latência média caiu de `74,03 ms` para `65,42 ms`;
+- latência `p95` caiu de `216,64 ms` para `146,32 ms`;
+- throughput subiu de `167,32 req/s` para `176,70 req/s`.
+
+Na carga forte, porém, o comportamento se inverteu:
+
+- latência média subiu de `210,69 ms` para `268,95 ms`;
+- latência `p95` subiu de `323,50 ms` para `443,22 ms`;
+- throughput caiu de `235,00 req/s` para `198,29 req/s`.
+
+Leitura:
+
+- o cache ajudou parcialmente em uma condição moderada;
+- mas não sustentou ganho consistente quando a pressão aumentou.
+
+### 10.2 Endpoint de apoio - Catalog
+
+No endpoint `catalog`, o cenário com `Redis` não trouxe benefício nas rodadas oficiais:
+
+- na carga moderada, a latência média subiu de `71,11 ms` para `87,23 ms`;
+- na carga forte, subiu de `305,78 ms` para `342,64 ms`;
+- o throughput também ficou inferior ao `baseline` nas duas situações.
+
+Além disso, o custo de `CPU` e memória do `Catalog Service` ficou maior no cenário com `Redis`.
+
+### 10.3 Interpretação técnica
+
+O principal achado desta semana foi:
+
+- o cache funciona tecnicamente;
+- o `Redis` ficou ativo e com predominância clara de `HIT`;
+- porém, no ambiente atual, o ganho de desempenho não foi consistente;
+- em vários casos, o cenário com cache ficou mais pesado do que o `baseline`.
+
+Isso sugere que:
+
+- a fonte local determinística ainda é relativamente barata;
+- o custo adicional de serialização, desserialização e acesso ao Redis pesa no ambiente atual;
+- o TCC agora já tem evidência empírica suficiente para discutir custo x benefício da otimização, e não apenas seu funcionamento.
+
+---
+
+## 11. Como a documentação foi organizada
 
 Para manter o projeto com nível acadêmico mais forte, a organização ficou assim:
 
-### 9.1 Plano mestre
+### 11.1 Plano mestre
 
 - `docs/experiments/test-plan.md`
 
 Agora esse documento cobre todo o ciclo experimental do TCC, e não apenas a primeira comparação.
 
-### 9.2 Cenários detalhados
+### 11.2 Cenários detalhados
 
 - `docs/experiments/scenarios/`
 
 Cada cenário possui arquivo próprio, mantendo o mesmo padrão de documentação.
 
-### 9.3 Comparações analíticas
+### 11.3 Comparações analíticas
 
 - `docs/experiments/first-comparison.md`
+- `docs/experiments/case-2-comparison.md`
 
-Esse arquivo continua concentrando a leitura da primeira comparação já executada.
+Esses documentos concentram a leitura consolidada do `Case 1` e do `Case 2`.
 
-### 9.4 Resultados brutos
+### 11.4 Resultados brutos
 
 - `results/`
 
 Os resultados das próximas rodadas continuarão sendo salvos por cenário, padrão de carga e execução.
 
-### 9.5 Entregas ao orientador
+### 11.5 Entregas ao orientador
 
 - `Documentação/Entregas/`
 
@@ -237,7 +320,7 @@ Essa pasta passa a guardar formalmente as entregas de acompanhamento do TCC prá
 
 ---
 
-## 10. O que já está concluído desta nova etapa
+## 12. O que já está concluído desta nova etapa
 
 Até este momento, já está concluído:
 
@@ -253,7 +336,7 @@ Até este momento, já está concluído:
 
 ---
 
-## 11. O que ainda falta executar
+## 13. O que ainda falta executar
 
 Com o `Case 2` encerrado, as próximas ações passam a ser:
 
@@ -265,7 +348,7 @@ Com o `Case 2` encerrado, as próximas ações passam a ser:
 
 ---
 
-## 12. Onde está a consolidação prática
+## 14. Onde está a consolidação prática
 
 Os principais artefatos finais desta entrega estão em:
 
