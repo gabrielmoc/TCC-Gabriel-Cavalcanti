@@ -1,0 +1,26 @@
+<svg width="1200" height="690" viewBox="0 0 1200 690" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title id="title">Case 2: Recommendations - baseline versus Redis</title>
+  <desc id="desc">Comparação de latência média, p95 e throughput sob carga moderada e forte. Valores agregados de três repetições por cenário.</desc>
+  <rect width="1200" height="690" fill="#f7f5ef"/>
+  <text x="60" y="64" font-family="Arial, sans-serif" font-size="30" font-weight="700" fill="#17232e">Case 2 - Endpoint de recomendações</text>
+  <text x="60" y="96" font-family="Arial, sans-serif" font-size="16" fill="#52616d">Baseline versus Redis | dataset: 1.500 itens e 240 usuários | média de 3 repetições</text>
+  <rect x="60" y="126" width="1080" height="2" fill="#d8d2c7"/>
+
+  <text x="60" y="172" font-family="Arial, sans-serif" font-size="22" font-weight="700" fill="#17232e">Carga moderada: Redis apresentou ganho no fluxo principal</text>
+  <g font-family="Arial, sans-serif">
+    <text x="60" y="210" font-size="15" fill="#52616d">Latência média (ms) - menor é melhor</text>
+    <rect x="60" y="224" width="740" height="25" rx="5" fill="#d96841"/><text x="810" y="244" font-size="15" font-weight="700" fill="#17232e">Baseline: 74,03</text>
+    <rect x="60" y="259" width="654" height="25" rx="5" fill="#258468"/><text x="724" y="279" font-size="15" font-weight="700" fill="#17232e">Redis: 65,42</text>
+    <text x="60" y="322" font-size="15" fill="#52616d">Latência p95 (ms) - menor é melhor</text>
+    <rect x="60" y="336" width="866" height="25" rx="5" fill="#d96841"/><text x="936" y="356" font-size="15" font-weight="700" fill="#17232e">Baseline: 216,64</text>
+    <rect x="60" y="371" width="585" height="25" rx="5" fill="#258468"/><text x="655" y="391" font-size="15" font-weight="700" fill="#17232e">Redis: 146,32</text>
+    <text x="60" y="434" font-size="15" fill="#52616d">Throughput (req/s) - maior é melhor</text>
+    <rect x="60" y="448" width="669" height="25" rx="5" fill="#d96841"/><text x="739" y="468" font-size="15" font-weight="700" fill="#17232e">Baseline: 167,32</text>
+    <rect x="60" y="483" width="707" height="25" rx="5" fill="#258468"/><text x="777" y="503" font-size="15" font-weight="700" fill="#17232e">Redis: 176,70</text>
+  </g>
+
+  <rect x="60" y="542" width="1080" height="2" fill="#d8d2c7"/>
+  <text x="60" y="586" font-family="Arial, sans-serif" font-size="22" font-weight="700" fill="#17232e">Carga forte: Redis apresentou regressão no fluxo principal</text>
+  <text x="60" y="620" font-family="Arial, sans-serif" font-size="16" fill="#52616d">Latência média: 210,69 ms (baseline) para 268,95 ms (Redis) | p95: 323,50 ms para 443,22 ms | throughput: 235,00 para 198,29 req/s.</text>
+  <text x="60" y="654" font-family="Arial, sans-serif" font-size="16" font-weight="700" fill="#8a3d2e">Taxa de erro: 0 nos dois cenários e nos dois perfis de carga.</text>
+</svg>

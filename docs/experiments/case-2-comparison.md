@@ -96,6 +96,10 @@ results/redis-cache/case-2/
 
 ## Resultados - Recommendations
 
+![Síntese visual dos resultados de recomendações no Case 2](figures/case-2-recommendations.svg)
+
+> Figura 1 - Comparação entre baseline e Redis no endpoint de recomendações. Os dados representam a média de três repetições por cenário. Na carga moderada, o Redis apresentou benefício; na carga forte, houve regressão de desempenho.
+
 ### Carga Moderada
 
 | Métrica | Baseline | Redis Cache | Diferença |

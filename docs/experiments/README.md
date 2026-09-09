@@ -46,3 +46,4 @@ docs/experiments/
 - `figures/recommendations-ramp-strong.svg`
 - `figures/catalog-ramp-strong.svg`
 - `figures/first-delivery-summary.svg`
+- `figures/case-2-recommendations.svg`
