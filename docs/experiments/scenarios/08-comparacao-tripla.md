@@ -15,7 +15,7 @@ baseline
 vs
 redis-cache
 vs
-cenário otimizado
+indexação com Apache Solr
 ```
 
 ## Endpoint Principal
@@ -45,6 +45,7 @@ GET /api/catalog/:id
 - taxa de erro;
 - CPU;
 - memória.
+- consultas e falhas do índice, para o cenário Solr.
 
 ## Saídas Esperadas
 

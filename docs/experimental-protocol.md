@@ -117,12 +117,14 @@ Já foi concluído:
 - bateria forte em `recommendations` e `catalog` com tres repetições por cenário;
 - consolidação da comparação inicial em `docs/experiments/first-comparison.md`.
 
-## Próximo limite metodologico
+## Terceiro cenário definido e próximo limite metodológico
 
-O terceiro cenário otimizado ainda não deve ser implementado nesta etapa.
+O terceiro cenário será a indexação do catálogo com Apache Solr utilizada pelo `Recommendations Service`. A decisão, a hipótese, as variáveis controladas e o protocolo de validação estão formalizados em [`optimized-scenario.md`](optimized-scenario.md).
 
-Antes disso, precisamos:
-- ampliar o dataset mantendo determinismo;
-- introduzir monitoramento de CPU e memória;
-- decidir o terceiro cenário com base metodológica e potencial de impacto real;
-- continuar expandindo os testes de carga de forma controlada.
+Antes da implementação, ainda será necessário:
+
+- preparar a indexação determinística do dataset;
+- adaptar o `Recommendations Service` sem alterar o contrato público;
+- ampliar a observabilidade para as consultas ao índice;
+- validar equivalência funcional e ordenação estável;
+- executar as rodadas individuais e a comparação tripla de forma controlada.
