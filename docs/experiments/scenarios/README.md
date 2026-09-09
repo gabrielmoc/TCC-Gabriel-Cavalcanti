@@ -25,7 +25,7 @@ Cada arquivo desta pasta representa um cenário ou bloco de cenários com:
 - [04-comparacao-carga-forte.md](./04-comparacao-carga-forte.md): bateria forte em `recommendations` e `catalog`.
 - [05-comparacao-dataset-ampliado.md](./05-comparacao-dataset-ampliado.md): repetição da comparação com dataset maior.
 - [06-observabilidade-e-recursos.md](./06-observabilidade-e-recursos.md): coleta de CPU, memória e sinais de observabilidade.
-- [07-validacao-cenario-otimizado.md](./07-validacao-cenario-otimizado.md): validação do terceiro cenário.
+- [07-validacao-cenario-otimizado.md](./07-validacao-cenario-otimizado.md): validação do cenário de indexação com Apache Solr.
 - [08-comparacao-tripla.md](./08-comparacao-tripla.md): comparação entre os três cenários experimentais.
 - [09-bateria-final.md](./09-bateria-final.md): consolidação final do plano experimental.
 

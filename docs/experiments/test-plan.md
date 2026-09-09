@@ -33,9 +33,9 @@ Para manter a leitura acadêmica e operacional do TCC mais clara, os cenários d
   - reaproveita a mesma arquitetura e os mesmos cenários base;
   - amplia dataset e exigência de carga;
   - incorpora coleta de `CPU`, memória e sinais de eficiência;
-  - constitui a próxima etapa prática do TCC.
+  - já está concluído e consolidado.
 - **Case 3 - Cenário otimizado final**
-  - introduz a terceira estratégia de otimização;
+  - introduz indexação de catálogo com Apache Solr no fluxo de recomendações;
   - fecha a comparação tripla do trabalho;
   - consolida a bateria final para a monografia.
 
@@ -79,8 +79,8 @@ Cada cenário detalhado segue o mesmo padrão:
 | CT-04 | Comparação forte em `recommendations` e `catalog` | Carga forte | Concluído | `scenarios/04-comparacao-carga-forte.md` |
 | CT-05 | Comparação com dataset ampliado | Carga + dataset | Concluído | `scenarios/05-comparacao-dataset-ampliado.md` |
 | CT-06 | Comparação com observabilidade expandida | Observabilidade | Concluído | `scenarios/06-observabilidade-e-recursos.md` |
-| CT-07 | Validação funcional do terceiro cenário otimizado | Funcional | Planejado | `scenarios/07-validacao-cenario-otimizado.md` |
-| CT-08 | Comparação entre `baseline`, `redis-cache` e cenário otimizado | Carga comparativa | Planejado | `scenarios/08-comparacao-tripla.md` |
+| CT-07 | Validação funcional do cenário de indexação com Solr | Funcional | Definido, pendente de execução | `scenarios/07-validacao-cenario-otimizado.md` |
+| CT-08 | Comparação entre `baseline`, `redis-cache` e Solr indexado | Carga comparativa | Definido, pendente de execução | `scenarios/08-comparacao-tripla.md` |
 | CT-09 | Bateria final consolidada do TCC | Consolidação final | Planejado | `scenarios/09-bateria-final.md` |
 
 ## Enquadramento dos Cenários por Caso
@@ -136,7 +136,13 @@ Na prática, o `Case 2` envolve:
 
 O `Case 2` **não** introduz uma nova arquitetura.
 
-Ele é uma evolução experimental do `Case 1`, inspirada na lógica metodológica do Artigo 2, mas adaptada ao escopo real do TCC.
+Ele é uma evolução experimental do `Case 1`, inspirada na lógica metodológica do Artigo 2, mas adaptada ao escopo real do TCC. O Case 2 foi encerrado com as rodadas oficiais e a comparação documentada.
+
+## Definição Operacional do Case 3
+
+O `Case 3` avaliará indexação de catálogo com Apache Solr no endpoint `GET /api/recommendations/:userId`. O `Recommendations Service` continuará consultando o `Users Service`, mas recuperará itens compatíveis diretamente de um índice determinístico, em vez de obter o catálogo completo do `Catalog Service`.
+
+O cenário preservará contrato público, payload, dataset, perfis de carga e número de repetições. Suas métricas obrigatórias são latência média, p95, throughput, taxa de erro, CPU, memória RSS e sinais das consultas ao índice. A especificação metodológica completa está em [`docs/optimized-scenario.md`](../optimized-scenario.md).
 
 ## Endpoints Prioritários
 
@@ -238,8 +244,8 @@ Um cenário só deve ser marcado como concluído quando houver:
 ## Ordem Recomendada de Execução Até o Final
 
 1. Consolidar o `Case 2` como base metodológica já encerrada.
-2. Definir formalmente o terceiro cenário otimizado.
-3. Validar funcionalmente o terceiro cenário.
+2. Implementar o cenário de indexação com Apache Solr já definido.
+3. Validar funcionalmente o cenário de indexação.
 4. Executar comparação tripla sob a mesma carga funcional.
 5. Consolidar a bateria final com leitura comparativa e visual.
 

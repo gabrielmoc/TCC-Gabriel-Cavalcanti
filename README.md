@@ -84,7 +84,7 @@ O desenho experimental atualmente contempla:
 - **Definido:** comparação entre diferentes cenários experimentais;
 - **Definido:** cenário baseline, sem mecanismos específicos de otimização;
 - **Definido:** cenário utilizando cache por meio do `Redis`;
-- **Pendente:** definição final das técnicas que comporão o cenário otimizado;
+- **Definido e pendente de implementação:** cenário de indexação de catálogo com `Apache Solr` no fluxo de recomendações;
 - **Definido e implementado:** testes de carga utilizando `k6`;
 - **Definido:** coleta de métricas relacionadas ao desempenho e ao uso de recursos;
 - **Definido:** três execuções para cada combinação entre cenário experimental e padrão de carga;
@@ -114,7 +114,7 @@ flowchart LR
     E -.-> G
 ```
 
-> **Observação:** o diagrama representa a arquitetura atualmente implementada para baseline e cache. Ele ainda poderá ser refinado quando o terceiro cenário experimental for definido.
+> **Observação:** o diagrama representa a arquitetura atualmente implementada para baseline e cache. O cenário de indexação com Solr já está definido metodologicamente, mas será representado em diagrama próprio após sua implementação.
 
 ---
 
@@ -125,6 +125,7 @@ flowchart LR
 | Backend | ![Node.js](https://img.shields.io/badge/Node.js-339933?logo=nodedotjs&logoColor=white) | **Implementado** | Ambiente de execução dos serviços. |
 | Framework | ![Express](https://img.shields.io/badge/Express-000000?logo=express&logoColor=white) | **Implementado** | Construção das APIs e microsserviços. |
 | Cache | ![Redis](https://img.shields.io/badge/Redis-DC382D?logo=redis&logoColor=white) | **Implementado** | Implementação do mecanismo de cache no `Catalog Service`. |
+| Indexação | Apache Solr | **Definido, não implementado** | Recuperação indexada de itens para o fluxo de recomendações no terceiro cenário. |
 | Testes | ![k6](https://img.shields.io/badge/k6-7D64FF?logo=k6&logoColor=white) | **Implementado** | Geração de carga e execução dos experimentos. |
 | Observabilidade | Logs e métricas | **Implementado** | Monitoramento mínimo do comportamento da aplicação durante os testes. |
 | Ferramentas auxiliares | A definir | **Pendente** | Dependem da consolidação do ambiente experimental. |
@@ -203,15 +204,13 @@ O experimento será estruturado em torno da implementação de uma arquitetura b
 
 ### Elementos previstos
 
-- coleta de métricas complementares de infraestrutura, como CPU e memória;
 - expansão progressiva dos padrões de carga;
 - registro visual mais completo dos resultados em gráficos e tabelas.
-- ampliação do dataset determinístico para a segunda leva experimental.
 
 ### Elementos pendentes
 
-- definição final das técnicas do cenário otimizado;
-- políticas específicas de cache, como TTL e invalidação;
+- implementação e validação funcional do cenário de indexação com Apache Solr;
+- execução da comparação tripla entre os cenários;
 - aprofundamento estatístico das métricas, caso necessário nas próximas baterias.
 
 ---
@@ -253,18 +252,20 @@ Sempre que possível, serão mantidos constantes entre os experimentos:
 | --- | --- | --- |
 | **Baseline** | **Definido** | Arquitetura base executada sem mecanismos adicionais específicos de otimização. |
 | **Cache com Redis** | **Definido** | Mesma arquitetura com utilização de cache para avaliar seu impacto sobre o desempenho. |
-| **Cenário otimizado** | **Pendente** | Configuração adicional baseada em estratégias selecionadas a partir dos trabalhos de referência. |
+| **Indexação com Apache Solr** | **Definido, não implementado** | Consulta indexada do catálogo no fluxo de recomendações, preservando o contrato público. |
 
 ### Cenário Otimizado
 
-O terceiro cenário está **aberto, porém delimitado metodologicamente**.
+O terceiro cenário está **definido metodologicamente e pendente de implementação**.
 
-Sua composição final não será escolhida apenas por conveniência técnica. As estratégias implementadas deverão:
+O cenário utilizará Apache Solr para indexar o catálogo e permitir que o `Recommendations Service` consulte itens compatíveis com as preferências do usuário. A decisão foi tomada após a análise dos resultados do Case 2 e da orientação para avaliar indexação no fluxo de recomendações. A especificação completa está em [optimized-scenario.md](/Users/gabrielmoc/Downloads/TCC%20-%20Gabriel/docs/optimized-scenario.md).
 
-- possuir sustentação nos trabalhos de referência;
-- ser compatíveis com o ambiente experimental;
-- permitir comparação com os demais cenários;
-- ser viáveis dentro do escopo do TCC.
+Os limites metodológicos permanecem:
+
+- preservar o contrato público e o dataset determinístico;
+- manter a comparação funcionalmente equivalente aos cenários anteriores;
+- medir desempenho e recursos antes de concluir que há ganho;
+- não reproduzir mecanismos de complexidade incompatível com o escopo, como aprendizagem por reforço hierárquico.
 
 Abordagens como auto-scaling preditivo, reinforcement learning e arquiteturas serverless permanecem relevantes para a fundamentação do trabalho, mas não são consideradas automaticamente parte da implementação experimental.
 
@@ -382,7 +383,7 @@ Atualmente estão previstos:
 - testes de carga utilizando `k6`;
 - mecanismos de registro e monitoramento durante as execuções.
 
-Ainda permanecem pendentes de definição:
+Ainda permanecem pendentes de implementação ou validação:
 
 - sistema operacional de referência;
 - estratégia de conteinerização;
@@ -495,12 +496,10 @@ Esta seção continuará sendo atualizada para apresentar:
 
 No estágio atual, ainda não estão consolidados:
 
-- técnicas que comporão o terceiro cenário;
-- política definitiva de cache para etapas posteriores;
-- ferramenta de observabilidade;
-- versões finais do ambiente de referência;
+- execução local do Solr e processo determinístico de indexação;
+- instrumentação específica das consultas ao índice;
 - resultados de cenários adicionais;
-- definição e implementação do terceiro cenário otimizado.
+- validação funcional e execução das baterias do terceiro cenário.
 
 Esses elementos serão definidos progressivamente durante a preparação e implementação da parte prática, sempre buscando manter coerência com a metodologia e com os trabalhos utilizados como referência.
 
@@ -522,6 +521,8 @@ Documentos centrais neste momento:
 - [docs/experiments/first-comparison.md](/Users/gabrielmoc/Downloads/TCC - Gabriel/docs/experiments/first-comparison.md)
 - [docs/experiments/case-2-comparison.md](/Users/gabrielmoc/Downloads/TCC - Gabriel/docs/experiments/case-2-comparison.md)
 - [docs/experiments/scenarios/README.md](/Users/gabrielmoc/Downloads/TCC - Gabriel/docs/experiments/scenarios/README.md)
+- [docs/optimized-scenario.md](/Users/gabrielmoc/Downloads/TCC - Gabriel/docs/optimized-scenario.md)
+- [docs/tcc/metodologia-e-resultados-parciais.md](/Users/gabrielmoc/Downloads/TCC - Gabriel/docs/tcc/metodologia-e-resultados-parciais.md)
 
 ---
 
