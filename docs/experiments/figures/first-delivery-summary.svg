@@ -1,39 +1,18 @@
-<svg width="1100" height="560" viewBox="0 0 1100 560" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
-  <title id="title">Resumo visual da primeira entrega experimental</title>
-  <desc id="desc">Resumo visual com status do baseline, validacao do Redis, bateria forte e principais achados da comparacao.</desc>
-  <rect width="1100" height="560" fill="#fcfaf5"/>
-  <text x="55" y="55" font-family="Helvetica, Arial, sans-serif" font-size="30" font-weight="700" fill="#182028">Primeira Entrega Experimental - Resumo Visual</text>
-  <text x="55" y="88" font-family="Helvetica, Arial, sans-serif" font-size="16" fill="#55616a">Consolidado em 2026-08-16 | baseline vs redis-cache | 2 endpoints | 3 repeticoes por cenario</text>
-
-  <rect x="55" y="125" width="300" height="150" rx="18" fill="#ffffff" stroke="#d6d0c4"/>
-  <text x="80" y="160" font-family="Helvetica, Arial, sans-serif" font-size="20" font-weight="700" fill="#182028">O que ja esta pronto</text>
-  <text x="80" y="193" font-family="Helvetica, Arial, sans-serif" font-size="15" fill="#182028">• baseline funcional e reproduzivel</text>
-  <text x="80" y="220" font-family="Helvetica, Arial, sans-serif" font-size="15" fill="#182028">• cache com Redis validado</text>
-  <text x="80" y="247" font-family="Helvetica, Arial, sans-serif" font-size="15" fill="#182028">• testes de carga executados</text>
-
-  <rect x="400" y="125" width="300" height="150" rx="18" fill="#ffffff" stroke="#d6d0c4"/>
-  <text x="425" y="160" font-family="Helvetica, Arial, sans-serif" font-size="20" font-weight="700" fill="#182028">Volume medido</text>
-  <text x="425" y="193" font-family="Helvetica, Arial, sans-serif" font-size="15" fill="#182028">• recommendations: ~49.8 mil req/run</text>
-  <text x="425" y="220" font-family="Helvetica, Arial, sans-serif" font-size="15" fill="#182028">• catalog: ~50.2 mil req/run</text>
-  <text x="425" y="247" font-family="Helvetica, Arial, sans-serif" font-size="15" fill="#182028">• taxa de erro zero em todos os cenarios</text>
-
-  <rect x="745" y="125" width="300" height="150" rx="18" fill="#ffffff" stroke="#d6d0c4"/>
-  <text x="770" y="160" font-family="Helvetica, Arial, sans-serif" font-size="20" font-weight="700" fill="#182028">Leitura principal</text>
-  <text x="770" y="193" font-family="Helvetica, Arial, sans-serif" font-size="15" fill="#182028">• cache funciona tecnicamente</text>
-  <text x="770" y="220" font-family="Helvetica, Arial, sans-serif" font-size="15" fill="#182028">• sistema ficou estavel</text>
-  <text x="770" y="247" font-family="Helvetica, Arial, sans-serif" font-size="15" fill="#182028">• ganho ainda nao foi expressivo</text>
-
-  <rect x="55" y="315" width="470" height="180" rx="18" fill="#ffffff" stroke="#d6d0c4"/>
-  <text x="80" y="350" font-family="Helvetica, Arial, sans-serif" font-size="22" font-weight="700" fill="#182028">Recommendations</text>
-  <text x="80" y="384" font-family="Helvetica, Arial, sans-serif" font-size="16" fill="#182028">Latencia media: 3.44 ms -> 3.41 ms</text>
-  <text x="80" y="412" font-family="Helvetica, Arial, sans-serif" font-size="16" fill="#182028">p95: 8.97 ms -> 8.70 ms</text>
-  <text x="80" y="440" font-family="Helvetica, Arial, sans-serif" font-size="16" fill="#182028">Throughput: 452.73 -> 452.78 req/s</text>
-  <text x="80" y="475" font-family="Helvetica, Arial, sans-serif" font-size="16" font-weight="700" fill="#2c8c69">Interpretacao: melhora discreta, mas sem impacto relevante.</text>
-
-  <rect x="575" y="315" width="470" height="180" rx="18" fill="#ffffff" stroke="#d6d0c4"/>
-  <text x="600" y="350" font-family="Helvetica, Arial, sans-serif" font-size="22" font-weight="700" fill="#182028">Catalog</text>
-  <text x="600" y="384" font-family="Helvetica, Arial, sans-serif" font-size="16" fill="#182028">Latencia media: 2.65 ms -> 2.69 ms</text>
-  <text x="600" y="412" font-family="Helvetica, Arial, sans-serif" font-size="16" fill="#182028">p95: 7.05 ms -> 7.13 ms</text>
-  <text x="600" y="440" font-family="Helvetica, Arial, sans-serif" font-size="16" fill="#182028">Throughput: 456.52 -> 456.15 req/s</text>
-  <text x="600" y="475" font-family="Helvetica, Arial, sans-serif" font-size="16" font-weight="700" fill="#9a4f2e">Interpretacao: efeito neutro a levemente desfavoravel.</text>
+<svg width="1600" height="900" viewBox="0 0 1600 900" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title id="title">Case 1: s&#237;ntese da primeira compara&#231;&#227;o experimental</title>
+  <desc id="desc">S&#237;ntese visual do baseline, da valida&#231;&#227;o do Redis, da bateria forte e dos resultados nos endpoints de recomenda&#231;&#245;es e cat&#225;logo.</desc>
+  <defs><filter id="s" x="-10%" y="-10%" width="120%" height="130%"><feDropShadow dx="0" dy="9" stdDeviation="11" flood-color="#0f2742" flood-opacity=".10"/></filter><linearGradient id="h" x1="0" x2="1"><stop stop-color="#0b3b66"/><stop offset="1" stop-color="#1769aa"/></linearGradient></defs>
+  <rect width="1600" height="900" fill="#fff"/><rect width="1600" height="195" fill="url(#h)"/>
+  <rect x="80" y="62" width="96" height="38" rx="19" fill="#dbeafe"/><text x="128" y="88" text-anchor="middle" font-family="Arial, sans-serif" font-size="18" font-weight="700" fill="#0b3b66">CASE 1</text>
+  <text x="80" y="148" font-family="Arial, sans-serif" font-size="44" font-weight="700" fill="#fff">S&#237;ntese da primeira compara&#231;&#227;o experimental</text><text x="80" y="178" font-family="Arial, sans-serif" font-size="20" fill="#dbeafe">Baseline e Redis | bateria forte | dois endpoints | m&#233;dia de tr&#234;s repeti&#231;&#245;es</text>
+  <g font-family="Arial, sans-serif" filter="url(#s)"><rect x="80" y="245" width="440" height="190" rx="20" fill="#fff" stroke="#c9dced" stroke-width="2"/><rect x="580" y="245" width="440" height="190" rx="20" fill="#fff" stroke="#c9dced" stroke-width="2"/><rect x="1080" y="245" width="440" height="190" rx="20" fill="#fff" stroke="#c9dced" stroke-width="2"/></g>
+  <g font-family="Arial, sans-serif"><circle cx="125" cy="303" r="21" fill="#dbeafe"/><text x="125" y="310" text-anchor="middle" font-size="23" font-weight="700" fill="#1769aa">1</text><text x="165" y="308" font-size="25" font-weight="700" fill="#102a43">Base funcional</text><text x="120" y="354" font-size="19" fill="#334e68">Baseline reproduz&#237;vel</text><text x="120" y="390" font-size="19" fill="#334e68">Rotas e respostas validadas</text>
+  <circle cx="625" cy="303" r="21" fill="#dbeafe"/><text x="625" y="310" text-anchor="middle" font-size="23" font-weight="700" fill="#1769aa">2</text><text x="665" y="308" font-size="25" font-weight="700" fill="#102a43">Cache Redis</text><text x="620" y="354" font-size="19" fill="#334e68">HIT, MISS e fallback confirmados</text><text x="620" y="390" font-size="19" fill="#334e68">Equival&#234;ncia funcional preservada</text>
+  <circle cx="1125" cy="303" r="21" fill="#dbeafe"/><text x="1125" y="310" text-anchor="middle" font-size="23" font-weight="700" fill="#1769aa">3</text><text x="1165" y="308" font-size="25" font-weight="700" fill="#102a43">Bateria forte</text><text x="1120" y="354" font-size="19" fill="#334e68">5 a 60 usu&#225;rios virtuais</text><text x="1120" y="390" font-size="19" fill="#334e68">Taxa de erro igual a 0%</text></g>
+  <text x="80" y="510" font-family="Arial, sans-serif" font-size="28" font-weight="700" fill="#102a43">Resultados principais</text>
+  <g font-family="Arial, sans-serif" filter="url(#s)"><rect x="80" y="550" width="690" height="220" rx="22" fill="#fff" stroke="#c9dced" stroke-width="2"/><rect x="830" y="550" width="690" height="220" rx="22" fill="#fff" stroke="#c9dced" stroke-width="2"/></g>
+  <g font-family="Arial, sans-serif"><rect x="80" y="550" width="690" height="11" rx="5" fill="#1769aa"/><text x="120" y="620" font-size="28" font-weight="700" fill="#102a43">Endpoint de recomenda&#231;&#245;es</text><text x="120" y="660" font-size="19" fill="#334e68">Lat&#234;ncia m&#233;dia: 3,44 ms &#8594; 3,41 ms</text><text x="120" y="693" font-size="19" fill="#334e68">Lat&#234;ncia p95: 8,97 ms &#8594; 8,70 ms</text><text x="120" y="726" font-size="19" fill="#334e68">Vaz&#227;o: 452,73 &#8594; 452,78 req/s</text><text x="120" y="755" font-size="18" font-weight="700" fill="#1769aa">Varia&#231;&#245;es marginais; sem ganho expressivo.</text>
+  <rect x="830" y="550" width="690" height="11" rx="5" fill="#1769aa"/><text x="870" y="620" font-size="28" font-weight="700" fill="#102a43">Endpoint de cat&#225;logo</text><text x="870" y="660" font-size="19" fill="#334e68">Lat&#234;ncia m&#233;dia: 2,65 ms &#8594; 2,69 ms</text><text x="870" y="693" font-size="19" fill="#334e68">Lat&#234;ncia p95: 7,05 ms &#8594; 7,13 ms</text><text x="870" y="726" font-size="19" fill="#334e68">Vaz&#227;o: 456,52 &#8594; 456,15 req/s</text><text x="870" y="755" font-size="18" font-weight="700" fill="#1769aa">Efeito neutro a discretamente desfavor&#225;vel.</text></g>
+  <rect x="80" y="815" width="1440" height="55" rx="15" fill="#edf5fc"/><text x="112" y="850" font-family="Arial, sans-serif" font-size="20" fill="#17324d"><tspan font-weight="700">Conclus&#227;o parcial:</tspan> o cache funcionou tecnicamente, mas n&#227;o apresentou ganho de desempenho relevante no ambiente inicial.</text>
+  <text x="80" y="895" font-family="Arial, sans-serif" font-size="16" fill="#526f8a">Fonte: elaborado pelo autor (2026), com base na m&#233;dia de tr&#234;s repeti&#231;&#245;es por cen&#225;rio.</text>
 </svg>
