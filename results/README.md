@@ -77,3 +77,7 @@ results/
   optimized/
     README.md
 ```
+
+## Evidências brutas da matriz final
+
+Os arquivos `k6-summary.json`, `metadata.json`, métricas antes/depois e `aggregate-summary.json` são versionados por serem os artefatos necessários para reproduzir a análise. Os arquivos de log por requisição e `k6-output.txt` são preservados localmente durante a execução, mas não são enviados ao GitHub devido ao volume elevado. A automação, os parâmetros e os resumos agregados permitem reexecutar e auditar a matriz sem inflar o repositório.

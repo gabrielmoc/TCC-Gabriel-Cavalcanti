@@ -33,9 +33,10 @@ GET /api/catalog/:id
 
 ## Estratégia de Carga
 
-- repetir o mesmo padrão de carga da bateria forte;
-- ampliar a intensidade se houver estabilidade suficiente;
-- executar o mesmo número de repetições nos três cenários.
+- Case 1: baixa controlada, de 1 a 5 usuários virtuais;
+- Case 2: alta sustentada, de 10 a 90 usuários virtuais;
+- Case 3: carga variável com estágios entre 10, 30 e 70 usuários virtuais;
+- três repetições para cada cenário e case.
 
 ## Métricas
 
@@ -55,16 +56,13 @@ GET /api/catalog/:id
 
 ## Armazenamento
 
-Sugestão:
-
 ```text
-results/baseline/final-comparison/
-results/redis-cache/final-comparison/
-results/optimized/final-comparison/
+results/{baseline,redis-cache,solr}/matriz-final/{case}/recommendations/
+docs/experiments/matriz-final-comparison.md
 ```
 
 ## Status
 
 ```text
-Planejado
+Concluído em 18/09/2026. Foram executadas 27 rodadas, com taxa de erro igual a zero em todas as combinações. A comparação consolidada está em `docs/experiments/matriz-final-comparison.md`.
 ```

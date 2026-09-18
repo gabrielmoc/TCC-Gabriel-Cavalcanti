@@ -1,0 +1,147 @@
+{
+    "metrics": {
+        "http_req_duration{expected_response:true}": {
+            "p(95)": 14.240999999999998,
+            "avg": 8.896537889353818,
+            "min": 2.389,
+            "med": 8.671,
+            "max": 52.494,
+            "p(90)": 12.709
+        },
+        "http_req_tls_handshaking": {
+            "p(95)": 0,
+            "avg": 0,
+            "min": 0,
+            "med": 0,
+            "max": 0,
+            "p(90)": 0
+        },
+        "http_req_receiving": {
+            "avg": 0.14686936308693652,
+            "min": 0.029,
+            "med": 0.113,
+            "max": 2.851,
+            "p(90)": 0.251,
+            "p(95)": 0.3764999999999999
+        },
+        "iteration_duration": {
+            "avg": 165.26724545978635,
+            "min": 154.988792,
+            "med": 165.558042,
+            "max": 206.606333,
+            "p(90)": 170.23875,
+            "p(95)": 171.6795
+        },
+        "vus": {
+            "value": 1,
+            "min": 1,
+            "max": 5
+        },
+        "http_req_duration": {
+            "avg": 8.896537889353818,
+            "min": 2.389,
+            "med": 8.671,
+            "max": 52.494,
+            "p(90)": 12.709,
+            "p(95)": 14.240999999999998,
+            "thresholds": {
+                "p(95)<1500": false
+            }
+        },
+        "http_req_sending": {
+            "min": 0.002,
+            "med": 0.02,
+            "max": 1.592,
+            "p(90)": 0.043,
+            "p(95)": 0.058,
+            "avg": 0.02678335657833579
+        },
+        "vus_max": {
+            "value": 5,
+            "min": 5,
+            "max": 5
+        },
+        "http_req_failed": {
+            "fails": 2151,
+            "passes": 0,
+            "thresholds": {
+                "rate<0.05": false
+            },
+            "value": 0
+        },
+        "data_received": {
+            "count": 57124107,
+            "rate": 713280.4062049635
+        },
+        "http_req_blocked": {
+            "avg": 0.00804184100418413,
+            "min": 0.001,
+            "med": 0.006,
+            "max": 0.484,
+            "p(90)": 0.012,
+            "p(95)": 0.015
+        },
+        "checks": {
+            "passes": 6453,
+            "fails": 0,
+            "value": 1
+        },
+        "http_req_waiting": {
+            "avg": 8.72288516968851,
+            "min": 2.339,
+            "med": 8.503,
+            "max": 52.413,
+            "p(90)": 12.464,
+            "p(95)": 14.092499999999998
+        },
+        "http_reqs": {
+            "count": 2151,
+            "rate": 26.85847069341279
+        },
+        "http_req_connecting": {
+            "avg": 0.000702928870292887,
+            "min": 0,
+            "med": 0,
+            "max": 0.37,
+            "p(90)": 0,
+            "p(95)": 0
+        },
+        "iterations": {
+            "count": 2151,
+            "rate": 26.85847069341279
+        },
+        "data_sent": {
+            "count": 195741,
+            "rate": 2444.120833100564
+        }
+    },
+    "root_group": {
+        "checks": {
+            "status 200": {
+                "fails": 0,
+                "name": "status 200",
+                "path": "::status 200",
+                "id": "fad9fa412b86fcb03bee97c80dcd61f1",
+                "passes": 2151
+            },
+            "response has userId": {
+                "name": "response has userId",
+                "path": "::response has userId",
+                "id": "0300f8c626aecb7626c69101cbc113db",
+                "passes": 2151,
+                "fails": 0
+            },
+            "response has recommendations": {
+                "name": "response has recommendations",
+                "path": "::response has recommendations",
+                "id": "3806315105acc6818a83ac30e7cf7d67",
+                "passes": 2151,
+                "fails": 0
+            }
+        },
+        "name": "",
+        "path": "",
+        "id": "d41d8cd98f00b204e9800998ecf8427e",
+        "groups": {}
+    }
+}

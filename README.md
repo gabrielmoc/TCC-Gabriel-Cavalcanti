@@ -221,8 +221,8 @@ O experimento será estruturado em torno da implementação de uma arquitetura b
 
 ### Elementos em andamento
 
-- execução da matriz final tripla entre baseline, Redis e Solr;
-- consolidação de tabelas, gráficos e interpretação das 27 rodadas;
+- revisão acadêmica da interpretação da matriz final tripla entre baseline, Redis e Solr;
+- integração das tabelas e gráficos das 27 rodadas ao artigo científico;
 - aprofundamento estatístico das métricas, caso necessário após a matriz final.
 
 ---
@@ -353,7 +353,7 @@ Consolidação dos resultados
 Comparação entre cenários
 ```
 
-Cada combinação entre **cenário experimental e padrão de carga será executada três vezes**, reduzindo a influência de variações ocasionais sobre os resultados.
+Cada combinação entre **cenário experimental e padrão de carga foi executada três vezes**, reduzindo a influência de variações ocasionais sobre os resultados.
 
 Os parâmetros da primeira rodada controlada foram documentados em [test-plan.md](/Users/gabrielmoc/Downloads/TCC%20-%20Gabriel/docs/experiments/test-plan.md).
 
@@ -470,7 +470,7 @@ A estrutura poderá continuar sendo refinada durante a consolidação visual da 
 
 ## Resultados
 
-> **Status:** evidências históricas entre `baseline` e `redis-cache` concluídas; matriz final em execução para `baseline`, `redis-cache` e `solr` nos três perfis de carga.
+> **Status:** evidências históricas entre `baseline` e `redis-cache` concluídas; matriz final de 27 rodadas concluída para `baseline`, `redis-cache` e `solr` nos três perfis de carga.
 
 No momento, o repositório já contém:
 
@@ -484,6 +484,8 @@ No momento, o repositório já contém:
 
 A comparação oficial final usa três cases por perfil de carga: baixa controlada, alta sustentada e variável. Cada case compara `baseline`, `redis-cache` e `solr` em três repetições no endpoint de recomendações. O protocolo está em [matriz-final.md](docs/experiments/matriz-final.md).
 
+As médias, gráficos e leitura comparativa estão em [matriz-final-comparison.md](docs/experiments/matriz-final-comparison.md). A matriz preservou taxa de erro igual a zero em todas as combinações; no ambiente local, o baseline apresentou menor latência média e maior vazão nos três perfis, evidenciando o custo adicional de cache e indexação quando a fonte original já é barata.
+
 Leitura atual dos resultados:
 - o ambiente está estável e reprodutível;
 - o cache funciona corretamente do ponto de vista funcional;
@@ -494,7 +496,7 @@ Leitura atual dos resultados:
 Status atual da próxima etapa:
 - o cenário Solr já foi implementado e validado funcionalmente;
 - os cenários de teste do TCC já foram mapeados até a etapa final;
-- a frente prática atual é executar e consolidar a matriz experimental final.
+- a frente atual é revisar academicamente a interpretação e integrar os resultados ao artigo científico.
 
 Esta seção continuará sendo atualizada para apresentar:
 

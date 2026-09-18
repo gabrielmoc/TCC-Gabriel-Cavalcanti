@@ -32,9 +32,11 @@ GET /api/users/:id
 
 ## Estratégia de Carga
 
-- repetir a bateria principal em todos os cenários;
-- incluir a configuração de carga mais representativa definida ao longo do trabalho;
-- garantir igualdade funcional, igualdade de dataset e igualdade de protocolo.
+- executar os três cases de carga na mesma rota pública;
+- manter dataset de 1.500 itens e 240 usuários;
+- aquecer o endpoint antes da medição;
+- garantir igualdade funcional, igualdade de dataset e igualdade de protocolo;
+- consolidar médias de três repetições por combinação.
 
 ## Métricas
 
@@ -57,16 +59,14 @@ GET /api/users/:id
 
 ## Armazenamento
 
-Sugestão:
-
 ```text
-results/final/
-docs/experiments/
-docs/experiments/figures/
+results/matriz-final-summary.json
+docs/experiments/matriz-final-comparison.md
+docs/experiments/figures/matriz-final-case-*.svg
 ```
 
 ## Status
 
 ```text
-Planejado
+Concluído em 18/09/2026. A bateria final reuniu baseline, Redis e Solr nos cases de carga baixa, alta e variável, com resultados brutos, resumos agregados, tabelas e gráficos preservados no repositório.
 ```

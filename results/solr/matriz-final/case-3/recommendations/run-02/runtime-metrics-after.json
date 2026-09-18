@@ -1,0 +1,173 @@
+{
+  "collectedAt": "2026-09-18T21:44:02.479Z",
+  "services": [
+    {
+      "service": "gateway",
+      "url": "http://127.0.0.1:3000/metrics",
+      "ok": true,
+      "metrics": {
+        "service": "gateway",
+        "uptimeSeconds": 196.387,
+        "requests": {
+          "total": 51061,
+          "averageDurationMs": 28.774,
+          "maxDurationMs": 25099,
+          "statusCounts": {
+            "200": 51061
+          }
+        },
+        "resources": {
+          "cpuMicros": {
+            "user": 42257240,
+            "system": 4464630,
+            "total": 46721870
+          },
+          "memoryBytes": {
+            "rss": 98156544,
+            "heapTotal": 150044672,
+            "heapUsed": 11677000,
+            "external": 3633219,
+            "arrayBuffers": 184714
+          }
+        },
+        "counters": {
+          "upstreamService": {
+            "n/a": 3,
+            "recommendations": 51058
+          },
+          "cacheStatus": {
+            "n/a": 51061
+          },
+          "dataSource": {
+            "n/a": 3,
+            "solr": 51058
+          }
+        },
+        "extras": {}
+      }
+    },
+    {
+      "service": "catalog",
+      "url": "http://127.0.0.1:3001/metrics",
+      "ok": true,
+      "metrics": {
+        "service": "catalog",
+        "uptimeSeconds": 196.25,
+        "requests": {
+          "total": 2,
+          "averageDurationMs": 2.5,
+          "maxDurationMs": 4,
+          "statusCounts": {
+            "200": 2
+          }
+        },
+        "resources": {
+          "cpuMicros": {
+            "user": 44006,
+            "system": 32280,
+            "total": 76286
+          },
+          "memoryBytes": {
+            "rss": 25182208,
+            "heapTotal": 15106048,
+            "heapUsed": 13012224,
+            "external": 2184775,
+            "arrayBuffers": 18655
+          }
+        },
+        "counters": {
+          "cacheStatus": {
+            "BYPASS": 2
+          },
+          "dataSource": {
+            "n/a": 2
+          }
+        },
+        "extras": {
+          "dataset": {
+            "catalogItems": 1500
+          },
+          "cache": {
+            "enabled": false,
+            "connected": false,
+            "ttlSeconds": 60
+          }
+        }
+      }
+    },
+    {
+      "service": "users",
+      "url": "http://127.0.0.1:3002/metrics",
+      "ok": true,
+      "metrics": {
+        "service": "users",
+        "uptimeSeconds": 196.391,
+        "requests": {
+          "total": 51060,
+          "averageDurationMs": 0.103,
+          "maxDurationMs": 41,
+          "statusCounts": {
+            "200": 51060
+          }
+        },
+        "resources": {
+          "cpuMicros": {
+            "user": 7365587,
+            "system": 2267863,
+            "total": 9633450
+          },
+          "memoryBytes": {
+            "rss": 36061184,
+            "heapTotal": 19759104,
+            "heapUsed": 9806224,
+            "external": 2018138,
+            "arrayBuffers": 51423
+          }
+        },
+        "counters": {},
+        "extras": {
+          "dataset": {
+            "users": 240
+          }
+        }
+      }
+    },
+    {
+      "service": "recommendations",
+      "url": "http://127.0.0.1:3003/metrics",
+      "ok": true,
+      "metrics": {
+        "service": "recommendations",
+        "uptimeSeconds": 196.392,
+        "requests": {
+          "total": 51060,
+          "averageDurationMs": 24.89,
+          "maxDurationMs": 25094,
+          "statusCounts": {
+            "200": 51060
+          }
+        },
+        "resources": {
+          "cpuMicros": {
+            "user": 67606778,
+            "system": 8182277,
+            "total": 75789055
+          },
+          "memoryBytes": {
+            "rss": 216285184,
+            "heapTotal": 168394752,
+            "heapUsed": 43579864,
+            "external": 15314711,
+            "arrayBuffers": 11866206
+          }
+        },
+        "counters": {
+          "catalogSource": {
+            "solr": 51058
+          }
+        },
+        "extras": {}
+      }
+    }
+  ]
+}

@@ -1,0 +1,147 @@
+{
+    "metrics": {
+        "http_req_duration{expected_response:true}": {
+            "avg": 9.248883807746154,
+            "min": 2.748,
+            "med": 8.853,
+            "max": 42.054,
+            "p(90)": 12.852400000000001,
+            "p(95)": 14.642
+        },
+        "http_req_duration": {
+            "avg": 9.248883807746154,
+            "min": 2.748,
+            "med": 8.853,
+            "max": 42.054,
+            "p(90)": 12.852400000000001,
+            "p(95)": 14.642,
+            "thresholds": {
+                "p(95)<1500": false
+            }
+        },
+        "http_req_waiting": {
+            "avg": 9.06606346243585,
+            "min": 2.684,
+            "med": 8.666,
+            "max": 41.837,
+            "p(90)": 12.656400000000001,
+            "p(95)": 14.461799999999998
+        },
+        "vus_max": {
+            "value": 5,
+            "min": 5,
+            "max": 5
+        },
+        "http_req_blocked": {
+            "max": 0.694,
+            "p(90)": 0.013,
+            "p(95)": 0.017,
+            "avg": 0.008652823145123695,
+            "min": 0.001,
+            "med": 0.006
+        },
+        "checks": {
+            "fails": 0,
+            "passes": 6429,
+            "value": 1
+        },
+        "data_sent": {
+            "count": 195013,
+            "rate": 2437.1907208062203
+        },
+        "http_req_connecting": {
+            "avg": 0.0008226784881007934,
+            "min": 0,
+            "med": 0,
+            "max": 0.562,
+            "p(90)": 0,
+            "p(95)": 0
+        },
+        "data_received": {
+            "count": 56911651,
+            "rate": 711257.9557412175
+        },
+        "vus": {
+            "value": 1,
+            "min": 1,
+            "max": 5
+        },
+        "http_req_tls_handshaking": {
+            "avg": 0,
+            "min": 0,
+            "med": 0,
+            "max": 0,
+            "p(90)": 0,
+            "p(95)": 0
+        },
+        "iteration_duration": {
+            "max": 200.884834,
+            "p(90)": 170.1959664,
+            "p(95)": 171.8110789,
+            "avg": 165.84305376341567,
+            "min": 155.467042,
+            "med": 165.884542
+        },
+        "http_req_failed": {
+            "passes": 0,
+            "fails": 2143,
+            "thresholds": {
+                "rate<0.05": false
+            },
+            "value": 0
+        },
+        "http_req_sending": {
+            "med": 0.02,
+            "max": 0.459,
+            "p(90)": 0.042800000000000046,
+            "p(95)": 0.056,
+            "avg": 0.02528324778348124,
+            "min": 0.003
+        },
+        "http_req_receiving": {
+            "med": 0.116,
+            "max": 9.509,
+            "p(90)": 0.27040000000000014,
+            "p(95)": 0.379,
+            "avg": 0.15753709752683162,
+            "min": 0.032
+        },
+        "iterations": {
+            "count": 2143,
+            "rate": 26.782315613255165
+        },
+        "http_reqs": {
+            "rate": 26.782315613255165,
+            "count": 2143
+        }
+    },
+    "root_group": {
+        "name": "",
+        "path": "",
+        "id": "d41d8cd98f00b204e9800998ecf8427e",
+        "groups": {},
+        "checks": {
+                "status 200": {
+                    "name": "status 200",
+                    "path": "::status 200",
+                    "id": "fad9fa412b86fcb03bee97c80dcd61f1",
+                    "passes": 2143,
+                    "fails": 0
+                },
+                "response has userId": {
+                    "name": "response has userId",
+                    "path": "::response has userId",
+                    "id": "0300f8c626aecb7626c69101cbc113db",
+                    "passes": 2143,
+                    "fails": 0
+                },
+                "response has recommendations": {
+                    "path": "::response has recommendations",
+                    "id": "3806315105acc6818a83ac30e7cf7d67",
+                    "passes": 2143,
+                    "fails": 0,
+                    "name": "response has recommendations"
+                }
+            }
+    }
+}

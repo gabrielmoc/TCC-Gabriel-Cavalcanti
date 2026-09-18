@@ -1,0 +1,231 @@
+{
+  "scenario": "redis-cache",
+  "endpoint": "recommendations",
+  "loadProfile": "variavel",
+  "script": "tests/load/recommendations-variable.js",
+  "startVUs": 5,
+  "targetVUs": 70,
+  "rampUp": "n/a",
+  "sustain": "n/a",
+  "rampDown": "n/a",
+  "sleepSeconds": 0.1,
+  "repetitions": 3,
+  "latencyAvgMs": 9.746745937202379,
+  "latencyP95Ms": 28.50803333333333,
+  "throughputRps": 314.6830025234574,
+  "errorRate": 0,
+  "requestCountAvg": 61399,
+  "runtimeAverages": {
+    "gatewayCpuMicros": 60028780.666666664,
+    "gatewayRssBytes": 98456917.33333333,
+    "catalogCpuMicros": 89851102.33333333,
+    "catalogRssBytes": 202320554.66666666,
+    "catalogCacheHit": 61394.666666666664,
+    "catalogCacheMiss": 5.333333333333333,
+    "usersCpuMicros": 12881612.333333334,
+    "usersRssBytes": 34592085.333333336,
+    "recommendationsCpuMicros": 108395701.33333333,
+    "recommendationsRssBytes": 143250773.33333334
+  },
+  "requestCountTotal": 184197,
+  "runs": [
+    {
+      "run": "01",
+      "metadata": {
+        "scenario": "redis-cache",
+        "case": "case-3",
+        "profile": "variavel",
+        "endpoint": "recommendations",
+        "script": "tests/load/recommendations-variable.js",
+        "run": "01",
+        "startVUs": 5,
+        "targetVUs": 70,
+        "rampUp": "n/a",
+        "sustain": "n/a",
+        "rampDown": "n/a",
+        "variableStages": [
+          {
+            "duration": "20s",
+            "target": 30
+          },
+          {
+            "duration": "30s",
+            "target": 30
+          },
+          {
+            "duration": "20s",
+            "target": 10
+          },
+          {
+            "duration": "30s",
+            "target": 10
+          },
+          {
+            "duration": "30s",
+            "target": 70
+          },
+          {
+            "duration": "45s",
+            "target": 70
+          },
+          {
+            "duration": "20s",
+            "target": 0
+          }
+        ],
+        "sleepSeconds": 0.1,
+        "cacheWarmup": true,
+        "date": "18/09/2026"
+      },
+      "latencyAvgMs": 8.176367563227588,
+      "latencyP95Ms": 17.955299999999998,
+      "throughputRps": 319.0708255870383,
+      "errorRate": 0,
+      "requestCount": 62275,
+      "runtime": {
+        "gatewayCpuMicros": 60479931,
+        "gatewayRssBytes": 95354880,
+        "catalogCpuMicros": 91331651,
+        "catalogRssBytes": 185270272,
+        "catalogCacheHit": 62271,
+        "catalogCacheMiss": 5,
+        "usersCpuMicros": 13203763,
+        "usersRssBytes": 33816576,
+        "recommendationsCpuMicros": 110439290,
+        "recommendationsRssBytes": 132923392
+      }
+    },
+    {
+      "run": "02",
+      "metadata": {
+        "scenario": "redis-cache",
+        "case": "case-3",
+        "profile": "variavel",
+        "endpoint": "recommendations",
+        "script": "tests/load/recommendations-variable.js",
+        "run": "02",
+        "startVUs": 5,
+        "targetVUs": 70,
+        "rampUp": "n/a",
+        "sustain": "n/a",
+        "rampDown": "n/a",
+        "variableStages": [
+          {
+            "duration": "20s",
+            "target": 30
+          },
+          {
+            "duration": "30s",
+            "target": 30
+          },
+          {
+            "duration": "20s",
+            "target": 10
+          },
+          {
+            "duration": "30s",
+            "target": 10
+          },
+          {
+            "duration": "30s",
+            "target": 70
+          },
+          {
+            "duration": "45s",
+            "target": 70
+          },
+          {
+            "duration": "20s",
+            "target": 0
+          }
+        ],
+        "sleepSeconds": 0.1,
+        "cacheWarmup": true,
+        "date": "18/09/2026"
+      },
+      "latencyAvgMs": 13.683362175525112,
+      "latencyP95Ms": 51.566,
+      "throughputRps": 302.78923607619544,
+      "errorRate": 0,
+      "requestCount": 59057,
+      "runtime": {
+        "gatewayCpuMicros": 59366534,
+        "gatewayRssBytes": 94289920,
+        "catalogCpuMicros": 86727318,
+        "catalogRssBytes": 191791104,
+        "catalogCacheHit": 59052,
+        "catalogCacheMiss": 6,
+        "usersCpuMicros": 12526366,
+        "usersRssBytes": 34586624,
+        "recommendationsCpuMicros": 103821983,
+        "recommendationsRssBytes": 136151040
+      }
+    },
+    {
+      "run": "03",
+      "metadata": {
+        "scenario": "redis-cache",
+        "case": "case-3",
+        "profile": "variavel",
+        "endpoint": "recommendations",
+        "script": "tests/load/recommendations-variable.js",
+        "run": "03",
+        "startVUs": 5,
+        "targetVUs": 70,
+        "rampUp": "n/a",
+        "sustain": "n/a",
+        "rampDown": "n/a",
+        "variableStages": [
+          {
+            "duration": "20s",
+            "target": 30
+          },
+          {
+            "duration": "30s",
+            "target": 30
+          },
+          {
+            "duration": "20s",
+            "target": 10
+          },
+          {
+            "duration": "30s",
+            "target": 10
+          },
+          {
+            "duration": "30s",
+            "target": 70
+          },
+          {
+            "duration": "45s",
+            "target": 70
+          },
+          {
+            "duration": "20s",
+            "target": 0
+          }
+        ],
+        "sleepSeconds": 0.1,
+        "cacheWarmup": true,
+        "date": "18/09/2026"
+      },
+      "latencyAvgMs": 7.3805080728544405,
+      "latencyP95Ms": 16.002799999999997,
+      "throughputRps": 322.1889459071385,
+      "errorRate": 0,
+      "requestCount": 62865,
+      "runtime": {
+        "gatewayCpuMicros": 60239877,
+        "gatewayRssBytes": 105725952,
+        "catalogCpuMicros": 91494338,
+        "catalogRssBytes": 229900288,
+        "catalogCacheHit": 62861,
+        "catalogCacheMiss": 5,
+        "usersCpuMicros": 12914708,
+        "usersRssBytes": 35373056,
+        "recommendationsCpuMicros": 110925831,
+        "recommendationsRssBytes": 160677888
+      }
+    }
+  ]
+}

@@ -1,0 +1,176 @@
+{
+  "collectedAt": "2026-09-18T21:02:03.689Z",
+  "services": [
+    {
+      "service": "gateway",
+      "url": "http://127.0.0.1:3000/metrics",
+      "ok": true,
+      "metrics": {
+        "service": "gateway",
+        "uptimeSeconds": 81.388,
+        "requests": {
+          "total": 2155,
+          "averageDurationMs": 8.306,
+          "maxDurationMs": 51,
+          "statusCounts": {
+            "200": 2155
+          }
+        },
+        "resources": {
+          "cpuMicros": {
+            "user": 3947431,
+            "system": 428053,
+            "total": 4375484
+          },
+          "memoryBytes": {
+            "rss": 86720512,
+            "heapTotal": 81100800,
+            "heapUsed": 13271392,
+            "external": 5108126,
+            "arrayBuffers": 1659621
+          }
+        },
+        "counters": {
+          "upstreamService": {
+            "n/a": 3,
+            "recommendations": 2152
+          },
+          "cacheStatus": {
+            "n/a": 2155
+          },
+          "dataSource": {
+            "n/a": 2155
+          }
+        },
+        "extras": {}
+      }
+    },
+    {
+      "service": "catalog",
+      "url": "http://127.0.0.1:3001/metrics",
+      "ok": true,
+      "metrics": {
+        "service": "catalog",
+        "uptimeSeconds": 81.244,
+        "requests": {
+          "total": 2154,
+          "averageDurationMs": 3.205,
+          "maxDurationMs": 26,
+          "statusCounts": {
+            "200": 2154
+          }
+        },
+        "resources": {
+          "cpuMicros": {
+            "user": 6527416,
+            "system": 601038,
+            "total": 7128454
+          },
+          "memoryBytes": {
+            "rss": 105152512,
+            "heapTotal": 83345408,
+            "heapUsed": 15187112,
+            "external": 4101524,
+            "arrayBuffers": 1939143
+          }
+        },
+        "counters": {
+          "cacheStatus": {
+            "BYPASS": 2,
+            "MISS": 2,
+            "HIT": 2150
+          },
+          "dataSource": {
+            "n/a": 2,
+            "dataset": 2,
+            "redis": 2150
+          }
+        },
+        "extras": {
+          "dataset": {
+            "catalogItems": 1500
+          },
+          "cache": {
+            "enabled": true,
+            "connected": true,
+            "ttlSeconds": 60
+          }
+        }
+      }
+    },
+    {
+      "service": "users",
+      "url": "http://127.0.0.1:3002/metrics",
+      "ok": true,
+      "metrics": {
+        "service": "users",
+        "uptimeSeconds": 81.387,
+        "requests": {
+          "total": 2154,
+          "averageDurationMs": 0.196,
+          "maxDurationMs": 3,
+          "statusCounts": {
+            "200": 2154
+          }
+        },
+        "resources": {
+          "cpuMicros": {
+            "user": 933861,
+            "system": 196388,
+            "total": 1130249
+          },
+          "memoryBytes": {
+            "rss": 31227904,
+            "heapTotal": 11321344,
+            "heapUsed": 9452328,
+            "external": 2083710,
+            "arrayBuffers": 108803
+          }
+        },
+        "counters": {},
+        "extras": {
+          "dataset": {
+            "users": 240
+          }
+        }
+      }
+    },
+    {
+      "service": "recommendations",
+      "url": "http://127.0.0.1:3003/metrics",
+      "ok": true,
+      "metrics": {
+        "service": "recommendations",
+        "uptimeSeconds": 81.388,
+        "requests": {
+          "total": 2154,
+          "averageDurationMs": 6.266,
+          "maxDurationMs": 39,
+          "statusCounts": {
+            "200": 2154
+          }
+        },
+        "resources": {
+          "cpuMicros": {
+            "user": 7338315,
+            "system": 624183,
+            "total": 7962498
+          },
+          "memoryBytes": {
+            "rss": 92127232,
+            "heapTotal": 81625088,
+            "heapUsed": 21298848,
+            "external": 11206394,
+            "arrayBuffers": 7692353
+          }
+        },
+        "counters": {
+          "catalogSource": {
+            "catalog-service": 2152
+          }
+        },
+        "extras": {}
+      }
+    }
+  ]
+}

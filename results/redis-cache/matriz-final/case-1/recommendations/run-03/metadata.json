@@ -1,0 +1,17 @@
+{
+  "scenario": "redis-cache",
+  "case": "case-1",
+  "profile": "baixa-controlada",
+  "endpoint": "recommendations",
+  "script": "tests/load/recommendations-ramp-strong.js",
+  "run": "03",
+  "startVUs": 1,
+  "targetVUs": 5,
+  "rampUp": "10s",
+  "sustain": "60s",
+  "rampDown": "10s",
+  "variableStages": null,
+  "sleepSeconds": 0.15,
+  "cacheWarmup": true,
+  "date": "18/09/2026"
+}

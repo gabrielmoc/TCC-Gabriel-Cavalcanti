@@ -58,15 +58,15 @@ Essas evidências motivaram a matriz final com dataset ampliado, endpoint único
 
 ### 4.2 Matriz final por perfil de carga
 
-As 27 rodadas da matriz final estão sendo executadas sob condições controladas. A consolidação deve apresentar uma subseção para cada case, contendo configuração, tabela de médias, gráfico e interpretação comparativa entre baseline, Redis e Solr.
+As 27 rodadas da matriz final foram executadas sob condições controladas. A consolidação apresenta uma subseção para cada case, contendo configuração, tabela de médias, gráfico e interpretação comparativa entre baseline, Redis e Solr.
 
 | Case | Situação | Artefato de resultados |
 | --- | --- | --- |
-| Case 1 - baixa controlada | Em execução | `results/{cenario}/matriz-final/case-1/` |
-| Case 2 - alta sustentada | Em execução | `results/{cenario}/matriz-final/case-2/` |
-| Case 3 - variável | Em execução | `results/{cenario}/matriz-final/case-3/` |
+| Case 1 - baixa controlada | Concluído | `results/{cenario}/matriz-final/case-1/` |
+| Case 2 - alta sustentada | Concluído | `results/{cenario}/matriz-final/case-2/` |
+| Case 3 - variável | Concluído | `results/{cenario}/matriz-final/case-3/` |
 
-Após a conclusão das execuções válidas, a comparação consolidada será registrada em `docs/experiments/matriz-final-comparison.md`, com tabelas e gráficos gerados a partir dos resumos agregados.
+A comparação consolidada está registrada em `docs/experiments/matriz-final-comparison.md`, com tabelas e gráficos gerados a partir dos resumos agregados.
 
 ### 4.3 Limitações parciais
 

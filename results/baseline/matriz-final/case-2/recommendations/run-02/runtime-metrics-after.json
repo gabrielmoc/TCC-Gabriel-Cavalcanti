@@ -1,0 +1,174 @@
+{
+  "collectedAt": "2026-09-18T20:46:18.276Z",
+  "services": [
+    {
+      "service": "gateway",
+      "url": "http://127.0.0.1:3000/metrics",
+      "ok": true,
+      "metrics": {
+        "service": "gateway",
+        "uptimeSeconds": 191.409,
+        "requests": {
+          "total": 111147,
+          "averageDurationMs": 18.696,
+          "maxDurationMs": 380,
+          "statusCounts": {
+            "200": 111147
+          }
+        },
+        "resources": {
+          "cpuMicros": {
+            "user": 103228859,
+            "system": 9616545,
+            "total": 112845404
+          },
+          "memoryBytes": {
+            "rss": 90636288,
+            "heapTotal": 150044672,
+            "heapUsed": 19329912,
+            "external": 8276878,
+            "arrayBuffers": 4828373
+          }
+        },
+        "counters": {
+          "upstreamService": {
+            "n/a": 3,
+            "recommendations": 111144
+          },
+          "cacheStatus": {
+            "n/a": 111147
+          },
+          "dataSource": {
+            "n/a": 111147
+          }
+        },
+        "extras": {}
+      }
+    },
+    {
+      "service": "catalog",
+      "url": "http://127.0.0.1:3001/metrics",
+      "ok": true,
+      "metrics": {
+        "service": "catalog",
+        "uptimeSeconds": 191.271,
+        "requests": {
+          "total": 111146,
+          "averageDurationMs": 0.624,
+          "maxDurationMs": 67,
+          "statusCounts": {
+            "200": 111146
+          }
+        },
+        "resources": {
+          "cpuMicros": {
+            "user": 73547167,
+            "system": 7168613,
+            "total": 80715780
+          },
+          "memoryBytes": {
+            "rss": 80429056,
+            "heapTotal": 49004544,
+            "heapUsed": 12275048,
+            "external": 2197420,
+            "arrayBuffers": 26847
+          }
+        },
+        "counters": {
+          "cacheStatus": {
+            "BYPASS": 2,
+            "MISS": 111144
+          },
+          "dataSource": {
+            "n/a": 2,
+            "dataset": 111144
+          }
+        },
+        "extras": {
+          "dataset": {
+            "catalogItems": 1500
+          },
+          "cache": {
+            "enabled": false,
+            "connected": false,
+            "ttlSeconds": 60
+          }
+        }
+      }
+    },
+    {
+      "service": "users",
+      "url": "http://127.0.0.1:3002/metrics",
+      "ok": true,
+      "metrics": {
+        "service": "users",
+        "uptimeSeconds": 191.406,
+        "requests": {
+          "total": 111146,
+          "averageDurationMs": 0.098,
+          "maxDurationMs": 21,
+          "statusCounts": {
+            "200": 111146
+          }
+        },
+        "resources": {
+          "cpuMicros": {
+            "user": 16548825,
+            "system": 5066591,
+            "total": 21615416
+          },
+          "memoryBytes": {
+            "rss": 32702464,
+            "heapTotal": 12681216,
+            "heapUsed": 8928136,
+            "external": 2018138,
+            "arrayBuffers": 35039
+          }
+        },
+        "counters": {},
+        "extras": {
+          "dataset": {
+            "users": 240
+          }
+        }
+      }
+    },
+    {
+      "service": "recommendations",
+      "url": "http://127.0.0.1:3003/metrics",
+      "ok": true,
+      "metrics": {
+        "service": "recommendations",
+        "uptimeSeconds": 191.41,
+        "requests": {
+          "total": 111146,
+          "averageDurationMs": 10.379,
+          "maxDurationMs": 213,
+          "statusCounts": {
+            "200": 111146
+          }
+        },
+        "resources": {
+          "cpuMicros": {
+            "user": 153571466,
+            "system": 14682440,
+            "total": 168253906
+          },
+          "memoryBytes": {
+            "rss": 118882304,
+            "heapTotal": 150568960,
+            "heapUsed": 20343144,
+            "external": 10169729,
+            "arrayBuffers": 6655688
+          }
+        },
+        "counters": {
+          "catalogSource": {
+            "catalog-service": 111144
+          }
+        },
+        "extras": {}
+      }
+    }
+  ]
+}

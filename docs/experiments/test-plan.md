@@ -94,8 +94,8 @@ Cada cenário detalhado segue o mesmo padrão:
 | CT-05 | Comparação com dataset ampliado | Carga + dataset | Concluído | `scenarios/05-comparacao-dataset-ampliado.md` |
 | CT-06 | Comparação com observabilidade expandida | Observabilidade | Concluído | `scenarios/06-observabilidade-e-recursos.md` |
 | CT-07 | Validação funcional do cenário de indexação com Solr | Funcional | Concluído | `scenarios/07-validacao-cenario-otimizado.md` |
-| CT-08 | Comparação entre `baseline`, `redis-cache` e Solr indexado | Carga comparativa | Em execução pela matriz final | `scenarios/08-comparacao-tripla.md` |
-| CT-09 | Bateria final consolidada do TCC | Consolidação final | Em execução pela matriz final | `scenarios/09-bateria-final.md` |
+| CT-08 | Comparação entre `baseline`, `redis-cache` e Solr indexado | Carga comparativa | Concluído | `scenarios/08-comparacao-tripla.md` |
+| CT-09 | Bateria final consolidada do TCC | Consolidação final | Concluído | `scenarios/09-bateria-final.md` |
 
 ## Enquadramento dos Cenários por Caso
 

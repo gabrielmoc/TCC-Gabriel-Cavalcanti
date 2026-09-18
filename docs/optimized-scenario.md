@@ -1,6 +1,6 @@
 # Cenário Tecnológico Solr - Indexação de Catálogo
 
-**Status:** implementado e validado funcionalmente em 18/09/2026; pendente de consolidação das rodadas de carga da matriz final.
+**Status:** implementado, validado funcionalmente e avaliado nas nove rodadas Solr da matriz final em 18/09/2026.
 
 ## Decisão
 

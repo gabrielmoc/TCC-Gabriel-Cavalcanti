@@ -1,0 +1,231 @@
+{
+  "scenario": "solr",
+  "endpoint": "recommendations",
+  "loadProfile": "variavel",
+  "script": "tests/load/recommendations-variable.js",
+  "startVUs": 5,
+  "targetVUs": 70,
+  "rampUp": "n/a",
+  "sustain": "n/a",
+  "rampDown": "n/a",
+  "sleepSeconds": 0.1,
+  "repetitions": 3,
+  "latencyAvgMs": 19.89054877724698,
+  "latencyP95Ms": 48.28903333333326,
+  "throughputRps": 287.4223505673593,
+  "errorRate": 0,
+  "requestCountAvg": 56062.666666666664,
+  "runtimeAverages": {
+    "gatewayCpuMicros": 51486911,
+    "gatewayRssBytes": 92039850.66666667,
+    "catalogCpuMicros": 70690.66666666667,
+    "catalogRssBytes": 25083904,
+    "catalogCacheHit": null,
+    "catalogCacheMiss": null,
+    "usersCpuMicros": 10876755,
+    "usersRssBytes": 34253482.666666664,
+    "recommendationsCpuMicros": 81412559.66666667,
+    "recommendationsRssBytes": 170284373.33333334
+  },
+  "requestCountTotal": 168188,
+  "runs": [
+    {
+      "run": "01",
+      "metadata": {
+        "scenario": "solr",
+        "case": "case-3",
+        "profile": "variavel",
+        "endpoint": "recommendations",
+        "script": "tests/load/recommendations-variable.js",
+        "run": "01",
+        "startVUs": 5,
+        "targetVUs": 70,
+        "rampUp": "n/a",
+        "sustain": "n/a",
+        "rampDown": "n/a",
+        "variableStages": [
+          {
+            "duration": "20s",
+            "target": 30
+          },
+          {
+            "duration": "30s",
+            "target": 30
+          },
+          {
+            "duration": "20s",
+            "target": 10
+          },
+          {
+            "duration": "30s",
+            "target": 10
+          },
+          {
+            "duration": "30s",
+            "target": 70
+          },
+          {
+            "duration": "45s",
+            "target": 70
+          },
+          {
+            "duration": "20s",
+            "target": 0
+          }
+        ],
+        "sleepSeconds": 0.1,
+        "cacheWarmup": true,
+        "date": "18/09/2026"
+      },
+      "latencyAvgMs": 16.587377305484207,
+      "latencyP95Ms": 38.971,
+      "throughputRps": 293.8250775009849,
+      "errorRate": 0,
+      "requestCount": 57309,
+      "runtime": {
+        "gatewayCpuMicros": 52871148,
+        "gatewayRssBytes": 93405184,
+        "catalogCpuMicros": 68348,
+        "catalogRssBytes": 24920064,
+        "catalogCacheHit": null,
+        "catalogCacheMiss": null,
+        "usersCpuMicros": 11198795,
+        "usersRssBytes": 34242560,
+        "recommendationsCpuMicros": 82770790,
+        "recommendationsRssBytes": 196214784
+      }
+    },
+    {
+      "run": "02",
+      "metadata": {
+        "scenario": "solr",
+        "case": "case-3",
+        "profile": "variavel",
+        "endpoint": "recommendations",
+        "script": "tests/load/recommendations-variable.js",
+        "run": "02",
+        "startVUs": 5,
+        "targetVUs": 70,
+        "rampUp": "n/a",
+        "sustain": "n/a",
+        "rampDown": "n/a",
+        "variableStages": [
+          {
+            "duration": "20s",
+            "target": 30
+          },
+          {
+            "duration": "30s",
+            "target": 30
+          },
+          {
+            "duration": "20s",
+            "target": 10
+          },
+          {
+            "duration": "30s",
+            "target": 10
+          },
+          {
+            "duration": "30s",
+            "target": 70
+          },
+          {
+            "duration": "45s",
+            "target": 70
+          },
+          {
+            "duration": "20s",
+            "target": 0
+          }
+        ],
+        "sleepSeconds": 0.1,
+        "cacheWarmup": true,
+        "date": "18/09/2026"
+      },
+      "latencyAvgMs": 30.93398638776255,
+      "latencyP95Ms": 78.48119999999979,
+      "throughputRps": 261.7392209048112,
+      "errorRate": 0,
+      "requestCount": 51057,
+      "runtime": {
+        "gatewayCpuMicros": 46721870,
+        "gatewayRssBytes": 98156544,
+        "catalogCpuMicros": 76286,
+        "catalogRssBytes": 25182208,
+        "catalogCacheHit": null,
+        "catalogCacheMiss": null,
+        "usersCpuMicros": 9633450,
+        "usersRssBytes": 36061184,
+        "recommendationsCpuMicros": 75789055,
+        "recommendationsRssBytes": 216285184
+      }
+    },
+    {
+      "run": "03",
+      "metadata": {
+        "scenario": "solr",
+        "case": "case-3",
+        "profile": "variavel",
+        "endpoint": "recommendations",
+        "script": "tests/load/recommendations-variable.js",
+        "run": "03",
+        "startVUs": 5,
+        "targetVUs": 70,
+        "rampUp": "n/a",
+        "sustain": "n/a",
+        "rampDown": "n/a",
+        "variableStages": [
+          {
+            "duration": "20s",
+            "target": 30
+          },
+          {
+            "duration": "30s",
+            "target": 30
+          },
+          {
+            "duration": "20s",
+            "target": 10
+          },
+          {
+            "duration": "30s",
+            "target": 10
+          },
+          {
+            "duration": "30s",
+            "target": 70
+          },
+          {
+            "duration": "45s",
+            "target": 70
+          },
+          {
+            "duration": "20s",
+            "target": 0
+          }
+        ],
+        "sleepSeconds": 0.1,
+        "cacheWarmup": true,
+        "date": "18/09/2026"
+      },
+      "latencyAvgMs": 12.150282638494186,
+      "latencyP95Ms": 27.414899999999992,
+      "throughputRps": 306.7027532962817,
+      "errorRate": 0,
+      "requestCount": 59822,
+      "runtime": {
+        "gatewayCpuMicros": 54867715,
+        "gatewayRssBytes": 84557824,
+        "catalogCpuMicros": 67438,
+        "catalogRssBytes": 25149440,
+        "catalogCacheHit": null,
+        "catalogCacheMiss": null,
+        "usersCpuMicros": 11798020,
+        "usersRssBytes": 32456704,
+        "recommendationsCpuMicros": 85677834,
+        "recommendationsRssBytes": 98353152
+      }
+    }
+  ]
+}

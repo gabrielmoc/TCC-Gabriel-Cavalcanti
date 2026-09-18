@@ -1,0 +1,17 @@
+{
+  "scenario": "solr",
+  "case": "case-2",
+  "profile": "alta-sustentada",
+  "endpoint": "recommendations",
+  "script": "tests/load/recommendations-ramp-strong.js",
+  "run": "03",
+  "startVUs": 10,
+  "targetVUs": 90,
+  "rampUp": "40s",
+  "sustain": "120s",
+  "rampDown": "30s",
+  "variableStages": null,
+  "sleepSeconds": 0.10,
+  "cacheWarmup": true,
+  "date": "18/09/2026"
+}

@@ -22,6 +22,10 @@ dist/
 build/
 coverage/
 
+# Evidências brutas volumosas da matriz final (resumos e metadados permanecem versionados)
+results/*/matriz-final/*/recommendations/run-*/*.log
+results/*/matriz-final/*/recommendations/run-*/k6-output.txt
+
 # Sistema operacional
 .DS_Store
 

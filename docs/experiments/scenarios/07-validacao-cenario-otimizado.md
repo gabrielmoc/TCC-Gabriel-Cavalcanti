@@ -49,14 +49,13 @@ GET /api/recommendations/:userId
 
 ## Armazenamento
 
-Sugestão:
-
 ```text
-results/optimized/manual-validation/
+tests/smoke/solr-smoke.js
+services/solr/index-catalog.mjs
 ```
 
 ## Status
 
 ```text
-Planejado
+Concluído em 18/09/2026. O teste automatizado confirmou índice disponível, indexação do dataset determinístico, cabeçalho `X-Data-Source: solr` e equivalência integral do payload da rota pública de recomendações.
 ```
