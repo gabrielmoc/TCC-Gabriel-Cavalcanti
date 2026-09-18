@@ -1,0 +1,9 @@
+services:
+  solr:
+    image: solr:9.7.0
+    container_name: tcc-solr
+    command:
+      - solr-precreate
+      - catalog
+    ports:
+      - "8983:8983"
