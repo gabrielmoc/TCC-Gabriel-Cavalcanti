@@ -4,6 +4,8 @@ Esta pasta detalha todos os cenários de teste do TCC, seguindo um padrão únic
 
 Ela complementa o [Plano Mestre de Testes](../test-plan.md), que funciona como visão geral e índice principal.
 
+> Os arquivos `01` a `09` preservam o histórico de evolução do experimento. A organização final por cases de carga está em [matriz-final.md](../matriz-final.md).
+
 ## Organização
 
 Cada arquivo desta pasta representa um cenário ou bloco de cenários com:

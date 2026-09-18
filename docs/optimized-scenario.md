@@ -1,10 +1,10 @@
-# Cenário Otimizado - Indexação de Catálogo com Apache Solr
+# Cenário Tecnológico Solr - Indexação de Catálogo
 
-**Status:** definido metodologicamente em 09/09/2026; pendente de implementação e validação.
+**Status:** implementado e validado funcionalmente em 18/09/2026; pendente de consolidação das rodadas de carga da matriz final.
 
 ## Decisão
 
-O terceiro cenário experimental do TCC será uma estratégia de **indexação do catálogo com Apache Solr**, consumida pelo `Recommendations Service` para recuperar itens compatíveis com as preferências do usuário.
+O cenário tecnológico Solr utiliza **indexação do catálogo com Apache Solr**, consumida pelo `Recommendations Service` para recuperar itens compatíveis com as preferências do usuário.
 
 Essa escolha não é uma extensão do cache com Redis. Ela representa uma intervenção distinta no fluxo principal: em vez de obter o catálogo completo e filtrar os itens na aplicação, o serviço de recomendações delegará a seleção ao mecanismo de busca indexada.
 
@@ -14,7 +14,7 @@ Os Cases 1 e 2 demonstraram que Redis funciona corretamente como cache, mas não
 
 O fluxo de recomendações é o caminho mais representativo da arquitetura distribuída, pois combina preferências de usuários e dados de catálogo. A indexação permite avaliar uma otimização que atua diretamente sobre a recuperação e a filtragem desses itens. A escolha também está alinhada à orientação recebida para explorar indexação no processo de recomendação, sem tentar reproduzir soluções de alta complexidade, como aprendizagem por reforço hierárquico ou auto-scaling preditivo.
 
-## Arquitetura prevista
+## Arquitetura implementada
 
 ```text
 k6
@@ -41,7 +41,7 @@ O `Catalog Service` continuará existindo e atendendo suas rotas públicas. No f
 - ferramenta de carga, ambiente local, perfis de carga e número de repetições;
 - endpoint principal: `GET /api/recommendations/:userId`.
 
-Para preservar comparabilidade funcional, a consulta ao índice deverá ordenar os resultados por `id` em ordem crescente e retornar os mesmos itens compatíveis que seriam produzidos pela filtragem atual para os usuários de teste.
+Para preservar comparabilidade funcional, a consulta ao índice ordena os resultados pela ordem numérica original do catálogo e retorna os mesmos itens compatíveis que seriam produzidos pela filtragem atual para os usuários de teste.
 
 ## O que muda em relação aos outros cenários
 
@@ -60,16 +60,16 @@ Para preservar comparabilidade funcional, a consulta ao índice deverá ordenar 
 
 As hipóteses são previsões a serem avaliadas, e não resultados antecipados.
 
-## Implementação planejada
+## Implementação
 
-1. Preparar uma coleção Solr com os campos `id`, `title`, `genre` e `year`.
-2. Criar um processo determinístico de indexação a partir de `shared/datasets/catalog.json`.
-3. Fazer o `Recommendations Service` consultar preferências no `Users Service` e itens compatíveis no Solr.
-4. Garantir ordenação estável e equivalência do payload em relação aos cenários anteriores.
-5. Registrar métricas do Solr e do Recommendations Service.
-6. Validar funcionalmente o cenário antes dos testes de carga.
+1. Coleção Solr `catalog` criada pelo `compose.yaml`.
+2. Processo determinístico de indexação implementado em `services/solr/index-catalog.mjs`.
+3. `Recommendations Service` configurável por `CATALOG_RETRIEVAL_MODE=solr`.
+4. Ordenação numérica estável e normalização de tipos preservando o payload do baseline.
+5. Registro de logs dos serviços e de `docker stats` para o contêiner Solr.
+6. Validação funcional automatizada em `tests/smoke/solr-smoke.js`.
 
-A forma de execução local do Solr será decidida durante a implementação. Nenhuma ferramenta de conteinerização é presumida por este documento.
+O Solr é executado localmente por Docker Compose. O Docker Desktop deve estar ativo antes das rodadas do cenário.
 
 ## Protocolo de validação
 
@@ -86,17 +86,16 @@ Antes de qualquer bateria de carga, devem ser confirmados:
 
 As métricas obrigatórias serão latência média, p95, throughput, taxa de erro, CPU e memória RSS. Devem ser registrados também contadores de documentos indexados, consultas ao Solr e falhas de consulta.
 
-O cenário será executado com três repetições nos perfis moderado e forte já adotados no Case 2. Depois de sua validação individual, uma comparação tripla aplicará exatamente o mesmo protocolo a baseline, Redis e Solr indexado.
+O cenário é executado com três repetições nos três cases definidos por perfil de carga: baixa controlada, alta sustentada e variável. Cada perfil aplica exatamente o mesmo protocolo a baseline, Redis e Solr indexado.
 
 ## Limites do cenário
 
 Este cenário não implementa aprendizado por reforço, auto-scaling, previsão de tráfego, otimização energética direta ou busca distribuída em múltiplos datacenters. CPU e memória serão utilizados como indicadores de custo computacional; não será feita medição elétrica direta de energia.
 
-## Evidências futuras
+## Evidências
 
 ```text
-results/optimized/manual-validation/
-results/optimized/case-3/moderado/recommendations/
-results/optimized/case-3/forte/recommendations/
-results/optimized/final-comparison/
+results/solr/matriz-final/case-1/recommendations/
+results/solr/matriz-final/case-2/recommendations/
+results/solr/matriz-final/case-3/recommendations/
 ```

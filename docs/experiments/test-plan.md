@@ -1,5 +1,19 @@
 # Plano Mestre de Testes
 
+> **Atualização metodológica em 18/09/2026:** este plano preserva abaixo o histórico dos testes já realizados. A matriz final substitui a organização anterior de Cases por tecnologia: agora, `Case 1`, `Case 2` e `Case 3` representam perfis de carga; `baseline`, `redis-cache` e `solr` são os cenários tecnológicos comparados em cada case. A fonte operacional desta etapa é [matriz-final.md](matriz-final.md).
+
+## Matriz Final por Perfil de Carga
+
+| Case | Perfil | Configuração | Cenários | Repetições |
+| --- | --- | --- | --- | ---: |
+| Case 1 | Baixa controlada | 1 a 5 VUs; 10 s de subida; 60 s de sustentação; 10 s de descida | Baseline, Redis e Solr | 3 |
+| Case 2 | Alta sustentada | 10 a 90 VUs; 40 s de subida; 120 s de sustentação; 30 s de descida | Baseline, Redis e Solr | 3 |
+| Case 3 | Variável | Estágios determinísticos de 5, 30, 10 e 70 VUs; 195 s totais | Baseline, Redis e Solr | 3 |
+
+O endpoint oficial é `GET /api/recommendations/:userId`. As 27 rodadas usam o mesmo dataset de 1.500 itens e 240 usuários, contrato HTTP, usuário de teste, regra de recomendação, ferramenta k6 e número de repetições. Cada rodada registra resultados em `results/{cenario}/matriz-final/{case}/recommendations/`.
+
+Os resultados anteriores em `ramp`, `ramp-strong` e `case-2` são evidências históricas e preliminares. Eles não são apagados, mas a comparação conclusiva do TCC será baseada somente na matriz final.
+
 ## Objetivo
 
 Consolidar, em um único documento, todos os cenários de teste do TCC, desde os casos já executados até a bateria final prevista para a conclusão da parte prática.
@@ -79,9 +93,9 @@ Cada cenário detalhado segue o mesmo padrão:
 | CT-04 | Comparação forte em `recommendations` e `catalog` | Carga forte | Concluído | `scenarios/04-comparacao-carga-forte.md` |
 | CT-05 | Comparação com dataset ampliado | Carga + dataset | Concluído | `scenarios/05-comparacao-dataset-ampliado.md` |
 | CT-06 | Comparação com observabilidade expandida | Observabilidade | Concluído | `scenarios/06-observabilidade-e-recursos.md` |
-| CT-07 | Validação funcional do cenário de indexação com Solr | Funcional | Definido, pendente de execução | `scenarios/07-validacao-cenario-otimizado.md` |
-| CT-08 | Comparação entre `baseline`, `redis-cache` e Solr indexado | Carga comparativa | Definido, pendente de execução | `scenarios/08-comparacao-tripla.md` |
-| CT-09 | Bateria final consolidada do TCC | Consolidação final | Planejado | `scenarios/09-bateria-final.md` |
+| CT-07 | Validação funcional do cenário de indexação com Solr | Funcional | Concluído | `scenarios/07-validacao-cenario-otimizado.md` |
+| CT-08 | Comparação entre `baseline`, `redis-cache` e Solr indexado | Carga comparativa | Em execução pela matriz final | `scenarios/08-comparacao-tripla.md` |
+| CT-09 | Bateria final consolidada do TCC | Consolidação final | Em execução pela matriz final | `scenarios/09-bateria-final.md` |
 
 ## Enquadramento dos Cenários por Caso
 

@@ -16,6 +16,7 @@ Aqui devem ficar:
 docs/experiments/
   README.md
   test-plan.md
+  matriz-final.md
   first-comparison.md
   case-2-comparison.md
   scenarios/
@@ -31,15 +32,18 @@ docs/experiments/
 ## Documentos Principais
 
 - `test-plan.md`: plano mestre com todos os cenários até o fim do TCC.
+- `matriz-final.md`: desenho, critérios e evidências da comparação final por perfil de carga.
 - `first-comparison.md`: comparação consolidada da primeira entrega experimental.
 - `case-2-comparison.md`: comparação consolidada da segunda leva experimental.
 - `scenarios/`: documentação detalhada de cada cenário de teste.
 
-## Casos Evolutivos
+## Matriz Final
 
-- `Case 1`: baseline, Redis e primeira comparação experimental já concluída.
-- `Case 2`: escala, eficiência e uso de recursos, executado e consolidado.
-- `Case 3`: cenário otimizado final e consolidação comparativa do TCC.
+- `Case 1`: carga baixa controlada.
+- `Case 2`: carga alta sustentada.
+- `Case 3`: carga variável.
+
+Em todos os cases, os cenários tecnológicos comparados são `baseline`, `redis-cache` e `solr`. As comparações antigas permanecem como evidências históricas.
 
 ## Artefatos Visuais Atuais
 

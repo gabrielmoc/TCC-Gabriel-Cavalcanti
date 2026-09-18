@@ -11,7 +11,7 @@ Estrutura atual:
 results/
   baseline/
   redis-cache/
-  optimized/
+  solr/
 ```
 
 Convenção utilizada:
@@ -50,6 +50,13 @@ Situação atual:
 - bateria forte já registrada e agregada.
 - `Case 2` já executado com dataset ampliado, carga moderada, carga forte e coleta de recursos;
 - rodadas descartadas metodologicamente preservadas em diretórios próprios, sem uso na análise oficial.
+- matriz final organizada por perfil de carga em `matriz-final/case-1`, `case-2` e `case-3`.
+
+Os resultados de `ramp`, `ramp-strong` e `case-2` são evidências históricas das levas iniciais. A comparação final oficial utiliza:
+
+```text
+results/{baseline|redis-cache|solr}/matriz-final/{case-1|case-2|case-3}/recommendations/run-{01..03}/
+```
 
 Documento de leitura consolidada:
 

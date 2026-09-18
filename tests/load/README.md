@@ -4,9 +4,7 @@ Este diretório contem a base inicial dos testes de carga com `k6`.
 
 ## Objetivo desta etapa
 
-Preparar scripts comparáveis entre:
-- baseline;
-- cenário com Redis no `Catalog Service`.
+Preparar scripts comparáveis entre `baseline`, `redis-cache` e `solr`.
 
 O endpoint principal escolhido nesta fase e:
 
@@ -125,6 +123,25 @@ Resultados esperados do `Case 2`:
 ```text
 results/{cenario}/case-2/{perfil}/{endpoint}/run-{numero}
 ```
+
+## Matriz final por cases
+
+Os cases representam perfis de carga, não tecnologias:
+
+- `case-1`: baixa controlada;
+- `case-2`: alta sustentada;
+- `case-3`: variável.
+
+O executor final usa `GET /api/recommendations/:userId` como endpoint principal e executa três repetições por combinação entre cenário e case:
+
+```bash
+tests/load/run-final-matrix.sh baseline case-1 01
+tests/load/run-final-matrix.sh redis-cache case-2 02
+tests/load/run-final-matrix.sh solr case-3 03
+tests/load/run-final-matrix-suite.sh
+```
+
+O último comando executa a matriz completa e gera os resumos agregados. O Solr exige Docker Desktop ativo; Redis exige `redis-server` somente no cenário cacheado.
 
 ## Carga funcional equivalente
 

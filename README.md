@@ -27,6 +27,18 @@ O foco está na avaliação comparativa de cenários sob carga controlada, obser
 
 A implementação prática será **guiada pelo Projeto de Pesquisa e pelos trabalhos de referência**, evitando a construção arbitrária de uma metodologia experimental e buscando preservar a comparabilidade dos resultados com a literatura analisada.
 
+## Matriz Experimental Atual
+
+O experimento final separa dois eixos: os **cenários tecnológicos** (`baseline`, `redis-cache` e `solr`) e os **cases de carga**. Assim, cada case compara as três estratégias sob a mesma condição de demanda:
+
+| Case | Perfil | Finalidade |
+| --- | --- | --- |
+| Case 1 | Baixa controlada | Medir o custo base das estratégias em demanda estável. |
+| Case 2 | Alta sustentada | Avaliar desempenho e estabilidade sob pressão prolongada. |
+| Case 3 | Variável | Avaliar o comportamento durante picos e reduções de demanda. |
+
+O endpoint oficial é `GET /api/recommendations/:userId`. A especificação completa está em [matriz-final.md](docs/experiments/matriz-final.md).
+
 ---
 
 ## Convenções do Projeto
@@ -84,7 +96,7 @@ O desenho experimental atualmente contempla:
 - **Definido:** comparação entre diferentes cenários experimentais;
 - **Definido:** cenário baseline, sem mecanismos específicos de otimização;
 - **Definido:** cenário utilizando cache por meio do `Redis`;
-- **Definido e pendente de implementação:** cenário de indexação de catálogo com `Apache Solr` no fluxo de recomendações;
+- **Definido e implementado:** cenário de indexação de catálogo com `Apache Solr` no fluxo de recomendações;
 - **Definido e implementado:** testes de carga utilizando `k6`;
 - **Definido:** coleta de métricas relacionadas ao desempenho e ao uso de recursos;
 - **Definido:** três execuções para cada combinação entre cenário experimental e padrão de carga;
@@ -114,7 +126,7 @@ flowchart LR
     E -.-> G
 ```
 
-> **Observação:** o diagrama representa a arquitetura atualmente implementada para baseline e cache. O cenário de indexação com Solr já está definido metodologicamente, mas será representado em diagrama próprio após sua implementação.
+> **Observação:** o diagrama representa baseline e cache. O cenário de indexação com Solr já está implementado e será representado em diagrama próprio na consolidação visual final.
 
 ---
 
@@ -125,7 +137,7 @@ flowchart LR
 | Backend | ![Node.js](https://img.shields.io/badge/Node.js-339933?logo=nodedotjs&logoColor=white) | **Implementado** | Ambiente de execução dos serviços. |
 | Framework | ![Express](https://img.shields.io/badge/Express-000000?logo=express&logoColor=white) | **Implementado** | Construção das APIs e microsserviços. |
 | Cache | ![Redis](https://img.shields.io/badge/Redis-DC382D?logo=redis&logoColor=white) | **Implementado** | Implementação do mecanismo de cache no `Catalog Service`. |
-| Indexação | Apache Solr | **Definido, não implementado** | Recuperação indexada de itens para o fluxo de recomendações no terceiro cenário. |
+| Indexação | Apache Solr | **Implementado** | Recuperação indexada de itens para o fluxo de recomendações. |
 | Testes | ![k6](https://img.shields.io/badge/k6-7D64FF?logo=k6&logoColor=white) | **Implementado** | Geração de carga e execução dos experimentos. |
 | Observabilidade | Logs e métricas | **Implementado** | Monitoramento mínimo do comportamento da aplicação durante os testes. |
 | Ferramentas auxiliares | A definir | **Pendente** | Dependem da consolidação do ambiente experimental. |
@@ -207,11 +219,11 @@ O experimento será estruturado em torno da implementação de uma arquitetura b
 - expansão progressiva dos padrões de carga;
 - registro visual mais completo dos resultados em gráficos e tabelas.
 
-### Elementos pendentes
+### Elementos em andamento
 
-- implementação e validação funcional do cenário de indexação com Apache Solr;
-- execução da comparação tripla entre os cenários;
-- aprofundamento estatístico das métricas, caso necessário nas próximas baterias.
+- execução da matriz final tripla entre baseline, Redis e Solr;
+- consolidação de tabelas, gráficos e interpretação das 27 rodadas;
+- aprofundamento estatístico das métricas, caso necessário após a matriz final.
 
 ---
 
@@ -250,15 +262,15 @@ Sempre que possível, serão mantidos constantes entre os experimentos:
 
 | Cenário | Situação | Descrição |
 | --- | --- | --- |
-| **Baseline** | **Definido** | Arquitetura base executada sem mecanismos adicionais específicos de otimização. |
-| **Cache com Redis** | **Definido** | Mesma arquitetura com utilização de cache para avaliar seu impacto sobre o desempenho. |
-| **Indexação com Apache Solr** | **Definido, não implementado** | Consulta indexada do catálogo no fluxo de recomendações, preservando o contrato público. |
+| **Baseline** | **Implementado** | Arquitetura base executada sem mecanismos adicionais específicos de otimização. |
+| **Cache com Redis** | **Implementado** | Mesma arquitetura com utilização de cache para avaliar seu impacto sobre o desempenho. |
+| **Indexação com Apache Solr** | **Implementado e validado** | Consulta indexada do catálogo no fluxo de recomendações, preservando o contrato público. |
 
-### Cenário Otimizado
+### Cenário Solr
 
-O terceiro cenário está **definido metodologicamente e pendente de implementação**.
+O cenário Solr está implementado e possui validação funcional automatizada. Ele indexa o catálogo determinístico e faz o `Recommendations Service` recuperar diretamente os itens compatíveis, preservando a rota pública e o formato de resposta.
 
-O cenário utilizará Apache Solr para indexar o catálogo e permitir que o `Recommendations Service` consulte itens compatíveis com as preferências do usuário. A decisão foi tomada após a análise dos resultados do Case 2 e da orientação para avaliar indexação no fluxo de recomendações. A especificação completa está em [optimized-scenario.md](/Users/gabrielmoc/Downloads/TCC%20-%20Gabriel/docs/optimized-scenario.md).
+O Apache Solr é executado localmente por Docker Compose. A decisão foi tomada após a análise dos resultados preliminares e da orientação para avaliar indexação no fluxo de recomendações. A especificação completa está em [optimized-scenario.md](/Users/gabrielmoc/Downloads/TCC%20-%20Gabriel/docs/optimized-scenario.md).
 
 Os limites metodológicos permanecem:
 
@@ -279,10 +291,12 @@ O Projeto de Pesquisa prevê a avaliação do sistema diante de diferentes compo
 - crescimento gradual;
 - picos repentinos de requisições.
 
-Na etapa prática já executada, foram utilizados:
+Nas etapas históricas já executadas, foram utilizados:
 
 - uma rodada exploratória inicial em rampa no endpoint de recomendações;
 - uma bateria mais forte em rampa para `recommendations` e `catalog`, com três repetições por cenário.
+
+A bateria final substitui a organização anterior por três cases de carga: baixa controlada, alta sustentada e variável. Em cada um, baseline, Redis e Solr são executados três vezes sob a mesma carga funcional.
 
 ---
 
@@ -450,13 +464,13 @@ Ao final da implementação, deverão estar documentados:
 └── README.md
 ```
 
-A estrutura poderá continuar sendo refinada, especialmente quando o terceiro cenário experimental e a parte visual dos resultados evoluírem.
+A estrutura poderá continuar sendo refinada durante a consolidação visual da matriz final.
 
 ---
 
 ## Resultados
 
-> **Status:** `Case 1` e `Case 2` concluídos para `baseline` e `redis-cache`, com validação manual, rodada exploratória, bateria forte, dataset ampliado e coleta de recursos consolidados.
+> **Status:** evidências históricas entre `baseline` e `redis-cache` concluídas; matriz final em execução para `baseline`, `redis-cache` e `solr` nos três perfis de carga.
 
 No momento, o repositório já contém:
 
@@ -464,21 +478,23 @@ No momento, o repositório já contém:
 - primeira bateria controlada com `k6` no `baseline`;
 - primeira bateria controlada com `k6` no cenário com `Redis`;
 - bateria forte com `k6` nos endpoints `recommendations` e `catalog`;
-- `Case 2` com dataset ampliado, carga moderada e forte e coleta de `CPU` e memória;
+- rodada histórica com dataset ampliado, carga moderada e forte e coleta de `CPU` e memória;
 - comparação inicial documentada em [first-comparison.md](/Users/gabrielmoc/Downloads/TCC - Gabriel/docs/experiments/first-comparison.md);
 - comparação do `Case 2` documentada em [case-2-comparison.md](/Users/gabrielmoc/Downloads/TCC - Gabriel/docs/experiments/case-2-comparison.md).
+
+A comparação oficial final usa três cases por perfil de carga: baixa controlada, alta sustentada e variável. Cada case compara `baseline`, `redis-cache` e `solr` em três repetições no endpoint de recomendações. O protocolo está em [matriz-final.md](docs/experiments/matriz-final.md).
 
 Leitura atual dos resultados:
 - o ambiente está estável e reprodutível;
 - o cache funciona corretamente do ponto de vista funcional;
-- no `Case 2`, o cache apresentou melhora apenas em parte da carga moderada do endpoint principal;
+- na rodada histórica de carga moderada, o cache apresentou melhora apenas em parte do endpoint principal;
 - nas cargas fortes e no endpoint `catalog`, o cenário com `Redis` ficou mais custoso e, em geral, mais lento;
-- isso orienta o próximo passo metodológico: definição do terceiro cenário otimizado.
+- isso motivou a introdução do cenário de indexação com Solr e a matriz final por perfil de carga.
 
 Status atual da próxima etapa:
-- o `Case 2` já foi executado e consolidado na documentação experimental;
+- o cenário Solr já foi implementado e validado funcionalmente;
 - os cenários de teste do TCC já foram mapeados até a etapa final;
-- a próxima frente prática será definir, implementar e validar o terceiro cenário otimizado.
+- a frente prática atual é executar e consolidar a matriz experimental final.
 
 Esta seção continuará sendo atualizada para apresentar:
 
