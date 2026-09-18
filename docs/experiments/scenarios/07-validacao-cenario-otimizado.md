@@ -1,10 +1,10 @@
-# CT-07 - Validação Funcional do Cenário Otimizado
+# CT-07 - Validação Funcional do Cenário Solr
 
 ## Objetivo
 
-Validar funcionalmente o terceiro cenário do TCC antes de submetê-lo às comparações quantitativas.
+Validar funcionalmente o cenário Solr antes de submetê-lo às comparações quantitativas.
 
-O terceiro cenário definido é a indexação do catálogo com Apache Solr para o fluxo de recomendações. A especificação completa está em [`docs/optimized-scenario.md`](../../optimized-scenario.md).
+O cenário Solr utiliza indexação do catálogo para o fluxo de recomendações. A especificação completa está em [`docs/optimized-scenario.md`](../../optimized-scenario.md).
 
 ## Relação com a Literatura
 
@@ -28,7 +28,7 @@ GET /api/recommendations/:userId
 
 ## Estratégia de Execução
 
-- subir o terceiro cenário isoladamente;
+- subir o cenário Solr isoladamente;
 - indexar integralmente o dataset determinístico;
 - validar resposta, ordenação e fluxo distribuído;
 - garantir equivalência funcional com os cenários anteriores.

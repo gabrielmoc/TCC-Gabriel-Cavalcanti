@@ -2,7 +2,7 @@
 
 ## Objetivo
 
-Comparar `baseline`, `redis-cache` e o terceiro cenário otimizado sob a mesma carga funcional.
+Comparar `baseline`, `redis-cache` e `solr` sob a mesma carga funcional.
 
 ## Relação com a Literatura
 

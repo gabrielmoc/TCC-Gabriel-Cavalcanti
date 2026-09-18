@@ -6,6 +6,8 @@
 Comparação consolidada em 16/08/2026 com validação manual, rodada exploratória inicial e bateria forte em dois endpoints.
 ```
 
+> **Classificação atual:** evidência histórica. Esta comparação antecede a matriz final e não utiliza a nomenclatura oficial de cases por perfil de carga.
+
 ## Resumo Executivo
 
 Esta primeira entrega experimental já permite afirmar com segurança que:
@@ -221,7 +223,7 @@ A entrega ainda não contempla:
 - dataset expandido;
 - gráficos temporais mais detalhados;
 - comparação com rampas ainda maiores;
-- terceiro cenário otimizado.
+- comparação tripla da matriz final, posteriormente concluída.
 
 Mesmo assim, ela já e suficiente para:
 - mostrar implementação prática concreta;
@@ -229,13 +231,9 @@ Mesmo assim, ela já e suficiente para:
 - apresentar comparação entre cenários;
 - justificar os próximos passos com base em evidências reais.
 
-## Próximo Movimento Recomendado
+## Desdobramento realizado
 
-Com base no que foi medido, o próximo movimento metodologicamente mais forte é:
-- expandir o dataset mantendo determinismo;
-- testar novas cargas mais agressivas;
-- observar CPU e memória;
-- definir um terceiro cenário cuja mudanca tenha mais chance de aparecer no endpoint principal.
+As recomendações desta rodada foram incorporadas à evolução do projeto: o dataset foi ampliado, CPU e memória passaram a ser observados, o cenário Solr foi implementado e a matriz final tripla foi executada. A comparação conclusiva está em [matriz-final-comparison.md](matriz-final-comparison.md).
 
 ## Resultados Brutos
 

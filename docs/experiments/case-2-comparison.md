@@ -6,6 +6,8 @@
 Comparação consolidada em 31/08/2026 com dataset ampliado, carga moderada, carga forte e coleta de CPU, memória e sinais de cache.
 ```
 
+> **Classificação atual:** evidência histórica. Este documento registra uma etapa de amadurecimento anterior à matriz final por perfis de carga.
+
 ## Resumo Executivo
 
 O `Case 2` confirmou quatro pontos importantes para o TCC:
@@ -195,7 +197,7 @@ Isso sugere que, no escopo atual:
 
 - a fonte local determinística ainda é barata demais;
 - o custo de serialização, desserialização e acesso ao Redis pesa mais do que o benefício esperado;
-- o próximo avanço do TCC não deve ser “insistir no Redis”, e sim introduzir um terceiro cenário de otimização com maior potencial arquitetural.
+- a etapa seguinte deveria introduzir uma estratégia distinta de recuperação do catálogo, posteriormente implementada com Solr.
 
 ## Relação com o Artigo 2
 
@@ -217,13 +219,9 @@ Assim, o `Case 2` conversa com a literatura pela forma de avaliar, e não por um
 - validação de `HIT` e `MISS` nas rodadas oficiais;
 - evidências brutas organizadas por cenário, perfil e endpoint.
 
-## Próximo Passo Recomendado
+## Desdobramento realizado
 
-Com o `Case 2` fechado, o próximo passo mais forte para o TCC é:
-
-- definir formalmente o terceiro cenário otimizado;
-- escolher uma intervenção com maior chance de impactar o fluxo principal;
-- repetir a comparação final com três cenários sob o mesmo protocolo.
+O cenário Solr foi formalizado, implementado e validado. Em seguida, baseline, Redis e Solr foram comparados nos perfis de carga baixa, alta e variável. A evidência conclusiva está em [matriz-final-comparison.md](matriz-final-comparison.md).
 
 ## Resultados Brutos
 

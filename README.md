@@ -357,16 +357,18 @@ Cada combinação entre **cenário experimental e padrão de carga foi executada
 
 Os parâmetros da primeira rodada controlada foram documentados em [test-plan.md](/Users/gabrielmoc/Downloads/TCC%20-%20Gabriel/docs/experiments/test-plan.md).
 
-O plano mestre de testes agora também organiza os cenários por casos evolutivos:
-- `Case 1`: baseline e primeira comparação com `Redis`;
-- `Case 2`: escala, eficiência e uso de recursos;
-- `Case 3`: cenário otimizado final e comparação consolidada.
+O plano mestre organiza os casos por perfil de carga:
+- `Case 1`: carga baixa controlada;
+- `Case 2`: carga alta sustentada;
+- `Case 3`: carga variável.
+
+Em todos eles são comparados os cenários `baseline`, `redis-cache` e `solr`.
 
 ---
 
 ## Análise dos Resultados
 
-Os resultados serão analisados quantitativamente por meio da comparação das métricas coletadas nas diferentes execuções.
+Os resultados foram analisados quantitativamente por meio da comparação das métricas coletadas nas diferentes execuções.
 
 A análise deverá observar:
 
@@ -448,23 +450,24 @@ Ao final da implementação, deverão estar documentados:
 ├── results/
 │   ├── baseline/
 │   ├── redis-cache/
-│   └── optimized/
+│   └── solr/
 │
 ├── docs/
 │   ├── baseline-contract.md
 │   ├── cache-scenario.md
 │   ├── cache-validation.md
-│   ├── experimental-protocol.md
 │   └── experiments/
 │       ├── test-plan.md
 │       ├── first-comparison.md
 │       ├── case-2-comparison.md
+│       ├── matriz-final.md
+│       ├── matriz-final-comparison.md
 │       └── figures/
 │
 └── README.md
 ```
 
-A estrutura poderá continuar sendo refinada durante a consolidação visual da matriz final.
+A estrutura está organizada para a revisão acadêmica e o acabamento final do artigo.
 
 ---
 
@@ -498,28 +501,9 @@ Status atual da próxima etapa:
 - os cenários de teste do TCC já foram mapeados até a etapa final;
 - a frente atual é revisar academicamente a interpretação e integrar os resultados ao artigo científico.
 
-Esta seção continuará sendo atualizada para apresentar:
+## Limitações do Escopo
 
-- resultados consolidados das execuções;
-- tabelas comparativas;
-- gráficos de desempenho;
-- comparação entre cenários;
-- análise dos ganhos obtidos;
-- trade-offs identificados;
-- comparação com os trabalhos de referência.
-
----
-
-## Limitações Atuais
-
-No estágio atual, ainda não estão consolidados:
-
-- execução local do Solr e processo determinístico de indexação;
-- instrumentação específica das consultas ao índice;
-- resultados de cenários adicionais;
-- validação funcional e execução das baterias do terceiro cenário.
-
-Esses elementos serão definidos progressivamente durante a preparação e implementação da parte prática, sempre buscando manter coerência com a metodologia e com os trabalhos utilizados como referência.
+Os resultados são válidos para o ambiente local, dataset determinístico e endpoint definidos no protocolo. Não há medição elétrica direta, telemetria distribuída completa nem execução em múltiplos nós. Essas limitações impedem generalizações diretas para plataformas comerciais de streaming, mas não comprometem a comparação controlada entre os cenários avaliados.
 
 ---
 

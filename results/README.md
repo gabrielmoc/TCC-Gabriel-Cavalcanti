@@ -48,7 +48,7 @@ Situação atual:
 - validação manual do Redis já registrada;
 - rodada exploratória inicial já registrada;
 - bateria forte já registrada e agregada.
-- `Case 2` já executado com dataset ampliado, carga moderada, carga forte e coleta de recursos;
+- segunda leva histórica executada com dataset ampliado, carga moderada, carga forte e coleta de recursos;
 - rodadas descartadas metodologicamente preservadas em diretórios próprios, sem uso na análise oficial.
 - matriz final organizada por perfil de carga em `matriz-final/case-1`, `case-2` e `case-3`.
 
@@ -58,7 +58,7 @@ Os resultados de `ramp`, `ramp-strong` e `case-2` são evidências históricas d
 results/{baseline|redis-cache|solr}/matriz-final/{case-1|case-2|case-3}/recommendations/run-{01..03}/
 ```
 
-Documento de leitura consolidada:
+Documentos de leitura histórica:
 
 ```text
 docs/experiments/first-comparison.md
@@ -74,8 +74,8 @@ results/
     README.md
   redis-cache/
     README.md
-  optimized/
-    README.md
+  solr/
+    matriz-final/
 ```
 
 ## Evidências brutas da matriz final

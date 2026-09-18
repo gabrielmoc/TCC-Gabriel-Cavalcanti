@@ -720,7 +720,7 @@ Uma forma simples de apresentar esta entrega ao orientador é:
 
 ### Protocolo experimental
 
-- `docs/experimental-protocol.md`
+- conteúdo inicial posteriormente consolidado em `docs/experiments/test-plan.md`.
 
 ### Planejamento experimental
 
@@ -753,4 +753,3 @@ O projeto já saiu da fase puramente conceitual e agora possui:
 - interpretação inicial baseada em evidência.
 
 O principal valor desta etapa está em ter estabelecido uma base metodologicamente limpa e tecnicamente funcional, a partir da qual os próximos cenários e análises poderão ser construídos com maior rigor.
-
