@@ -6,6 +6,8 @@ Os cases do experimento passam a representar perfis de carga, conforme orientaç
 
 Essa separação evita comparar variáveis de natureza diferente. O perfil de carga define o case; a estratégia de recuperação do catálogo define o cenário tecnológico comparado em cada case.
 
+Os perfis foram definidos com base na lógica de tráfego normal, de pico e variável discutida por Ji et al. (2025). Os valores de usuários virtuais e duração, por outro lado, foram calibrados no ambiente local após rodadas exploratórias; não são reproduções numéricas do artigo de referência. A justificativa completa está em [justificativa-parametros.md](justificativa-parametros.md).
+
 ## Matriz de comparação
 
 | Case | Perfil de carga | Baseline | Redis | Solr | Repetições |
@@ -22,7 +24,7 @@ O endpoint principal é `GET /api/recommendations/:userId`. Ele atravessa mais c
 | --- | --- | --- |
 | Case 1 — baixa controlada | 1 a 5 usuários virtuais; 10 s de subida; 60 s de sustentação; 10 s de descida | Observar o custo base de cada cenário em demanda estável e reduzida. |
 | Case 2 — alta sustentada | 10 a 90 usuários virtuais; 40 s de subida; 120 s de sustentação; 30 s de descida | Submeter o fluxo principal a pressão prolongada e observar capacidade, latência de cauda e uso de recursos. |
-| Case 3 — variável | 5 VUs iniciais; 30, 10 e 70 VUs em estágios determinísticos; 195 s no total | Observar estabilidade durante crescimento, redução e novo pico de demanda na mesma rodada. |
+| Case 3 — variável | 5 VUs iniciais; 30, 10 e 70 VUs em estágios determinísticos; 195 s no total | Observar estabilidade durante crescimento, redução e novo pico controlado de demanda na mesma rodada. |
 
 Todos os perfis aplicam o mesmo usuário de teste, dataset de 1.500 itens e 240 usuários, contrato HTTP e regra de recomendação.
 
@@ -49,7 +51,7 @@ No cenário Solr, a rota pública e o payload não mudam. O `Recommendations Ser
 
 ## Métricas e evidências
 
-As métricas primárias são latência média, p95, throughput e taxa de erro. CPU acumulada e memória RSS dos serviços Node.js são métricas complementares de custo computacional. Para o Solr, as estatísticas do contêiner são preservadas como evidência complementar, pois sua execução ocorre em processo separado.
+As métricas primárias são latência média, p95, throughput e taxa de erro. CPU acumulada e memória RSS dos serviços Node.js são métricas complementares de custo computacional, e não medição elétrica direta. Para o Solr, as estatísticas do contêiner são preservadas como evidência complementar, pois sua execução ocorre em processo separado.
 
 Os resultados oficiais são armazenados em:
 

@@ -42,9 +42,11 @@ Os cases representam perfis de carga, e não tecnologias. Cada perfil é executa
 
 O desenho resulta em 27 rodadas: três cenários, três cases e três repetições. Antes de cada medição ocorre aquecimento do endpoint; assim, a primeira população do cache Redis não integra a janela de carga medida.
 
+Os perfis de baixa, alta e variável seguem conceitualmente a distinção entre tráfego normal, de pico e variável adotada por Ji et al. (2025). Os valores de usuários virtuais e duração não foram reproduzidos literalmente desse trabalho, que avalia infraestrutura de produção em escala muito superior; foram calibrados após rodadas exploratórias no ambiente local. A rastreabilidade dessa decisão está em `docs/experiments/justificativa-parametros.md`.
+
 ### 3.6 Métricas, observabilidade e validade
 
-As métricas principais são latência média, percentil 95 de latência (p95), throughput e taxa de erro. Logs por requisição, cabeçalhos de origem e métricas dos serviços apoiam a validação funcional. Também são registrados snapshots de CPU e memória RSS antes e depois das rodadas como indicadores de custo computacional; não se afirma medição elétrica direta de consumo energético.
+As métricas principais são latência média, percentil 95 de latência (p95), throughput e taxa de erro. Logs por requisição, cabeçalhos de origem e métricas dos serviços apoiam a validação funcional. Também são registrados snapshots de CPU e memória RSS antes e depois das rodadas como indicadores de custo computacional; não se afirma medição elétrica direta de consumo energético. A seleção combina a avaliação de tráfego e recursos de Ji et al. (2025), a observação de gargalos proposta por Smirnov (2025) e as métricas de cache discutidas por Thatikonda (2025).
 
 Uma execução é inválida quando ocorre falha de infraestrutura, serviço indisponível, desvio funcional ou erro de configuração. Resultados brutos, metadados e logs são salvos em `results/{cenario}/matriz-final/{case}/recommendations/run-{n}/`. As médias agregadas das três repetições sustentam as tabelas, gráficos e discussão final.
 

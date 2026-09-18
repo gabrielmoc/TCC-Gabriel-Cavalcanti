@@ -17,6 +17,7 @@ docs/experiments/
   README.md
   test-plan.md
   matriz-final.md
+  justificativa-parametros.md
   first-comparison.md
   case-2-comparison.md
   scenarios/
@@ -33,6 +34,7 @@ docs/experiments/
 
 - `test-plan.md`: plano mestre com todos os cenários até o fim do TCC.
 - `matriz-final.md`: desenho, critérios e evidências da comparação final por perfil de carga.
+- `justificativa-parametros.md`: relação entre literatura, perfis de carga, métricas e calibração local dos parâmetros.
 - `first-comparison.md`: comparação consolidada da primeira entrega experimental.
 - `case-2-comparison.md`: comparação consolidada da segunda leva experimental.
 - `scenarios/`: documentação detalhada de cada cenário de teste.
@@ -44,6 +46,8 @@ docs/experiments/
 - `Case 3`: carga variável.
 
 Em todos os cases, os cenários tecnológicos comparados são `baseline`, `redis-cache` e `solr`. As comparações antigas permanecem como evidências históricas.
+
+Os valores de usuários virtuais, durações e repetições não foram copiados literalmente de um artigo. A literatura sustenta o uso de perfis normal, de pico e variável e das métricas observadas; os números foram calibrados no ambiente local e registrados para permitir reprodução.
 
 ## Artefatos Visuais Atuais
 

@@ -39,6 +39,8 @@ O experimento final separa dois eixos: os **cenários tecnológicos** (`baseline
 
 O endpoint oficial é `GET /api/recommendations/:userId`. A especificação completa está em [matriz-final.md](docs/experiments/matriz-final.md).
 
+Os perfis de carga se baseiam conceitualmente na literatura sobre tráfego normal, de pico e variável; seus valores de usuários virtuais e duração foram calibrados no ambiente local. A justificativa bibliográfica e operacional está em [justificativa-parametros.md](docs/experiments/justificativa-parametros.md).
+
 ---
 
 ## Convenções do Projeto
@@ -170,7 +172,7 @@ A base bibliográfica do TCC reúne referências com papéis distintos. Parte de
 | --- | --- |
 | **Smirnov (2025)** | Diagnóstico de gargalos, profiling, tracing, testes de carga e métricas de desempenho. |
 | **Ji et al. (2025)** | Otimização adaptativa de tráfego e análise de sistemas submetidos a alta carga. |
-| **Kamau e Myllynen (2025)** | Auto-scaling preditivo e relação entre custo e desempenho em microsserviços. |
+| **Gbenle et al. (2025)** | Autoescalabilidade preditiva e relação entre custo, recursos e desempenho em microsserviços. |
 | **Pasham (2025)** | Desempenho de API Gateway e discussão sobre arquiteturas serverless. |
 | **Munnangi (2025)** | Aplicação de inteligência artificial na otimização de arquiteturas de APIs cloud-native. |
 | **Thatikonda (2025)** | Gerenciamento de cache e análise de métricas relacionadas ao desempenho. |

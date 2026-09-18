@@ -26,6 +26,8 @@ Comparar o comportamento de três cenários tecnológicos em uma API de recomend
 
 `Case` identifica exclusivamente o perfil de carga. `baseline`, `redis-cache` e `solr` são cenários tecnológicos comparados dentro de cada case.
 
+Os perfis de baixa, alta e variável reutilizam a lógica de diversidade de tráfego apresentada por Ji et al. (2025). As intensidades e durações foram calibradas no ambiente local, não copiadas do estudo de referência. Ver [justificativa-parametros.md](justificativa-parametros.md).
+
 ## 3. Controle e validade
 
 As 27 rodadas usam o mesmo endpoint (`GET /api/recommendations/:userId`), usuário de teste, regra de recomendação, dataset de 1.500 itens e 240 usuários, ferramenta k6 e três repetições por combinação. O endpoint é aquecido antes da medição; assim, a primeira população do Redis não compõe a janela de carga.
