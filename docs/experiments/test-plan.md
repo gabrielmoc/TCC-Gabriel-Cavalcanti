@@ -55,3 +55,5 @@ As primeiras comparações entre baseline e Redis foram úteis para validar o ca
 - [case-2-comparison.md](case-2-comparison.md): rodada histórica com dataset ampliado e coleta de recursos.
 
 Esses documentos são mantidos por rastreabilidade metodológica, não como plano ativo de execução.
+
+A primeira bateria histórica usou 5 a 60 VUs, 30 s de subida, 60 s de sustentação, 20 s de descida e três repetições. Esses números foram calibrados de forma exploratória no ambiente local e não foram copiados de um artigo. No texto acadêmico, devem ser identificados como piloto de validação, enquanto a matriz final é o protocolo conclusivo.

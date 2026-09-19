@@ -56,6 +56,12 @@ Portanto, não se afirma que “Ji et al. definiram 90 VUs” ou que “a litera
 
 A matriz de 27 rodadas permanece válida: três cenários tecnológicos, três perfis e três repetições. Este documento não altera números ou resultados após a execução. Ele torna explícito o raciocínio que orientou o desenho e delimita corretamente as conclusões.
 
+### Rodadas históricas exploratórias
+
+Antes da matriz final, uma bateria utilizou rampa de **5 a 60 usuários virtuais**, com **30 s de subida**, **60 s de sustentação**, **20 s de descida** e **três repetições por cenário**. Esses parâmetros também foram escolhas exploratórias calibradas localmente; eles não foram extraídos literalmente de nenhum dos artigos analisados. Sua finalidade foi validar o fluxo ponta a ponta, o comportamento do Redis, a coleta de métricas e a viabilidade de aplicar carga no ambiente.
+
+Essas rodadas são preservadas como evidência de amadurecimento do experimento, mas não constituem a comparação conclusiva. A análise final utiliza exclusivamente a matriz de 27 rodadas descrita em `matriz-final.md`. No artigo, a bateria histórica deve ser apresentada como **piloto exploratório**, nunca como protocolo bibliográfico nem como resultado final.
+
 O Case 3 deve ser chamado de **carga variável com pico controlado**. Embora Ji et al. também estudem anomalias súbitas, o perfil local não injeta um salto instantâneo de 200%; ele aplica transições determinísticas entre patamares. Uma futura extensão poderia avaliar picos abruptos e tempo de recuperação como experimento adicional, mas isso não integra a matriz concluída.
 
 ## Como citar no artigo
