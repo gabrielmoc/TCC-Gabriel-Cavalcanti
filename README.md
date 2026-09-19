@@ -25,7 +25,7 @@ A proposta consiste na construção de um ambiente experimental inspirado em sis
 
 O foco está na avaliação comparativa de cenários sob carga controlada, observando métricas como latência, throughput, tempo de resposta, taxa de erro e utilização de recursos computacionais.
 
-A implementação prática será **guiada pelo Projeto de Pesquisa e pelos trabalhos de referência**, evitando a construção arbitrária de uma metodologia experimental e buscando preservar a comparabilidade dos resultados com a literatura analisada.
+A implementação prática foi **guiada pelo Projeto de Pesquisa e pelos trabalhos de referência**, evitando a construção arbitrária de uma metodologia experimental e buscando preservar a comparabilidade dos resultados com a literatura analisada.
 
 ## Matriz Experimental Atual
 
@@ -359,7 +359,7 @@ Critérios estatísticos adicionais serão definidos durante a consolidação do
 
 ## Ambiente Experimental
 
-O ambiente será preparado para permitir execução controlada e repetível dos experimentos.
+O ambiente foi preparado para permitir execução controlada e repetível dos experimentos.
 
 O ambiente efetivamente utilizado é composto por:
 
@@ -502,7 +502,7 @@ Documentos centrais neste momento:
 - [docs/experiments/case-2-comparison.md](/Users/gabrielmoc/Downloads/TCC - Gabriel/docs/experiments/case-2-comparison.md)
 - [docs/experiments/scenarios/README.md](/Users/gabrielmoc/Downloads/TCC - Gabriel/docs/experiments/scenarios/README.md)
 - [docs/optimized-scenario.md](/Users/gabrielmoc/Downloads/TCC - Gabriel/docs/optimized-scenario.md)
-- [docs/tcc/metodologia-e-resultados-parciais.md](/Users/gabrielmoc/Downloads/TCC - Gabriel/docs/tcc/metodologia-e-resultados-parciais.md)
+- [docs/tcc/metodologia-e-resultados-finais.md](/Users/gabrielmoc/Downloads/TCC - Gabriel/docs/tcc/metodologia-e-resultados-finais.md)
 
 ---
 

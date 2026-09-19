@@ -6,7 +6,7 @@ Comparar `baseline`, `redis-cache` e `solr` sob a mesma carga funcional.
 
 ## Relação com a Literatura
 
-Este cenário representa a transição da análise parcial para a comparação central do TCC, permitindo discutir qual estratégia produz melhor equilíbrio entre desempenho e custo operacional.
+Este cenário representa a transição das rodadas exploratórias para a comparação central do TCC, permitindo discutir qual estratégia produz melhor equilíbrio entre desempenho e custo operacional.
 
 ## Comparação Prevista
 

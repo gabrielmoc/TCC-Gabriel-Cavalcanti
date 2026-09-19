@@ -1,4 +1,4 @@
-# Metodologia e Resultados Parciais da Matriz Final
+# Metodologia e Resultados da Matriz Final
 
 > Texto acadêmico de apoio para o artigo científico. Atualizado em 18/09/2026. Os resultados históricos de baseline e Redis são preservados como evidência piloto; a matriz final é a base da comparação conclusiva.
 
@@ -52,7 +52,7 @@ Uma execução é inválida quando ocorre falha de infraestrutura, serviço indi
 
 Além dos fluxos válidos, os testes de fumaça verificam o contrato público de erro: identificadores inválidos retornam `400`, recursos inexistentes e rotas não mapeadas retornam `404`, e indisponibilidades internas retornam `502` pelo gateway. O corpo padronizado contém `error.code`, `error.message` e `error.requestId`, preservando a ligação entre a resposta e os logs da requisição. Essa medida aumenta a rastreabilidade da validação sem modificar o contrato de sucesso usado na matriz de carga.
 
-## 4 Resultados e Discussão [Parcial]
+## 4 Resultados e Discussão
 
 ### 4.1 Evidências históricas e amadurecimento experimental
 
@@ -72,6 +72,6 @@ As 27 rodadas da matriz final foram executadas sob condições controladas. A co
 
 A comparação consolidada está registrada em `docs/experiments/matriz-final-comparison.md`, com tabelas e gráficos gerados a partir dos resumos agregados.
 
-### 4.3 Limitações parciais
+### 4.3 Limitações do experimento
 
 Os testes são locais, usam dados determinísticos e não reproduzem uma plataforma comercial de streaming. Portanto, os achados devem ser interpretados no contexto do ambiente, da massa de dados, dos perfis de carga e dos recursos disponíveis. CPU e memória são indicadores operacionais, não substitutos de medição elétrica direta.
