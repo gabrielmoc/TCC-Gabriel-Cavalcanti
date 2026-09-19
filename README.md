@@ -43,15 +43,9 @@ Os perfis de carga se baseiam conceitualmente na literatura sobre tráfego norma
 
 ---
 
-## Convenções do Projeto
+## Estado da Implementação
 
-Para diferenciar decisões já consolidadas daquelas que ainda dependem de detalhamento metodológico ou implementação, este README utiliza a seguinte classificação:
-
-| Situação | Significado |
-| --- | --- |
-| **Definido** | Elemento já estabelecido pelo Projeto de Pesquisa ou consolidado na documentação disponível. |
-| **Previsto** | Elemento previsto para a parte prática, mas que ainda depende de implementação ou detalhamento operacional. |
-| **Pendente** | Elemento que ainda exige decisão metodológica ou validação antes da implementação. |
+A implementação experimental está concluída e congelada para preservar a comparabilidade da matriz final. O repositório contém os três cenários tecnológicos, os scripts de carga, as validações funcionais, os resultados brutos e a documentação de reprodução. As próximas mudanças serão prioritariamente de escrita, revisão acadêmica e apresentação dos resultados.
 
 ---
 
@@ -91,17 +85,17 @@ Analisar estratégias de otimização de desempenho em sistemas de streaming de 
 
 A parte prática consiste na implementação de um protótipo simplificado de sistema inspirado em plataformas de streaming.
 
-O desenho experimental atualmente contempla:
+O desenho experimental implementado contempla:
 
 - **Definido e implementado:** `API Gateway` como ponto de entrada da aplicação;
 - **Definido e implementado:** três microsserviços: `catalog`, `users` e `recommendations`;
-- **Definido:** comparação entre diferentes cenários experimentais;
-- **Definido:** cenário baseline, sem mecanismos específicos de otimização;
-- **Definido:** cenário utilizando cache por meio do `Redis`;
+- **Implementado:** comparação entre diferentes cenários experimentais;
+- **Implementado:** cenário baseline, sem mecanismos específicos de otimização;
+- **Implementado:** cenário utilizando cache por meio do `Redis`;
 - **Definido e implementado:** cenário de indexação de catálogo com `Apache Solr` no fluxo de recomendações;
 - **Definido e implementado:** testes de carga utilizando `k6`;
-- **Definido:** coleta de métricas relacionadas ao desempenho e ao uso de recursos;
-- **Definido:** três execuções para cada combinação entre cenário experimental e padrão de carga;
+- **Implementado:** coleta de métricas relacionadas ao desempenho e ao uso de recursos;
+- **Implementado:** três execuções para cada combinação entre cenário experimental e padrão de carga;
 - **Concluído:** segunda leva experimental com dataset ampliado, carga moderada, carga forte e coleta de `CPU` e memória.
 
 ---
@@ -110,25 +104,7 @@ O desenho experimental atualmente contempla:
 
 A arquitetura experimental atual é composta por um API Gateway responsável por encaminhar as requisições para três microsserviços independentes.
 
-```mermaid
-flowchart LR
-    A["k6<br/>Load Generator"] --> B["API Gateway"]
-
-    B --> C["Catalog Service"]
-    B --> D["Users Service"]
-    B --> E["Recommendations Service"]
-
-    C -. "quando aplicavel" .-> F["Redis Cache"]
-    D -. "quando aplicavel" .-> F
-    E -. "quando aplicavel" .-> F
-
-    B -.-> G["Logs e Monitoramento"]
-    C -.-> G
-    D -.-> G
-    E -.-> G
-```
-
-> **Observação:** o diagrama representa baseline e cache. O cenário de indexação com Solr já está implementado e será representado em diagrama próprio na consolidação visual final.
+Os diagramas finais e específicos de cada cenário estão em [arquitetura-final.md](docs/arquitetura-final.md): baseline, Redis e Solr. Esse documento é a fonte arquitetural oficial do repositório e evita manter diagramas duplicados ou contraditórios.
 
 ---
 
@@ -142,23 +118,22 @@ flowchart LR
 | Indexação | Apache Solr | **Implementado** | Recuperação indexada de itens para o fluxo de recomendações. |
 | Testes | ![k6](https://img.shields.io/badge/k6-7D64FF?logo=k6&logoColor=white) | **Implementado** | Geração de carga e execução dos experimentos. |
 | Observabilidade | Logs e métricas | **Implementado** | Monitoramento mínimo do comportamento da aplicação durante os testes. |
-| Ferramentas auxiliares | A definir | **Pendente** | Dependem da consolidação do ambiente experimental. |
 
-A presença dessas tecnologias representa o planejamento atual do TCC e não implica que todas tenham sido utilizadas pelos trabalhos de referência na mesma configuração experimental.
+A presença dessas tecnologias representa o escopo implementado do experimento e não implica que todas tenham sido utilizadas pelos trabalhos de referência na mesma configuração experimental.
 
 ---
 
 ## Diretriz Metodológica
 
-A parte prática **não será construída a partir de uma metodologia arbitrária**.
+A parte prática foi construída a partir de uma metodologia não arbitrária.
 
-As decisões experimentais serão guiadas pelos trabalhos de referência analisados durante o desenvolvimento do TCC, seguindo três princípios:
+As decisões experimentais foram guiadas pelos trabalhos de referência analisados durante o desenvolvimento do TCC, seguindo três princípios:
 
 1. utilizar procedimentos derivados da literatura quando houver sustentação metodológica direta;
 2. adaptar procedimentos ao escopo do TCC quando a reprodução literal não for tecnicamente ou operacionalmente viável;
-3. manter como pendentes as decisões que ainda não possuam sustentação suficiente para serem consolidadas.
+3. registrar explicitamente as decisões calibradas ao ambiente local.
 
-O objetivo é permitir que os resultados obtidos posteriormente possam ser discutidos e comparados de forma metodologicamente coerente com os trabalhos utilizados como referência.
+O objetivo é permitir que os resultados obtidos sejam discutidos e comparados de forma metodologicamente coerente com os trabalhos utilizados como referência.
 
 ---
 
@@ -204,9 +179,9 @@ Esses trabalhos não serão necessariamente reproduzidos integralmente. A propos
 
 ## Metodologia Experimental
 
-O experimento será estruturado em torno da implementação de uma arquitetura base e da comparação de seu comportamento diante de diferentes configurações e padrões de carga.
+O experimento foi estruturado em torno da implementação de uma arquitetura base e da comparação de seu comportamento diante de diferentes configurações e padrões de carga.
 
-### Elementos definidos
+### Elementos consolidados
 
 - avaliação comparativa entre cenários;
 - utilização das mesmas métricas centrais entre as configurações;
@@ -216,12 +191,7 @@ O experimento será estruturado em torno da implementação de uma arquitetura b
 - interpretação dos resultados à luz dos trabalhos de referência.
 - plano mestre de testes cobrindo todo o ciclo experimental do TCC.
 
-### Elementos previstos
-
-- expansão progressiva dos padrões de carga;
-- registro visual mais completo dos resultados em gráficos e tabelas.
-
-### Elementos em andamento
+### Próxima etapa acadêmica
 
 - revisão acadêmica da interpretação da matriz final tripla entre baseline, Redis e Solr;
 - integração das tabelas e gráficos das 27 rodadas ao artigo científico;

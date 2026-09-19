@@ -194,26 +194,20 @@ gateway
 response
 ```
 
-## Papel futuro do Redis
+## Papel do Redis no experimento
 
 O Redis não faz parte do baseline.
 
-No planejamento atual, seu primeiro uso previsto e no `catalog`, por ser o candidato mais natural a cache na primeira comparação experimental.
+No cenário Redis implementado, o `Catalog Service` utiliza as chaves `catalog:all` e `catalog:{id}` com TTL configurável. O primeiro acesso realiza um `MISS` e popula o cache; consultas subsequentes retornam `HIT`. Se o Redis estiver indisponível, o serviço usa o dataset local e preserva o contrato funcional.
 
-Dados potencialmente cacheaveis em etapas posteriores:
+Chaves utilizadas no cenário implementado:
 
 ```text
 catalog:all
 catalog:{id}
 ```
 
-Possivelmente depois:
-
-```text
-recommendations:{userId}
-```
-
-Esse segundo caso não faz parte da primeira versão com cache.
+O cache de recomendações por usuário não integra o escopo do experimento, pois introduziria uma variável adicional e prejudicaria a comparação isolada da recuperação de catálogo.
 
 ## Fonte de dados na primeira versão
 
