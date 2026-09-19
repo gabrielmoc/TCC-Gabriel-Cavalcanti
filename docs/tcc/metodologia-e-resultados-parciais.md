@@ -50,6 +50,8 @@ As métricas principais são latência média, percentil 95 de latência (p95), 
 
 Uma execução é inválida quando ocorre falha de infraestrutura, serviço indisponível, desvio funcional ou erro de configuração. Resultados brutos, metadados e logs são salvos em `results/{cenario}/matriz-final/{case}/recommendations/run-{n}/`. As médias agregadas das três repetições sustentam as tabelas, gráficos e discussão final.
 
+Além dos fluxos válidos, os testes de fumaça verificam o contrato público de erro: identificadores inválidos retornam `400`, recursos inexistentes e rotas não mapeadas retornam `404`, e indisponibilidades internas retornam `502` pelo gateway. O corpo padronizado contém `error.code`, `error.message` e `error.requestId`, preservando a ligação entre a resposta e os logs da requisição. Essa medida aumenta a rastreabilidade da validação sem modificar o contrato de sucesso usado na matriz de carga.
+
 ## 4 Resultados e Discussão [Parcial]
 
 ### 4.1 Evidências históricas e amadurecimento experimental

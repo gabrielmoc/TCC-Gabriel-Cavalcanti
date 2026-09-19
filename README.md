@@ -391,43 +391,42 @@ Critérios estatísticos adicionais serão definidos durante a consolidação do
 
 O ambiente será preparado para permitir execução controlada e repetível dos experimentos.
 
-Atualmente estão previstos:
+O ambiente efetivamente utilizado é composto por:
 
 - execução local;
 - serviços independentes;
 - backend em `Node.js`;
 - APIs desenvolvidas com `Express`;
 - cache utilizando `Redis`;
+- indexação utilizando `Apache Solr` em contêiner Docker;
 - testes de carga utilizando `k6`;
 - mecanismos de registro e monitoramento durante as execuções.
 
-Ainda permanecem pendentes de implementação ou validação:
-
-- sistema operacional de referência;
-- estratégia de conteinerização;
-- ferramenta definitiva de observabilidade;
-- especificação do hardware utilizado nos testes.
-
-Essas informações serão registradas antes da execução experimental para garantir maior reprodutibilidade.
+O Node.js é fixado pela versão declarada em `.nvmrc`. Redis é executado localmente pelo binário `redis-server`; Solr é provisionado por `compose.yaml`. Os metadados e métricas de cada execução oficial foram preservados em `results/`.
 
 ---
 
 ## Reprodutibilidade
 
-Um dos objetivos do repositório é permitir que o experimento possa posteriormente ser reproduzido.
+O ambiente pode ser preparado e validado com os comandos abaixo:
 
-Ao final da implementação, deverão estar documentados:
+```bash
+scripts/bootstrap.sh
+scripts/run-smoke-suite.sh
+```
 
-- requisitos de software e hardware;
-- versões das tecnologias utilizadas;
-- instalação das dependências;
-- configuração dos serviços;
-- inicialização do ambiente;
-- configuração dos cenários;
-- execução dos testes;
-- parâmetros de carga;
-- coleta das métricas;
-- organização dos resultados.
+O primeiro comando instala as dependências dos quatro serviços e verifica a disponibilidade de Redis, Docker Compose e k6. O segundo valida baseline, cache Redis, fallback e Solr. Para executar apenas um cenário manualmente, use os valores de `.env.example` e inicie os serviços em terminais separados:
+
+```bash
+npm --prefix services/catalog start
+npm --prefix services/users start
+npm --prefix services/recommendations start
+npm --prefix gateway start
+```
+
+Para habilitar Redis, defina `CATALOG_CACHE_ENABLED=true` e inicie `redis-server`. Para Solr, execute `docker compose up -d solr`, indexe o catálogo com `node services/solr/index-catalog.mjs` e defina `CATALOG_RETRIEVAL_MODE=solr` antes de iniciar o serviço de recomendações.
+
+Os procedimentos da matriz final, incluindo aquecimento, repetições, métricas e organização de resultados, estão em [matriz-final.md](docs/experiments/matriz-final.md). Os diagramas dos três cenários estão em [arquitetura-final.md](docs/arquitetura-final.md).
 
 ---
 
@@ -443,7 +442,13 @@ Ao final da implementação, deverão estar documentados:
 │   └── recommendations/
 │
 ├── shared/
-│   └── datasets/
+│   ├── datasets/
+│   ├── http/
+│   └── runtime/
+│
+├── scripts/
+│   ├── bootstrap.sh
+│   └── run-smoke-suite.sh
 │
 ├── tests/
 │   ├── load/
@@ -458,6 +463,7 @@ Ao final da implementação, deverão estar documentados:
 │   ├── baseline-contract.md
 │   ├── cache-scenario.md
 │   ├── cache-validation.md
+│   ├── arquitetura-final.md
 │   └── experiments/
 │       ├── test-plan.md
 │       ├── first-comparison.md

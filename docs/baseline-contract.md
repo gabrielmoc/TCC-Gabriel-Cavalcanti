@@ -24,6 +24,22 @@ GET /api/users/:id
 GET /api/recommendations/:userId
 ```
 
+## Contrato de erros
+
+As rotas públicas preservam uma estrutura de erro uniforme para facilitar diagnóstico e validação automatizada:
+
+```json
+{
+  "error": {
+    "code": "INVALID_RESOURCE_ID",
+    "message": "O identificador do usuário deve ser um inteiro positivo.",
+    "requestId": "identificador-da-requisição"
+  }
+}
+```
+
+Os identificadores devem ser inteiros positivos. Recursos inexistentes retornam `404`; identificadores inválidos retornam `400`; e falhas de comunicação com serviços internos retornam `502` pelo gateway.
+
 ## Responsabilidades por serviço
 
 ### Gateway
