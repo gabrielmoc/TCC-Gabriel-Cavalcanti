@@ -1,6 +1,11 @@
 const express = require("express");
 const { randomUUID } = require("node:crypto");
 const path = require("path");
+const {
+  parsePositiveInteger,
+  sendError,
+  sendNotFound,
+} = require("../../../shared/http/response");
 const { createRuntimeMetrics } = require("../../../shared/runtime/metrics");
 
 const app = express();
@@ -24,6 +29,7 @@ app.use((req, res, next) => {
 
   res.on("finish", () => {
     const durationMs = Date.now() - startedAt;
+    const errorCode = res.locals.errorCode || "n/a";
 
     metrics.recordRequest(res.statusCode, durationMs);
 
@@ -34,6 +40,7 @@ app.use((req, res, next) => {
         `${req.method} ${req.originalUrl}`,
         `status=${res.statusCode}`,
         `durationMs=${durationMs}`,
+        `error=${errorCode}`,
       ].join(" | ")
     );
   });
@@ -42,13 +49,26 @@ app.use((req, res, next) => {
 });
 
 app.get("/users/:id", (req, res) => {
-  const userId = Number(req.params.id);
+  const userId = parsePositiveInteger(req.params.id);
+
+  if (!userId) {
+    return sendError(
+      res,
+      400,
+      "INVALID_RESOURCE_ID",
+      "O identificador do usuário deve ser um inteiro positivo."
+    );
+  }
+
   const user = users.find((entry) => entry.id === userId);
 
   if (!user) {
-    return res.status(404).json({
-      message: "User not found",
-    });
+    return sendError(
+      res,
+      404,
+      "USER_NOT_FOUND",
+      "Usuário não encontrado."
+    );
   }
 
   return res.json(user);
@@ -64,6 +84,8 @@ app.get("/health", (_req, res) => {
 app.get("/metrics", (_req, res) => {
   res.json(metrics.snapshot());
 });
+
+app.use((_req, res) => sendNotFound(res));
 
 app.listen(port, () => {
   console.log(`users listening on port ${port}`);

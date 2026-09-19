@@ -1,5 +1,6 @@
 const express = require("express");
 const { randomUUID } = require("node:crypto");
+const { sendError, sendNotFound } = require("../../shared/http/response");
 const { createRuntimeMetrics } = require("../../shared/runtime/metrics");
 
 const app = express();
@@ -23,6 +24,7 @@ app.use((req, res, next) => {
     const upstreamService = res.locals.upstreamService || "n/a";
     const cacheStatus = res.locals.cacheStatus || "n/a";
     const dataSource = res.locals.dataSource || "n/a";
+    const errorCode = res.locals.errorCode || "n/a";
 
     metrics.recordRequest(res.statusCode, durationMs);
     metrics.incrementCounter("upstreamService", upstreamService);
@@ -39,6 +41,7 @@ app.use((req, res, next) => {
         `upstream=${upstreamService}`,
         `cache=${cacheStatus}`,
         `source=${dataSource}`,
+        `error=${errorCode}`,
       ].join(" | ")
     );
   });
@@ -47,6 +50,8 @@ app.use((req, res, next) => {
 });
 
 async function proxyJson(req, res, targetUrl, upstreamService) {
+  res.locals.upstreamService = upstreamService;
+
   try {
     const upstreamResponse = await fetch(targetUrl, {
       headers: {
@@ -58,9 +63,9 @@ async function proxyJson(req, res, targetUrl, upstreamService) {
     const cacheHeader = upstreamResponse.headers.get("x-cache");
     const dataSourceHeader = upstreamResponse.headers.get("x-data-source");
 
-    res.locals.upstreamService = upstreamService;
     res.locals.cacheStatus = cacheHeader || "n/a";
     res.locals.dataSource = dataSourceHeader || "n/a";
+    res.locals.errorCode = payload.error?.code || "n/a";
 
     if (cacheHeader) {
       res.set("X-Cache", cacheHeader);
@@ -72,10 +77,13 @@ async function proxyJson(req, res, targetUrl, upstreamService) {
 
     return res.status(upstreamResponse.status).json(payload);
   } catch (error) {
-    return res.status(502).json({
-      message: "Gateway upstream error",
-      error: error.message,
-    });
+    console.error(`gateway upstream error for ${upstreamService}: ${error.message}`);
+    return sendError(
+      res,
+      502,
+      "UPSTREAM_UNAVAILABLE",
+      "Não foi possível obter resposta do serviço responsável."
+    );
   }
 }
 
@@ -110,6 +118,8 @@ app.get("/health", (_req, res) => {
 app.get("/metrics", (_req, res) => {
   res.json(metrics.snapshot());
 });
+
+app.use((_req, res) => sendNotFound(res));
 
 app.listen(port, () => {
   console.log(`gateway listening on port ${port}`);

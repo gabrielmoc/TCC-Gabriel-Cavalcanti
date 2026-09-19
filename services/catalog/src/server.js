@@ -2,6 +2,11 @@ const express = require("express");
 const { randomUUID } = require("node:crypto");
 const path = require("path");
 const { createClient } = require("redis");
+const {
+  parsePositiveInteger,
+  sendError,
+  sendNotFound,
+} = require("../../../shared/http/response");
 const { createRuntimeMetrics } = require("../../../shared/runtime/metrics");
 
 const app = express();
@@ -39,6 +44,7 @@ app.use((req, res, next) => {
     const cacheStatus = res.locals.cacheStatus || "BYPASS";
     const dataSource = res.locals.dataSource || "n/a";
     const cacheKey = res.locals.cacheKey || "n/a";
+    const errorCode = res.locals.errorCode || "n/a";
 
     metrics.recordRequest(res.statusCode, durationMs);
     metrics.incrementCounter("cacheStatus", cacheStatus);
@@ -54,6 +60,7 @@ app.use((req, res, next) => {
         `cache=${cacheStatus}`,
         `source=${dataSource}`,
         `key=${cacheKey}`,
+        `error=${errorCode}`,
       ].join(" | ")
     );
   });
@@ -146,7 +153,19 @@ app.get("/catalog", async (_req, res) => {
 });
 
 app.get("/catalog/:id", async (req, res) => {
-  const itemId = Number(req.params.id);
+  const itemId = parsePositiveInteger(req.params.id);
+
+  if (!itemId) {
+    res.locals.cacheStatus = "BYPASS";
+    res.locals.dataSource = "n/a";
+    return sendError(
+      res,
+      400,
+      "INVALID_RESOURCE_ID",
+      "O identificador do catálogo deve ser um inteiro positivo."
+    );
+  }
+
   const cacheKey = `catalog:${itemId}`;
   const cachedItem = await readCache(cacheKey);
   res.locals.cacheKey = cacheKey;
@@ -167,9 +186,12 @@ app.get("/catalog/:id", async (req, res) => {
     res.locals.cacheStatus = "MISS";
     res.locals.dataSource = "dataset";
 
-    return res.status(404).json({
-      message: "Catalog item not found",
-    });
+    return sendError(
+      res,
+      404,
+      "CATALOG_ITEM_NOT_FOUND",
+      "Item de catálogo não encontrado."
+    );
   }
 
   await writeCache(cacheKey, item);
@@ -198,6 +220,8 @@ app.get("/health", (_req, res) => {
 app.get("/metrics", (_req, res) => {
   res.json(metrics.snapshot());
 });
+
+app.use((_req, res) => sendNotFound(res));
 
 async function startServer() {
   await connectRedis();

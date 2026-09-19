@@ -1,5 +1,10 @@
 const express = require("express");
 const { randomUUID } = require("node:crypto");
+const {
+  parsePositiveInteger,
+  sendError,
+  sendNotFound,
+} = require("../../../shared/http/response");
 const { createRuntimeMetrics } = require("../../../shared/runtime/metrics");
 
 const app = express();
@@ -68,6 +73,7 @@ app.use((req, res, next) => {
     const durationMs = Date.now() - startedAt;
     const userDuration = res.locals.usersDurationMs ?? "n/a";
     const catalogDuration = res.locals.catalogDurationMs ?? "n/a";
+    const errorCode = res.locals.errorCode || "n/a";
 
     metrics.recordRequest(res.statusCode, durationMs);
 
@@ -80,6 +86,7 @@ app.use((req, res, next) => {
         `durationMs=${durationMs}`,
         `usersMs=${userDuration}`,
         `catalogMs=${catalogDuration}`,
+        `error=${errorCode}`,
       ].join(" | ")
     );
   });
@@ -88,12 +95,15 @@ app.use((req, res, next) => {
 });
 
 app.get("/recommendations/:userId", async (req, res) => {
-  const userId = Number(req.params.userId);
+  const userId = parsePositiveInteger(req.params.userId);
 
-  if (Number.isNaN(userId)) {
-    return res.status(400).json({
-      message: "Invalid user id",
-    });
+  if (!userId) {
+    return sendError(
+      res,
+      400,
+      "INVALID_RESOURCE_ID",
+      "O identificador do usuário deve ser um inteiro positivo."
+    );
   }
 
   try {
@@ -125,15 +135,21 @@ app.get("/recommendations/:userId", async (req, res) => {
     const userResponse = await userResponsePromise;
 
     if (userResponse.status === 404) {
-      return res.status(404).json({
-        message: "User not found",
-      });
+      return sendError(
+        res,
+        404,
+        "USER_NOT_FOUND",
+        "Usuário não encontrado."
+      );
     }
 
     if (!userResponse.ok) {
-      return res.status(502).json({
-        message: "Failed to fetch upstream services",
-      });
+      return sendError(
+        res,
+        502,
+        "UPSTREAM_UNAVAILABLE",
+        "Não foi possível consultar o serviço de usuários."
+      );
     }
 
     const user = await userResponse.json();
@@ -152,9 +168,12 @@ app.get("/recommendations/:userId", async (req, res) => {
       const catalogResponse = await catalogResponsePromise;
 
       if (!catalogResponse.ok) {
-        return res.status(502).json({
-          message: "Failed to fetch upstream services",
-        });
+        return sendError(
+          res,
+          502,
+          "UPSTREAM_UNAVAILABLE",
+          "Não foi possível consultar o serviço de catálogo."
+        );
       }
 
       const catalog = await catalogResponse.json();
@@ -169,10 +188,13 @@ app.get("/recommendations/:userId", async (req, res) => {
       recommendations,
     });
   } catch (error) {
-    return res.status(500).json({
-      message: "Internal recommendations error",
-      error: error.message,
-    });
+    console.error(`recommendations request failed: ${error.message}`);
+    return sendError(
+      res,
+      500,
+      "RECOMMENDATIONS_INTERNAL_ERROR",
+      "Não foi possível gerar recomendações."
+    );
   }
 });
 
@@ -186,6 +208,8 @@ app.get("/health", (_req, res) => {
 app.get("/metrics", (_req, res) => {
   res.json(metrics.snapshot());
 });
+
+app.use((_req, res) => sendNotFound(res));
 
 app.listen(port, () => {
   console.log(`recommendations listening on port ${port}`);
