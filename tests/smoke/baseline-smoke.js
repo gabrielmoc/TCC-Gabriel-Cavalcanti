@@ -50,6 +50,41 @@ const endpoints = [
     assert: (body) =>
       body.userId === 1 && Array.isArray(body.recommendations) && body.recommendations.length > 0,
   },
+  {
+    url: "http://127.0.0.1:3000/api/catalog/invalido",
+    expectedStatus: 400,
+    assertError: "INVALID_RESOURCE_ID",
+  },
+  {
+    url: "http://127.0.0.1:3000/api/catalog/999999",
+    expectedStatus: 404,
+    assertError: "CATALOG_ITEM_NOT_FOUND",
+  },
+  {
+    url: "http://127.0.0.1:3000/api/users/invalido",
+    expectedStatus: 400,
+    assertError: "INVALID_RESOURCE_ID",
+  },
+  {
+    url: "http://127.0.0.1:3000/api/users/999999",
+    expectedStatus: 404,
+    assertError: "USER_NOT_FOUND",
+  },
+  {
+    url: "http://127.0.0.1:3000/api/recommendations/invalido",
+    expectedStatus: 400,
+    assertError: "INVALID_RESOURCE_ID",
+  },
+  {
+    url: "http://127.0.0.1:3000/api/recommendations/999999",
+    expectedStatus: 404,
+    assertError: "USER_NOT_FOUND",
+  },
+  {
+    url: "http://127.0.0.1:3000/api/inexistente",
+    expectedStatus: 404,
+    assertError: "ROUTE_NOT_FOUND",
+  },
 ];
 
 const children = [];
@@ -95,8 +130,17 @@ async function run() {
       );
     }
 
-    if (!endpoint.assert(body)) {
+    if (endpoint.assert && !endpoint.assert(body)) {
       throw new Error(`Unexpected body for ${endpoint.url}`);
+    }
+
+    if (
+      endpoint.assertError &&
+      (body.error?.code !== endpoint.assertError ||
+        !body.error?.requestId ||
+        response.headers.get("x-request-id") !== body.error.requestId)
+    ) {
+      throw new Error(`Unexpected error contract for ${endpoint.url}`);
     }
 
     console.log(`OK ${endpoint.url}`);
