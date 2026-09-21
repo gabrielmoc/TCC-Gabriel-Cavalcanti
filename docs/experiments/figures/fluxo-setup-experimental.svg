@@ -1,0 +1,102 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="760" viewBox="0 0 1600 760" role="img" aria-labelledby="title description">
+  <title id="title">Fluxo de preparação e execução da matriz experimental</title>
+  <desc id="description">Diagrama com as etapas de preparação dos serviços, seleção do cenário, preparação da fonte de dados, aquecimento, validação, execução do k6, coleta de métricas e consolidação dos resultados.</desc>
+  <defs>
+    <style>
+      .title { font-family: Georgia, serif; font-size: 34px; font-weight: 700; fill: #123b61; }
+      .subtitle { font-family: Arial, sans-serif; font-size: 18px; fill: #52738f; }
+      .step { font-family: Arial, sans-serif; font-size: 17px; font-weight: 700; fill: #123b61; }
+      .detail { font-family: Arial, sans-serif; font-size: 14px; fill: #315a7d; }
+      .number { font-family: Arial, sans-serif; font-size: 15px; font-weight: 700; fill: #ffffff; }
+      .arrow { stroke: #4f82ad; stroke-width: 3; fill: none; marker-end: url(#arrowhead); }
+    </style>
+    <marker id="arrowhead" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L8,3 z" fill="#4f82ad"/>
+    </marker>
+  </defs>
+
+  <rect width="1600" height="760" fill="#ffffff"/>
+  <rect x="40" y="34" width="1520" height="680" rx="26" fill="#f8fbff" stroke="#c9daed" stroke-width="2"/>
+  <text x="800" y="94" text-anchor="middle" class="title">Fluxo de preparação e execução da matriz experimental</text>
+  <text x="800" y="128" text-anchor="middle" class="subtitle">Protocolo repetido para cada combinação entre cenário tecnológico e perfil de carga</text>
+
+  <path class="arrow" d="M370 264 H425"/>
+  <path class="arrow" d="M755 264 H810"/>
+  <path class="arrow" d="M1140 264 H1195"/>
+  <path class="arrow" d="M1375 360 V430 H280 V466"/>
+  <path class="arrow" d="M570 550 H625"/>
+  <path class="arrow" d="M955 550 H1010"/>
+  <path class="arrow" d="M1340 550 H1395"/>
+
+  <g transform="translate(95 188)">
+    <rect width="275" height="152" rx="18" fill="#ffffff" stroke="#9bbddd" stroke-width="2"/>
+    <circle cx="30" cy="30" r="17" fill="#1769aa"/><text x="30" y="35" text-anchor="middle" class="number">1</text>
+    <text x="54" y="35" class="step">Preparar serviços</text>
+    <text x="28" y="72" class="detail">Gateway, Catalog, Users e</text>
+    <text x="28" y="94" class="detail">Recommendations em portas</text>
+    <text x="28" y="116" class="detail">isoladas e verificadas.</text>
+  </g>
+
+  <g transform="translate(425 188)">
+    <rect width="330" height="152" rx="18" fill="#ffffff" stroke="#9bbddd" stroke-width="2"/>
+    <circle cx="30" cy="30" r="17" fill="#1769aa"/><text x="30" y="35" text-anchor="middle" class="number">2</text>
+    <text x="54" y="35" class="step">Selecionar cenário</text>
+    <text x="28" y="72" class="detail">Baseline, Redis ou Solr, sem</text>
+    <text x="28" y="94" class="detail">alterar rota, payload, dataset</text>
+    <text x="28" y="116" class="detail">ou regra de recomendação.</text>
+  </g>
+
+  <g transform="translate(810 188)">
+    <rect width="330" height="152" rx="18" fill="#ffffff" stroke="#9bbddd" stroke-width="2"/>
+    <circle cx="30" cy="30" r="17" fill="#1769aa"/><text x="30" y="35" text-anchor="middle" class="number">3</text>
+    <text x="54" y="35" class="step">Preparar a fonte</text>
+    <text x="28" y="72" class="detail">Aquecer Redis ou reindexar</text>
+    <text x="28" y="94" class="detail">o catálogo no Solr a partir da</text>
+    <text x="28" y="116" class="detail">mesma massa determinística.</text>
+  </g>
+
+  <g transform="translate(1195 188)">
+    <rect width="310" height="152" rx="18" fill="#ffffff" stroke="#9bbddd" stroke-width="2"/>
+    <circle cx="30" cy="30" r="17" fill="#1769aa"/><text x="30" y="35" text-anchor="middle" class="number">4</text>
+    <text x="54" y="35" class="step">Validar contrato</text>
+    <text x="28" y="72" class="detail">Executar testes de fumaça e</text>
+    <text x="28" y="94" class="detail">confirmar conteúdo, ordem e</text>
+    <text x="28" y="116" class="detail">formato da resposta pública.</text>
+  </g>
+
+  <g transform="translate(95 466)">
+    <rect width="475" height="168" rx="18" fill="#eaf4fb" stroke="#6fa5cf" stroke-width="2"/>
+    <circle cx="30" cy="30" r="17" fill="#1769aa"/><text x="30" y="35" text-anchor="middle" class="number">5</text>
+    <text x="54" y="35" class="step">Executar carga com k6</text>
+    <text x="28" y="74" class="detail">Aplicar o perfil do Case 1, 2 ou 3 pelo</text>
+    <text x="28" y="97" class="detail">endpoint de recomendações e repetir três</text>
+    <text x="28" y="120" class="detail">vezes cada combinação cenário × case.</text>
+  </g>
+
+  <g transform="translate(625 466)">
+    <rect width="330" height="168" rx="18" fill="#eaf4fb" stroke="#6fa5cf" stroke-width="2"/>
+    <circle cx="30" cy="30" r="17" fill="#1769aa"/><text x="30" y="35" text-anchor="middle" class="number">6</text>
+    <text x="54" y="35" class="step">Coletar evidências</text>
+    <text x="28" y="74" class="detail">Registrar latência, p95, vazão,</text>
+    <text x="28" y="97" class="detail">erros, logs, CPU e memória RSS</text>
+    <text x="28" y="120" class="detail">como evidências operacionais.</text>
+  </g>
+
+  <g transform="translate(1010 466)">
+    <rect width="330" height="168" rx="18" fill="#eaf4fb" stroke="#6fa5cf" stroke-width="2"/>
+    <circle cx="30" cy="30" r="17" fill="#1769aa"/><text x="30" y="35" text-anchor="middle" class="number">7</text>
+    <text x="54" y="35" class="step">Verificar validade</text>
+    <text x="28" y="74" class="detail">Confirmar contrato, arquivos de</text>
+    <text x="28" y="97" class="detail">saída e limiares técnicos da</text>
+    <text x="28" y="120" class="detail">rodada antes de agregá-la.</text>
+  </g>
+
+  <g transform="translate(1395 466)">
+    <rect width="110" height="168" rx="18" fill="#1769aa"/>
+    <text x="55" y="62" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" font-weight="700" fill="#ffffff">Salvar</text>
+    <text x="55" y="87" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" font-weight="700" fill="#ffffff">e</text>
+    <text x="55" y="112" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" font-weight="700" fill="#ffffff">agregar</text>
+  </g>
+
+  <text x="800" y="688" text-anchor="middle" class="subtitle">Saída: resultados brutos por rodada, médias por cenário e material para os Quadros 7–9 e Figuras 3–5.</text>
+</svg>
