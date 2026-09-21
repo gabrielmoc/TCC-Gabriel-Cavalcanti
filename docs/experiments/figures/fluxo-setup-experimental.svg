@@ -3,9 +3,9 @@
   <desc id="description">Diagrama com as etapas de preparação dos serviços, seleção do cenário, preparação da fonte de dados, aquecimento, validação, execução do k6, coleta de métricas e consolidação dos resultados.</desc>
   <defs>
     <style>
-      .subtitle { font-family: Arial, sans-serif; font-size: 20px; fill: #000000; }
-      .step { font-family: Arial, sans-serif; font-size: 18px; fill: #000000; }
-      .detail { font-family: Arial, sans-serif; font-size: 15px; fill: #000000; }
+      .subtitle { font-family: Arial, sans-serif; font-size: 28px; fill: #000000; }
+      .step { font-family: Arial, sans-serif; font-size: 25px; fill: #000000; }
+      .detail { font-family: Arial, sans-serif; font-size: 20px; fill: #000000; }
       .arrow { stroke: #000000; stroke-width: 2; fill: none; marker-end: url(#arrowhead); }
     </style>
     <marker id="arrowhead" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
