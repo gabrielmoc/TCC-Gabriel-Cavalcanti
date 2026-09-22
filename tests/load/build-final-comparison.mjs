@@ -23,48 +23,69 @@ function relativeChange(entry, baseline, key, smallerIsBetter) {
   return (smallerIsBetter ? -rawChange : rawChange) * 100;
 }
 
-function relativeMetricPanel(title, entries, key, smallerIsBetter) {
-  const baseline = entries.find((entry) => entry.scenario === "baseline");
-  const comparisons = entries.filter((entry) => entry.scenario !== "baseline");
-  const changes = comparisons.map((entry) => relativeChange(entry, baseline, key, smallerIsBetter));
-  const extent = Math.max(10, Math.ceil(Math.max(...changes.map((change) => Math.abs(change))) / 10) * 10);
-  const center = 185;
-  const scale = 130 / extent;
-  const rows = comparisons
-    .map((entry, index) => {
-      const change = changes[index];
-      const width = Math.abs(change) * scale;
-      const x = change >= 0 ? center : center - width;
-      const color = change >= 0 ? "#0b5fa5" : "#93a4b5";
-      const sign = change > 0 ? "+" : "";
-      const valueX = change >= 0 ? Math.min(center + width + 9, 344) : Math.max(center - width - 9, 26);
-      const anchor = change >= 0 ? "start" : "end";
-      const rowY = 106 + index * 54;
-      return `<text x="26" y="${rowY - 12}" class="label">${labels[entry.scenario]}</text><rect x="${x}" y="${rowY}" width="${width}" height="18" rx="4" fill="${color}"/><text x="${valueX}" y="${rowY + 15}" text-anchor="${anchor}" class="value">${sign}${format(change, 1)}%</text>`;
-    })
-    .join("");
-  const direction = smallerIsBetter ? "redução de latência" : "aumento de vazão";
+function cellStyle(change) {
+  const magnitude = Math.min(Math.abs(change) / 50, 1);
+  if (change >= 0) {
+    return {
+      fill: `rgb(${Math.round(225 - magnitude * 190)}, ${Math.round(240 - magnitude * 125)}, ${Math.round(252 - magnitude * 65)})`,
+      text: magnitude > 0.63 ? "#ffffff" : "#17395f",
+    };
+  }
 
-  return `<g><rect x="0" y="0" width="370" height="220" rx="12" fill="#f8fbff" stroke="#c9daed" stroke-width="1.5"/><text x="26" y="36" class="title">${title}</text><text x="26" y="61" class="subtitle">Impacto relativo: ${direction}</text><line x1="${center}" y1="82" x2="${center}" y2="184" stroke="#315376" stroke-width="1.5"/><text x="${center}" y="202" text-anchor="middle" class="axis">0% (baseline)</text>${rows}</g>`;
+  return {
+    fill: `rgb(${Math.round(240 - magnitude * 95)}, ${Math.round(244 - magnitude * 90)}, ${Math.round(248 - magnitude * 82)})`,
+    text: magnitude > 0.68 ? "#ffffff" : "#17395f",
+  };
+}
+
+function relativeCell(change, x, y, width, height) {
+  const { fill, text } = cellStyle(change);
+  const sign = change > 0 ? "+" : "";
+  return `<rect x="${x}" y="${y}" width="${width}" height="${height}" rx="5" fill="${fill}"/><text x="${x + width / 2}" y="${y + height / 2 + 7}" text-anchor="middle" class="value" fill="${text}">${sign}${format(change, 1)}%</text>`;
 }
 
 function chartSvg(caseId, entries) {
+  const metrics = [
+    { key: "latencyAvgMs", label: "Latência média", smallerIsBetter: true },
+    { key: "latencyP95Ms", label: "Latência p95", smallerIsBetter: true },
+    { key: "throughputRps", label: "Vazão", smallerIsBetter: false },
+  ];
+  const baseline = entries.find((entry) => entry.scenario === "baseline");
+  const comparisons = entries.filter((entry) => entry.scenario !== "baseline");
+  const headers = metrics
+    .map((metric, index) => `<text x="${355 + index * 235}" y="42" text-anchor="middle" class="column">${metric.label}</text>`)
+    .join("");
+  const rows = comparisons
+    .map((entry, rowIndex) => {
+      const y = 68 + rowIndex * 66;
+      const cells = metrics
+        .map((metric, metricIndex) => relativeCell(
+          relativeChange(entry, baseline, metric.key, metric.smallerIsBetter),
+          240 + metricIndex * 235,
+          y,
+          220,
+          52
+        ))
+        .join("");
+      return `<text x="210" y="${y + 33}" text-anchor="end" class="row">${labels[entry.scenario]}</text>${cells}`;
+    })
+    .join("");
+
   return `<?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" width="1180" height="310" viewBox="0 0 1180 310">
+<svg xmlns="http://www.w3.org/2000/svg" width="950" height="240" viewBox="0 0 950 240">
   <style>
-    .header { font: 700 22px Arial, sans-serif; fill: #17395f; }
-    .title { font: 700 20px Arial, sans-serif; fill: #17395f; }
-    .subtitle { font: 400 14px Arial, sans-serif; fill: #53718f; }
-    .label { font: 600 14px Arial, sans-serif; fill: #315376; }
-    .value { font: 700 14px Arial, sans-serif; fill: #17395f; }
-    .axis { font: 400 12px Arial, sans-serif; fill: #53718f; }
+    .column { font: 700 17px Arial, sans-serif; fill: #17395f; }
+    .row { font: 700 16px Arial, sans-serif; fill: #315376; }
+    .value { font: 700 19px Arial, sans-serif; }
+    .legend { font: 400 13px Arial, sans-serif; fill: #53718f; }
   </style>
-  <rect width="1180" height="310" fill="#ffffff"/>
-  <text x="20" y="30" class="header">${labels[caseId]} — variação relativa em relação ao baseline</text>
-  <text x="20" y="54" class="subtitle">Azul: melhora relativa. Cinza-azulado: piora relativa. Os valores absolutos estão no quadro do Case.</text>
-  <g transform="translate(20 72)">${relativeMetricPanel("Latência média", entries, "latencyAvgMs", true)}</g>
-  <g transform="translate(405 72)">${relativeMetricPanel("Latência p95", entries, "latencyP95Ms", true)}</g>
-  <g transform="translate(790 72)">${relativeMetricPanel("Vazão", entries, "throughputRps", false)}</g>
+  <rect width="950" height="240" fill="#ffffff"/>
+  <line x1="240" y1="53" x2="930" y2="53" stroke="#b9cee3" stroke-width="1"/>
+  ${headers}
+  ${rows}
+  <rect x="240" y="205" width="18" height="12" rx="3" fill="#0b5fa5"/><text x="267" y="216" class="legend">melhora relativa</text>
+  <rect x="465" y="205" width="18" height="12" rx="3" fill="#9cacbb"/><text x="492" y="216" class="legend">piora relativa</text>
+  <text x="930" y="216" text-anchor="end" class="legend">baseline = 0%</text>
 </svg>`;
 }
 
@@ -88,42 +109,35 @@ function consolidatedHeatmapSvg(summaries) {
     .flatMap((row, rowIndex) =>
       metrics.map((metric, metricIndex) => {
         const change = relativeChange(row.entry, row.baseline, metric.key, metric.smallerIsBetter);
-        const magnitude = Math.min(Math.abs(change) / 110, 1);
-        const fill = change >= 0
-          ? `rgb(${Math.round(220 - magnitude * 185)}, ${Math.round(236 - magnitude * 130)}, ${Math.round(249 - magnitude * 75)})`
-          : `rgb(${Math.round(235 - magnitude * 65)}, ${Math.round(240 - magnitude * 70)}, ${Math.round(245 - magnitude * 70)})`;
-        const textFill = magnitude > 0.58 ? "#ffffff" : "#17395f";
-        const sign = change > 0 ? "+" : "";
-        return `<rect x="${285 + metricIndex * 255}" y="${105 + rowIndex * 58}" width="235" height="46" rx="6" fill="${fill}"/><text x="${402 + metricIndex * 255}" y="${134 + rowIndex * 58}" text-anchor="middle" class="cell" fill="${textFill}">${sign}${format(change, 1)}%</text>`;
+        return relativeCell(change, 250 + metricIndex * 245, 70 + rowIndex * 58, 230, 46);
       })
     )
     .join("");
   const rowLabels = rows
-    .map((row, index) => `<text x="260" y="${134 + index * 58}" text-anchor="end" class="row">${labels[row.caseId]} — ${labels[row.scenario]}</text>`)
+    .map((row, index) => `<text x="220" y="${99 + index * 58}" text-anchor="end" class="row">C${row.caseId.at(-1)} · ${labels[row.scenario]}</text>`)
     .join("");
   const columnLabels = metrics
-    .map((metric, index) => `<text x="${402 + index * 255}" y="86" text-anchor="middle" class="column">${metric.label}</text>`)
+    .map((metric, index) => `<text x="${365 + index * 245}" y="42" text-anchor="middle" class="column">${metric.label}</text>`)
     .join("");
 
   return `<?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="485" viewBox="0 0 1080 485">
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="460" viewBox="0 0 1000 460">
   <style>
-    .header { font: 700 22px Arial, sans-serif; fill: #17395f; }
-    .subtitle { font: 400 14px Arial, sans-serif; fill: #53718f; }
-    .column { font: 700 15px Arial, sans-serif; fill: #315376; }
-    .row { font: 600 14px Arial, sans-serif; fill: #315376; }
-    .cell { font: 700 15px Arial, sans-serif; }
+    .column { font: 700 16px Arial, sans-serif; fill: #17395f; }
+    .row { font: 700 15px Arial, sans-serif; fill: #315376; }
+    .value { font: 700 17px Arial, sans-serif; }
     .legend { font: 400 13px Arial, sans-serif; fill: #53718f; }
   </style>
-  <rect width="1080" height="485" fill="#ffffff"/>
-  <text x="20" y="32" class="header">Síntese das variações relativas em relação ao baseline</text>
-  <text x="20" y="56" class="subtitle">Percentual de melhora ou piora por métrica; valores positivos representam melhor desempenho.</text>
+  <rect width="1000" height="460" fill="#ffffff"/>
+  <line x1="250" y1="53" x2="970" y2="53" stroke="#b9cee3" stroke-width="1"/>
   ${columnLabels}
   ${rowLabels}
   ${cells}
-  <rect x="285" y="430" width="90" height="14" rx="4" fill="#0b5fa5"/><text x="385" y="442" class="legend">melhora relativa</text>
-  <rect x="535" y="430" width="90" height="14" rx="4" fill="#a4b3c0"/><text x="635" y="442" class="legend">piora relativa</text>
-  <text x="20" y="473" class="legend">Referência: baseline = 0%. A intensidade da cor representa a magnitude da variação.</text>
+  <line x1="20" y1="180" x2="970" y2="180" stroke="#d8e3ee" stroke-width="1"/>
+  <line x1="20" y1="296" x2="970" y2="296" stroke="#d8e3ee" stroke-width="1"/>
+  <rect x="250" y="422" width="18" height="12" rx="3" fill="#0b5fa5"/><text x="277" y="433" class="legend">melhora relativa</text>
+  <rect x="475" y="422" width="18" height="12" rx="3" fill="#9cacbb"/><text x="502" y="433" class="legend">piora relativa</text>
+  <text x="970" y="433" text-anchor="end" class="legend">baseline = 0%</text>
 </svg>`;
 }
 

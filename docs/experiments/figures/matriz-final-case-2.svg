@@ -1,17 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" width="1180" height="310" viewBox="0 0 1180 310">
+<svg xmlns="http://www.w3.org/2000/svg" width="950" height="240" viewBox="0 0 950 240">
   <style>
-    .header { font: 700 22px Arial, sans-serif; fill: #17395f; }
-    .title { font: 700 20px Arial, sans-serif; fill: #17395f; }
-    .subtitle { font: 400 14px Arial, sans-serif; fill: #53718f; }
-    .label { font: 600 14px Arial, sans-serif; fill: #315376; }
-    .value { font: 700 14px Arial, sans-serif; fill: #17395f; }
-    .axis { font: 400 12px Arial, sans-serif; fill: #53718f; }
+    .column { font: 700 17px Arial, sans-serif; fill: #17395f; }
+    .row { font: 700 16px Arial, sans-serif; fill: #315376; }
+    .value { font: 700 19px Arial, sans-serif; }
+    .legend { font: 400 13px Arial, sans-serif; fill: #53718f; }
   </style>
-  <rect width="1180" height="310" fill="#ffffff"/>
-  <text x="20" y="30" class="header">Case 2 — carga alta sustentada — variação relativa em relação ao baseline</text>
-  <text x="20" y="54" class="subtitle">Azul: melhora relativa. Cinza-azulado: piora relativa. Os valores absolutos estão no quadro do Case.</text>
-  <g transform="translate(20 72)"><g><rect x="0" y="0" width="370" height="220" rx="12" fill="#f8fbff" stroke="#c9daed" stroke-width="1.5"/><text x="26" y="36" class="title">Latência média</text><text x="26" y="61" class="subtitle">Impacto relativo: redução de latência</text><line x1="185" y1="82" x2="185" y2="184" stroke="#315376" stroke-width="1.5"/><text x="185" y="202" text-anchor="middle" class="axis">0% (baseline)</text><text x="26" y="94" class="label">Redis</text><rect x="164.06365941480743" y="106" width="20.93634058519258" height="18" rx="4" fill="#93a4b5"/><text x="155.06365941480743" y="121" text-anchor="end" class="value">-19,3%</text><text x="26" y="148" class="label">Solr</text><rect x="61.040621839582755" y="160" width="123.95937816041724" height="18" rx="4" fill="#93a4b5"/><text x="52.040621839582755" y="175" text-anchor="end" class="value">-114,4%</text></g></g>
-  <g transform="translate(405 72)"><g><rect x="0" y="0" width="370" height="220" rx="12" fill="#f8fbff" stroke="#c9daed" stroke-width="1.5"/><text x="26" y="36" class="title">Latência p95</text><text x="26" y="61" class="subtitle">Impacto relativo: redução de latência</text><line x1="185" y1="82" x2="185" y2="184" stroke="#315376" stroke-width="1.5"/><text x="185" y="202" text-anchor="middle" class="axis">0% (baseline)</text><text x="26" y="94" class="label">Redis</text><rect x="185" y="106" width="0.8950919666866551" height="18" rx="4" fill="#0b5fa5"/><text x="194.89509196668666" y="121" text-anchor="start" class="value">+0,8%</text><text x="26" y="148" class="label">Solr</text><rect x="56.82873431052485" y="160" width="128.17126568947515" height="18" rx="4" fill="#93a4b5"/><text x="47.82873431052485" y="175" text-anchor="end" class="value">-108,5%</text></g></g>
-  <g transform="translate(790 72)"><g><rect x="0" y="0" width="370" height="220" rx="12" fill="#f8fbff" stroke="#c9daed" stroke-width="1.5"/><text x="26" y="36" class="title">Vazão</text><text x="26" y="61" class="subtitle">Impacto relativo: aumento de vazão</text><line x1="185" y1="82" x2="185" y2="184" stroke="#315376" stroke-width="1.5"/><text x="185" y="202" text-anchor="middle" class="axis">0% (baseline)</text><text x="26" y="94" class="label">Redis</text><rect x="163.2799580518962" y="106" width="21.720041948103827" height="18" rx="4" fill="#93a4b5"/><text x="154.2799580518962" y="121" text-anchor="end" class="value">-3,3%</text><text x="26" y="148" class="label">Solr</text><rect x="64.6237446785915" y="160" width="120.3762553214085" height="18" rx="4" fill="#93a4b5"/><text x="55.62374467859151" y="175" text-anchor="end" class="value">-18,5%</text></g></g>
+  <rect width="950" height="240" fill="#ffffff"/>
+  <line x1="240" y1="53" x2="930" y2="53" stroke="#b9cee3" stroke-width="1"/>
+  <text x="355" y="42" text-anchor="middle" class="column">Latência média</text><text x="590" y="42" text-anchor="middle" class="column">Latência p95</text><text x="825" y="42" text-anchor="middle" class="column">Vazão</text>
+  <text x="210" y="101" text-anchor="end" class="row">Redis</text><rect x="240" y="68" width="220" height="52" rx="5" fill="rgb(203, 209, 216)"/><text x="350" y="101" text-anchor="middle" class="value" fill="#17395f">-19,3%</text><rect x="475" y="68" width="220" height="52" rx="5" fill="rgb(222, 238, 251)"/><text x="585" y="101" text-anchor="middle" class="value" fill="#17395f">+0,8%</text><rect x="710" y="68" width="220" height="52" rx="5" fill="rgb(234, 238, 243)"/><text x="820" y="101" text-anchor="middle" class="value" fill="#17395f">-3,3%</text><text x="210" y="167" text-anchor="end" class="row">Solr</text><rect x="240" y="134" width="220" height="52" rx="5" fill="rgb(145, 154, 166)"/><text x="350" y="167" text-anchor="middle" class="value" fill="#ffffff">-114,4%</text><rect x="475" y="134" width="220" height="52" rx="5" fill="rgb(145, 154, 166)"/><text x="585" y="167" text-anchor="middle" class="value" fill="#ffffff">-108,5%</text><rect x="710" y="134" width="220" height="52" rx="5" fill="rgb(205, 211, 218)"/><text x="820" y="167" text-anchor="middle" class="value" fill="#17395f">-18,5%</text>
+  <rect x="240" y="205" width="18" height="12" rx="3" fill="#0b5fa5"/><text x="267" y="216" class="legend">melhora relativa</text>
+  <rect x="465" y="205" width="18" height="12" rx="3" fill="#9cacbb"/><text x="492" y="216" class="legend">piora relativa</text>
+  <text x="930" y="216" text-anchor="end" class="legend">baseline = 0%</text>
 </svg>
