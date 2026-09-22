@@ -52,6 +52,10 @@ No Case 3 — carga variável, o menor valor de latência média foi observado n
 
 ## Síntese comparativa
 
+![Figura - síntese das variações relativas](figures/matriz-final-visao-consolidada.svg)
+
+**Fonte:** elaborado pelo autor (2026), a partir das médias da matriz final.
+
 A matriz não encontrou uma estratégia dominante em todas as métricas e perfis. O baseline obteve a menor latência média e a maior vazão nos três cases; Redis apresentou o menor p95 no Case 1 e uma diferença marginal de p95 no Case 2, mas não superou o baseline nas demais métricas; Solr preservou a equivalência funcional, porém acrescentou custo no ambiente local avaliado. Esses resultados não generalizam para plataformas comerciais de streaming, mas sustentam a conclusão de que cache e indexação devem ser avaliados empiricamente, considerando carga, dados e recursos.
 
 ## Limites de interpretação
