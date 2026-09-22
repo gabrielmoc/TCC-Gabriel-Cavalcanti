@@ -45,10 +45,8 @@ function relativePlotPanel(metric, rows, x, width, height, showLabels = true) {
       const pointX = center + (value / extent) * (plotWidth / 2);
       const y = firstY + index * step;
       const sign = value > 0 ? "+" : "";
-      const anchor = value >= 0 ? "start" : "end";
-      const labelX = value >= 0 ? pointX + 10 : pointX - 10;
       const label = row.label ?? labels[row.scenario];
-      return `${showLabels ? `<text x="${left - 12}" y="${y + 5}" text-anchor="end" class="row">${label}</text>` : ""}<line x1="${center}" y1="${y}" x2="${pointX}" y2="${y}" stroke="${color[row.scenario]}" stroke-opacity="0.38" stroke-width="3"/><circle cx="${pointX}" cy="${y}" r="7" fill="${color[row.scenario]}"/><text x="${labelX}" y="${y + 5}" text-anchor="${anchor}" class="value">${sign}${format(value, 1)}%</text>`;
+      return `${showLabels ? `<text x="${left - 12}" y="${y + 5}" text-anchor="end" class="row">${label}</text>` : ""}<line x1="${center}" y1="${y}" x2="${pointX}" y2="${y}" stroke="${color[row.scenario]}" stroke-opacity="0.38" stroke-width="3"/><circle cx="${pointX}" cy="${y}" r="7" fill="${color[row.scenario]}"/><rect x="${pointX - 29}" y="${y - 27}" width="58" height="18" rx="4" fill="#ffffff"/><text x="${pointX}" y="${y - 14}" text-anchor="middle" class="value">${sign}${format(value, 1)}%</text>`;
     })
     .join("");
   return `<g><text x="${x + width / 2}" y="34" text-anchor="middle" class="metric">${metric.label}</text><line x1="${left}" y1="${bottom}" x2="${right}" y2="${bottom}" stroke="#9eb8d0" stroke-width="1"/><line x1="${center}" y1="${top}" x2="${center}" y2="${bottom}" stroke="#52799c" stroke-width="1.5"/><text x="${left}" y="${bottom + 22}" text-anchor="middle" class="axis">-${format(extent, 0)}%</text><text x="${center}" y="${bottom + 22}" text-anchor="middle" class="axis">0%</text><text x="${right}" y="${bottom + 22}" text-anchor="middle" class="axis">+${format(extent, 0)}%</text>${points}</g>`;
