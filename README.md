@@ -1,4 +1,4 @@
-# Análise e Otimização de Desempenho em Sistemas de Streaming de Alta Escala
+# Análise Comparativa de Desempenho em uma Arquitetura de Streaming de Alta Escala
 
 <p align="center">
   Parte prática do Trabalho de Conclusão de Curso em Ciência da Computação
@@ -19,7 +19,7 @@
 
 ## Visão Geral
 
-Este repositório concentra a parte prática do TCC **Análise e Otimização de Desempenho em Sistemas de Streaming de Alta Escala**.
+Este repositório concentra a parte prática do TCC **Análise Comparativa de Desempenho em uma Arquitetura de Streaming de Alta Escala**.
 
 A proposta consiste na construção de um ambiente experimental inspirado em sistemas de streaming, baseado em APIs e microsserviços, para investigar o impacto de diferentes estratégias de otimização sobre o desempenho da aplicação.
 
@@ -465,7 +465,7 @@ No momento, o repositório já contém:
 
 A comparação oficial final usa três cases por perfil de carga: baixa controlada, alta sustentada e variável. Cada case compara `baseline`, `redis-cache` e `solr` em três repetições no endpoint de recomendações. O protocolo está em [matriz-final.md](docs/experiments/matriz-final.md).
 
-As médias, gráficos e leitura comparativa estão em [matriz-final-comparison.md](docs/experiments/matriz-final-comparison.md). A matriz preservou taxa de erro igual a zero em todas as combinações; no ambiente local, o baseline apresentou menor latência média e maior vazão nos três perfis, evidenciando o custo adicional de cache e indexação quando a fonte original já é barata.
+As médias, gráficos e leitura comparativa estão em [matriz-final-comparison.md](docs/experiments/matriz-final-comparison.md). A matriz preservou taxa de erro igual a zero em todas as combinações; no ambiente local, o baseline apresentou menor latência média e maior vazão nos três perfis. O resultado é compatível com custos adicionais de comunicação, serialização e consulta quando a fonte original já é barata, sem isolar causalidade para um componente específico.
 
 Leitura atual dos resultados:
 - o ambiente está estável e reprodutível;
@@ -474,10 +474,10 @@ Leitura atual dos resultados:
 - nas cargas fortes e no endpoint `catalog`, o cenário com `Redis` ficou mais custoso e, em geral, mais lento;
 - isso motivou a introdução do cenário de indexação com Solr e a matriz final por perfil de carga.
 
-Status atual da próxima etapa:
-- o cenário Solr já foi implementado e validado funcionalmente;
-- os cenários de teste do TCC já foram mapeados até a etapa final;
-- a frente atual é revisar academicamente a interpretação e integrar os resultados ao artigo científico.
+Status atual:
+- os cenários baseline, Redis e Solr foram implementados e validados funcionalmente;
+- a matriz final de 27 rodadas foi concluída e auditada;
+- a frente atual é a revisão acadêmica final e a preparação da entrega.
 
 ## Limitações do Escopo
 
