@@ -12,7 +12,8 @@ if [[ -z "${SCENARIO}" || -z "${CASE_ID}" || -z "${RUN_NUMBER}" ]]; then
 fi
 
 ROOT_DIR="$(cd "$(dirname "$0")/../.." && pwd)"
-RESULTS_DIR="${ROOT_DIR}/results/${SCENARIO}/matriz-final/${CASE_ID}/recommendations/run-${RUN_NUMBER}"
+RESULTS_ROOT="${RESULTS_ROOT:-${ROOT_DIR}/results/${SCENARIO}/matriz-final}"
+RESULTS_DIR="${RESULTS_ROOT}/${CASE_ID}/recommendations/run-${RUN_NUMBER}"
 PORTS=(3000 3001 3002 3003)
 mkdir -p "${RESULTS_DIR}"
 
@@ -192,6 +193,11 @@ EOF
 
 node "${ROOT_DIR}/tests/load/collect-runtime-metrics.mjs" --output "${RESULTS_DIR}/runtime-metrics-before.json"
 
+K6_OUTPUT_ARGS=()
+if [[ -n "${K6_JSON_OUTPUT_FILENAME:-}" ]]; then
+  K6_OUTPUT_ARGS=(--out "json=${RESULTS_DIR}/${K6_JSON_OUTPUT_FILENAME}")
+fi
+
 cd "${ROOT_DIR}"
 BASE_URL="http://127.0.0.1:3000" \
 SCENARIO_LABEL="${SCENARIO}" \
@@ -203,7 +209,7 @@ SUSTAIN_DURATION="${SUSTAIN_DURATION}" \
 RAMP_DOWN_DURATION="${RAMP_DOWN_DURATION}" \
 SLEEP_SECONDS="${SLEEP_SECONDS}" \
 VARIABLE_STAGES="${VARIABLE_STAGES:-}" \
-k6 run --summary-export="${RESULTS_DIR}/k6-summary.json" "${SCRIPT_PATH}" > "${RESULTS_DIR}/k6-output.txt"
+k6 run "${K6_OUTPUT_ARGS[@]}" --summary-export="${RESULTS_DIR}/k6-summary.json" "${SCRIPT_PATH}" > "${RESULTS_DIR}/k6-output.txt"
 
 node "${ROOT_DIR}/tests/load/collect-runtime-metrics.mjs" --output "${RESULTS_DIR}/runtime-metrics-after.json"
 
