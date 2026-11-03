@@ -1,0 +1,188 @@
+{
+  "scope": "Evidência complementar posterior à matriz final: Case 3 repetido com saída temporal do k6.",
+  "repetitionsPerScenario": 3,
+  "stages": [
+    {
+      "id": "s1-rampa-5-30",
+      "interval": "0-20 s",
+      "vus": "5→30",
+      "type": "rampa",
+      "values": {
+        "baseline": {
+          "averageLatencyMs": 4.945,
+          "p95LatencyMs": 12.809,
+          "throughputReqPerSecond": 156.95,
+          "errorRate": 0
+        },
+        "redis-cache": {
+          "averageLatencyMs": 7.773,
+          "p95LatencyMs": 22.667,
+          "throughputReqPerSecond": 153.05,
+          "errorRate": 0
+        },
+        "solr": {
+          "averageLatencyMs": 11.5,
+          "p95LatencyMs": 31.955,
+          "throughputReqPerSecond": 147.8,
+          "errorRate": 0
+        }
+      }
+    },
+    {
+      "id": "s2-patamar-30",
+      "interval": "20-50 s",
+      "vus": "30",
+      "type": "patamar",
+      "values": {
+        "baseline": {
+          "averageLatencyMs": 7.583,
+          "p95LatencyMs": 28.11,
+          "throughputReqPerSecond": 268.689,
+          "errorRate": 0
+        },
+        "redis-cache": {
+          "averageLatencyMs": 6.837,
+          "p95LatencyMs": 16.952,
+          "throughputReqPerSecond": 270.356,
+          "errorRate": 0
+        },
+        "solr": {
+          "averageLatencyMs": 11.417,
+          "p95LatencyMs": 28.59,
+          "throughputReqPerSecond": 259.222,
+          "errorRate": 0
+        }
+      }
+    },
+    {
+      "id": "s3-reducao-30-10",
+      "interval": "50-70 s",
+      "vus": "30→10",
+      "type": "rampa",
+      "values": {
+        "baseline": {
+          "averageLatencyMs": 4.167,
+          "p95LatencyMs": 7.995,
+          "throughputReqPerSecond": 190.1,
+          "errorRate": 0
+        },
+        "redis-cache": {
+          "averageLatencyMs": 7.974,
+          "p95LatencyMs": 25.763,
+          "throughputReqPerSecond": 182.65,
+          "errorRate": 0
+        },
+        "solr": {
+          "averageLatencyMs": 9.165,
+          "p95LatencyMs": 18.243,
+          "throughputReqPerSecond": 179.967,
+          "errorRate": 0
+        }
+      }
+    },
+    {
+      "id": "s4-patamar-10",
+      "interval": "70-100 s",
+      "vus": "10",
+      "type": "patamar",
+      "values": {
+        "baseline": {
+          "averageLatencyMs": 5.232,
+          "p95LatencyMs": 10.721,
+          "throughputReqPerSecond": 91.056,
+          "errorRate": 0
+        },
+        "redis-cache": {
+          "averageLatencyMs": 6.044,
+          "p95LatencyMs": 10.6,
+          "throughputReqPerSecond": 90.444,
+          "errorRate": 0
+        },
+        "solr": {
+          "averageLatencyMs": 11.541,
+          "p95LatencyMs": 20.162,
+          "throughputReqPerSecond": 85.444,
+          "errorRate": 0
+        }
+      }
+    },
+    {
+      "id": "s5-rampa-10-70",
+      "interval": "100-130 s",
+      "vus": "10→70",
+      "type": "rampa",
+      "values": {
+        "baseline": {
+          "averageLatencyMs": 7.474,
+          "p95LatencyMs": 29.827,
+          "throughputReqPerSecond": 355.067,
+          "errorRate": 0
+        },
+        "redis-cache": {
+          "averageLatencyMs": 9.343,
+          "p95LatencyMs": 31.934,
+          "throughputReqPerSecond": 348.867,
+          "errorRate": 0
+        },
+        "solr": {
+          "averageLatencyMs": 11.973,
+          "p95LatencyMs": 28.324,
+          "throughputReqPerSecond": 341.056,
+          "errorRate": 0
+        }
+      }
+    },
+    {
+      "id": "s6-patamar-70",
+      "interval": "130-175 s",
+      "vus": "70",
+      "type": "patamar",
+      "values": {
+        "baseline": {
+          "averageLatencyMs": 14.041,
+          "p95LatencyMs": 53.456,
+          "throughputReqPerSecond": 587.57,
+          "errorRate": 0
+        },
+        "redis-cache": {
+          "averageLatencyMs": 18.555,
+          "p95LatencyMs": 57.566,
+          "throughputReqPerSecond": 566.007,
+          "errorRate": 0
+        },
+        "solr": {
+          "averageLatencyMs": 26.752,
+          "p95LatencyMs": 84.864,
+          "throughputReqPerSecond": 537.6,
+          "errorRate": 0
+        }
+      }
+    },
+    {
+      "id": "s7-descida-70-0",
+      "interval": "175-195 s",
+      "vus": "70→0",
+      "type": "rampa",
+      "values": {
+        "baseline": {
+          "averageLatencyMs": 8.168,
+          "p95LatencyMs": 30.018,
+          "throughputReqPerSecond": 315.383,
+          "errorRate": 0
+        },
+        "redis-cache": {
+          "averageLatencyMs": 9.946,
+          "p95LatencyMs": 36.408,
+          "throughputReqPerSecond": 310.9,
+          "errorRate": 0
+        },
+        "solr": {
+          "averageLatencyMs": 13.294,
+          "p95LatencyMs": 41.925,
+          "throughputReqPerSecond": 300.883,
+          "errorRate": 0
+        }
+      }
+    }
+  ]
+}

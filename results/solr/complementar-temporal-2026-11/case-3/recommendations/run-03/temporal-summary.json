@@ -1,0 +1,90 @@
+{
+  "source": "/Users/gabrielmoc/Downloads/TCC - Gabriel/results/solr/complementar-temporal-2026-11/case-3/recommendations/run-03/k6-samples.ndjson",
+  "method": "Amostras temporais do output JSON do k6; p95 calculado sobre as durações HTTP de cada estágio.",
+  "stages": [
+    {
+      "id": "s1-rampa-5-30",
+      "startSeconds": 0,
+      "endSeconds": 20,
+      "vus": "5→30",
+      "type": "rampa",
+      "requestCount": 3062,
+      "averageLatencyMs": 8.003579359895474,
+      "p95LatencyMs": 14.77,
+      "throughputReqPerSecond": 153.1,
+      "errorRate": 0
+    },
+    {
+      "id": "s2-patamar-30",
+      "startSeconds": 20,
+      "endSeconds": 50,
+      "vus": "30",
+      "type": "patamar",
+      "requestCount": 8111,
+      "averageLatencyMs": 7.145250030822329,
+      "p95LatencyMs": 12.564,
+      "throughputReqPerSecond": 270.3666666666667,
+      "errorRate": 0
+    },
+    {
+      "id": "s3-reducao-30-10",
+      "startSeconds": 50,
+      "endSeconds": 70,
+      "vus": "30→10",
+      "type": "rampa",
+      "requestCount": 3616,
+      "averageLatencyMs": 8.796904314159299,
+      "p95LatencyMs": 15.197,
+      "throughputReqPerSecond": 180.8,
+      "errorRate": 0
+    },
+    {
+      "id": "s4-patamar-10",
+      "startSeconds": 70,
+      "endSeconds": 100,
+      "vus": "10",
+      "type": "patamar",
+      "requestCount": 2581,
+      "averageLatencyMs": 11.205538550949235,
+      "p95LatencyMs": 20.448,
+      "throughputReqPerSecond": 86.03333333333333,
+      "errorRate": 0
+    },
+    {
+      "id": "s5-rampa-10-70",
+      "startSeconds": 100,
+      "endSeconds": 130,
+      "vus": "10→70",
+      "type": "rampa",
+      "requestCount": 10520,
+      "averageLatencyMs": 8.84529192015209,
+      "p95LatencyMs": 18.612,
+      "throughputReqPerSecond": 350.6666666666667,
+      "errorRate": 0
+    },
+    {
+      "id": "s6-patamar-70",
+      "startSeconds": 130,
+      "endSeconds": 175,
+      "vus": "70",
+      "type": "patamar",
+      "requestCount": 26700,
+      "averageLatencyMs": 12.767126479400742,
+      "p95LatencyMs": 23.299,
+      "throughputReqPerSecond": 593.3333333333334,
+      "errorRate": 0
+    },
+    {
+      "id": "s7-descida-70-0",
+      "startSeconds": 175,
+      "endSeconds": 195,
+      "vus": "70→0",
+      "type": "rampa",
+      "requestCount": 6283,
+      "averageLatencyMs": 8.425057615788628,
+      "p95LatencyMs": 17.829,
+      "throughputReqPerSecond": 314.15,
+      "errorRate": 0
+    }
+  ]
+}

@@ -1,0 +1,147 @@
+{
+    "metrics": {
+        "data_sent": {
+            "count": 5554185,
+            "rate": 28468.4399258939
+        },
+        "http_req_receiving": {
+            "avg": 0.13520404685836024,
+            "min": 0.012,
+            "med": 0.058,
+            "max": 256.257,
+            "p(90)": 0.152,
+            "p(95)": 0.242
+        },
+        "http_req_connecting": {
+            "p(90)": 0,
+            "p(95)": 0,
+            "avg": 0.00043327598918653244,
+            "min": 0,
+            "med": 0,
+            "max": 2.013
+        },
+        "vus_max": {
+            "value": 70,
+            "min": 70,
+            "max": 70
+        },
+        "iterations": {
+            "count": 61035,
+            "rate": 312.8399991856473
+        },
+        "iteration_duration": {
+            "p(95)": 146.35571249999998,
+            "avg": 114.6271051378883,
+            "min": 103.56525,
+            "med": 108.219084,
+            "max": 551.777292,
+            "p(90)": 128.6226578
+        },
+        "http_req_failed": {
+            "passes": 0,
+            "fails": 61035,
+            "thresholds": {
+                "rate<0.05": false
+            },
+            "value": 0
+        },
+        "http_req_tls_handshaking": {
+            "avg": 0,
+            "min": 0,
+            "med": 0,
+            "max": 0,
+            "p(90)": 0,
+            "p(95)": 0
+        },
+        "checks": {
+            "passes": 183105,
+            "fails": 0,
+            "value": 1
+        },
+        "data_received": {
+            "count": 1620906495,
+            "rate": 8308091.858373235
+        },
+        "http_req_duration": {
+            "avg": 10.082026837060713,
+            "min": 1.406,
+            "med": 4.293,
+            "max": 429.13,
+            "p(90)": 21.6906,
+            "p(95)": 38.48979999999998,
+            "thresholds": {
+                "p(95)<1500": false
+            }
+        },
+        "http_req_sending": {
+            "avg": 0.03177432620627653,
+            "min": 0.002,
+            "med": 0.01,
+            "max": 64.308,
+            "p(90)": 0.025,
+            "p(95)": 0.045
+        },
+        "vus": {
+            "value": 1,
+            "min": 1,
+            "max": 70
+        },
+        "http_req_duration{expected_response:true}": {
+            "avg": 10.082026837060713,
+            "min": 1.406,
+            "med": 4.293,
+            "max": 429.13,
+            "p(90)": 21.6906,
+            "p(95)": 38.48979999999998
+        },
+        "http_reqs": {
+            "count": 61035,
+            "rate": 312.8399991856473
+        },
+        "http_req_blocked": {
+            "avg": 0.00792368313262694,
+            "min": 0,
+            "med": 0.003,
+            "max": 26.168,
+            "p(90)": 0.008,
+            "p(95)": 0.013
+        },
+        "http_req_waiting": {
+            "med": 4.187,
+            "max": 428.831,
+            "p(90)": 21.380200000000002,
+            "p(95)": 37.91299999999992,
+            "avg": 9.915048463995978,
+            "min": 1.374
+        }
+    },
+    "root_group": {
+        "name": "",
+        "path": "",
+        "id": "d41d8cd98f00b204e9800998ecf8427e",
+        "groups": {},
+        "checks": {
+                "status 200": {
+                    "name": "status 200",
+                    "path": "::status 200",
+                    "id": "fad9fa412b86fcb03bee97c80dcd61f1",
+                    "passes": 61035,
+                    "fails": 0
+                },
+                "response has userId": {
+                    "id": "0300f8c626aecb7626c69101cbc113db",
+                    "passes": 61035,
+                    "fails": 0,
+                    "name": "response has userId",
+                    "path": "::response has userId"
+                },
+                "response has recommendations": {
+                    "id": "3806315105acc6818a83ac30e7cf7d67",
+                    "passes": 61035,
+                    "fails": 0,
+                    "name": "response has recommendations",
+                    "path": "::response has recommendations"
+                }
+            }
+    }
+}
