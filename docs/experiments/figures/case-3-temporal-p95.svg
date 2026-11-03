@@ -1,1 +1,48 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="480" viewBox="0 0 1080 480"><style>.axis{stroke:#5f7f9f;stroke-width:1.2}.tick{font:13px Arial,sans-serif;fill:#496b8d}.subtick{font:12px Arial,sans-serif;fill:#6d849d}.legend{font:15px Arial,sans-serif;fill:#24476d}.label{font:15px Arial,sans-serif;fill:#24476d;font-weight:bold}</style><rect width="100%" height="100%" fill="white"/><line x1="95" y1="385" x2="1010" y2="385" stroke="#dbe7f3"/><text x="83" y="389" text-anchor="end" class="tick">0</text><line x1="95" y1="302.5" x2="1010" y2="302.5" stroke="#dbe7f3"/><text x="83" y="306.5" text-anchor="end" class="tick">25</text><line x1="95" y1="220" x2="1010" y2="220" stroke="#dbe7f3"/><text x="83" y="224" text-anchor="end" class="tick">50</text><line x1="95" y1="137.5" x2="1010" y2="137.5" stroke="#dbe7f3"/><text x="83" y="141.5" text-anchor="end" class="tick">75</text><line x1="95" y1="55" x2="1010" y2="55" stroke="#dbe7f3"/><text x="83" y="59" text-anchor="end" class="tick">100</text><line x1="95" y1="55" x2="95" y2="385" class="axis"/><line x1="95" y1="385" x2="1010" y2="385" class="axis"/><text x="24" y="220" transform="rotate(-90 24 220)" class="label">p95 (ms)</text><text x="95" y="413" text-anchor="middle" class="tick">S1</text><text x="95" y="431" text-anchor="middle" class="subtick">5→30 VUs</text><text x="247.5" y="413" text-anchor="middle" class="tick">S2</text><text x="247.5" y="431" text-anchor="middle" class="subtick">30 VUs</text><text x="400" y="413" text-anchor="middle" class="tick">S3</text><text x="400" y="431" text-anchor="middle" class="subtick">30→10 VUs</text><text x="552.5" y="413" text-anchor="middle" class="tick">S4</text><text x="552.5" y="431" text-anchor="middle" class="subtick">10 VUs</text><text x="705" y="413" text-anchor="middle" class="tick">S5</text><text x="705" y="431" text-anchor="middle" class="subtick">10→70 VUs</text><text x="857.5" y="413" text-anchor="middle" class="tick">S6</text><text x="857.5" y="431" text-anchor="middle" class="subtick">70 VUs</text><text x="1010" y="413" text-anchor="middle" class="tick">S7</text><text x="1010" y="431" text-anchor="middle" class="subtick">70→0 VUs</text><polyline points="95,342.7303 247.5,292.23699999999997 400,358.6165 552.5,349.6207 705,286.5709 857.5,208.59519999999998 1010,285.9406" fill="none" stroke="#1d4ed8" stroke-width="3"/><circle cx="95" cy="342.7303" r="4.5" fill="#1d4ed8"/><circle cx="247.5" cy="292.23699999999997" r="4.5" fill="#1d4ed8"/><circle cx="400" cy="358.6165" r="4.5" fill="#1d4ed8"/><circle cx="552.5" cy="349.6207" r="4.5" fill="#1d4ed8"/><circle cx="705" cy="286.5709" r="4.5" fill="#1d4ed8"/><circle cx="857.5" cy="208.59519999999998" r="4.5" fill="#1d4ed8"/><circle cx="1010" cy="285.9406" r="4.5" fill="#1d4ed8"/><g transform="translate(95,430)"><circle cx="0" cy="0" r="5" fill="#1d4ed8"/><text x="12" y="5" class="legend">Baseline</text></g><polyline points="95,310.1989 247.5,329.0584 400,299.9821 552.5,350.02 705,279.6178 857.5,195.0322 1010,264.85360000000003" fill="none" stroke="#0f766e" stroke-width="3"/><circle cx="95" cy="310.1989" r="4.5" fill="#0f766e"/><circle cx="247.5" cy="329.0584" r="4.5" fill="#0f766e"/><circle cx="400" cy="299.9821" r="4.5" fill="#0f766e"/><circle cx="552.5" cy="350.02" r="4.5" fill="#0f766e"/><circle cx="705" cy="279.6178" r="4.5" fill="#0f766e"/><circle cx="857.5" cy="195.0322" r="4.5" fill="#0f766e"/><circle cx="1010" cy="264.85360000000003" r="4.5" fill="#0f766e"/><g transform="translate(250,430)"><circle cx="0" cy="0" r="5" fill="#0f766e"/><text x="12" y="5" class="legend">Redis</text></g><polyline points="95,279.5485 247.5,290.653 400,324.7981 552.5,318.4654 705,291.5308 857.5,104.9488 1010,246.6475" fill="none" stroke="#b45309" stroke-width="3"/><circle cx="95" cy="279.5485" r="4.5" fill="#b45309"/><circle cx="247.5" cy="290.653" r="4.5" fill="#b45309"/><circle cx="400" cy="324.7981" r="4.5" fill="#b45309"/><circle cx="552.5" cy="318.4654" r="4.5" fill="#b45309"/><circle cx="705" cy="291.5308" r="4.5" fill="#b45309"/><circle cx="857.5" cy="104.9488" r="4.5" fill="#b45309"/><circle cx="1010" cy="246.6475" r="4.5" fill="#b45309"/><g transform="translate(405,430)"><circle cx="0" cy="0" r="5" fill="#b45309"/><text x="12" y="5" class="legend">Solr</text></g></svg>
+<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="560" viewBox="0 0 1080 560">
+  <style>
+    .axis { stroke: #5f7f9f; stroke-width: 1.2; }
+    .grid { stroke: #dbe7f3; stroke-width: 1; }
+    .tick { font: 13px Arial, sans-serif; fill: #496b8d; }
+    .stage { font: 12px Arial, sans-serif; fill: #6d849d; }
+    .legend { font: 15px Arial, sans-serif; fill: #24476d; }
+    .label { font: bold 15px Arial, sans-serif; fill: #24476d; }
+  </style>
+  <rect width="100%" height="100%" fill="white"/>
+
+  <line x1="95" y1="350" x2="1010" y2="350" class="grid"/>
+  <text x="83" y="354" text-anchor="end" class="tick">0</text>
+  <line x1="95" y1="277.5" x2="1010" y2="277.5" class="grid"/>
+  <text x="83" y="281.5" text-anchor="end" class="tick">25</text>
+  <line x1="95" y1="205" x2="1010" y2="205" class="grid"/>
+  <text x="83" y="209" text-anchor="end" class="tick">50</text>
+  <line x1="95" y1="132.5" x2="1010" y2="132.5" class="grid"/>
+  <text x="83" y="136.5" text-anchor="end" class="tick">75</text>
+  <line x1="95" y1="60" x2="1010" y2="60" class="grid"/>
+  <text x="83" y="64" text-anchor="end" class="tick">100</text>
+  <line x1="95" y1="60" x2="95" y2="350" class="axis"/>
+  <line x1="95" y1="350" x2="1010" y2="350" class="axis"/>
+  <text x="24" y="205" transform="rotate(-90 24 205)" class="label">p95 (ms)</text>
+
+  <g class="tick" text-anchor="middle">
+    <text x="95" y="380">S1</text><text x="95" y="402" class="stage">5→30 VUs</text>
+    <text x="247.5" y="380">S2</text><text x="247.5" y="402" class="stage">30 VUs</text>
+    <text x="400" y="380">S3</text><text x="400" y="402" class="stage">30→10 VUs</text>
+    <text x="552.5" y="380">S4</text><text x="552.5" y="402" class="stage">10 VUs</text>
+    <text x="705" y="380">S5</text><text x="705" y="402" class="stage">10→70 VUs</text>
+    <text x="857.5" y="380">S6</text><text x="857.5" y="402" class="stage">70 VUs</text>
+    <text x="1010" y="380">S7</text><text x="1010" y="402" class="stage">70→0 VUs</text>
+  </g>
+
+  <polyline points="95,312.10 247.5,267.50 400,326.80 552.5,318.89 705,262.49 857.5,194.91 1010,262.94" fill="none" stroke="#1d4ed8" stroke-width="3"/>
+  <g fill="#1d4ed8"><circle cx="95" cy="312.10" r="4.5"/><circle cx="247.5" cy="267.50" r="4.5"/><circle cx="400" cy="326.80" r="4.5"/><circle cx="552.5" cy="318.89" r="4.5"/><circle cx="705" cy="262.49" r="4.5"/><circle cx="857.5" cy="194.91" r="4.5"/><circle cx="1010" cy="262.94" r="4.5"/></g>
+
+  <polyline points="95,283.76 247.5,300.84 400,274.21 552.5,319.26 705,256.41 857.5,183.05 1010,244.41" fill="none" stroke="#0f766e" stroke-width="3"/>
+  <g fill="#0f766e"><circle cx="95" cy="283.76" r="4.5"/><circle cx="247.5" cy="300.84" r="4.5"/><circle cx="400" cy="274.21" r="4.5"/><circle cx="552.5" cy="319.26" r="4.5"/><circle cx="705" cy="256.41" r="4.5"/><circle cx="857.5" cy="183.05" r="4.5"/><circle cx="1010" cy="244.41" r="4.5"/></g>
+
+  <polyline points="95,257.35 247.5,267.09 400,297.10 552.5,291.98 705,267.87 857.5,103.91 1010,228.43" fill="none" stroke="#b45309" stroke-width="3"/>
+  <g fill="#b45309"><circle cx="95" cy="257.35" r="4.5"/><circle cx="247.5" cy="267.09" r="4.5"/><circle cx="400" cy="297.10" r="4.5"/><circle cx="552.5" cy="291.98" r="4.5"/><circle cx="705" cy="267.87" r="4.5"/><circle cx="857.5" cy="103.91" r="4.5"/><circle cx="1010" cy="228.43" r="4.5"/></g>
+
+  <g transform="translate(370,485)"><circle cx="0" cy="0" r="5" fill="#1d4ed8"/><text x="12" y="5" class="legend">Baseline</text></g>
+  <g transform="translate(520,485)"><circle cx="0" cy="0" r="5" fill="#0f766e"/><text x="12" y="5" class="legend">Redis</text></g>
+  <g transform="translate(640,485)"><circle cx="0" cy="0" r="5" fill="#b45309"/><text x="12" y="5" class="legend">Solr</text></g>
+</svg>
