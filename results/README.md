@@ -58,6 +58,12 @@ Os resultados de `ramp`, `ramp-strong` e `case-2` são evidências históricas d
 results/{baseline|redis-cache|solr}/matriz-final/{case-1|case-2|case-3}/recommendations/run-{01..03}/
 ```
 
+A coleta temporal complementar do Case 3 é mantida separadamente e não substitui a matriz oficial:
+
+```text
+results/{baseline|redis-cache|solr}/complementar-temporal-2026-11/case-3/recommendations/run-{01..03}/
+```
+
 Documentos de leitura histórica:
 
 ```text
@@ -80,4 +86,4 @@ results/
 
 ## Evidências brutas da matriz final
 
-Os arquivos `k6-summary.json`, `metadata.json`, métricas antes/depois e `aggregate-summary.json` são versionados por serem os artefatos necessários para reproduzir a análise. Os arquivos de log por requisição e `k6-output.txt` são preservados localmente durante a execução, mas não são enviados ao GitHub devido ao volume elevado. A automação, os parâmetros e os resumos agregados permitem reexecutar e auditar a matriz sem inflar o repositório.
+Os arquivos `k6-summary.json`, `metadata.json`, métricas antes/depois e `aggregate-summary.json` são versionados por serem os artefatos necessários para reproduzir a análise. Logs por requisição, `k6-output.txt` e amostras compactadas do k6 são preservados localmente, mas não são enviados ao GitHub devido ao volume elevado. A automação, os parâmetros e os resumos agregados permitem reexecutar e auditar a matriz sem inflar o repositório.

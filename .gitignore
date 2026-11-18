@@ -18,16 +18,11 @@ dist/
 build/
 coverage/
 
-# Evidências brutas volumosas da matriz final (resumos e metadados permanecem versionados)
-results/*/matriz-final/*/recommendations/run-*/*.log
-results/*/matriz-final/*/recommendations/run-*/k6-output.txt
-
-# Evidências brutas volumosas da coleta temporal complementar do Case 3
-# Os resumos JSON, metadados e métricas consolidadas permanecem versionados.
-results/*/complementar-temporal-2026-11/**/k6-samples.ndjson.gz
-results/*/complementar-temporal-2026-11/**/*.log
-results/*/complementar-temporal-2026-11/**/k6-output.txt
-results/complementar-temporal-2026-11/*.log
+# Evidências brutas volumosas. Resumos JSON, metadados e métricas consolidadas
+# permanecem versionados para sustentar a auditoria dos resultados.
+results/**/*.log
+results/**/k6-output.txt
+results/**/k6-samples.ndjson.gz
 
 # Sistema operacional
 .DS_Store
