@@ -1,10 +1,7 @@
-# Análise Comparativa de Desempenho em uma Arquitetura de Streaming de Alta Escala
+# Análise Comparativa de Desempenho de Estratégias de Recuperação de Dados em uma Arquitetura de Microsserviços Inspirada em Plataformas de Streaming
 
 <p align="center">
-  Parte prática do Trabalho de Conclusão de Curso em Ciência da Computação
-</p>
-
-<p align="center">
+  Parte prática do Trabalho de Conclusão de Curso em Ciência da Computação<br />
   <strong>CESAR School</strong>
 </p>
 
@@ -12,380 +9,72 @@
   <img alt="Node.js" src="https://img.shields.io/badge/backend-Node.js-3c873a?style=flat-square&logo=node.js&logoColor=white" />
   <img alt="Express" src="https://img.shields.io/badge/framework-Express-000000?style=flat-square&logo=express&logoColor=white" />
   <img alt="Redis" src="https://img.shields.io/badge/cache-Redis-d82c20?style=flat-square&logo=redis&logoColor=white" />
-  <img alt="k6" src="https://img.shields.io/badge/load_test-k6-6b46c1?style=flat-square&logo=k6&logoColor=white" />
+  <img alt="Apache Solr" src="https://img.shields.io/badge/search-Apache%20Solr-d9411e?style=flat-square" />
+  <img alt="k6" src="https://img.shields.io/badge/load%20test-k6-6b46c1?style=flat-square&logo=k6&logoColor=white" />
 </p>
 
----
+## Visão geral
 
-## Visão Geral
+Este repositório contém a implementação, os protocolos e as evidências experimentais do TCC. O estudo compara estratégias de recuperação de catálogo em uma arquitetura local de microsserviços inspirada em plataformas de streaming, preservando o mesmo contrato público e um dataset determinístico.
 
-Este repositório concentra a parte prática do TCC **Análise Comparativa de Desempenho em uma Arquitetura de Streaming de Alta Escala**.
+O fluxo principal avaliado é `GET /api/recommendations/:userId`. A comparação é restrita ao ambiente local e não pretende reproduzir o desempenho de plataformas comerciais de streaming.
 
-A proposta consiste na construção de um ambiente experimental inspirado em sistemas de streaming, baseado em APIs e microsserviços, para investigar o impacto de diferentes estratégias de otimização sobre o desempenho da aplicação.
+## Escopo consolidado
 
-O foco está na avaliação comparativa de cenários sob carga controlada, observando métricas como latência, throughput, tempo de resposta, taxa de erro e utilização de recursos computacionais.
-
-A implementação prática foi **guiada pelo Projeto de Pesquisa e pelos trabalhos de referência**, evitando a construção arbitrária de uma metodologia experimental e buscando preservar a comparabilidade dos resultados com a literatura analisada.
-
-## Matriz Experimental Atual
-
-O experimento final separa dois eixos: os **cenários tecnológicos** (`baseline`, `redis-cache` e `solr`) e os **cases de carga**. Assim, cada case compara as três estratégias sob a mesma condição de demanda:
-
-| Case | Perfil | Finalidade |
-| --- | --- | --- |
-| Case 1 | Baixa controlada | Medir o custo base das estratégias em demanda estável. |
-| Case 2 | Alta sustentada | Avaliar desempenho e estabilidade sob pressão prolongada. |
-| Case 3 | Variável | Avaliar o comportamento durante picos e reduções de demanda. |
-
-O endpoint oficial é `GET /api/recommendations/:userId`. A especificação completa está em [matriz-final.md](docs/experiments/matriz-final.md).
-
-Os perfis de carga se baseiam conceitualmente na literatura sobre tráfego normal, de pico e variável; seus valores de usuários virtuais e duração foram calibrados no ambiente local. A justificativa bibliográfica e operacional está em [justificativa-parametros.md](docs/experiments/justificativa-parametros.md).
-
----
-
-## Estado da Implementação
-
-A implementação experimental está concluída e congelada para preservar a comparabilidade da matriz final. O repositório contém os três cenários tecnológicos, os scripts de carga, as validações funcionais, os resultados brutos e a documentação de reprodução. As próximas mudanças serão prioritariamente de escrita, revisão acadêmica e apresentação dos resultados.
-
----
-
-## Problema de Pesquisa
-
-Sistemas de streaming de alta escala operam com forte variabilidade de carga, comunicação intensiva entre serviços e elevada dependência de APIs.
-
-Nesse contexto, problemas como latência elevada, gargalos internos, uso ineficiente de recursos e aumento da taxa de erro podem comprometer o desempenho, a escalabilidade e a experiência do usuário.
-
-O trabalho investiga como diferentes estratégias de otimização podem ser utilizadas para melhorar o desempenho de arquiteturas distribuídas, buscando equilíbrio entre eficiência técnica, escalabilidade, resiliência e utilização de recursos.
-
----
-
-## Questão de Pesquisa
-
-> Como combinar diferentes estratégias de otimização para melhorar o desempenho de sistemas de streaming, garantindo escalabilidade, resiliência e equilíbrio entre eficiência técnica e custo operacional?
-
----
-
-## Objetivos
-
-### Objetivo Geral
-
-Analisar estratégias de otimização de desempenho em sistemas de streaming de alta escala, considerando eficiência, escalabilidade, resiliência e sustentabilidade operacional.
-
-### Objetivos Específicos
-
-- Analisar desafios de desempenho com foco em latência, escalabilidade e uso de recursos.
-- Examinar métodos de diagnóstico e monitoramento, como profiling, tracing e testes de carga.
-- Investigar abordagens modernas de otimização aplicadas a arquiteturas distribuídas.
-- Comparar estratégias de otimização com base em métricas de desempenho e utilização de recursos.
-- Discutir como diferentes estratégias podem contribuir para arquiteturas mais eficientes, resilientes e adaptáveis.
-
----
-
-## Proposta Experimental
-
-A parte prática consiste na implementação de um protótipo simplificado de sistema inspirado em plataformas de streaming.
-
-O desenho experimental implementado contempla:
-
-- **Definido e implementado:** `API Gateway` como ponto de entrada da aplicação;
-- **Definido e implementado:** três microsserviços: `catalog`, `users` e `recommendations`;
-- **Implementado:** comparação entre diferentes cenários experimentais;
-- **Implementado:** cenário baseline, sem mecanismos específicos de otimização;
-- **Implementado:** cenário utilizando cache por meio do `Redis`;
-- **Definido e implementado:** cenário de indexação de catálogo com `Apache Solr` no fluxo de recomendações;
-- **Definido e implementado:** testes de carga utilizando `k6`;
-- **Implementado:** coleta de métricas relacionadas ao desempenho e ao uso de recursos;
-- **Implementado:** três execuções para cada combinação entre cenário experimental e padrão de carga;
-- **Concluído:** segunda leva experimental com dataset ampliado, carga moderada, carga forte e coleta de `CPU` e memória.
-
----
-
-## Arquitetura Experimental
-
-A arquitetura experimental atual é composta por um API Gateway responsável por encaminhar as requisições para três microsserviços independentes.
-
-Os diagramas finais e específicos de cada cenário estão em [arquitetura-final.md](docs/arquitetura-final.md): baseline, Redis e Solr. Esse documento é a fonte arquitetural oficial do repositório e evita manter diagramas duplicados ou contraditórios.
-
----
-
-## Stack Tecnológica
-
-| Categoria | Tecnologia | Situação | Papel no experimento |
-| --- | --- | --- | --- |
-| Backend | ![Node.js](https://img.shields.io/badge/Node.js-339933?logo=nodedotjs&logoColor=white) | **Implementado** | Ambiente de execução dos serviços. |
-| Framework | ![Express](https://img.shields.io/badge/Express-000000?logo=express&logoColor=white) | **Implementado** | Construção das APIs e microsserviços. |
-| Cache | ![Redis](https://img.shields.io/badge/Redis-DC382D?logo=redis&logoColor=white) | **Implementado** | Implementação do mecanismo de cache no `Catalog Service`. |
-| Indexação | Apache Solr | **Implementado** | Recuperação indexada de itens para o fluxo de recomendações. |
-| Testes | ![k6](https://img.shields.io/badge/k6-7D64FF?logo=k6&logoColor=white) | **Implementado** | Geração de carga e execução dos experimentos. |
-| Observabilidade | Logs e métricas | **Implementado** | Monitoramento mínimo do comportamento da aplicação durante os testes. |
-
-A presença dessas tecnologias representa o escopo implementado do experimento e não implica que todas tenham sido utilizadas pelos trabalhos de referência na mesma configuração experimental.
-
----
-
-## Diretriz Metodológica
-
-A parte prática foi construída a partir de uma metodologia não arbitrária.
-
-As decisões experimentais foram guiadas pelos trabalhos de referência analisados durante o desenvolvimento do TCC, seguindo três princípios:
-
-1. utilizar procedimentos derivados da literatura quando houver sustentação metodológica direta;
-2. adaptar procedimentos ao escopo do TCC quando a reprodução literal não for tecnicamente ou operacionalmente viável;
-3. registrar explicitamente as decisões calibradas ao ambiente local.
-
-O objetivo é permitir que os resultados obtidos sejam discutidos e comparados de forma metodologicamente coerente com os trabalhos utilizados como referência.
-
----
-
-## Base Bibliográfica e Trabalhos de Referência
-
-A base bibliográfica do TCC reúne referências com papéis distintos. Parte delas orienta diretamente a discussão metodológica e experimental, enquanto outras fundamentam conceitos de arquitetura distribuída, microsserviços, APIs, observabilidade, escalabilidade e revisão da literatura. Essa distinção evita tratar toda referência teórica como se tivesse fornecido um setup experimental diretamente reproduzível.
-
-### Referências metodológicas e aplicadas
-
-| Trabalho | Principal contribuição para o TCC |
+| Eixo | Definição |
 | --- | --- |
-| **Smirnov (2025)** | Diagnóstico de gargalos, profiling, tracing, testes de carga e métricas de desempenho. |
-| **Ji et al. (2025)** | Otimização adaptativa de tráfego e análise de sistemas submetidos a alta carga. |
-| **Gbenle et al. (2025)** | Autoescalabilidade preditiva e relação entre custo, recursos e desempenho em microsserviços. |
-| **Pasham (2025)** | Desempenho de API Gateway e discussão sobre arquiteturas serverless. |
-| **Munnangi (2025)** | Aplicação de inteligência artificial na otimização de arquiteturas de APIs cloud-native. |
-| **Thatikonda (2025)** | Gerenciamento de cache e análise de métricas relacionadas ao desempenho. |
-| **Dadi (2024)** | Planejamento preditivo de capacidade e otimização de plataformas de APIs com IA. |
+| Cenários tecnológicos | `baseline`, `redis-cache` e `solr`. |
+| Estratégia baseline | Recuperação do catálogo a partir de dados locais. |
+| Estratégia Redis | Cache no `Catalog Service`. |
+| Estratégia Solr | Recuperação indexada no fluxo de recomendações. |
+| Cases de carga | Baixa controlada, alta sustentada e carga variável. |
+| Matriz oficial | 27 rodadas: 3 cenários x 3 cases x 3 repetições. |
+| Métricas principais | Latência média, p95, vazão e taxa de erro. |
+| Evidências complementares | CPU e RSS dos processos Node.js, contadores de cache e coleta temporal do Case 3. |
 
-### Revisões e estudos de síntese
+Os parâmetros oficiais dos cases estão em [matriz-final.md](docs/experiments/matriz-final.md), e a justificativa de calibração está em [justificativa-parametros.md](docs/experiments/justificativa-parametros.md).
 
-| Trabalho | Principal contribuição para o TCC |
-| --- | --- |
-| **El Bechir, Bouh e Shuwail (2024)** | Revisão de estratégias de otimização de desempenho para aplicações serverless, útil para contextualizar elasticidade, ganhos operacionais e limitações desse modelo. |
-| **Wen et al. (2022)** | Revisão sistemática sobre computação serverless, utilizada no TCC para sustentar a discussão sobre escalabilidade, elasticidade e eficiência operacional em arquiteturas modernas. |
+## Resultados e limites
 
-### Referências teóricas e arquiteturais
+A matriz final foi concluída e auditada. No ambiente avaliado, o baseline apresentou a menor latência média e a maior vazão nos três perfis; Redis apresentou o menor p95 médio no Case 1, mas sem evidência de ganho consistente nas demais métricas; Solr preservou a equivalência funcional, com custo adicional no fluxo local observado.
 
-- **Bass, Clements e Kazman (2021):** fundamentos de arquitetura de software.
-- **Dean e Barroso (2013):** impacto da latência em sistemas de larga escala.
-- **Fielding (2000):** fundamentos arquiteturais de sistemas baseados em rede e APIs.
-- **Fowler (2002):** padrões de arquitetura corporativa.
-- **Kleppmann (2017):** sistemas distribuídos e aplicações intensivas em dados.
-- **Lercher et al. (2023):** evolução de APIs em microsserviços.
-- **Newman (2021):** boas práticas para microsserviços.
-- **Richardson (2018):** padrões de microsserviços.
-- **Sigelman et al. (2010):** tracing distribuído em larga escala.
-- **Wohlin (2014):** diretrizes metodológicas para revisão por snowballing.
+Esses resultados não isolam causalidade por componente e não permitem generalizações para outros ambientes. CPU e RSS abrangem somente os processos Node.js; as métricas do contêiner Solr permanecem como evidência complementar, em escopo distinto. A coleta temporal do Case 3 foi realizada posteriormente e não substitui a matriz oficial.
 
-Esses trabalhos não serão necessariamente reproduzidos integralmente. A proposta é identificar procedimentos compatíveis com o escopo experimental deste TCC e utilizá-los como referência para o desenho e a análise dos experimentos.
+Documentos de apoio:
 
----
+- [Comparação da matriz final](docs/experiments/matriz-final-comparison.md)
+- [Auditoria das 27 rodadas oficiais](docs/experiments/matriz-final-auditoria.md)
+- [Resultados temporais complementares do Case 3](docs/experiments/case-3-temporal-complement-results.md)
+- [Limites e lacunas da evidência](docs/experiments/parecer-lacunas-melhorias.md)
 
-## Metodologia Experimental
+## Arquitetura
 
-O experimento foi estruturado em torno da implementação de uma arquitetura base e da comparação de seu comportamento diante de diferentes configurações e padrões de carga.
+A arquitetura é composta por um `API Gateway` e três microsserviços Node.js/Express:
 
-### Elementos consolidados
+- `Catalog Service`: fornece os itens do catálogo e, no cenário Redis, controla o cache;
+- `Users Service`: fornece perfis e preferências dos usuários;
+- `Recommendations Service`: combina preferências e catálogo para gerar recomendações;
+- `API Gateway`: expõe as rotas públicas e encaminha as requisições.
 
-- avaliação comparativa entre cenários;
-- utilização das mesmas métricas centrais entre as configurações;
-- execução controlada dos experimentos;
-- três execuções por combinação entre cenário e padrão de carga;
-- análise quantitativa dos resultados;
-- interpretação dos resultados à luz dos trabalhos de referência.
-- plano mestre de testes cobrindo todo o ciclo experimental do TCC.
+No baseline e no Redis, o catálogo é recuperado pelo `Catalog Service`. No cenário Solr, o `Recommendations Service` consulta o índice. Diagramas e detalhes dos fluxos estão em [arquitetura-final.md](docs/arquitetura-final.md).
 
-### Próxima etapa acadêmica
+## Reprodução local
 
-- revisão acadêmica da interpretação da matriz final tripla entre baseline, Redis e Solr;
-- integração das tabelas e gráficos das 27 rodadas ao artigo científico;
-- aprofundamento estatístico das métricas, caso necessário após a matriz final.
+### Pré-requisitos
 
----
+- Node.js na versão definida em [`.nvmrc`](.nvmrc);
+- Redis (`redis-server`);
+- Docker e Docker Compose, para o Solr;
+- k6, para os testes de carga.
 
-## Variáveis Experimentais
-
-### Variáveis Independentes
-
-- cenário experimental;
-- padrão de carga;
-- presença ou ausência dos mecanismos de otimização.
-
-### Variáveis Dependentes
-
-- latência;
-- throughput;
-- tempo médio de resposta;
-- taxa de erro;
-- utilização de CPU;
-- utilização de memória.
-
-### Variáveis Controladas
-
-Sempre que possível, serão mantidos constantes entre os experimentos:
-
-- arquitetura base;
-- serviços disponíveis;
-- endpoints avaliados;
-- ferramenta de geração de carga;
-- ambiente de execução;
-- parâmetros de carga utilizados na comparação;
-- critérios de coleta das métricas.
-
----
-
-## Cenários Experimentais
-
-| Cenário | Situação | Descrição |
-| --- | --- | --- |
-| **Baseline** | **Implementado** | Arquitetura base executada sem mecanismos adicionais específicos de otimização. |
-| **Cache com Redis** | **Implementado** | Mesma arquitetura com utilização de cache para avaliar seu impacto sobre o desempenho. |
-| **Indexação com Apache Solr** | **Implementado e validado** | Consulta indexada do catálogo no fluxo de recomendações, preservando o contrato público. |
-
-### Cenário Solr
-
-O cenário Solr está implementado e possui validação funcional automatizada. Ele indexa o catálogo determinístico e faz o `Recommendations Service` recuperar diretamente os itens compatíveis, preservando a rota pública e o formato de resposta.
-
-O Apache Solr é executado localmente por Docker Compose. A decisão foi tomada após a análise dos resultados preliminares e da orientação para avaliar indexação no fluxo de recomendações. A especificação completa está em [optimized-scenario.md](/Users/gabrielmoc/Downloads/TCC%20-%20Gabriel/docs/optimized-scenario.md).
-
-Os limites metodológicos permanecem:
-
-- preservar o contrato público e o dataset determinístico;
-- manter a comparação funcionalmente equivalente aos cenários anteriores;
-- medir desempenho e recursos antes de concluir que há ganho;
-- não reproduzir mecanismos de complexidade incompatível com o escopo, como aprendizagem por reforço hierárquico.
-
-Abordagens como auto-scaling preditivo, reinforcement learning e arquiteturas serverless permanecem relevantes para a fundamentação do trabalho, mas não são consideradas automaticamente parte da implementação experimental.
-
----
-
-## Padrões de Carga
-
-O Projeto de Pesquisa prevê a avaliação do sistema diante de diferentes comportamentos de carga, incluindo:
-
-- carga constante;
-- crescimento gradual;
-- picos repentinos de requisições.
-
-Nas etapas históricas já executadas, foram utilizados:
-
-- uma rodada exploratória inicial em rampa no endpoint de recomendações;
-- uma bateria mais forte em rampa para `recommendations` e `catalog`, com três repetições por cenário.
-
-A bateria final substitui a organização anterior por três cases de carga: baixa controlada, alta sustentada e variável. Em cada um, baseline, Redis e Solr são executados três vezes sob a mesma carga funcional.
-
----
-
-## Métricas de Avaliação
-
-As principais métricas previstas são:
-
-| Métrica | Finalidade |
-| --- | --- |
-| **Latência** | Avaliar o tempo necessário para processamento das requisições. |
-| **Throughput** | Medir a quantidade de requisições processadas em determinado intervalo. |
-| **Tempo médio de resposta** | Observar o comportamento médio das respostas da aplicação. |
-| **Taxa de erro** | Identificar falhas durante os diferentes níveis de carga. |
-| **CPU** | Avaliar o impacto das configurações sobre processamento. |
-| **Memória** | Avaliar o consumo de memória durante os experimentos. |
-
-A literatura analisada também apresenta métricas adicionais potencialmente relevantes, como percentis de latência (`p95` e `p99`) e cache hit rate.
-
-Na primeira comparação experimental, foram priorizadas:
-- latência média;
-- latência `p95`;
-- throughput;
-- taxa de erro.
-
-Na segunda leva experimental já formalizada, passam a entrar como foco explícito:
-- uso de `CPU`;
-- uso de memória;
-- sinais de `cache hit` e `cache miss`;
-- comparação sob dataset ampliado e carga mais exigente.
-
----
-
-## Estratégia de Testes
-
-Os experimentos serão executados utilizando `k6` para geração controlada de carga sobre a aplicação.
-
-### Procedimento geral
-
-```text
-Definição do cenário
-        ↓
-Configuração do ambiente
-        ↓
-Aplicação do padrão de carga
-        ↓
-Execução do teste
-        ↓
-Coleta das métricas
-        ↓
-Repetição da execução
-        ↓
-Consolidação dos resultados
-        ↓
-Comparação entre cenários
-```
-
-Cada combinação entre **cenário experimental e padrão de carga foi executada três vezes**, reduzindo a influência de variações ocasionais sobre os resultados.
-
-Os parâmetros da primeira rodada controlada foram documentados em [test-plan.md](/Users/gabrielmoc/Downloads/TCC%20-%20Gabriel/docs/experiments/test-plan.md).
-
-O plano mestre organiza os casos por perfil de carga:
-- `Case 1`: carga baixa controlada;
-- `Case 2`: carga alta sustentada;
-- `Case 3`: carga variável.
-
-Em todos eles são comparados os cenários `baseline`, `redis-cache` e `solr`.
-
----
-
-## Análise dos Resultados
-
-Os resultados foram analisados quantitativamente por meio da comparação das métricas coletadas nas diferentes execuções.
-
-A análise deverá observar:
-
-- diferenças de latência entre cenários;
-- variação de throughput;
-- comportamento da taxa de erro;
-- impacto sobre CPU e memória;
-- comportamento diante dos diferentes padrões de carga;
-- ganhos ou perdas provocados pelas estratégias implementadas.
-
-Os resultados quantitativos serão posteriormente interpretados em conjunto com a literatura, permitindo discutir não apenas **se** determinada estratégia apresentou melhoria, mas também como seu comportamento se relaciona aos resultados descritos pelos trabalhos de referência.
-
-Critérios estatísticos adicionais serão definidos durante a consolidação do protocolo experimental, caso sejam necessários.
-
----
-
-## Ambiente Experimental
-
-O ambiente foi preparado para permitir execução controlada e repetível dos experimentos.
-
-O ambiente efetivamente utilizado é composto por:
-
-- execução local;
-- serviços independentes;
-- backend em `Node.js`;
-- APIs desenvolvidas com `Express`;
-- cache utilizando `Redis`;
-- indexação utilizando `Apache Solr` em contêiner Docker;
-- testes de carga utilizando `k6`;
-- mecanismos de registro e monitoramento durante as execuções.
-
-O Node.js é fixado pela versão declarada em `.nvmrc`. Redis é executado localmente pelo binário `redis-server`; Solr é provisionado por `compose.yaml`. Os metadados e métricas de cada execução oficial foram preservados em `results/`.
-
----
-
-## Reprodutibilidade
-
-O ambiente pode ser preparado e validado com os comandos abaixo:
+Prepare as dependências e valide os cenários funcionais:
 
 ```bash
 scripts/bootstrap.sh
 scripts/run-smoke-suite.sh
 ```
 
-O primeiro comando instala as dependências dos quatro serviços e verifica a disponibilidade de Redis, Docker Compose e k6. O segundo valida baseline, cache Redis, fallback e Solr. Para executar apenas um cenário manualmente, use os valores de `.env.example` e inicie os serviços em terminais separados:
+Para iniciar os serviços manualmente:
 
 ```bash
 npm --prefix services/catalog start
@@ -394,136 +83,55 @@ npm --prefix services/recommendations start
 npm --prefix gateway start
 ```
 
-Para habilitar Redis, defina `CATALOG_CACHE_ENABLED=true` e inicie `redis-server`. Para Solr, execute `docker compose up -d solr`, indexe o catálogo com `node services/solr/index-catalog.mjs` e defina `CATALOG_RETRIEVAL_MODE=solr` antes de iniciar o serviço de recomendações.
+Para o Redis, defina `CATALOG_CACHE_ENABLED=true` e inicie `redis-server`. Para o Solr, execute `docker compose up -d solr`, indexe o catálogo com `node services/solr/index-catalog.mjs` e defina `CATALOG_RETRIEVAL_MODE=solr` antes de iniciar o `Recommendations Service`.
 
-Os procedimentos da matriz final, incluindo aquecimento, repetições, métricas e organização de resultados, estão em [matriz-final.md](docs/experiments/matriz-final.md). Os diagramas dos três cenários estão em [arquitetura-final.md](docs/arquitetura-final.md).
+Os procedimentos da matriz e da coleta complementar estão documentados em [matriz-final.md](docs/experiments/matriz-final.md) e [complemento-temporal-case-3.md](docs/experiments/complemento-temporal-case-3.md).
 
----
-
-## Estrutura Atual do Repositório
+## Organização do repositório
 
 ```text
 .
-├── gateway/
-│
-├── services/
-│   ├── catalog/
-│   ├── users/
-│   └── recommendations/
-│
-├── shared/
-│   ├── datasets/
-│   ├── http/
-│   └── runtime/
-│
-├── scripts/
-│   ├── bootstrap.sh
-│   └── run-smoke-suite.sh
-│
+├── gateway/                 # API Gateway
+├── services/                # Catalog, Users, Recommendations e Solr
+├── shared/                  # Dataset, utilitários HTTP e métricas de runtime
+├── scripts/                 # Bootstrap e suíte smoke
 ├── tests/
-│   ├── load/
-│   └── smoke/
-│
-├── results/
-│   ├── baseline/
-│   ├── redis-cache/
-│   └── solr/
-│
+│   ├── load/                # Scripts k6 e consolidação dos resultados
+│   └── smoke/               # Validação funcional dos cenários
+├── results/                 # Evidências da matriz e da coleta complementar
 ├── docs/
-│   ├── baseline-contract.md
-│   ├── cache-scenario.md
-│   ├── cache-validation.md
 │   ├── arquitetura-final.md
-│   └── experiments/
-│       ├── test-plan.md
-│       ├── first-comparison.md
-│       ├── case-2-comparison.md
-│       ├── matriz-final.md
-│       ├── matriz-final-comparison.md
-│       └── figures/
-│
+│   ├── experiments/         # Protocolos, auditoria, comparações e figuras
+│   └── tcc/                 # Síntese metodológica e de resultados
 └── README.md
 ```
 
-A estrutura está organizada para a revisão acadêmica e o acabamento final do artigo.
+## Rastreabilidade
 
----
+Os artefatos são organizados por cenário, case e repetição. A matriz oficial preserva metadados, resumos do k6, logs e métricas de runtime das 27 rodadas utilizadas no artigo. Rodadas exploratórias e execuções anteriores à padronização do isolamento de processos foram mantidas apenas como histórico e não integram a comparação final.
 
-## Resultados
+## Referências centrais
 
-> **Status:** evidências históricas entre `baseline` e `redis-cache` concluídas; matriz final de 27 rodadas concluída para `baseline`, `redis-cache` e `solr` nos três perfis de carga.
+- APACHE SOFTWARE FOUNDATION. *Apache Solr Reference Guide*. 2026.
+- BASS, Len; CLEMENTS, Paul; KAZMAN, Rick. *Software Architecture in Practice*. 4. ed. 2021.
+- DEAN, Jeffrey; BARROSO, Luiz André. The tail at scale. *Communications of the ACM*, 2013.
+- JI, et al. Estudo de gerenciamento de tráfego e condições de demanda. 2025.
+- KAMAU, Peter; MYLLYNEN, Jari. Estudo de autoescalabilidade preditiva em microsserviços. 2025.
+- NEWMAN, Sam. *Building Microservices*. 2. ed. 2021.
+- RICHARDSON, Chris. *Microservices Patterns*. 2018.
+- SIGELMAN, Benjamin H. et al. Dapper, a Large-Scale Distributed Systems Tracing Infrastructure. 2010.
+- SMIRNOV, Anton. Estudo de profiling, testes de carga e análise de gargalos. 2025.
+- THATIKONDA, Prasanth. Estudo de cache e métricas de desempenho. 2025.
 
-No momento, o repositório já contém:
+As referências bibliográficas completas constam do artigo final. Este README lista apenas as fontes diretamente associadas ao desenho experimental e à interpretação da implementação.
 
-- validação manual do cenário com Redis pelas rotas públicas do `gateway`;
-- primeira bateria controlada com `k6` no `baseline`;
-- primeira bateria controlada com `k6` no cenário com `Redis`;
-- bateria forte com `k6` nos endpoints `recommendations` e `catalog`;
-- rodada histórica com dataset ampliado, carga moderada e forte e coleta de `CPU` e memória;
-- comparação inicial documentada em [first-comparison.md](/Users/gabrielmoc/Downloads/TCC - Gabriel/docs/experiments/first-comparison.md);
-- comparação do `Case 2` documentada em [case-2-comparison.md](/Users/gabrielmoc/Downloads/TCC - Gabriel/docs/experiments/case-2-comparison.md).
-
-A comparação oficial final usa três cases por perfil de carga: baixa controlada, alta sustentada e variável. Cada case compara `baseline`, `redis-cache` e `solr` em três repetições no endpoint de recomendações. O protocolo está em [matriz-final.md](docs/experiments/matriz-final.md).
-
-As médias, gráficos e leitura comparativa estão em [matriz-final-comparison.md](docs/experiments/matriz-final-comparison.md). A matriz preservou taxa de erro igual a zero em todas as combinações; no ambiente local, o baseline apresentou menor latência média e maior vazão nos três perfis. O resultado é compatível com custos adicionais de comunicação, serialização e consulta quando a fonte original já é barata, sem isolar causalidade para um componente específico.
-
-Leitura atual dos resultados:
-- o ambiente está estável e reprodutível;
-- o cache funciona corretamente do ponto de vista funcional;
-- na rodada histórica de carga moderada, o cache apresentou melhora apenas em parte do endpoint principal;
-- nas cargas fortes e no endpoint `catalog`, o cenário com `Redis` ficou mais custoso e, em geral, mais lento;
-- isso motivou a introdução do cenário de indexação com Solr e a matriz final por perfil de carga.
-
-Status atual:
-- os cenários baseline, Redis e Solr foram implementados e validados funcionalmente;
-- a matriz final de 27 rodadas foi concluída e auditada;
-- a frente atual é a revisão acadêmica final e a preparação da entrega.
-
-## Limitações do Escopo
-
-Os resultados são válidos para o ambiente local, dataset determinístico e endpoint definidos no protocolo. Não há medição elétrica direta, telemetria distribuída completa nem execução em múltiplos nós. Essas limitações impedem generalizações diretas para plataformas comerciais de streaming, mas não comprometem a comparação controlada entre os cenários avaliados.
-
----
-
-## Documentação
-
-A construção deste repositório é orientada principalmente por:
-
-- Projeto de Pesquisa do TCC;
-- trabalhos científicos selecionados na fundamentação teórica;
-- documentação técnica produzida durante a implementação;
-- resultados e artefatos gerados durante os experimentos.
-
-A documentação acadêmica funciona como referência para as decisões metodológicas, enquanto este repositório concentra a implementação, os procedimentos de reprodução e os resultados da etapa experimental.
-
-Documentos centrais neste momento:
-- [docs/experiments/test-plan.md](/Users/gabrielmoc/Downloads/TCC - Gabriel/docs/experiments/test-plan.md)
-- [docs/experiments/first-comparison.md](/Users/gabrielmoc/Downloads/TCC - Gabriel/docs/experiments/first-comparison.md)
-- [docs/experiments/case-2-comparison.md](/Users/gabrielmoc/Downloads/TCC - Gabriel/docs/experiments/case-2-comparison.md)
-- [docs/experiments/scenarios/README.md](/Users/gabrielmoc/Downloads/TCC - Gabriel/docs/experiments/scenarios/README.md)
-- [docs/optimized-scenario.md](/Users/gabrielmoc/Downloads/TCC - Gabriel/docs/optimized-scenario.md)
-- [docs/tcc/metodologia-e-resultados-finais.md](/Users/gabrielmoc/Downloads/TCC - Gabriel/docs/tcc/metodologia-e-resultados-finais.md)
-
----
-
-## Contexto Acadêmico
+## Contexto acadêmico
 
 | | |
 | --- | --- |
-| **Instituição** | CESAR School |
-| **Curso** | Ciência da Computação |
-| **Natureza** | Trabalho de Conclusão de Curso |
-| **Área** | Sistemas Distribuídos e Engenharia de Software |
-| **Foco** | Desempenho de APIs e Microsserviços |
-| **Autor** | Gabriel Moura de Oliveira Cavalcanti |
-| **Orientador** | Matheus Garrido |
-
----
-
-<p align="center">
-  <strong>Trabalho de Conclusão de Curso — Ciência da Computação</strong>
-</p>
-
-<p align="center">
-  CESAR School
-</p>
+| Instituição | CESAR School |
+| Curso | Ciência da Computação |
+| Natureza | Trabalho de Conclusão de Curso |
+| Área | Sistemas Distribuídos e Engenharia de Software |
+| Autor | Gabriel Moura de Oliveira Cavalcanti |
+| Orientador | Matheus Garrido |
