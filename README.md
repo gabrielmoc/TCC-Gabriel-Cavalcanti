@@ -67,12 +67,15 @@ No baseline e no Redis, o catálogo é recuperado pelo `Catalog Service`. No cen
 - Docker e Docker Compose, para o Solr;
 - k6, para os testes de carga.
 
-Prepare as dependências e valide os cenários funcionais:
+Prepare as dependências e valide primeiro a sintaxe dos serviços e, em seguida, os cenários funcionais:
 
 ```bash
 scripts/bootstrap.sh
-scripts/run-smoke-suite.sh
+npm test
+npm run test:smoke
 ```
+
+`npm test` executa validação sintática dos quatro serviços. A suíte `test:smoke` inicia os componentes necessários e valida os fluxos baseline, Redis, fallback e Solr. Os comandos `npm run test:matrix` e `npm run test:case3-temporal` existem para reexecutar, respectivamente, a matriz oficial e a coleta complementar do Case 3; eles sobrescrevem artefatos de resultado e não devem ser usados apenas para consulta.
 
 Para iniciar os serviços manualmente:
 

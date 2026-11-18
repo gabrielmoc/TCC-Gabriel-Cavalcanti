@@ -1,0 +1,10 @@
+{
+  "name": "tcc-streaming-performance-experiment",
+  "private": true,
+  "scripts": {
+    "test": "npm --prefix gateway test && npm --prefix services/catalog test && npm --prefix services/users test && npm --prefix services/recommendations test",
+    "test:smoke": "bash scripts/run-smoke-suite.sh",
+    "test:matrix": "bash tests/load/run-final-matrix-suite.sh",
+    "test:case3-temporal": "bash tests/load/run-case3-temporal-suite.sh"
+  }
+}

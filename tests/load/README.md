@@ -1,18 +1,38 @@
-# Base dos Testes de Carga
+# Testes de Carga e Consolidação
 
-Este diretório contem a base inicial dos testes de carga com `k6`.
+Este diretório reúne os scripts `k6`, a automação da matriz final e os utilitários de consolidação das evidências.
 
-## Objetivo desta etapa
-
-Preparar scripts comparáveis entre `baseline`, `redis-cache` e `solr`.
-
-O endpoint principal escolhido nesta fase e:
+O endpoint principal avaliado é:
 
 ```text
 GET /api/recommendations/:userId
 ```
 
-## Scripts disponíveis
+## Execuções Oficiais
+
+A matriz final compara `baseline`, `redis-cache` e `solr` nos três perfis de carga (`case-1`, `case-2` e `case-3`), com três repetições por combinação. Os resultados que fundamentam o artigo estão em `results/{cenario}/matriz-final/`.
+
+```bash
+npm run test:matrix
+```
+
+O comando reexecuta a matriz e sobrescreve seus artefatos. Para executar apenas uma rodada:
+
+```bash
+tests/load/run-final-matrix.sh baseline case-1 01
+tests/load/run-final-matrix.sh redis-cache case-2 02
+tests/load/run-final-matrix.sh solr case-3 03
+```
+
+## Coleta Complementar do Case 3
+
+A coleta temporal complementar é separada da matriz oficial. Ela preserva os sete estágios do `ramping-vus` e apoia a análise temporal de p95.
+
+```bash
+npm run test:case3-temporal
+```
+
+## Scripts Principais
 
 ```text
 tests/load/catalog-ramp.js
@@ -22,23 +42,23 @@ tests/load/recommendations-ramp.js
 tests/load/recommendations-ramp-strong.js
 tests/load/recommendations-spike.js
 tests/load/aggregate-results.mjs
-tests/load/run-case2-battery.sh
-tests/load/run-strong-battery.sh
+tests/load/run-final-matrix.sh
+tests/load/run-final-matrix-suite.sh
+tests/load/run-case3-temporal-complement.sh
+tests/load/run-case3-temporal-suite.sh
+tests/load/analyze-case3-temporal.mjs
+tests/load/build-final-comparison.mjs
 ```
 
 ## Pre-requisito
 
 O `k6` precisa estar instalado localmente para executar esses arquivos.
 
-Os scripts deste diretório já foram usados na primeira bateria controlada comparando:
-- `baseline`;
-- `redis-cache`.
+## Scripts Históricos
 
-Também foi preparada uma bateria mais forte com:
-- `GET /api/recommendations/:userId` como endpoint principal;
-- `GET /api/catalog` como endpoint de apoio para isolar o efeito direto do cache.
+Os scripts `recommendations-constant.js`, `recommendations-ramp.js`, `recommendations-ramp-strong.js`, `recommendations-spike.js`, `catalog-ramp.js`, `run-case2-battery.sh` e `run-strong-battery.sh` foram preservados como evidência das levas exploratórias. Eles não devem ser usados para substituir ou recalcular a matriz oficial.
 
-## Como executar
+## Referência de Execução Histórica
 
 Exemplos para o baseline:
 
@@ -123,25 +143,6 @@ Resultados esperados do `Case 2`:
 ```text
 results/{cenario}/case-2/{perfil}/{endpoint}/run-{numero}
 ```
-
-## Matriz final por cases
-
-Os cases representam perfis de carga, não tecnologias:
-
-- `case-1`: baixa controlada;
-- `case-2`: alta sustentada;
-- `case-3`: variável.
-
-O executor final usa `GET /api/recommendations/:userId` como endpoint principal e executa três repetições por combinação entre cenário e case:
-
-```bash
-tests/load/run-final-matrix.sh baseline case-1 01
-tests/load/run-final-matrix.sh redis-cache case-2 02
-tests/load/run-final-matrix.sh solr case-3 03
-tests/load/run-final-matrix-suite.sh
-```
-
-O último comando executa a matriz completa e gera os resumos agregados. O Solr exige Docker Desktop ativo; Redis exige `redis-server` somente no cenário cacheado.
 
 ## Carga funcional equivalente
 
